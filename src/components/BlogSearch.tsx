@@ -47,9 +47,9 @@ export function BlogSearch({ posts, initialQuery = '' }: { posts: SearchablePost
   const trimmed = query.trim().toLowerCase();
   const matches = trimmed.length >= 1
     ? posts.filter((post) => {
-        const inTitle = post.title.toLowerCase().includes(trimmed);
-        const inExcerpt = post.excerpt.toLowerCase().includes(trimmed);
-        const inCategory = post.categories.some((c) => c.toLowerCase().includes(trimmed));
+        const inTitle = (post.title || '').toLowerCase().includes(trimmed);
+        const inExcerpt = (post.excerpt || '').toLowerCase().includes(trimmed);
+        const inCategory = (post.categories || []).some((c) => (c || '').toLowerCase().includes(trimmed));
         return inTitle || inExcerpt || inCategory;
       })
     : [];

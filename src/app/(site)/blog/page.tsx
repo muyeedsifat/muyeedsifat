@@ -28,12 +28,18 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
 
   // Extract all unique categories
   const categoriesSet = new Set<string>();
-  allPosts.forEach((p) => p.categories.forEach((c) => categoriesSet.add(c)));
+  allPosts.forEach((p) => {
+    (p.categories || []).forEach((c) => {
+      if (c) categoriesSet.add(c);
+    });
+  });
   const allCategories = Array.from(categoriesSet);
 
   const filtered = allPosts.filter((post) => {
-    const matchesQuery = !query || `${post.title} ${post.excerpt} ${post.tags.join(' ')}`.toLowerCase().includes(query);
-    const matchesCategory = !activeCategory || post.categories.includes(activeCategory);
+    const postCategories = post.categories || [];
+    const postTags = post.tags || [];
+    const matchesQuery = !query || `${post.title || ''} ${post.excerpt || ''} ${postTags.join(' ')}`.toLowerCase().includes(query);
+    const matchesCategory = !activeCategory || postCategories.includes(activeCategory);
     return matchesQuery && matchesCategory;
   });
 
@@ -185,6 +191,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
                           className="blogThumbImg"
                           sizes="(max-width: 680px) 100vw, (max-width: 980px) 260px, 320px"
                           priority={page === 1}
+                          unoptimized
                         />
                       ) : (
                         <div className="blogThumbPlaceholder">

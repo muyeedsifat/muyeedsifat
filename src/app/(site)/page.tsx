@@ -25,9 +25,29 @@ export default function HomePage() {
             <div className="btnRow"><Link className="btn btnPrimary" href="/contact">Let&apos;s Talk</Link><Link className="btn btnSecondary" href="/projects">View Projects</Link></div>
           </div>
           <div className="heroMedia">
-            <Image src="/images/hero-muyeed.webp" alt="Muyeed Sifat, digital marketer specializing in AI SEO, Google Ads and Meta Ads" width={900} height={1125} priority sizes="(max-width: 980px) 100vw, 46vw" />
-            <div className="proofChip chipA"><strong>AI SEO</strong>SEO • AEO • GEO</div>
-            <div className="proofChip chipB"><strong>PPC Ads</strong>Google • Meta</div>
+            <div className="heroCircleBackdrop" aria-hidden="true" />
+            <div className="heroCircleClip">
+              <Image
+                className="heroAvatarImg"
+                src="/images/hero-muyeed.webp"
+                alt="Muyeed Sifat, digital marketer specializing in AI SEO, Google Ads and Meta Ads"
+                width={900}
+                height={1125}
+                priority
+                sizes="(max-width: 980px) 100vw, 46vw"
+              />
+            </div>
+            <div className="heroAvatarHeadPop" aria-hidden="true">
+              <Image
+                className="heroAvatarImg"
+                src="/images/hero-muyeed.webp"
+                alt=""
+                width={900}
+                height={1125}
+                priority
+                sizes="(max-width: 980px) 100vw, 46vw"
+              />
+            </div>
           </div>
         </div>
       </section>

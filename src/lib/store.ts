@@ -13,7 +13,8 @@ async function readJson<T>(file: string, fallback: T): Promise<T> {
   const fullPath = path.join(dataDir, file);
   try {
     const raw = await fs.readFile(fullPath, 'utf8');
-    return JSON.parse(raw) as T;
+    const sanitized = raw.replace(/^\uFEFF/, '');
+    return JSON.parse(sanitized) as T;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
     await writeJson(file, fallback);

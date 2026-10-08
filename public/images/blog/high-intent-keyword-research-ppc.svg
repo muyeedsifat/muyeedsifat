@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141416"/>
+      <stop offset="60%" stop-color="#1b1c22"/>
+      <stop offset="100%" stop-color="#2a201b"/>
+    </linearGradient>
+    <linearGradient id="orangeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff7d00"/>
+      <stop offset="100%" stop-color="#ffab40"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="80%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ff7d00" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ff7d00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  
+  <rect x="80" y="80" width="145" height="36" rx="18" fill="#ff7d00" fill-opacity="0.18" stroke="#ff7d00" stroke-width="1.5"/>
+  <text x="152" y="103" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ff9e2c" text-anchor="middle" letter-spacing="1">GOOGLE ADS</text>
+
+  <text x="80" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">High-Intent Keyword</text>
+  <text x="80" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="url(#orangeGlow)" letter-spacing="-1">Research for PPC</text>
+  <text x="80" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#a0a5b5" font-weight="400">Target buyer search intent and stop paying for vanity clicks</text>
+
+  <g transform="translate(80, 480)">
+    <circle cx="24" cy="24" r="24" fill="#ff7d00"/>
+    <text x="24" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">M</text>
+    <text x="64" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#ffffff">Muyeed Sifat</text>
+    <text x="64" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#ff9e2c">Paid Search &amp; PPC Strategy</text>
+  </g>
+
+  <!-- Funnel Graphic on Right -->
+  <g transform="translate(830, 190)">
+    <!-- Top Funnel -->
+    <polygon points="-140,0 140,0 90,60 -90,60" fill="#22242c" stroke="#333742" stroke-width="1.5"/>
+    <text x="0" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#a0a5b5" text-anchor="middle">Informational Intent</text>
+
+    <!-- Mid Funnel -->
+    <polygon points="-85,68 85,68 50,130 -50,130" fill="#2c2a26" stroke="#ff7d00" stroke-width="1.5" stroke-opacity="0.6"/>
+    <text x="0" y="105" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffab40" text-anchor="middle">Commercial Intent</text>
+
+    <!-- Bottom Funnel High Intent -->
+    <polygon points="-45,138 45,138 20,200 -20,200" fill="url(#orangeGlow)"/>
+    <text x="0" y="174" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">BUYER</text>
+    <text x="0" y="235" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle">🎯 High Intent ($$$)</text>
+  </g>
+</svg>

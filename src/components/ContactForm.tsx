@@ -23,7 +23,21 @@ export function ContactForm() {
       <div className="field"><label htmlFor="name">Name</label><input id="name" name="name" required autoComplete="name" /></div>
       <div className="field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" required autoComplete="email" /></div>
       <div className="field"><label htmlFor="website">Website</label><input id="website" name="website" type="url" placeholder="https://" /></div>
-      <div className="field"><label htmlFor="service">Service</label><select id="service" name="service"><option>AI SEO</option><option>Google Ads</option><option>Meta Ads</option><option>WordPress Development</option><option>Custom Digital Marketing</option></select></div>
+      <div className="field">
+        <label htmlFor="service">Service</label>
+        <div className="selectWrap">
+          <select id="service" name="service" defaultValue="AI SEO">
+            <option value="AI SEO">AI SEO</option>
+            <option value="Google Ads">Google Ads</option>
+            <option value="Meta Ads">Meta Ads</option>
+            <option value="WordPress Development">WordPress Development</option>
+            <option value="Custom Digital Marketing">Custom Digital Marketing</option>
+          </select>
+          <span className="selectArrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
+          </span>
+        </div>
+      </div>
       <div className="field fieldFull" style={{ display: 'none' }} aria-hidden="true"><label htmlFor="company_url">Company URL</label><input id="company_url" name="company_url" tabIndex={-1} autoComplete="off" /></div>
       <div className="field fieldFull"><label htmlFor="message">Project Details</label><textarea id="message" name="message" required placeholder="Tell me what you want to improve, what you have already tried, and the result you want." /></div>
       <div className="field fieldFull"><button className="btn btnPrimary" type="submit" disabled={sending}>{sending ? 'Sending…' : 'Send Inquiry'}</button>{status && <p className="statusMessage" role="status">{status}</p>}</div>

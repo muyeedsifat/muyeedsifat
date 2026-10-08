@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141416"/>
+      <stop offset="60%" stop-color="#1b1c22"/>
+      <stop offset="100%" stop-color="#2a201b"/>
+    </linearGradient>
+    <linearGradient id="orangeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff7d00"/>
+      <stop offset="100%" stop-color="#ffab40"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="80%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ff7d00" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ff7d00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  
+  <rect x="80" y="80" width="145" height="36" rx="18" fill="#ff7d00" fill-opacity="0.18" stroke="#ff7d00" stroke-width="1.5"/>
+  <text x="152" y="103" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ff9e2c" text-anchor="middle" letter-spacing="1">GOOGLE ADS</text>
+
+  <text x="80" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">How to Structure</text>
+  <text x="80" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="url(#orangeGlow)" letter-spacing="-1">Google Ads Campaigns</text>
+  <text x="80" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#a0a5b5" font-weight="400">Campaign architecture, match types &amp; budget allocation for ROI</text>
+
+  <g transform="translate(80, 480)">
+    <circle cx="24" cy="24" r="24" fill="#ff7d00"/>
+    <text x="24" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">M</text>
+    <text x="64" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#ffffff">Muyeed Sifat</text>
+    <text x="64" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#ff9e2c">Google Ads Specialist</text>
+  </g>
+
+  <!-- Google Ads Diagram on Right -->
+  <g transform="translate(840, 290)">
+    <rect x="-110" y="-120" width="220" height="54" rx="12" fill="#ff7d00" stroke="#ff9e2c" stroke-width="2"/>
+    <text x="0" y="-86" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle">Search Campaign</text>
+
+    <!-- Branch lines -->
+    <path d="M0 -66 L0 -35 M0 -35 L-85 -35 M0 -35 L85 -35 M-85 -35 L-85 -10 M85 -35 L85 -10" stroke="#ff7d00" stroke-width="2" fill="none"/>
+
+    <rect x="-160" y="-10" width="150" height="48" rx="10" fill="#22242c" stroke="#333742" stroke-width="1.5"/>
+    <text x="-85" y="20" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">High-Intent Ad Group</text>
+
+    <rect x="10" y="-10" width="150" height="48" rx="10" fill="#22242c" stroke="#333742" stroke-width="1.5"/>
+    <text x="85" y="20" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Competitor Ad Group</text>
+
+    <!-- Metrics box below -->
+    <rect x="-120" y="65" width="240" height="58" rx="12" fill="#1b1c22" stroke="#ff7d00" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="0" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#a0a5b5" text-anchor="middle">Target CPA • Max Conversions</text>
+    <text x="0" y="112" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#ff9e2c" text-anchor="middle">+38% Conv Rate Lift</text>
+  </g>
+</svg>

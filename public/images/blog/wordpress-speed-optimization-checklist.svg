@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141416"/>
+      <stop offset="60%" stop-color="#1b1c22"/>
+      <stop offset="100%" stop-color="#2a201b"/>
+    </linearGradient>
+    <linearGradient id="orangeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff7d00"/>
+      <stop offset="100%" stop-color="#ffab40"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="80%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ff7d00" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ff7d00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  
+  <rect x="80" y="80" width="145" height="36" rx="18" fill="#ff7d00" fill-opacity="0.18" stroke="#ff7d00" stroke-width="1.5"/>
+  <text x="152" y="103" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ff9e2c" text-anchor="middle" letter-spacing="1">WORDPRESS</text>
+
+  <text x="80" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="-1">WordPress Speed</text>
+  <text x="80" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="url(#orangeGlow)" letter-spacing="-1">Optimization Checklist</text>
+  <text x="80" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#a0a5b5" font-weight="400">Practical performance steps: Core Web Vitals, caching, images &amp; DOM weight</text>
+
+  <g transform="translate(80, 480)">
+    <circle cx="24" cy="24" r="24" fill="#ff7d00"/>
+    <text x="24" y="31" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="800" fill="#ffffff" text-anchor="middle">M</text>
+    <text x="64" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="700" fill="#ffffff">Muyeed Sifat</text>
+    <text x="64" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#ff9e2c">WordPress &amp; Conversion Speed</text>
+  </g>
+
+  <!-- Speed Gauge graphic on Right -->
+  <g transform="translate(850, 310)">
+    <circle cx="0" cy="0" r="130" fill="none" stroke="#22242c" stroke-width="20"/>
+    <circle cx="0" cy="0" r="130" fill="none" stroke="url(#orangeGlow)" stroke-width="20" stroke-dasharray="680" stroke-dashoffset="130" stroke-linecap="round" transform="rotate(-90)"/>
+    <text x="0" y="-10" font-family="system-ui, sans-serif" font-size="64" font-weight="900" fill="#ffffff" text-anchor="middle">99</text>
+    <text x="0" y="32" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ff9e2c" text-anchor="middle">PageSpeed Score</text>
+    
+    <!-- Checklist items below -->
+    <rect x="-140" y="90" width="280" height="42" rx="10" fill="#1b1c22" stroke="#333742" stroke-width="1.5"/>
+    <text x="0" y="116" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">✓ LCP &lt; 1.2s • CLS 0 • TTFB 0.2s</text>
+  </g>
+</svg>

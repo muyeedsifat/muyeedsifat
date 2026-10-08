@@ -20,7 +20,10 @@ export default function HomePage() {
         <div className="container heroGrid">
           <div className="heroCopy">
             <span className="eyebrow">Digital Marketing • AI SEO • PPC</span>
-            <h1>Digital Marketing That <strong>Drives Growth</strong></h1>
+            <h1 className="heroTitle">
+              <span className="heroLine1">Digital Marketing That</span>
+              <span className="heroLine2">Drives Growth</span>
+            </h1>
             <p className="lead">I help businesses grow through AI SEO, Google Ads and Meta Ads. When the website or landing page needs improvement too, I can handle the WordPress side as well.</p>
             <div className="btnRow"><Link className="btn btnPrimary" href="/contact">Let&apos;s Talk</Link><Link className="btn btnSecondary" href="/projects">View Projects</Link></div>
           </div>

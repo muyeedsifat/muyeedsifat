@@ -1,428 +1,545 @@
-[
-    {
-        "id":  "692f4e71-1b3c-473b-aea4-ec469db99c34",
-        "title":  "How Generative AI Changes Search Results",
-        "slug":  "how-generative-ai-changes-search-results",
-        "excerpt":  "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundamentals.",
-        "status":  "published",
-        "author":  "Muyeed Sifat",
-        "featuredImage":  "/images/blog/how-generative-ai-changes-search-results.svg",
-        "featuredAlt":  "How Generative AI Changes Search Results",
-        "categories":  [
-                           "AI SEO"
-                       ],
-        "tags":  [
-                     "generative AI search",
-                     "Digital Marketing"
-                 ],
-        "focusKeyword":  "generative AI search",
-        "metaTitle":  "How Generative AI Changes Search Results | Muyeed",
-        "metaDescription":  "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundament",
-        "canonicalUrl":  "",
-        "schemaType":  "BlogPosting",
-        "customSchema":  "",
-        "faqs":  [
-
-                 ],
-        "blocks":  [
-                       {
-                           "id":  "5d2552e0-35ba-49ab-ba06-eabc528a1a58",
-                           "type":  "paragraph",
-                           "text":  "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundamentals."
-                       },
-                       {
-                           "id":  "a66c28c5-f5bb-4c22-a660-f33029e19a87",
-                           "type":  "h2",
-                           "text":  "Start With the Business Goal"
-                       },
-                       {
-                           "id":  "a1fadaa3-1d3d-4cda-8b3c-6e77a0584e6b",
-                           "type":  "paragraph",
-                           "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
-                       },
-                       {
-                           "id":  "0c5ca2b6-6ad5-4be0-abb2-222842ab9968",
-                           "type":  "h2",
-                           "text":  "Build a Clear Working Framework"
-                       },
-                       {
-                           "id":  "39d4d8fb-fc19-435e-a975-6cc3eeff6f9f",
-                           "type":  "list",
-                           "items":  [
-                                         "Define the target audience and intent",
-                                         "Measure the action that matters",
-                                         "Make one controlled improvement at a time",
-                                         "Review results before scaling"
-                                     ]
-                       },
-                       {
-                           "id":  "2f348748-d1d3-4ce4-9604-789887eae76f",
-                           "type":  "h2",
-                           "text":  "Keep the Strategy Practical"
-                       },
-                       {
-                           "id":  "f8bf59ab-c189-4832-b697-0e15b8884100",
-                           "type":  "paragraph",
-                           "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
-                       }
-                   ],
-        "createdAt":  "2026-09-10T09:00:00.000Z",
-        "updatedAt":  "2026-09-10T09:00:00.000Z",
-        "publishedAt":  "2026-09-10T09:00:00.000Z"
-    },
-    {
-        "id":  "81848b18-7b85-42ca-99ba-a6a10b6a1163",
-        "title":  "AEO vs GEO vs SEO",
-        "slug":  "aeo-vs-geo-vs-seo",
-        "excerpt":  "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together.",
-        "status":  "published",
-        "author":  "Muyeed Sifat",
-        "featuredImage":  "/images/blog/aeo-vs-geo-vs-seo.svg",
-        "featuredAlt":  "AEO vs GEO vs SEO",
-        "categories":  [
-                           "AI SEO"
-                       ],
-        "tags":  [
-                     "AEO vs GEO vs SEO",
-                     "Digital Marketing"
-                 ],
-        "focusKeyword":  "AEO vs GEO vs SEO",
-        "metaTitle":  "AEO vs GEO vs SEO | Muyeed",
-        "metaDescription":  "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together.",
-        "canonicalUrl":  "",
-        "schemaType":  "BlogPosting",
-        "customSchema":  "",
-        "faqs":  [
-
-                 ],
-        "blocks":  [
-                       {
-                           "id":  "dfbc3f24-3ea8-4ac8-9d33-ee343843c954",
-                           "type":  "paragraph",
-                           "text":  "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together."
-                       },
-                       {
-                           "id":  "3acbf90f-fa96-4bc4-ac92-63913cf67ff8",
-                           "type":  "h2",
-                           "text":  "Start With the Business Goal"
-                       },
-                       {
-                           "id":  "79be0981-3339-40ca-acd3-567cfca37259",
-                           "type":  "paragraph",
-                           "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
-                       },
-                       {
-                           "id":  "3f104911-1b99-40cf-a3cc-3528716d2a2f",
-                           "type":  "h2",
-                           "text":  "Build a Clear Working Framework"
-                       },
-                       {
-                           "id":  "e1a9dfd0-6f22-432b-b79e-48345571c483",
-                           "type":  "list",
-                           "items":  [
-                                         "Define the target audience and intent",
-                                         "Measure the action that matters",
-                                         "Make one controlled improvement at a time",
-                                         "Review results before scaling"
-                                     ]
-                       },
-                       {
-                           "id":  "5cf7439c-6430-4537-b09a-3ec521d23f8d",
-                           "type":  "h2",
-                           "text":  "Keep the Strategy Practical"
-                       },
-                       {
-                           "id":  "d4195498-e49d-4a3a-b372-05bbb69e3776",
-                           "type":  "paragraph",
-                           "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
-                       }
-                   ],
-        "createdAt":  "2026-09-11T09:00:00.000Z",
-        "updatedAt":  "2026-09-11T09:00:00.000Z",
-        "publishedAt":  "2026-09-11T09:00:00.000Z"
-    },
-    {
-        "id":  "6015cc96-f78b-4673-9d0a-61f504835f8d",
-        "title":  "How to Structure Google Ads Campaigns",
-        "slug":  "how-to-structure-google-ads-campaigns",
-        "excerpt":  "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions.",
-        "status":  "published",
-        "author":  "Muyeed Sifat",
-        "featuredImage":  "/images/blog/how-to-structure-google-ads-campaigns.svg",
-        "featuredAlt":  "How to Structure Google Ads Campaigns",
-        "categories":  [
-                           "Google Ads"
-                       ],
-        "tags":  [
-                     "Google Ads campaign structure",
-                     "Digital Marketing"
-                 ],
-        "focusKeyword":  "Google Ads campaign structure",
-        "metaTitle":  "How to Structure Google Ads Campaigns | Muyeed",
-        "metaDescription":  "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions.",
-        "canonicalUrl":  "",
-        "schemaType":  "BlogPosting",
-        "customSchema":  "",
-        "faqs":  [
-
-                 ],
-        "blocks":  [
-                       {
-                           "id":  "242f2f24-e5fa-44f0-a713-099c9b312a81",
-                           "type":  "paragraph",
-                           "text":  "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions."
-                       },
-                       {
-                           "id":  "7c568928-7e72-4365-a027-1c59b0e3843e",
-                           "type":  "h2",
-                           "text":  "Start With the Business Goal"
-                       },
-                       {
-                           "id":  "c0b1c69b-3d4e-46b8-a5f1-c09cb434c487",
-                           "type":  "paragraph",
-                           "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
-                       },
-                       {
-                           "id":  "9cee91dc-6130-4171-b2a9-ccc75926e69a",
-                           "type":  "h2",
-                           "text":  "Build a Clear Working Framework"
-                       },
-                       {
-                           "id":  "19556895-15a5-4866-b0ce-eef9f3b5bfb5",
-                           "type":  "list",
-                           "items":  [
-                                         "Define the target audience and intent",
-                                         "Measure the action that matters",
-                                         "Make one controlled improvement at a time",
-                                         "Review results before scaling"
-                                     ]
-                       },
-                       {
-                           "id":  "d24b95df-143f-4935-9de2-d411873680b6",
-                           "type":  "h2",
-                           "text":  "Keep the Strategy Practical"
-                       },
-                       {
-                           "id":  "bbce44b3-f34e-4a17-8746-88a640210a62",
-                           "type":  "paragraph",
-                           "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
-                       }
-                   ],
-        "createdAt":  "2026-09-12T09:00:00.000Z",
-        "updatedAt":  "2026-09-12T09:00:00.000Z",
-        "publishedAt":  "2026-09-12T09:00:00.000Z"
-    },
-    {
-        "id":  "a168db36-b7c6-4752-9e3b-358d68272533",
-        "title":  "High-Intent Keyword Research for PPC",
-        "slug":  "high-intent-keyword-research-ppc",
-        "excerpt":  "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand.",
-        "status":  "published",
-        "author":  "Muyeed Sifat",
-        "featuredImage":  "/images/blog/high-intent-keyword-research-ppc.svg",
-        "featuredAlt":  "High-Intent Keyword Research for PPC",
-        "categories":  [
-                           "Google Ads"
-                       ],
-        "tags":  [
-                     "high intent PPC keywords",
-                     "Digital Marketing"
-                 ],
-        "focusKeyword":  "high intent PPC keywords",
-        "metaTitle":  "High-Intent Keyword Research for PPC | Muyeed",
-        "metaDescription":  "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand.",
-        "canonicalUrl":  "",
-        "schemaType":  "BlogPosting",
-        "customSchema":  "",
-        "faqs":  [
-
-                 ],
-        "blocks":  [
-                       {
-                           "id":  "f2a0177c-c670-4975-9eed-32234be442be",
-                           "type":  "paragraph",
-                           "text":  "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand."
-                       },
-                       {
-                           "id":  "edfd607c-e797-43c4-ae97-277d85d51027",
-                           "type":  "h2",
-                           "text":  "Start With the Business Goal"
-                       },
-                       {
-                           "id":  "6b892d3a-032d-4654-98b2-66de2b5bf5d3",
-                           "type":  "paragraph",
-                           "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
-                       },
-                       {
-                           "id":  "15b9352c-125e-4591-bec5-451c78fc0c02",
-                           "type":  "h2",
-                           "text":  "Build a Clear Working Framework"
-                       },
-                       {
-                           "id":  "1db5875d-4ac4-4309-aa17-b155b0fd0b17",
-                           "type":  "list",
-                           "items":  [
-                                         "Define the target audience and intent",
-                                         "Measure the action that matters",
-                                         "Make one controlled improvement at a time",
-                                         "Review results before scaling"
-                                     ]
-                       },
-                       {
-                           "id":  "9470c64c-f92e-4124-aa66-07d6613e30dd",
-                           "type":  "h2",
-                           "text":  "Keep the Strategy Practical"
-                       },
-                       {
-                           "id":  "651155fe-b51e-49ec-841f-c0a1da9a9450",
-                           "type":  "paragraph",
-                           "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
-                       }
-                   ],
-        "createdAt":  "2026-09-13T09:00:00.000Z",
-        "updatedAt":  "2026-09-13T09:00:00.000Z",
-        "publishedAt":  "2026-09-13T09:00:00.000Z"
-    },
-    {
-        "id":  "066e3822-6306-4513-a1ed-70dda7cfb927",
-        "title":  "Meta Ads Audience Testing Framework",
-        "slug":  "meta-ads-audience-testing-framework",
-        "excerpt":  "A practical framework for testing Meta Ads audiences without changing too many variables at the same time.",
-        "status":  "published",
-        "author":  "Muyeed Sifat",
-        "featuredImage":  "/images/blog/meta-ads-audience-testing-framework.svg",
-        "featuredAlt":  "Meta Ads Audience Testing Framework",
-        "categories":  [
-                           "Meta Ads"
-                       ],
-        "tags":  [
-                     "Meta Ads audience testing",
-                     "Digital Marketing"
-                 ],
-        "focusKeyword":  "Meta Ads audience testing",
-        "metaTitle":  "Meta Ads Audience Testing Framework | Muyeed",
-        "metaDescription":  "A practical framework for testing Meta Ads audiences without changing too many variables at the same time.",
-        "canonicalUrl":  "",
-        "schemaType":  "BlogPosting",
-        "customSchema":  "",
-        "faqs":  [
-
-                 ],
-        "blocks":  [
-                       {
-                           "id":  "71b3a3e9-0a2f-447c-ac25-5c541afd052d",
-                           "type":  "paragraph",
-                           "text":  "A practical framework for testing Meta Ads audiences without changing too many variables at the same time."
-                       },
-                       {
-                           "id":  "c1e26ae3-9b0d-4815-b729-805b35641237",
-                           "type":  "h2",
-                           "text":  "Start With the Business Goal"
-                       },
-                       {
-                           "id":  "260e4d74-da6a-4f5b-bc16-5ccd13ee6511",
-                           "type":  "paragraph",
-                           "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
-                       },
-                       {
-                           "id":  "73ecb7bd-e101-4c76-a54d-ed39d07a1c0c",
-                           "type":  "h2",
-                           "text":  "Build a Clear Working Framework"
-                       },
-                       {
-                           "id":  "749f4751-b80b-4a62-944e-8ac6df741fcf",
-                           "type":  "list",
-                           "items":  [
-                                         "Define the target audience and intent",
-                                         "Measure the action that matters",
-                                         "Make one controlled improvement at a time",
-                                         "Review results before scaling"
-                                     ]
-                       },
-                       {
-                           "id":  "47e8254f-fc2b-4dce-b7c3-2c54ac2cc1e8",
-                           "type":  "h2",
-                           "text":  "Keep the Strategy Practical"
-                       },
-                       {
-                           "id":  "ac34df9e-49c3-4210-9ab4-f18d35514b45",
-                           "type":  "paragraph",
-                           "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
-                       }
-                   ],
-        "createdAt":  "2026-09-14T09:00:00.000Z",
-        "updatedAt":  "2026-09-14T09:00:00.000Z",
-        "publishedAt":  "2026-09-14T09:00:00.000Z"
-    },
-    {
-        "id":  "786278e3-a4c6-4358-b486-e1867539be51",
-        "title":  "WordPress Speed Optimization Checklist",
-        "slug":  "wordpress-speed-optimization-checklist",
-        "excerpt":  "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks.",
-        "status":  "published",
-        "author":  "Muyeed Sifat",
-        "featuredImage":  "/images/blog/wordpress-speed-optimization-checklist.svg",
-        "featuredAlt":  "WordPress Speed Optimization Checklist",
-        "categories":  [
-                           "WordPress"
-                       ],
-        "tags":  [
-                     "WordPress speed optimization",
-                     "Digital Marketing"
-                 ],
-        "focusKeyword":  "WordPress speed optimization",
-        "metaTitle":  "WordPress Speed Optimization Checklist | Muyeed",
-        "metaDescription":  "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks.",
-        "canonicalUrl":  "",
-        "schemaType":  "BlogPosting",
-        "customSchema":  "",
-        "faqs":  [
-
-                 ],
-        "blocks":  [
-                       {
-                           "id":  "d6c85446-7db4-4942-8443-42fafd0c2624",
-                           "type":  "paragraph",
-                           "text":  "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks."
-                       },
-                       {
-                           "id":  "2fd49770-4805-4c0e-b976-47101b62c368",
-                           "type":  "h2",
-                           "text":  "Start With the Business Goal"
-                       },
-                       {
-                           "id":  "50738474-a992-4f7b-a62f-67a9542a0fde",
-                           "type":  "paragraph",
-                           "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
-                       },
-                       {
-                           "id":  "4c24d229-c58e-4c7d-8a29-e086027c9007",
-                           "type":  "h2",
-                           "text":  "Build a Clear Working Framework"
-                       },
-                       {
-                           "id":  "0390b3c8-18fc-4111-a4d3-1deea6f6de1e",
-                           "type":  "list",
-                           "items":  [
-                                         "Define the target audience and intent",
-                                         "Measure the action that matters",
-                                         "Make one controlled improvement at a time",
-                                         "Review results before scaling"
-                                     ]
-                       },
-                       {
-                           "id":  "167e67e4-4581-4414-b0a4-df55cc451627",
-                           "type":  "h2",
-                           "text":  "Keep the Strategy Practical"
-                       },
-                       {
-                           "id":  "bd9a353f-5a4a-480a-81e2-cdc9f888433b",
-                           "type":  "paragraph",
-                           "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
-                       }
-                   ],
-        "createdAt":  "2026-09-15T09:00:00.000Z",
-        "updatedAt":  "2026-09-15T09:00:00.000Z",
-        "publishedAt":  "2026-09-15T09:00:00.000Z"
-    }
-]
+{
+    "value":  [
+                  {
+                      "id":  "692f4e71-1b3c-473b-aea4-ec469db99c34",
+                      "title":  "How Generative AI Changes Search Results",
+                      "slug":  "how-generative-ai-changes-search-results",
+                      "excerpt":  "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundamentals.",
+                      "status":  "published",
+                      "author":  "Muyeed Sifat",
+                      "featuredImage":  "/images/blog/how-generative-ai-changes-search-results.svg",
+                      "featuredAlt":  "How Generative AI Changes Search Results",
+                      "categories":  [
+                                         "AI SEO"
+                                     ],
+                      "tags":  [
+                                   "generative AI search",
+                                   "Digital Marketing"
+                               ],
+                      "focusKeyword":  "generative AI search",
+                      "metaTitle":  "How Generative AI Changes Search Results | Muyeed",
+                      "metaDescription":  "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundament",
+                      "canonicalUrl":  "",
+                      "schemaType":  "BlogPosting",
+                      "customSchema":  "",
+                      "faqs":  [
+                                   {
+                                       "question":  "How does generative AI search differ from traditional Google search?",
+                                       "answer":  "Traditional search returns a ranked list of 10 blue links and SERP features based on keywords and backlinks. Generative AI search (like Google AI Overviews, Perplexity, and ChatGPT Search) synthesizes answers directly from multiple sources, providing contextual summaries with inline citations."
+                                   },
+                                   {
+                                       "question":  "Does AI search reduce click-through rates to websites?",
+                                       "answer":  "While AI Overviews answer simple zero-click factual queries directly in the SERP, they send higher-intent, more qualified traffic to cited authoritative sources when users seek deeper insights, case studies, or transactional solutions."
+                                   },
+                                   {
+                                       "question":  "How do search engines choose sources for AI Overviews?",
+                                       "answer":  "AI models prioritize sources with strong semantic relevance, clear entity relationships, concise quotable summaries, structured schema markup, and verifiable authoritativeness (E-E-A-T)."
+                                   },
+                                   {
+                                       "question":  "Should I stop investing in traditional SEO because of AI search?",
+                                       "answer":  "No. Generative search still relies on foundational technical SEO, indexing, high-quality content, and site authority to discover and ingest information. Traditional SEO is the foundation upon which AI visibility is built."
+                                   },
+                                   {
+                                       "question":  "How can websites optimize content to get cited by AI answer engines?",
+                                       "answer":  "Structure articles with direct, factual answers right after heading tags, implement clear Schema.org metadata, include proprietary statistics or expert viewpoints, and maintain comprehensive semantic topic coverage."
+                                   }
+                               ],
+                      "blocks":  [
+                                     {
+                                         "id":  "5d2552e0-35ba-49ab-ba06-eabc528a1a58",
+                                         "type":  "paragraph",
+                                         "text":  "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundamentals."
+                                     },
+                                     {
+                                         "id":  "a66c28c5-f5bb-4c22-a660-f33029e19a87",
+                                         "type":  "h2",
+                                         "text":  "Start With the Business Goal"
+                                     },
+                                     {
+                                         "id":  "a1fadaa3-1d3d-4cda-8b3c-6e77a0584e6b",
+                                         "type":  "paragraph",
+                                         "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
+                                     },
+                                     {
+                                         "id":  "0c5ca2b6-6ad5-4be0-abb2-222842ab9968",
+                                         "type":  "h2",
+                                         "text":  "Build a Clear Working Framework"
+                                     },
+                                     {
+                                         "id":  "39d4d8fb-fc19-435e-a975-6cc3eeff6f9f",
+                                         "type":  "list",
+                                         "items":  [
+                                                       "Define the target audience and intent",
+                                                       "Measure the action that matters",
+                                                       "Make one controlled improvement at a time",
+                                                       "Review results before scaling"
+                                                   ]
+                                     },
+                                     {
+                                         "id":  "2f348748-d1d3-4ce4-9604-789887eae76f",
+                                         "type":  "h2",
+                                         "text":  "Keep the Strategy Practical"
+                                     },
+                                     {
+                                         "id":  "f8bf59ab-c189-4832-b697-0e15b8884100",
+                                         "type":  "paragraph",
+                                         "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
+                                     }
+                                 ],
+                      "createdAt":  "2026-09-10T09:00:00.000Z",
+                      "updatedAt":  "2026-09-10T09:00:00.000Z",
+                      "publishedAt":  "2026-09-10T09:00:00.000Z"
+                  },
+                  {
+                      "id":  "81848b18-7b85-42ca-99ba-a6a10b6a1163",
+                      "title":  "AEO vs GEO vs SEO",
+                      "slug":  "aeo-vs-geo-vs-seo",
+                      "excerpt":  "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together.",
+                      "status":  "published",
+                      "author":  "Muyeed Sifat",
+                      "featuredImage":  "/images/blog/aeo-vs-geo-vs-seo.svg",
+                      "featuredAlt":  "AEO vs GEO vs SEO",
+                      "categories":  [
+                                         "AI SEO"
+                                     ],
+                      "tags":  [
+                                   "AEO vs GEO vs SEO",
+                                   "Digital Marketing"
+                               ],
+                      "focusKeyword":  "AEO vs GEO vs SEO",
+                      "metaTitle":  "AEO vs GEO vs SEO | Muyeed",
+                      "metaDescription":  "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together.",
+                      "canonicalUrl":  "",
+                      "schemaType":  "BlogPosting",
+                      "customSchema":  "",
+                      "faqs":  [
+                                   {
+                                       "question":  "What is the core difference between SEO, AEO, and GEO?",
+                                       "answer":  "SEO (Search Engine Optimization) optimizes for traditional algorithmic search rankings. AEO (Answer Engine Optimization) structures content to win direct snippets, voice answers, and immediate solutions. GEO (Generative Engine Optimization) crafts content so multimodal AI models extract and cite your brand inside synthesized responses."
+                                   },
+                                   {
+                                       "question":  "Which platforms and engines does AEO target?",
+                                       "answer":  "AEO primarily targets featured snippets in Google and Bing, smart assistants like Siri and Google Assistant, and prompt-driven answer boxes that deliver single definitive responses."
+                                   },
+                                   {
+                                       "question":  "Does Generative Engine Optimization require different content formatting?",
+                                       "answer":  "Yes. GEO benefits from clear conceptual definitions, structured comparison tables, bulleted data points, and direct expert summaries that Large Language Models can easily reference and synthesize."
+                                   },
+                                   {
+                                       "question":  "Can a single content strategy satisfy SEO, AEO, and GEO simultaneously?",
+                                       "answer":  "Absolutely. A unified strategy focuses on solving searcher intent thoroughly: a fast technical foundation (SEO), direct concise answers at the top of sections (AEO), and deep nuanced analysis with proprietary data (GEO)."
+                                   },
+                                   {
+                                       "question":  "How do you measure performance and ROI in AEO and GEO?",
+                                       "answer":  "In addition to conventional impressions and clicks, success is tracked through brand citation frequency across AI engines (Perplexity, ChatGPT, Copilot, Google AI Overviews), referral traffic from AI platforms, and assisted conversions."
+                                   }
+                               ],
+                      "blocks":  [
+                                     {
+                                         "id":  "dfbc3f24-3ea8-4ac8-9d33-ee343843c954",
+                                         "type":  "paragraph",
+                                         "text":  "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together."
+                                     },
+                                     {
+                                         "id":  "3acbf90f-fa96-4bc4-ac92-63913cf67ff8",
+                                         "type":  "h2",
+                                         "text":  "Start With the Business Goal"
+                                     },
+                                     {
+                                         "id":  "79be0981-3339-40ca-acd3-567cfca37259",
+                                         "type":  "paragraph",
+                                         "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
+                                     },
+                                     {
+                                         "id":  "3f104911-1b99-40cf-a3cc-3528716d2a2f",
+                                         "type":  "h2",
+                                         "text":  "Build a Clear Working Framework"
+                                     },
+                                     {
+                                         "id":  "e1a9dfd0-6f22-432b-b79e-48345571c483",
+                                         "type":  "list",
+                                         "items":  [
+                                                       "Define the target audience and intent",
+                                                       "Measure the action that matters",
+                                                       "Make one controlled improvement at a time",
+                                                       "Review results before scaling"
+                                                   ]
+                                     },
+                                     {
+                                         "id":  "5cf7439c-6430-4537-b09a-3ec521d23f8d",
+                                         "type":  "h2",
+                                         "text":  "Keep the Strategy Practical"
+                                     },
+                                     {
+                                         "id":  "d4195498-e49d-4a3a-b372-05bbb69e3776",
+                                         "type":  "paragraph",
+                                         "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
+                                     }
+                                 ],
+                      "createdAt":  "2026-09-11T09:00:00.000Z",
+                      "updatedAt":  "2026-09-11T09:00:00.000Z",
+                      "publishedAt":  "2026-09-11T09:00:00.000Z"
+                  },
+                  {
+                      "id":  "6015cc96-f78b-4673-9d0a-61f504835f8d",
+                      "title":  "How to Structure Google Ads Campaigns",
+                      "slug":  "how-to-structure-google-ads-campaigns",
+                      "excerpt":  "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions.",
+                      "status":  "published",
+                      "author":  "Muyeed Sifat",
+                      "featuredImage":  "/images/blog/how-to-structure-google-ads-campaigns.svg",
+                      "featuredAlt":  "How to Structure Google Ads Campaigns",
+                      "categories":  [
+                                         "Google Ads"
+                                     ],
+                      "tags":  [
+                                   "Google Ads campaign structure",
+                                   "Digital Marketing"
+                               ],
+                      "focusKeyword":  "Google Ads campaign structure",
+                      "metaTitle":  "How to Structure Google Ads Campaigns | Muyeed",
+                      "metaDescription":  "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions.",
+                      "canonicalUrl":  "",
+                      "schemaType":  "BlogPosting",
+                      "customSchema":  "",
+                      "faqs":  [
+                                   {
+                                       "question":  "How many ad groups should be included in a Google Ads search campaign?",
+                                       "answer":  "A campaign should typically hold between 3 to 7 closely related ad groups. Keeping ad groups tightly themed around specific buyer intents ensures higher Quality Scores and ad copy relevance."
+                                   },
+                                   {
+                                       "question":  "Should branded and non-branded search terms be separated?",
+                                       "answer":  "Yes, always separate them. Branded campaigns typically carry high Quality Scores and cheap CPCs. Mixing them with non-brand terms distorts CPA metrics and prevents accurate budget allocation for net-new customer acquisition."
+                                   },
+                                   {
+                                       "question":  "How do match types impact modern Google Ads structures?",
+                                       "answer":  "With Google\u0027s expanded close variants, Exact Match now captures grammatical variations, while Phrase Match captures intent phrases. Broad Match should only be used when paired with smart bidding and an extensive negative keyword list."
+                                   },
+                                   {
+                                       "question":  "What starting budget is recommended for testing a new search campaign?",
+                                       "answer":  "A practical starting daily budget is at least 3x to 5x your estimated target Cost Per Acquisition (CPA) per campaign, allowing the Google algorithm sufficient conversion signals to exit the learning phase effectively."
+                                   },
+                                   {
+                                       "question":  "How often should you adjust bids, budgets, and ad copy in a campaign?",
+                                       "answer":  "Allow campaigns at least 7 to 14 days after launch or major restructuring before making decisions. Review search terms weekly for negative additions, but avoid frequent budget swings greater than 20% at a time to prevent resetting smart bidding algorithms."
+                                   }
+                               ],
+                      "blocks":  [
+                                     {
+                                         "id":  "242f2f24-e5fa-44f0-a713-099c9b312a81",
+                                         "type":  "paragraph",
+                                         "text":  "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions."
+                                     },
+                                     {
+                                         "id":  "7c568928-7e72-4365-a027-1c59b0e3843e",
+                                         "type":  "h2",
+                                         "text":  "Start With the Business Goal"
+                                     },
+                                     {
+                                         "id":  "c0b1c69b-3d4e-46b8-a5f1-c09cb434c487",
+                                         "type":  "paragraph",
+                                         "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
+                                     },
+                                     {
+                                         "id":  "9cee91dc-6130-4171-b2a9-ccc75926e69a",
+                                         "type":  "h2",
+                                         "text":  "Build a Clear Working Framework"
+                                     },
+                                     {
+                                         "id":  "19556895-15a5-4866-b0ce-eef9f3b5bfb5",
+                                         "type":  "list",
+                                         "items":  [
+                                                       "Define the target audience and intent",
+                                                       "Measure the action that matters",
+                                                       "Make one controlled improvement at a time",
+                                                       "Review results before scaling"
+                                                   ]
+                                     },
+                                     {
+                                         "id":  "d24b95df-143f-4935-9de2-d411873680b6",
+                                         "type":  "h2",
+                                         "text":  "Keep the Strategy Practical"
+                                     },
+                                     {
+                                         "id":  "bbce44b3-f34e-4a17-8746-88a640210a62",
+                                         "type":  "paragraph",
+                                         "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
+                                     }
+                                 ],
+                      "createdAt":  "2026-09-12T09:00:00.000Z",
+                      "updatedAt":  "2026-09-12T09:00:00.000Z",
+                      "publishedAt":  "2026-09-12T09:00:00.000Z"
+                  },
+                  {
+                      "id":  "a168db36-b7c6-4752-9e3b-358d68272533",
+                      "title":  "High-Intent Keyword Research for PPC",
+                      "slug":  "high-intent-keyword-research-ppc",
+                      "excerpt":  "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand.",
+                      "status":  "published",
+                      "author":  "Muyeed Sifat",
+                      "featuredImage":  "/images/blog/high-intent-keyword-research-ppc.svg",
+                      "featuredAlt":  "High-Intent Keyword Research for PPC",
+                      "categories":  [
+                                         "Google Ads"
+                                     ],
+                      "tags":  [
+                                   "high intent PPC keywords",
+                                   "Digital Marketing"
+                               ],
+                      "focusKeyword":  "high intent PPC keywords",
+                      "metaTitle":  "High-Intent Keyword Research for PPC | Muyeed",
+                      "metaDescription":  "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand.",
+                      "canonicalUrl":  "",
+                      "schemaType":  "BlogPosting",
+                      "customSchema":  "",
+                      "faqs":  [
+                                   {
+                                       "question":  "What differentiates high-intent keywords from informational keywords?",
+                                       "answer":  "Informational keywords reflect early research queries (e.g., \u0027what is PPC\u0027), while high-intent commercial keywords demonstrate immediate purchase motivation (e.g., \u0027hire Google Ads specialist\u0027, \u0027B2B PPC agency pricing\u0027)."
+                                   },
+                                   {
+                                       "question":  "How do negative keyword lists protect PPC return on investment?",
+                                       "answer":  "Negative keywords proactively block irrelevant queries (such as \u0027free\u0027, \u0027jobs\u0027, \u0027template\u0027, \u0027salary\u0027, or DIY searches) before clicks occur, preventing budget waste and keeping conversion rates high."
+                                   },
+                                   {
+                                       "question":  "Should you bid on competitor brand names in Google Ads?",
+                                       "answer":  "Competitor bidding can capture high-intent buyers, but usually yields lower Quality Scores and higher CPCs. It should be run in a dedicated campaign with controlled budgets and positioning emphasizing your key differentiators."
+                                   },
+                                   {
+                                       "question":  "What is the difference between search queries and keywords in PPC?",
+                                       "answer":  "A keyword is the term you target in your ad account, while a search query is the exact phrase a user typed into Google. Monitoring the Search Terms report reveals the true intent queries triggering your ads."
+                                   },
+                                   {
+                                       "question":  "How does landing page relevance affect high-intent keyword Quality Scores?",
+                                       "answer":  "Google evaluates whether your landing page directly delivers what the high-intent keyword promises. Aligning page headlines, service descriptions, and calls-to-action with the keyword significantly improves Quality Score and reduces your cost per click."
+                                   }
+                               ],
+                      "blocks":  [
+                                     {
+                                         "id":  "f2a0177c-c670-4975-9eed-32234be442be",
+                                         "type":  "paragraph",
+                                         "text":  "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand."
+                                     },
+                                     {
+                                         "id":  "edfd607c-e797-43c4-ae97-277d85d51027",
+                                         "type":  "h2",
+                                         "text":  "Start With the Business Goal"
+                                     },
+                                     {
+                                         "id":  "6b892d3a-032d-4654-98b2-66de2b5bf5d3",
+                                         "type":  "paragraph",
+                                         "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
+                                     },
+                                     {
+                                         "id":  "15b9352c-125e-4591-bec5-451c78fc0c02",
+                                         "type":  "h2",
+                                         "text":  "Build a Clear Working Framework"
+                                     },
+                                     {
+                                         "id":  "1db5875d-4ac4-4309-aa17-b155b0fd0b17",
+                                         "type":  "list",
+                                         "items":  [
+                                                       "Define the target audience and intent",
+                                                       "Measure the action that matters",
+                                                       "Make one controlled improvement at a time",
+                                                       "Review results before scaling"
+                                                   ]
+                                     },
+                                     {
+                                         "id":  "9470c64c-f92e-4124-aa66-07d6613e30dd",
+                                         "type":  "h2",
+                                         "text":  "Keep the Strategy Practical"
+                                     },
+                                     {
+                                         "id":  "651155fe-b51e-49ec-841f-c0a1da9a9450",
+                                         "type":  "paragraph",
+                                         "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
+                                     }
+                                 ],
+                      "createdAt":  "2026-09-13T09:00:00.000Z",
+                      "updatedAt":  "2026-09-13T09:00:00.000Z",
+                      "publishedAt":  "2026-09-13T09:00:00.000Z"
+                  },
+                  {
+                      "id":  "066e3822-6306-4513-a1ed-70dda7cfb927",
+                      "title":  "Meta Ads Audience Testing Framework",
+                      "slug":  "meta-ads-audience-testing-framework",
+                      "excerpt":  "A practical framework for testing Meta Ads audiences without changing too many variables at the same time.",
+                      "status":  "published",
+                      "author":  "Muyeed Sifat",
+                      "featuredImage":  "/images/blog/meta-ads-audience-testing-framework.svg",
+                      "featuredAlt":  "Meta Ads Audience Testing Framework",
+                      "categories":  [
+                                         "Meta Ads"
+                                     ],
+                      "tags":  [
+                                   "Meta Ads audience testing",
+                                   "Digital Marketing"
+                               ],
+                      "focusKeyword":  "Meta Ads audience testing",
+                      "metaTitle":  "Meta Ads Audience Testing Framework | Muyeed",
+                      "metaDescription":  "A practical framework for testing Meta Ads audiences without changing too many variables at the same time.",
+                      "canonicalUrl":  "",
+                      "schemaType":  "BlogPosting",
+                      "customSchema":  "",
+                      "faqs":  [
+                                   {
+                                       "question":  "How many ad creatives should you test inside a single Meta ad set?",
+                                       "answer":  "Between 3 to 5 distinct creatives per ad set is ideal. Testing more than 5 often fractures budget distribution, causing Meta\u0027s delivery algorithm to favor one creative before others collect sufficient statistical data."
+                                   },
+                                   {
+                                       "question":  "When should you use Advantage+ audience targeting instead of manual targeting?",
+                                       "answer":  "Advantage+ targeting excels when you have rich historical pixel data and distinct, self-qualifying creative hooks. Manual broad or lookalike targeting remains useful during early phases when testing specific niche buyer personas."
+                                   },
+                                   {
+                                       "question":  "How long should a Meta Ads testing phase run before scaling winning ads?",
+                                       "answer":  "Run tests for at least 4 to 7 days, or until each ad set achieves 30 to 50 conversion events. This smooths out day-of-week conversion fluctuations and proves performance consistency."
+                                   },
+                                   {
+                                       "question":  "What primary metrics determine whether an audience test has succeeded?",
+                                       "answer":  "The primary north-star metric is Cost Per Acquisition (CPA) or Return on Ad Spend (ROAS). Secondary diagnostic metrics include Hook Rate (3-second video views / impressions), Click-Through Rate (CTR link), and Cost Per Unique Add-to-Cart."
+                                   },
+                                   {
+                                       "question":  "How do you prevent audience overlap across multiple Meta ad sets?",
+                                       "answer":  "Use explicit exclusion rules. For instance, when testing a cold interest audience, exclude website visitors (last 30-180 days), social engagers, and existing customer list custom audiences to avoid bidding against yourself."
+                                   }
+                               ],
+                      "blocks":  [
+                                     {
+                                         "id":  "71b3a3e9-0a2f-447c-ac25-5c541afd052d",
+                                         "type":  "paragraph",
+                                         "text":  "A practical framework for testing Meta Ads audiences without changing too many variables at the same time."
+                                     },
+                                     {
+                                         "id":  "c1e26ae3-9b0d-4815-b729-805b35641237",
+                                         "type":  "h2",
+                                         "text":  "Start With the Business Goal"
+                                     },
+                                     {
+                                         "id":  "260e4d74-da6a-4f5b-bc16-5ccd13ee6511",
+                                         "type":  "paragraph",
+                                         "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
+                                     },
+                                     {
+                                         "id":  "73ecb7bd-e101-4c76-a54d-ed39d07a1c0c",
+                                         "type":  "h2",
+                                         "text":  "Build a Clear Working Framework"
+                                     },
+                                     {
+                                         "id":  "749f4751-b80b-4a62-944e-8ac6df741fcf",
+                                         "type":  "list",
+                                         "items":  [
+                                                       "Define the target audience and intent",
+                                                       "Measure the action that matters",
+                                                       "Make one controlled improvement at a time",
+                                                       "Review results before scaling"
+                                                   ]
+                                     },
+                                     {
+                                         "id":  "47e8254f-fc2b-4dce-b7c3-2c54ac2cc1e8",
+                                         "type":  "h2",
+                                         "text":  "Keep the Strategy Practical"
+                                     },
+                                     {
+                                         "id":  "ac34df9e-49c3-4210-9ab4-f18d35514b45",
+                                         "type":  "paragraph",
+                                         "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
+                                     }
+                                 ],
+                      "createdAt":  "2026-09-14T09:00:00.000Z",
+                      "updatedAt":  "2026-09-14T09:00:00.000Z",
+                      "publishedAt":  "2026-09-14T09:00:00.000Z"
+                  },
+                  {
+                      "id":  "786278e3-a4c6-4358-b486-e1867539be51",
+                      "title":  "WordPress Speed Optimization Checklist",
+                      "slug":  "wordpress-speed-optimization-checklist",
+                      "excerpt":  "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks.",
+                      "status":  "published",
+                      "author":  "Muyeed Sifat",
+                      "featuredImage":  "/images/blog/wordpress-speed-optimization-checklist.svg",
+                      "featuredAlt":  "WordPress Speed Optimization Checklist",
+                      "categories":  [
+                                         "WordPress"
+                                     ],
+                      "tags":  [
+                                   "WordPress speed optimization",
+                                   "Digital Marketing"
+                               ],
+                      "focusKeyword":  "WordPress speed optimization",
+                      "metaTitle":  "WordPress Speed Optimization Checklist | Muyeed",
+                      "metaDescription":  "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks.",
+                      "canonicalUrl":  "",
+                      "schemaType":  "BlogPosting",
+                      "customSchema":  "",
+                      "faqs":  [
+                                   {
+                                       "question":  "What is the single biggest cause of slow WordPress website load speeds?",
+                                       "answer":  "Unoptimized, oversized images and excessive third-party plugins that load bloated JavaScript and CSS on every page are the most common performance bottlenecks."
+                                   },
+                                   {
+                                       "question":  "Which caching and performance configurations provide the best results?",
+                                       "answer":  "Server-level caching (such as LiteSpeed Cache, Redis, or Nginx FastCGI) combined with page caching, CSS/JS minification, and browser caching delivers the biggest reduction in Time to First Byte (TTFB)."
+                                   },
+                                   {
+                                       "question":  "Does switching to next-gen image formats (WebP and AVIF) really help?",
+                                       "answer":  "Yes. WebP images are typically 25% to 35% lighter than comparable JPEGs and PNGs without noticeable quality loss. Serving WebP with explicit height/width attributes also eliminates Cumulative Layout Shift (CLS)."
+                                   },
+                                   {
+                                       "question":  "How do visual page builders affect Core Web Vitals scores?",
+                                       "answer":  "Page builders often inject heavy DOM trees, redundant wrappers, and unused stylesheets. Disabling unused builder elements, removing unnecessary fonts, and deferring non-critical scripts restores fast Largest Contentful Paint (LCP)."
+                                   },
+                                   {
+                                       "question":  "What is a realistic Google PageSpeed score target for WordPress on mobile?",
+                                       "answer":  "Aim for 85+ on mobile and 95+ on desktop with a Largest Contentful Paint (LCP) under 2.5 seconds, First Input Delay / INP under 200ms, and Cumulative Layout Shift (CLS) under 0.1."
+                                   }
+                               ],
+                      "blocks":  [
+                                     {
+                                         "id":  "d6c85446-7db4-4942-8443-42fafd0c2624",
+                                         "type":  "paragraph",
+                                         "text":  "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks."
+                                     },
+                                     {
+                                         "id":  "2fd49770-4805-4c0e-b976-47101b62c368",
+                                         "type":  "h2",
+                                         "text":  "Start With the Business Goal"
+                                     },
+                                     {
+                                         "id":  "50738474-a992-4f7b-a62f-67a9542a0fde",
+                                         "type":  "paragraph",
+                                         "text":  "The channel or optimization tactic should support a measurable business outcome. Start by defining the audience, intent and conversion action before choosing tools or tactics."
+                                     },
+                                     {
+                                         "id":  "4c24d229-c58e-4c7d-8a29-e086027c9007",
+                                         "type":  "h2",
+                                         "text":  "Build a Clear Working Framework"
+                                     },
+                                     {
+                                         "id":  "0390b3c8-18fc-4111-a4d3-1deea6f6de1e",
+                                         "type":  "list",
+                                         "items":  [
+                                                       "Define the target audience and intent",
+                                                       "Measure the action that matters",
+                                                       "Make one controlled improvement at a time",
+                                                       "Review results before scaling"
+                                                   ]
+                                     },
+                                     {
+                                         "id":  "167e67e4-4581-4414-b0a4-df55cc451627",
+                                         "type":  "h2",
+                                         "text":  "Keep the Strategy Practical"
+                                     },
+                                     {
+                                         "id":  "bd9a353f-5a4a-480a-81e2-cdc9f888433b",
+                                         "type":  "paragraph",
+                                         "text":  "Good digital marketing is easier to optimize when the structure is clear, the measurement is reliable and the next action is based on evidence instead of guesswork."
+                                     }
+                                 ],
+                      "createdAt":  "2026-09-15T09:00:00.000Z",
+                      "updatedAt":  "2026-09-15T09:00:00.000Z",
+                      "publishedAt":  "2026-09-15T09:00:00.000Z"
+                  }
+              ],
+    "Count":  6
+}

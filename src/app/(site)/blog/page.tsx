@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CTA } from '@/components/CTA';
 import { FAQ } from '@/components/FAQ';
 import { BlogSearch } from '@/components/BlogSearch';
+import { CategorySelect } from '@/components/CategorySelect';
 import { getPublishedPosts } from '@/lib/store';
 import { pageMetadata } from '@/lib/seo';
 
@@ -132,31 +133,16 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
 
           {/* Main Blog Content Area */}
           <div className="blogMainContent">
-            {/* Category Filter Bar */}
-            <div className="categoryFilterBar" role="navigation" aria-label="Filter blog posts by category">
-              <span className="filterBarLabel">Category:</span>
-              <div className="categoryPillList">
-                <Link
-                  href={buildPageUrl(1, '', rawQuery)}
-                  className={`categoryPill ${!activeCategory ? 'activeCategory' : ''}`}
-                >
-                  All ({allPosts.length})
-                </Link>
-                {allCategories.map((cat) => {
-                  const count = allPosts.filter((p) => p.categories.includes(cat)).length;
-                  const isActive = activeCategory === cat;
-                  return (
-                    <Link
-                      key={cat}
-                      href={buildPageUrl(1, isActive ? '' : cat, rawQuery)}
-                      className={`categoryPill ${isActive ? 'activeCategory' : ''}`}
-                    >
-                      {cat} ({count})
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
+            {/* Category Filter Dropdown */}
+            <CategorySelect
+              categories={allCategories.map((cat) => ({
+                name: cat,
+                count: allPosts.filter((p) => (p.categories || []).includes(cat)).length
+              }))}
+              activeCategory={activeCategory}
+              totalCount={allPosts.length}
+              searchQuery={rawQuery}
+            />
 
             {/* Results Status & Top Pagination */}
             <div className="blogListHeader">

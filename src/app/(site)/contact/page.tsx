@@ -30,6 +30,7 @@ export default function ContactPage() {
                   <span className="contactLinkLabel">Email Directly</span>
                   <span className="contactLinkVal">{siteConfig.email}</span>
                 </div>
+                <span className="contactLinkArrow" aria-hidden="true">→</span>
               </a>
               <a className="contactLinkItem" href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer">
                 <span className="contactIconBox" aria-hidden="true">
@@ -39,6 +40,7 @@ export default function ContactPage() {
                   <span className="contactLinkLabel">LinkedIn Profile</span>
                   <span className="contactLinkVal">Connect on LinkedIn</span>
                 </div>
+                <span className="contactLinkArrow" aria-hidden="true">→</span>
               </a>
               <a className="contactLinkItem" href={siteConfig.upwork} target="_blank" rel="noopener noreferrer">
                 <span className="contactIconBox" aria-hidden="true">
@@ -48,6 +50,7 @@ export default function ContactPage() {
                   <span className="contactLinkLabel">Upwork Profile</span>
                   <span className="contactLinkVal">Hire on Upwork</span>
                 </div>
+                <span className="contactLinkArrow" aria-hidden="true">→</span>
               </a>
             </div>
           </aside>

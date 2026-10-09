@@ -36,8 +36,13 @@ function writeJson<T>(file: string, value: T) {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  const posts = await readJson<Post[]>('posts.json', []);
-  return posts.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+  const raw = await readJson<unknown>('posts.json', []);
+  const posts: Post[] = Array.isArray(raw)
+    ? (raw as Post[])
+    : Array.isArray((raw as { value?: unknown })?.value)
+      ? ((raw as { value: Post[] }).value)
+      : [];
+  return posts.sort((a, b) => new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime());
 }
 
 export async function getPublishedPosts(): Promise<Post[]> {
@@ -67,8 +72,13 @@ export async function deletePost(id: string) {
 }
 
 export async function getMedia(): Promise<MediaItem[]> {
-  const media = await readJson<MediaItem[]>('media.json', []);
-  return media.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  const raw = await readJson<unknown>('media.json', []);
+  const media: MediaItem[] = Array.isArray(raw)
+    ? (raw as MediaItem[])
+    : Array.isArray((raw as { value?: unknown })?.value)
+      ? ((raw as { value: MediaItem[] }).value)
+      : [];
+  return media.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
 }
 
 export async function saveMedia(item: MediaItem) {

@@ -181,7 +181,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
                         />
                       ) : (
                         <div className="blogThumbPlaceholder">
-                          <span>{post.categories[0] || 'Article'}</span>
+                          <span>{post.categories?.[0] || 'Article'}</span>
                         </div>
                       )}
                     </div>
@@ -189,7 +189,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
 
                   <div className="blogCardBody">
                     <div className="blogCardMetaTop">
-                      <span className="tag">{post.categories[0] || 'Digital Marketing'}</span>
+                      <span className="tag">{post.categories?.[0] || 'Digital Marketing'}</span>
                       <time dateTime={post.publishedAt || post.updatedAt} className="blogDate">
                         {new Date(post.publishedAt || post.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                       </time>

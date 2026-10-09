@@ -1,0 +1,26 @@
+[
+  {
+    "id": "page-home",
+    "slug": "home",
+    "title": "Data-Driven Digital Marketing",
+    "eyebrow": "AI SEO • Google Ads • Meta Ads",
+    "lead": "I help growing businesses acquire high-intent customers through AI SEO, performance Google Ads, and systematic Meta advertising.",
+    "updatedAt": "2026-10-08T12:00:00.000Z"
+  },
+  {
+    "id": "page-about",
+    "slug": "about",
+    "title": "About Muyeed Sifat",
+    "eyebrow": "Digital Marketing Specialist",
+    "lead": "Practical, growth-oriented digital marketing strategy connecting organic search, paid acquisition, and conversion-optimized websites.",
+    "updatedAt": "2026-10-08T12:00:00.000Z"
+  },
+  {
+    "id": "page-projects",
+    "slug": "projects",
+    "title": "Case Studies & Marketing Results",
+    "eyebrow": "Client Success",
+    "lead": "Explore measurable outcomes across AI search optimization, performance PPC, and conversion-focused web architecture.",
+    "updatedAt": "2026-10-08T12:00:00.000Z"
+  }
+]

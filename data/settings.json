@@ -2,5 +2,13 @@
   "siteName": "Muyeed",
   "authorName": "Muyeed Sifat",
   "email": "muyeedsifatt@gmail.com",
-  "defaultSchema": "BlogPosting"
+  "defaultSchema": "BlogPosting",
+  "linkedIn": "https://www.linkedin.com/in/muyeedsifat/",
+  "upwork": "https://www.upwork.com/freelancers/~01ceafed69d95ddfae",
+  "whatsappNumber": "+8801700000000",
+  "whatsappPrompt": "Hi Muyeed, I visited your website and would like to discuss a digital marketing project.",
+  "geminiApiKey": "",
+  "geminiModel": "gemini-1.5-flash",
+  "adminUsername": "muyeed",
+  "adminPassword": "ChangeMe!2026"
 }

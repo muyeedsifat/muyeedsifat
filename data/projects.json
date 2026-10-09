@@ -1,0 +1,178 @@
+[
+  {
+    "id": "proj-1",
+    "title": "Organic Growth Strategy",
+    "slug": "organic-growth-strategy",
+    "category": "AI SEO",
+    "client": "B2B SaaS Platform",
+    "timeline": "6 Months",
+    "description": "Search strategy, content optimization, internal linking and authority development focused on sustainable organic growth.",
+    "result": "+300% organic traffic growth on a selected SEO project.",
+    "metrics": [
+      { "label": "Traffic Growth", "value": "+300%" },
+      { "label": "Key Keywords in Top 3", "value": "42" }
+    ],
+    "featuredImage": "/images/blog/aeo-vs-geo-vs-seo.svg",
+    "featuredAlt": "Organic Growth Strategy",
+    "tags": ["AI SEO", "Organic Traffic", "B2B SaaS"],
+    "metaTitle": "Organic Growth Strategy Case Study | Muyeed",
+    "metaDescription": "Learn how strategic search optimization and technical content structure drove +300% organic growth.",
+    "focusKeyword": "organic growth strategy",
+    "createdAt": "2026-09-10T10:00:00.000Z",
+    "updatedAt": "2026-09-10T10:00:00.000Z"
+  },
+  {
+    "id": "proj-2",
+    "title": "AI Visibility Optimization",
+    "slug": "ai-visibility-optimization",
+    "category": "AI SEO",
+    "client": "AI Technology Vendor",
+    "timeline": "3 Months",
+    "description": "Content, entity and authority improvements designed for stronger search and answer-engine discoverability.",
+    "result": "Improved search and AI visibility foundations.",
+    "metrics": [
+      { "label": "AI Citations Rate", "value": "85%" },
+      { "label": "Entity Recognition", "value": "92%" }
+    ],
+    "featuredImage": "/images/blog/how-generative-ai-changes-search-results.svg",
+    "featuredAlt": "AI Visibility Optimization",
+    "tags": ["AEO", "GEO", "AI Overviews"],
+    "metaTitle": "AI Visibility Optimization Case Study | Muyeed",
+    "metaDescription": "Optimizing entity structures and structured data for visibility across ChatGPT, Perplexity, and Google AI Overviews.",
+    "focusKeyword": "AI visibility optimization",
+    "createdAt": "2026-09-11T10:00:00.000Z",
+    "updatedAt": "2026-09-11T10:00:00.000Z"
+  },
+  {
+    "id": "proj-3",
+    "title": "Search Campaign Restructure",
+    "slug": "search-campaign-restructure",
+    "category": "Google Ads",
+    "client": "Professional Services Agency",
+    "timeline": "2 Months",
+    "description": "Intent-led campaign architecture, keyword cleanup and conversion-focused landing-page alignment.",
+    "result": "Cleaner account structure and stronger demand focus.",
+    "metrics": [
+      { "label": "Cost Per Acquisition", "value": "-34%" },
+      { "label": "Click-Through Rate", "value": "+4.2%" }
+    ],
+    "featuredImage": "/images/blog/how-to-structure-google-ads-campaigns.svg",
+    "featuredAlt": "Search Campaign Restructure",
+    "tags": ["Google Ads", "Search PPC", "Landing Pages"],
+    "metaTitle": "Google Ads Campaign Restructure | Muyeed",
+    "metaDescription": "Restructuring paid search accounts for high-intent search terms and improved conversion rates.",
+    "focusKeyword": "Google Ads restructure",
+    "createdAt": "2026-09-12T10:00:00.000Z",
+    "updatedAt": "2026-09-12T10:00:00.000Z"
+  },
+  {
+    "id": "proj-4",
+    "title": "Lead Generation PPC",
+    "slug": "lead-generation-ppc",
+    "category": "Google Ads",
+    "client": "Regional Service Provider",
+    "timeline": "4 Months",
+    "description": "Paid search strategy organized around commercial queries, conversion actions and budget control.",
+    "result": "Lead-focused campaign structure.",
+    "metrics": [
+      { "label": "Qualified Leads", "value": "+120%" },
+      { "label": "Conversion Rate", "value": "6.8%" }
+    ],
+    "featuredImage": "/images/blog/high-intent-keyword-research-ppc.svg",
+    "featuredAlt": "Lead Generation PPC",
+    "tags": ["Lead Gen", "PPC", "Conversion Optimization"],
+    "metaTitle": "Lead Generation PPC Case Study | Muyeed",
+    "metaDescription": "Generating high-intent inbound sales leads with targeted Google Search campaigns.",
+    "focusKeyword": "lead generation PPC",
+    "createdAt": "2026-09-13T10:00:00.000Z",
+    "updatedAt": "2026-09-13T10:00:00.000Z"
+  },
+  {
+    "id": "proj-5",
+    "title": "Retargeting Funnel",
+    "slug": "retargeting-funnel",
+    "category": "Meta Ads",
+    "client": "Direct-to-Consumer Brand",
+    "timeline": "3 Months",
+    "description": "Audience segmentation and retargeting designed to create a clearer path back to conversion.",
+    "result": "Stronger warm-audience follow-up.",
+    "metrics": [
+      { "label": "Return on Ad Spend", "value": "4.2x" },
+      { "label": "Retargeting CVR", "value": "+48%" }
+    ],
+    "featuredImage": "/images/blog/meta-ads-audience-testing-framework.svg",
+    "featuredAlt": "Retargeting Funnel",
+    "tags": ["Meta Ads", "Retargeting", "ROAS"],
+    "metaTitle": "Meta Ads Retargeting Funnel | Muyeed",
+    "metaDescription": "Building high-ROI retargeting campaigns on Meta Ads (Facebook & Instagram).",
+    "focusKeyword": "Meta Ads retargeting",
+    "createdAt": "2026-09-14T10:00:00.000Z",
+    "updatedAt": "2026-09-14T10:00:00.000Z"
+  },
+  {
+    "id": "proj-6",
+    "title": "Creative Testing Campaign",
+    "slug": "creative-testing-campaign",
+    "category": "Meta Ads",
+    "client": "E-commerce Store",
+    "timeline": "2 Months",
+    "description": "Structured testing across creative hooks, formats and offers to improve learning quality.",
+    "result": "More disciplined creative iteration.",
+    "metrics": [
+      { "label": "Scalable Creatives Found", "value": "6" },
+      { "label": "Average CPA", "value": "$18" }
+    ],
+    "featuredImage": "/images/blog/meta-ads-audience-testing-framework.svg",
+    "featuredAlt": "Creative Testing Campaign",
+    "tags": ["Creative Strategy", "Paid Social", "Ad Testing"],
+    "metaTitle": "Creative Testing Campaign Framework | Muyeed",
+    "metaDescription": "Systematic creative testing methodology on Meta Ads to isolate winners and lower CPA.",
+    "focusKeyword": "Meta Ads creative testing",
+    "createdAt": "2026-09-15T10:00:00.000Z",
+    "updatedAt": "2026-09-15T10:00:00.000Z"
+  },
+  {
+    "id": "proj-7",
+    "title": "Service Business Website",
+    "slug": "service-business-website",
+    "category": "WordPress",
+    "client": "Consulting Firm",
+    "timeline": "1 Month",
+    "description": "Responsive WordPress site structured around services, organic search and lead generation.",
+    "result": "Cleaner user journey and easier content management.",
+    "metrics": [
+      { "label": "Mobile Speed Score", "value": "96/100" },
+      { "label": "Bounce Rate Reduction", "value": "-28%" }
+    ],
+    "featuredImage": "/images/blog/wordpress-speed-optimization-checklist.svg",
+    "featuredAlt": "Service Business Website",
+    "tags": ["WordPress", "Core Web Vitals", "Speed Optimization"],
+    "metaTitle": "WordPress Speed Optimization & Redesign | Muyeed",
+    "metaDescription": "Optimizing WordPress architecture for fast page speeds and seamless lead generation.",
+    "focusKeyword": "WordPress speed optimization",
+    "createdAt": "2026-09-16T10:00:00.000Z",
+    "updatedAt": "2026-09-16T10:00:00.000Z"
+  },
+  {
+    "id": "proj-8",
+    "title": "Portfolio Website",
+    "slug": "portfolio-website",
+    "category": "WordPress",
+    "client": "Personal Brand",
+    "timeline": "2 Weeks",
+    "description": "Personal-brand website with reusable layouts, clear positioning and conversion-focused sections.",
+    "result": "Professional presentation with easier editing.",
+    "metrics": [
+      { "label": "Performance Score", "value": "98%" },
+      { "label": "Inquiry Growth", "value": "+65%" }
+    ],
+    "featuredImage": "/images/blog/how-generative-ai-changes-search-results.svg",
+    "featuredAlt": "Portfolio Website",
+    "tags": ["Personal Brand", "Landing Page", "Conversion"],
+    "metaTitle": "Personal Brand Portfolio Case Study | Muyeed",
+    "metaDescription": "Building a high-impact personal brand website geared for consulting clients.",
+    "focusKeyword": "portfolio website",
+    "createdAt": "2026-09-17T10:00:00.000Z",
+    "updatedAt": "2026-09-17T10:00:00.000Z"
+  }
+]

@@ -31,3 +31,6 @@ yarn-error.log*
 
 # archives
 *.zip
+
+# typescript cache
+*.tsbuildinfo

@@ -30,6 +30,56 @@ export type Post = {
   publishedAt?: string;
 };
 
+export type Project = {
+  id: string;
+  title: string;
+  slug: string;
+  category: 'AI SEO' | 'Google Ads' | 'Meta Ads' | 'WordPress' | string;
+  client?: string;
+  timeline?: string;
+  description: string;
+  result: string;
+  metrics?: { label: string; value: string }[];
+  featuredImage?: string;
+  featuredAlt?: string;
+  blocks?: ContentBlock[];
+  tags?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
+  focusKeyword?: string;
+  canonicalUrl?: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CustomPage = {
+  id: string;
+  slug: string;
+  title: string;
+  eyebrow?: string;
+  lead?: string;
+  heroImage?: string;
+  blocks?: ContentBlock[];
+  metaTitle?: string;
+  metaDescription?: string;
+  updatedAt: string;
+};
+
+export type ChatMessage = {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  timestamp: string;
+};
+
+export type ChatSession = {
+  id: string;
+  sessionId: string;
+  userMessage: string;
+  botReply: string;
+  timestamp: string;
+  source?: string;
+};
+
 export type MediaItem = {
   id: string;
   filename: string;
@@ -41,4 +91,19 @@ export type MediaItem = {
   height: number;
   mime: string;
   createdAt: string;
+};
+
+export type SiteSettings = {
+  siteName: string;
+  authorName: string;
+  email: string;
+  defaultSchema: string;
+  whatsappNumber?: string;
+  whatsappPrompt?: string;
+  geminiApiKey?: string;
+  linkedIn?: string;
+  upwork?: string;
+  adminUsername?: string;
+  adminPassword?: string;
+  [key: string]: unknown;
 };

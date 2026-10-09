@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import type { CustomPage } from '@/types/content';
+import { RichTextEditor } from '@/components/RichTextEditor';
 
 export function PagesManager({ initialPages }: { initialPages: CustomPage[] }) {
   const router = useRouter();
@@ -10,6 +12,8 @@ export function PagesManager({ initialPages }: { initialPages: CustomPage[] }) {
   const [selectedSlug, setSelectedSlug] = useState<string>(initialPages[0]?.slug || 'home');
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState('');
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const activePage = pages.find((p) => p.slug === selectedSlug) || pages[0];
 
@@ -17,6 +21,34 @@ export function PagesManager({ initialPages }: { initialPages: CustomPage[] }) {
     setPages((prev) =>
       prev.map((p) => (p.slug === selectedSlug ? { ...p, [field]: value } : p))
     );
+  }
+
+  async function handleHeroImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    setMsg('');
+    try {
+      const fd = new FormData();
+      fd.append('image', file);
+      fd.append('alt', `${activePage?.title || 'Page'} banner`);
+
+      const res = await fetch('/api/admin/media/upload', {
+        method: 'POST',
+        body: fd
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+
+      updateField('heroImage', data.item.url);
+      setMsg('Hero image uploaded and converted to WebP.');
+    } catch (err: unknown) {
+      setMsg((err as Error).message || 'Image upload error');
+    } finally {
+      setUploadingImage(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
   }
 
   async function handleSave(e: React.FormEvent) {
@@ -33,23 +65,23 @@ export function PagesManager({ initialPages }: { initialPages: CustomPage[] }) {
       });
 
       if (res.ok) {
-        setMsg('Page updated successfully!');
+        setMsg(`Page /${activePage.slug} updated successfully!`);
         router.refresh();
       } else {
-        alert('Failed to update page.');
+        setMsg('Failed to update page.');
       }
     } catch {
-      alert('Network error while saving page.');
+      setMsg('Network error while saving page.');
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="editorLayout">
-      <div className="editorPanel">
-        {/* Page Selector Tabs */}
-        <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+    <div className="editorModernLayout">
+      <div className="editorMainColumn">
+        {/* Page Tab Selector */}
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
           {pages.map((p) => (
             <button
               key={p.slug}
@@ -59,7 +91,7 @@ export function PagesManager({ initialPages }: { initialPages: CustomPage[] }) {
                 setMsg('');
               }}
               className={`btn ${selectedSlug === p.slug ? 'btnPrimary' : 'btnSecondary'}`}
-              style={{ padding: '0 16px', minHeight: 40, fontSize: '0.88rem' }}
+              style={{ padding: '0 18px', minHeight: '38px', fontSize: '0.88rem' }}
             >
               /{p.slug}
             </button>
@@ -67,88 +99,146 @@ export function PagesManager({ initialPages }: { initialPages: CustomPage[] }) {
         </div>
 
         {activePage && (
-          <form onSubmit={handleSave} className="adminCard" style={{ display: 'grid', gap: 16 }}>
-            <div className="field">
-              <label htmlFor="page-eyebrow">Eyebrow Tagline</label>
-              <input
-                id="page-eyebrow"
-                value={activePage.eyebrow || ''}
-                onChange={(e) => updateField('eyebrow', e.target.value)}
-                placeholder="e.g. AI SEO • Google Ads • Meta Ads"
-              />
-            </div>
-
-            <div className="field">
-              <label htmlFor="page-title">Main Hero Title (H1)</label>
-              <input
-                id="page-title"
-                required
-                value={activePage.title || ''}
-                onChange={(e) => updateField('title', e.target.value)}
-                placeholder="e.g. Data-Driven Digital Marketing"
-              />
-            </div>
-
-            <div className="field">
-              <label htmlFor="page-lead">Hero Lead Paragraph</label>
-              <textarea
-                id="page-lead"
-                rows={3}
-                value={activePage.lead || ''}
-                onChange={(e) => updateField('lead', e.target.value)}
-                placeholder="Lead description displayed under the main heading..."
-              />
-            </div>
-
-            <div style={{ borderTop: '1px solid var(--line)', paddingTop: 16 }}>
-              <h4 style={{ margin: '0 0 12px', fontSize: '0.92rem', textTransform: 'uppercase', color: '#777' }}>
-                SEO Options for /{activePage.slug}
-              </h4>
-
-              <div className="field">
-                <label htmlFor="page-meta-title">Page Meta Title</label>
+          <form onSubmit={handleSave} style={{ display: 'grid', gap: '20px' }}>
+            {/* Page Header Information */}
+            <div className="adminCard">
+              <span className="adminEyebrow">Page Content (/{activePage.slug})</span>
+              <div className="field" style={{ marginTop: 12 }}>
+                <label>Eyebrow Tagline / Badge</label>
                 <input
-                  id="page-meta-title"
-                  value={activePage.metaTitle || ''}
-                  onChange={(e) => updateField('metaTitle', e.target.value)}
-                  placeholder="Meta title for Google results"
+                  value={activePage.eyebrow || ''}
+                  onChange={(e) => updateField('eyebrow', e.target.value)}
+                  placeholder="e.g. AI SEO • Google Ads • Meta Ads • WordPress"
                 />
               </div>
 
               <div className="field" style={{ marginTop: 12 }}>
-                <label htmlFor="page-meta-desc">Page Meta Description</label>
-                <textarea
-                  id="page-meta-desc"
-                  rows={2}
-                  value={activePage.metaDescription || ''}
-                  onChange={(e) => updateField('metaDescription', e.target.value)}
-                  placeholder="Meta description for search engine previews"
+                <label>Main Page Title (H1)</label>
+                <input
+                  required
+                  value={activePage.title || ''}
+                  onChange={(e) => updateField('title', e.target.value)}
+                  placeholder="e.g. Data-Driven Digital Marketing"
+                  className="editorTitleInput"
                 />
               </div>
             </div>
 
-            <button type="submit" className="btn btnPrimary" disabled={loading} style={{ marginTop: 8 }}>
-              {loading ? 'Saving Page…' : `Update /${activePage.slug} Page`}
+            {/* Rich Content Editor */}
+            <div className="adminCard">
+              <h3 className="sidebarSectionTitle" style={{ marginBottom: 12 }}>
+                Page Content &amp; Story (Rich Text &amp; Tables)
+              </h3>
+              <p className="adminHelpText" style={{ marginBottom: 16 }}>
+                Format text with bold, font sizes, colors, headings, bullet lists, hyperlinks, and responsive tables.
+              </p>
+              <RichTextEditor
+                value={activePage.lead || ''}
+                onChange={(html) => updateField('lead', html)}
+                placeholder="Write page content, value proposition, client services, and structured text..."
+                minHeight={280}
+              />
+            </div>
+
+            {/* SEO Configuration */}
+            <div className="adminCard">
+              <h3 className="sidebarSectionTitle" style={{ marginBottom: 14 }}>
+                SEO Options for /{activePage.slug}
+              </h3>
+              <div className="adminFormGrid">
+                <div className="field">
+                  <label>Meta Title</label>
+                  <input
+                    value={activePage.metaTitle || ''}
+                    onChange={(e) => updateField('metaTitle', e.target.value)}
+                    placeholder="Page Title in Search Results"
+                  />
+                </div>
+                <div className="field fieldFull">
+                  <label>Meta Description</label>
+                  <textarea
+                    rows={2}
+                    value={activePage.metaDescription || ''}
+                    onChange={(e) => updateField('metaDescription', e.target.value)}
+                    placeholder="Concise summary for Google results"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              className="btn btnPrimary"
+              disabled={loading}
+              style={{ width: '100%', minHeight: '44px', fontSize: '0.96rem' }}
+            >
+              {loading ? 'Saving Changes…' : `Save & Publish /${activePage.slug}`}
             </button>
 
-            {msg && <div className="notice">{msg}</div>}
+            {msg && <div className="adminNotification">{msg}</div>}
           </form>
         )}
       </div>
 
-      <aside className="editorAside">
+      {/* Right Sidebar */}
+      <aside className="editorSidebar">
+        {/* Hero Image Card */}
         <div className="adminCard">
-          <h4>Design &amp; Automation</h4>
-          <p style={{ fontSize: '0.85rem', color: '#666', lineHeight: 1.5 }}>
-            Changes made here are automatically formatted into the design system with semantic typography, responsive layout containers, and search metadata.
+          <h3 className="sidebarSectionTitle">Hero Banner Image (WebP)</h3>
+          {activePage?.heroImage ? (
+            <div style={{ marginBottom: 12 }}>
+              <Image
+                src={activePage.heroImage}
+                alt="Page hero"
+                width={300}
+                height={160}
+                style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: 8 }}
+              />
+              <button
+                type="button"
+                className="buttonSmall buttonDanger"
+                style={{ width: '100%', marginTop: 8 }}
+                onClick={() => updateField('heroImage', '')}
+              >
+                Remove Hero Image
+              </button>
+            </div>
+          ) : (
+            <div
+              className="inlineUploadZone"
+              onClick={() => fileInputRef.current?.click()}
+              style={{ marginBottom: 12 }}
+            >
+              <div style={{ fontSize: '1.4rem' }}>📸</div>
+              <strong>{uploadingImage ? 'Converting to WebP…' : 'Upload Hero Image'}</strong>
+              <p style={{ margin: 0, fontSize: '0.8rem', color: '#64748b' }}>
+                Converts automatically to WebP
+              </p>
+            </div>
+          )}
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            style={{ display: 'none' }}
+            onChange={handleHeroImageUpload}
+          />
+        </div>
+
+        {/* Live Preview Card */}
+        <div className="adminCard">
+          <h3 className="sidebarSectionTitle">Live Page Preview</h3>
+          <p style={{ fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5, margin: '0 0 14px' }}>
+            Updates apply immediately and are served with optimized semantic HTML and schema tags.
           </p>
           <a
             href={activePage?.slug === 'home' ? '/' : `/${activePage?.slug}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="textLink"
+            className="btn btnSecondary"
+            style={{ display: 'block', textAlign: 'center' }}
           >
-            Preview Live Page ↗
+            Open Live Page ↗
           </a>
         </div>
       </aside>

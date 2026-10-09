@@ -69,7 +69,14 @@ export function ProjectCard({
       )}
 
       <h3 style={{ margin: '4px 0 10px', fontSize: '1.25rem' }}>{title}</h3>
-      <p style={{ fontSize: '0.92rem', color: 'var(--muted)', flexGrow: 1 }}>{description}</p>
+      {/<[a-z][\s\S]*>/i.test(description) ? (
+        <div
+          style={{ fontSize: '0.92rem', color: 'var(--muted)', flexGrow: 1, lineHeight: 1.6 }}
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
+      ) : (
+        <p style={{ fontSize: '0.92rem', color: 'var(--muted)', flexGrow: 1 }}>{description}</p>
+      )}
 
       {metrics && metrics.length > 0 && (
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '14px 0 6px' }}>

@@ -49,7 +49,7 @@ interface AnalyticsPayload {
 
 export default function AnalyticsDashboardPage() {
   const [range, setRange] = useState<'7d' | '14d' | '30d' | '90d'>('30d');
-  const [activeTab, setActiveTab] = useState<'overview' | 'seo' | 'pages' | 'pagespeed'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'clarity' | 'seo' | 'pages' | 'pagespeed'>('overview');
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<AnalyticsPayload | null>(null);
   const [lastRefreshed, setLastRefreshed] = useState<string>('');
@@ -260,6 +260,7 @@ export default function AnalyticsDashboardPage() {
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
           {[
             { id: 'overview', label: 'Executive Overview' },
+            { id: 'clarity', label: 'Clarity Heatmaps & Recordings' },
             { id: 'seo', label: 'SEO & Search Queries' },
             { id: 'pages', label: 'Landing Pages & Content' },
             { id: 'pagespeed', label: 'PageSpeed & Core Web Vitals' }
@@ -508,6 +509,104 @@ export default function AnalyticsDashboardPage() {
                 })}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* TAB: CLARITY RECORDINGS & HEATMAPS */}
+      {activeTab === 'clarity' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', marginBottom: '16px' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                  <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 750, color: '#0f172a' }}>
+                    Microsoft Clarity Live Session Recordings &amp; Heatmaps
+                  </h3>
+                </div>
+                <p style={{ margin: '4px 0 0', fontSize: '0.84rem', color: '#64748b' }}>
+                  Project: <strong>Muyeed</strong> (ID: <code>zfapy6czo5</code>) • Live Telemetry Active on <code>https://muyeedsifat.vercel.app</code>
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <a
+                  href="https://clarity.microsoft.com/projects/view/zfapy6czo5/recordings"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '8px 16px',
+                    fontSize: '0.84rem',
+                    fontWeight: 700,
+                    borderRadius: '7px',
+                    background: '#0f172a',
+                    color: '#ffffff',
+                    textDecoration: 'none'
+                  }}
+                >
+                  <span>Launch Live Player</span>
+                  <span style={{ fontSize: '0.8rem' }}>&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', marginTop: '20px' }}>
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '18px' }}>
+                <div style={{ fontWeight: 750, fontSize: '0.94rem', color: '#0f172a', marginBottom: '6px' }}>Session Recordings</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: 1.45, marginBottom: '14px' }}>
+                  Watch full replays of visitor journeys, scroll speeds, mouse tracks, and mobile touches.
+                </div>
+                <a
+                  href="https://clarity.microsoft.com/projects/view/zfapy6czo5/recordings"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: '0.82rem', fontWeight: 700, color: '#2563eb', textDecoration: 'none' }}
+                >
+                  Open Recordings &rarr;
+                </a>
+              </div>
+
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '18px' }}>
+                <div style={{ fontWeight: 750, fontSize: '0.94rem', color: '#0f172a', marginBottom: '6px' }}>Click &amp; Scroll Heatmaps</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: 1.45, marginBottom: '14px' }}>
+                  Visualize click concentration and scroll drop-off percentages on your landing pages and articles.
+                </div>
+                <a
+                  href="https://clarity.microsoft.com/projects/view/zfapy6czo5/heatmaps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: '0.82rem', fontWeight: 700, color: '#ea580c', textDecoration: 'none' }}
+                >
+                  Open Heatmaps &rarr;
+                </a>
+              </div>
+
+              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '18px' }}>
+                <div style={{ fontWeight: 750, fontSize: '0.94rem', color: '#0f172a', marginBottom: '6px' }}>User Behavior Metrics</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: 1.45, marginBottom: '14px' }}>
+                  Track dead clicks, rage clicks, excessive scrolling, and quick backs across all devices.
+                </div>
+                <a
+                  href="https://clarity.microsoft.com/projects/view/zfapy6czo5/dashboard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: '0.82rem', fontWeight: 700, color: '#16a34a', textDecoration: 'none' }}
+                >
+                  Open Behavior Dashboard &rarr;
+                </a>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '20px', padding: '14px 18px', background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '10px', fontSize: '0.82rem', color: '#166534', lineHeight: 1.5 }}>
+              <strong>Real-Time Data Processing:</strong> Microsoft Clarity batches visitor events and generates recordings and heatmaps every 15 to 30 minutes. Once visitors navigate <code>https://muyeedsifat.vercel.app</code>, recordings populate here automatically.
+            </div>
           </div>
         </div>
       )}

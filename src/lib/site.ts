@@ -12,9 +12,18 @@ export const siteConfig = {
 } as const;
 
 export function getSiteUrl() {
-  return (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '');
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return 'https://' + process.env.VERCEL_PROJECT_PRODUCTION_URL.replace(/\/$/, '');
+  }
+  if (process.env.VERCEL_URL) {
+    return 'https://' + process.env.VERCEL_URL.replace(/\/$/, '');
+  }
+  return 'https://muyeedsifat.vercel.app';
 }
 
 export function absoluteUrl(path = '/') {
-  return `${getSiteUrl()}${path.startsWith('/') ? path : `/${path}`}`;
+  return getSiteUrl() + (path.startsWith('/') ? path : '/' + path);
 }

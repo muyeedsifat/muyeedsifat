@@ -46,6 +46,19 @@ export function ProjectCard({
     }
   }, [isOpen]);
 
+  const handleOpenCaseStudy = () => {
+    setIsOpen(true);
+    if (typeof window !== 'undefined') {
+      const w = window as unknown as { dataLayer?: Array<Record<string, unknown>> };
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({
+        event: 'view_case_study',
+        projectName: title,
+        projectCategory: category
+      });
+    }
+  };
+
   // Clean plain text summary (strips any raw HTML and trims cleanly to avoid text clutter)
   const plainText = description.replace(/<[^>]+>/g, '').trim();
   const summary = plainText.length > 130 ? plainText.slice(0, 127) + '...' : plainText;
@@ -54,13 +67,13 @@ export function ProjectCard({
     <>
       <article
         className="card projectCard"
-        onClick={() => setIsOpen(true)}
+        onClick={handleOpenCaseStudy}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            setIsOpen(true);
+            handleOpenCaseStudy();
           }
         }}
         style={{

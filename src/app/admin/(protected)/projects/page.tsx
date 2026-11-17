@@ -77,59 +77,67 @@ export default async function AdminProjectsPage() {
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.86rem', textAlign: 'left' }}>
             <thead>
-              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '0.76rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '12px 18px' }}>Case Study</th>
-                <th style={{ padding: '12px 18px' }}>Category</th>
-                <th style={{ padding: '12px 18px' }}>Client</th>
-                <th style={{ padding: '12px 18px' }}>Verified Key Outcome</th>
-                <th style={{ padding: '12px 18px' }}>Updated</th>
-                <th style={{ padding: '12px 18px', textAlign: 'right' }}>Actions</th>
+              <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <th style={{ width: '27%', minWidth: '220px', padding: '14px 18px', verticalAlign: 'middle' }}>Case Study</th>
+                <th style={{ width: '14%', minWidth: '120px', padding: '14px 14px', verticalAlign: 'middle' }}>Category</th>
+                <th style={{ width: '18%', minWidth: '140px', padding: '14px 14px', verticalAlign: 'middle' }}>Client</th>
+                <th style={{ width: '25%', minWidth: '200px', padding: '14px 14px', verticalAlign: 'middle' }}>Verified Key Outcome</th>
+                <th style={{ width: '10%', minWidth: '95px', padding: '14px 14px', verticalAlign: 'middle' }}>Updated</th>
+                <th style={{ width: '14%', minWidth: '130px', padding: '14px 18px', verticalAlign: 'middle', textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {projects.map((p) => (
                 <tr key={p.id} style={{ borderBottom: '1px solid #f1f5f9', transition: 'background 0.15s ease' }}>
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '0.92rem' }}>{p.title}</div>
-                    <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '2px' }}>/{p.slug}</div>
+                  <td style={{ padding: '16px 18px', verticalAlign: 'top' }}>
+                    <div style={{ fontWeight: 700, color: '#0f172a', fontSize: '0.92rem', lineHeight: 1.35 }}>{p.title}</div>
+                    <div style={{ fontSize: '0.76rem', color: '#64748b', marginTop: '4px', wordBreak: 'break-all' }}>/{p.slug}</div>
                   </td>
-                  <td style={{ padding: '14px 18px' }}>
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top' }}>
                     <span
                       style={{
-                        fontSize: '0.74rem',
-                        fontWeight: 700,
+                        fontSize: '0.72rem',
+                        fontWeight: 750,
                         textTransform: 'uppercase',
                         letterSpacing: '0.05em',
-                        color: 'var(--orange-dark, #c2410c)',
-                        background: 'var(--orange-soft, #fff7ed)',
+                        color: p.category?.toLowerCase().includes('seo') ? '#c2410c' : p.category?.toLowerCase().includes('meta') ? '#0284c7' : '#2563eb',
+                        background: p.category?.toLowerCase().includes('seo') ? '#fff7ed' : p.category?.toLowerCase().includes('meta') ? '#f0f9ff' : '#eff6ff',
                         padding: '4px 9px',
-                        borderRadius: '6px'
+                        borderRadius: '6px',
+                        whiteSpace: 'nowrap',
+                        display: 'inline-block'
                       }}
                     >
                       {p.category}
                     </span>
                   </td>
-                  <td style={{ padding: '14px 18px', color: '#475569', fontWeight: 600 }}>
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top', color: '#334155', fontWeight: 600, lineHeight: 1.45 }}>
                     {p.client || '—'}
                   </td>
-                  <td style={{ padding: '14px 18px', color: '#166534', fontWeight: 650, maxWidth: '280px' }}>
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top', color: '#15803d', fontWeight: 650, lineHeight: 1.45 }}>
                     {p.result || '—'}
                   </td>
-                  <td style={{ padding: '14px 18px', color: '#64748b', fontSize: '0.82rem' }}>
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top', color: '#64748b', fontSize: '0.82rem', whiteSpace: 'nowrap', lineHeight: 1.45 }}>
                     {new Date(p.updatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </td>
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <td style={{ padding: '16px 18px', verticalAlign: 'top', textAlign: 'right' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px' }}>
                       <Link
                         href={`/admin/projects/${p.id}`}
                         style={{
-                          padding: '5px 12px',
-                          fontSize: '0.82rem',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          height: '30px',
+                          padding: '0 12px',
+                          fontSize: '0.8rem',
                           fontWeight: 650,
                           borderRadius: '6px',
                           background: '#f1f5f9',
                           color: '#334155',
-                          textDecoration: 'none'
+                          border: '1px solid #e2e8f0',
+                          textDecoration: 'none',
+                          transition: 'background 0.15s ease'
                         }}
                       >
                         Edit

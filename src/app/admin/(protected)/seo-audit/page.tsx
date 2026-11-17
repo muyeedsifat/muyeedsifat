@@ -499,14 +499,14 @@ export default function SeoAuditDashboardPage() {
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.86rem' }}>
             <thead>
               <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ padding: '12px 18px' }}>Page / Article</th>
-                <th style={{ padding: '12px 14px' }}>Health Score</th>
-                <th style={{ padding: '12px 14px' }}>4-Core Placement</th>
-                <th style={{ padding: '12px 14px' }}>Meta Title</th>
-                <th style={{ padding: '12px 14px' }}>Meta Desc</th>
-                <th style={{ padding: '12px 14px' }}>Schema</th>
-                <th style={{ padding: '12px 14px' }}>Depth &amp; Links</th>
-                <th style={{ padding: '12px 18px', textAlign: 'right' }}>Actions</th>
+                <th style={{ width: '28%', minWidth: '260px', padding: '14px 18px', verticalAlign: 'middle' }}>Page / Article</th>
+                <th style={{ width: '11%', minWidth: '105px', padding: '14px 14px', verticalAlign: 'middle' }}>Health Score</th>
+                <th style={{ width: '17%', minWidth: '160px', padding: '14px 14px', verticalAlign: 'middle' }}>4-Core Placement</th>
+                <th style={{ width: '10%', minWidth: '95px', padding: '14px 14px', verticalAlign: 'middle' }}>Meta Title</th>
+                <th style={{ width: '10%', minWidth: '95px', padding: '14px 14px', verticalAlign: 'middle' }}>Meta Desc</th>
+                <th style={{ width: '11%', minWidth: '110px', padding: '14px 14px', verticalAlign: 'middle' }}>Schema</th>
+                <th style={{ width: '10%', minWidth: '110px', padding: '14px 14px', verticalAlign: 'middle' }}>Depth &amp; Links</th>
+                <th style={{ width: '13%', minWidth: '155px', padding: '14px 18px', verticalAlign: 'middle', textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -518,32 +518,37 @@ export default function SeoAuditDashboardPage() {
                   onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                 >
                   {/* Page Title & Path */}
-                  <td style={{ padding: '14px 18px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <td style={{ padding: '16px 18px', verticalAlign: 'top' }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                       <span
                         style={{
                           fontSize: '0.7rem',
-                          fontWeight: 700,
+                          fontWeight: 750,
                           textTransform: 'uppercase',
                           letterSpacing: '0.04em',
-                          padding: '2px 6px',
+                          padding: '3px 7px',
                           borderRadius: '4px',
                           background: item.type === 'blog' ? '#eff6ff' : item.type === 'service' ? '#fff7ed' : item.type === 'project' ? '#f0fdf4' : '#f8fafc',
-                          color: item.type === 'blog' ? '#1d4ed8' : item.type === 'service' ? '#c2410c' : item.type === 'project' ? '#166534' : '#475569'
+                          color: item.type === 'blog' ? '#1d4ed8' : item.type === 'service' ? '#c2410c' : item.type === 'project' ? '#166534' : '#475569',
+                          whiteSpace: 'nowrap',
+                          marginTop: '1px'
                         }}
                       >
                         {item.type}
                       </span>
-                      <strong style={{ color: '#0f172a', fontSize: '0.9rem' }}>{item.title}</strong>
+                      <strong style={{ color: '#0f172a', fontSize: '0.9rem', lineHeight: 1.35 }}>{item.title}</strong>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '3px' }}>
-                      <code style={{ fontSize: '0.76rem', color: '#64748b' }}>{item.path}</code>
-                      <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>• Keyword: &quot;{item.focusKeyword}&quot;</span>
+                    <div style={{ marginTop: '5px' }}>
+                      <code style={{ fontSize: '0.74rem', color: '#64748b', wordBreak: 'break-all' }}>{item.path}</code>
+                    </div>
+                    <div style={{ fontSize: '0.74rem', color: '#475569', marginTop: '3px' }}>
+                      <span style={{ color: '#94a3b8' }}>Target Keyword: </span>
+                      <span style={{ fontWeight: 600, color: '#0f172a' }}>&quot;{item.focusKeyword}&quot;</span>
                     </div>
                   </td>
 
                   {/* Health Score Pill */}
-                  <td style={{ padding: '14px 14px' }}>
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top' }}>
                     <span
                       style={{
                         display: 'inline-flex',
@@ -553,6 +558,7 @@ export default function SeoAuditDashboardPage() {
                         borderRadius: '6px',
                         fontWeight: 800,
                         fontSize: '0.82rem',
+                        whiteSpace: 'nowrap',
                         background: item.healthScore >= 90 ? '#dcfce7' : item.healthScore >= 80 ? '#fef3c7' : '#fee2e2',
                         color: item.healthScore >= 90 ? '#15803d' : item.healthScore >= 80 ? '#b45309' : '#b91c1c'
                       }}
@@ -563,91 +569,125 @@ export default function SeoAuditDashboardPage() {
                   </td>
 
                   {/* 4-Core Placement */}
-                  <td style={{ padding: '14px 14px' }}>
-                    <span
-                      style={{
-                        fontSize: '0.78rem',
-                        fontWeight: 700,
-                        padding: '3px 8px',
-                        borderRadius: '5px',
-                        background: item.fourCore.score === 4 ? '#dcfce7' : '#ffedd5',
-                        color: item.fourCore.score === 4 ? '#166534' : '#c2410c'
-                      }}
-                    >
-                      {item.fourCore.score}/4 Core Places
-                    </span>
-                    <div style={{ fontSize: '0.7rem', color: '#64748b', marginTop: '2px' }}>
-                      {item.fourCore.inTitle ? 'Title' : '<s>Title</s>'} • {item.fourCore.inDescription ? 'Desc' : '<s>Desc</s>'} • {item.fourCore.inH1 ? 'H1' : '<s>H1</s>'} • {item.fourCore.inBody ? 'Body' : '<s>Body</s>'}
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-start' }}>
+                      <span
+                        style={{
+                          fontSize: '0.74rem',
+                          fontWeight: 700,
+                          padding: '3px 8px',
+                          borderRadius: '5px',
+                          whiteSpace: 'nowrap',
+                          background: item.fourCore.score === 4 ? '#dcfce7' : '#ffedd5',
+                          color: item.fourCore.score === 4 ? '#166534' : '#c2410c'
+                        }}
+                      >
+                        {item.fourCore.score}/4 Core Places
+                      </span>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', alignItems: 'center' }}>
+                        {[
+                          { label: 'Title', active: item.fourCore.inTitle },
+                          { label: 'Desc', active: item.fourCore.inDescription },
+                          { label: 'H1', active: item.fourCore.inH1 },
+                          { label: 'Body', active: item.fourCore.inBody }
+                        ].map((slot) => (
+                          <span
+                            key={slot.label}
+                            style={{
+                              fontSize: '0.67rem',
+                              fontWeight: 650,
+                              padding: '2px 5px',
+                              borderRadius: '4px',
+                              background: slot.active ? '#dcfce7' : '#f1f5f9',
+                              color: slot.active ? '#166534' : '#94a3b8',
+                              textDecoration: slot.active ? 'none' : 'line-through',
+                              whiteSpace: 'nowrap'
+                            }}
+                          >
+                            {slot.label}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </td>
 
                   {/* Meta Title */}
-                  <td style={{ padding: '14px 14px' }}>
-                    <span
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top' }}>
+                    <div
                       style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 650,
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        whiteSpace: 'nowrap',
                         color: item.metaTitle.status === 'passed' ? '#166534' : '#c2410c'
                       }}
                     >
                       {item.metaTitle.length} chars
-                    </span>
-                    <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
+                    </div>
+                    <div style={{ fontSize: '0.71rem', color: '#64748b', marginTop: '3px', whiteSpace: 'nowrap' }}>
                       {item.metaTitle.status === 'passed' ? 'Optimal length' : 'Needs tuning'}
                     </div>
                   </td>
 
                   {/* Meta Description */}
-                  <td style={{ padding: '14px 14px' }}>
-                    <span
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top' }}>
+                    <div
                       style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 650,
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        whiteSpace: 'nowrap',
                         color: item.metaDescription.status === 'passed' ? '#166534' : '#c2410c'
                       }}
                     >
                       {item.metaDescription.length} chars
-                    </span>
-                    <div style={{ fontSize: '0.7rem', color: '#94a3b8' }}>
+                    </div>
+                    <div style={{ fontSize: '0.71rem', color: '#64748b', marginTop: '3px', whiteSpace: 'nowrap' }}>
                       {item.metaDescription.status === 'passed' ? 'Optimal length' : 'Needs tuning'}
                     </div>
                   </td>
 
                   {/* Schema */}
-                  <td style={{ padding: '14px 14px' }}>
-                    <span style={{ fontSize: '0.78rem', color: '#334155', fontWeight: 600 }}>
-                      {item.schema.types.slice(0, 2).join(', ')}
-                    </span>
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top' }}>
+                    <div style={{ fontSize: '0.78rem', color: '#0f172a', fontWeight: 650, lineHeight: 1.4 }}>
+                      {item.schema.types.length > 0 ? item.schema.types.slice(0, 2).join(', ') : 'None'}
+                    </div>
                     {item.schema.types.length > 2 && (
-                      <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}> +{item.schema.types.length - 2}</span>
+                      <div style={{ fontSize: '0.71rem', color: '#64748b', marginTop: '2px' }}>
+                        +{item.schema.types.length - 2} more
+                      </div>
                     )}
                   </td>
 
                   {/* Depth & Links */}
-                  <td style={{ padding: '14px 14px' }}>
-                    <div style={{ fontSize: '0.82rem', fontWeight: 650, color: '#0f172a' }}>
-                      {item.contentLength.wordCount} words
+                  <td style={{ padding: '16px 14px', verticalAlign: 'top' }}>
+                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a', whiteSpace: 'nowrap' }}>
+                      {item.contentLength.wordCount.toLocaleString()} words
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: '#64748b' }}>
+                    <div style={{ fontSize: '0.71rem', color: '#64748b', marginTop: '3px', whiteSpace: 'nowrap' }}>
                       {item.internalLinks.count} internal link(s)
                     </div>
                   </td>
 
                   {/* Actions */}
-                  <td style={{ padding: '14px 18px', textAlign: 'right' }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <td style={{ padding: '16px 18px', verticalAlign: 'top', textAlign: 'right' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px' }}>
                       <button
                         type="button"
                         onClick={() => setInspectingItem(item)}
                         style={{
-                          padding: '5px 11px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          height: '30px',
+                          padding: '0 12px',
                           fontSize: '0.8rem',
-                          fontWeight: 700,
+                          fontWeight: 650,
                           borderRadius: '6px',
                           background: '#0f172a',
                           color: '#ffffff',
                           border: 'none',
-                          cursor: 'pointer'
+                          cursor: 'pointer',
+                          whiteSpace: 'nowrap',
+                          transition: 'background 0.15s ease'
                         }}
                       >
                         Inspect Audit
@@ -655,13 +695,20 @@ export default function SeoAuditDashboardPage() {
                       <Link
                         href={item.editUrl}
                         style={{
-                          padding: '5px 10px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          height: '30px',
+                          padding: '0 12px',
                           fontSize: '0.8rem',
-                          fontWeight: 600,
+                          fontWeight: 650,
                           borderRadius: '6px',
                           background: '#f1f5f9',
-                          color: '#475569',
-                          textDecoration: 'none'
+                          color: '#334155',
+                          border: '1px solid #e2e8f0',
+                          textDecoration: 'none',
+                          whiteSpace: 'nowrap',
+                          transition: 'background 0.15s ease'
                         }}
                       >
                         Edit

@@ -30,7 +30,21 @@ export function ProjectRowActions({ projectId, title }: { projectId: string; tit
       type="button"
       onClick={handleDelete}
       disabled={loading}
-      className="buttonSmall buttonDanger"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '30px',
+        padding: '0 12px',
+        fontSize: '0.8rem',
+        fontWeight: 650,
+        borderRadius: '6px',
+        background: '#fee2e2',
+        color: '#991b1b',
+        border: '1px solid #fecaca',
+        cursor: 'pointer',
+        transition: 'background 0.15s ease'
+      }}
     >
       {loading ? '…' : 'Delete'}
     </button>

@@ -20,7 +20,7 @@ export function Footer() {
               <a href={siteConfig.upwork} target="_blank" rel="noopener noreferrer" className="footerSocialLink" aria-label="Upwork Profile">
                 <UpworkIcon size={20} />
               </a>
-              <a href="https://wa.me/8801700000000" target="_blank" rel="noopener noreferrer" className="footerSocialLink" aria-label="Direct WhatsApp Message">
+              <a href="https://wa.me/8801576624428" target="_blank" rel="noopener noreferrer" className="footerSocialLink" aria-label="Direct WhatsApp Message">
                 <WhatsAppIcon size={20} />
               </a>
             </div>
@@ -50,7 +50,7 @@ export function Footer() {
             <a href={siteConfig.upwork} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <UpworkIcon size={16} /> Upwork
             </a>
-            <a href="https://wa.me/8801700000000" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <a href="https://wa.me/8801576624428" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <WhatsAppIcon size={16} /> WhatsApp
             </a>
             <a href={`mailto:${siteConfig.email}`} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

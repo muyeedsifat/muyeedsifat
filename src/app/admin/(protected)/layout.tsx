@@ -98,6 +98,15 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
 
           <nav className="adminNavSection">
             <div className="navSectionHeader">Marketing</div>
+            <Link href="/admin/analytics" className="adminNavLink">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+              <span>Analytics &amp; SEO</span>
+            </Link>
+
             <Link href="/admin/tracking" className="adminNavLink">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2" />

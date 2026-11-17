@@ -132,6 +132,17 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
           </nav>
 
           <nav className="adminNavSection">
+            <div className="navSectionHeader">Marketing &amp; Tracking</div>
+            <Link href="/admin/tracking" className="adminNavLink">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+              <span>Tracking &amp; Pixels</span>
+              <span className="navPillBadge" style={{ background: '#0284c7', color: '#fff' }}>GTM/GA4</span>
+            </Link>
+          </nav>
+
+          <nav className="adminNavSection">
             <div className="navSectionHeader">System &amp; Database</div>
             <Link href="/admin/settings" className="adminNavLink">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

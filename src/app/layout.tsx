@@ -15,6 +15,16 @@ function parseGscVerification(raw?: string | null): string {
   return trimmed.replace(/^["']|["']$/g, '');
 }
 
+function parseClarityId(raw?: string | null): string {
+  if (!raw) return '';
+  const trimmed = raw.trim();
+  const scriptMatch = trimmed.match(/["']clarity["'],\s*["']script["'],\s*["']([a-zA-Z0-9]+)["']/i);
+  if (scriptMatch && scriptMatch[1]) return scriptMatch[1];
+  const urlMatch = trimmed.match(/clarity\.ms\/tag\/([a-zA-Z0-9]+)/i);
+  if (urlMatch && urlMatch[1]) return urlMatch[1];
+  return trimmed.replace(/^["']|["']$/g, '').trim();
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings().catch(() => null);
   const metadata: Metadata = {
@@ -42,7 +52,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   const gtmId = typeof settings?.gtmId === 'string' ? settings.gtmId.trim() : '';
   const ga4Id = typeof settings?.ga4Id === 'string' ? settings.ga4Id.trim() : '';
-  const clarityId = typeof settings?.clarityId === 'string' ? settings.clarityId.trim() : '';
+  const clarityId = parseClarityId(settings?.clarityId);
   const metaPixelId = typeof settings?.metaPixelId === 'string' ? settings.metaPixelId.trim() : '';
 
   return (

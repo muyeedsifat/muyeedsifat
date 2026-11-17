@@ -30,7 +30,18 @@ export async function PUT(request: Request) {
       updated.gscVerification = match ? match[1].trim() : rawGsc.replace(/^["']|["']$/g, '');
     }
     if (body.ga4Id !== undefined) updated.ga4Id = String(body.ga4Id).trim().slice(0, 50);
-    if (body.clarityId !== undefined) updated.clarityId = String(body.clarityId).trim().slice(0, 50);
+    if (body.clarityId !== undefined) {
+      const rawClarity = String(body.clarityId).trim();
+      const scriptMatch = rawClarity.match(/["']clarity["'],\s*["']script["'],\s*["']([a-zA-Z0-9]+)["']/i);
+      const urlMatch = rawClarity.match(/clarity\.ms\/tag\/([a-zA-Z0-9]+)/i);
+      if (scriptMatch && scriptMatch[1]) {
+        updated.clarityId = scriptMatch[1].trim();
+      } else if (urlMatch && urlMatch[1]) {
+        updated.clarityId = urlMatch[1].trim();
+      } else {
+        updated.clarityId = rawClarity.replace(/^["']|["']$/g, '').slice(0, 50);
+      }
+    }
     if (body.metaPixelId !== undefined) updated.metaPixelId = String(body.metaPixelId).trim().slice(0, 50);
 
     // WhatsApp and Contact Fields

@@ -33,13 +33,13 @@ export function TrackingSettingsForm({ initial }: { initial: Record<string, unkn
       if (res.ok) {
         setStatus({
           type: 'success',
-          message: 'Tracking & Analytics tags saved successfully! They are now live on your website.'
+          message: 'Tracking configuration saved successfully.'
         });
       } else {
         const data = await res.json().catch(() => ({}));
         setStatus({
           type: 'error',
-          message: data.error || 'Failed to update tracking settings. Please try again.'
+          message: data.error || 'Failed to update tracking settings.'
         });
       }
     } catch {
@@ -53,168 +53,175 @@ export function TrackingSettingsForm({ initial }: { initial: Record<string, unkn
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: '820px' }}>
+    <form onSubmit={handleSubmit} style={{ maxWidth: '800px' }}>
       {status && (
         <div
           style={{
-            padding: '14px 18px',
-            borderRadius: '10px',
-            marginBottom: '24px',
-            fontSize: '0.92rem',
+            padding: '12px 16px',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            fontSize: '0.9rem',
             fontWeight: 600,
-            background: status.type === 'success' ? 'rgba(34, 197, 94, 0.12)' : 'rgba(239, 68, 68, 0.12)',
-            color: status.type === 'success' ? '#4ade80' : '#f87171',
-            border: `1px solid ${status.type === 'success' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`
+            background: status.type === 'success' ? '#f0fdf4' : '#fef2f2',
+            color: status.type === 'success' ? '#15803d' : '#b91c1c',
+            border: `1px solid ${status.type === 'success' ? '#bbf7d0' : '#fecaca'}`
           }}
         >
           {status.message}
         </div>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         {/* Google Tag Manager */}
-        <div className="adminCard" style={{ padding: '22px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <span style={{ fontSize: '1.25rem' }}>🏷️</span>
-            <div>
-              <h3 style={{ margin: 0, fontSize: '1.1rem' }}>Google Tag Manager (GTM)</h3>
-              <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--muted)' }}>
-                Injects the official GTM script in the &lt;head&gt; and noscript container in the &lt;body&gt;.
-              </p>
-            </div>
-          </div>
-          <div className="field" style={{ marginTop: '12px' }}>
-            <label htmlFor="gtmId" style={{ fontSize: '0.86rem', fontWeight: 600 }}>
-              GTM Container ID
+        <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+          <div style={{ marginBottom: '12px' }}>
+            <label htmlFor="gtmId" style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+              Google Tag Manager (GTM)
             </label>
-            <input
-              id="gtmId"
-              type="text"
-              placeholder="e.g. GTM-N8XXXXX"
-              value={formData.gtmId}
-              onChange={(e) => handleChange('gtmId', e.target.value)}
-              style={{ width: '100%', fontFamily: 'monospace' }}
-            />
+            <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748b' }}>
+              Container ID to inject GTM script and noscript fallback across all pages.
+            </p>
           </div>
+          <input
+            id="gtmId"
+            type="text"
+            placeholder="GTM-XXXXXXX"
+            value={formData.gtmId}
+            onChange={(e) => handleChange('gtmId', e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              fontFamily: 'monospace',
+              background: '#ffffff'
+            }}
+          />
         </div>
 
         {/* Google Search Console */}
-        <div className="adminCard" style={{ padding: '22px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <span style={{ fontSize: '1.25rem' }}>🔍</span>
-            <div>
-              <h3 style={{ margin: 0, fontSize: '1.1rem' }}>Google Search Console (GSC)</h3>
-              <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--muted)' }}>
-                Site ownership verification meta tag (&lt;meta name=&quot;google-site-verification&quot; /&gt;).
-              </p>
-            </div>
-          </div>
-          <div className="field" style={{ marginTop: '12px' }}>
-            <label htmlFor="gscVerification" style={{ fontSize: '0.86rem', fontWeight: 600 }}>
-              HTML Tag Verification Token
+        <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+          <div style={{ marginBottom: '12px' }}>
+            <label htmlFor="gscVerification" style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+              Google Search Console (GSC)
             </label>
-            <input
-              id="gscVerification"
-              type="text"
-              placeholder="e.g. ABC123xyz_google_verification_code"
-              value={formData.gscVerification}
-              onChange={(e) => handleChange('gscVerification', e.target.value)}
-              style={{ width: '100%', fontFamily: 'monospace' }}
-            />
+            <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748b' }}>
+              HTML verification token for site verification meta tag.
+            </p>
           </div>
+          <input
+            id="gscVerification"
+            type="text"
+            placeholder="Verification token string"
+            value={formData.gscVerification}
+            onChange={(e) => handleChange('gscVerification', e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              fontFamily: 'monospace',
+              background: '#ffffff'
+            }}
+          />
         </div>
 
         {/* Google Analytics 4 */}
-        <div className="adminCard" style={{ padding: '22px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <span style={{ fontSize: '1.25rem' }}>📊</span>
-            <div>
-              <h3 style={{ margin: 0, fontSize: '1.1rem' }}>Google Analytics 4 (GA4)</h3>
-              <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--muted)' }}>
-                Direct gtag.js tracking (if you prefer direct measurement instead of via GTM).
-              </p>
-            </div>
-          </div>
-          <div className="field" style={{ marginTop: '12px' }}>
-            <label htmlFor="ga4Id" style={{ fontSize: '0.86rem', fontWeight: 600 }}>
-              Measurement ID
+        <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+          <div style={{ marginBottom: '12px' }}>
+            <label htmlFor="ga4Id" style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+              Google Analytics 4 (GA4)
             </label>
-            <input
-              id="ga4Id"
-              type="text"
-              placeholder="e.g. G-XXXXXXXXXX"
-              value={formData.ga4Id}
-              onChange={(e) => handleChange('ga4Id', e.target.value)}
-              style={{ width: '100%', fontFamily: 'monospace' }}
-            />
+            <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748b' }}>
+              Direct Measurement ID (gtag.js). Leave blank if managing GA4 via GTM.
+            </p>
           </div>
+          <input
+            id="ga4Id"
+            type="text"
+            placeholder="G-XXXXXXXXXX"
+            value={formData.ga4Id}
+            onChange={(e) => handleChange('ga4Id', e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              fontFamily: 'monospace',
+              background: '#ffffff'
+            }}
+          />
         </div>
 
         {/* Microsoft Clarity */}
-        <div className="adminCard" style={{ padding: '22px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <span style={{ fontSize: '1.25rem' }}>🔥</span>
-            <div>
-              <h3 style={{ margin: 0, fontSize: '1.1rem' }}>Microsoft Clarity</h3>
-              <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--muted)' }}>
-                Free user session recordings, scroll maps, and click heatmaps.
-              </p>
-            </div>
-          </div>
-          <div className="field" style={{ marginTop: '12px' }}>
-            <label htmlFor="clarityId" style={{ fontSize: '0.86rem', fontWeight: 600 }}>
-              Clarity Project ID
+        <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+          <div style={{ marginBottom: '12px' }}>
+            <label htmlFor="clarityId" style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+              Microsoft Clarity
             </label>
-            <input
-              id="clarityId"
-              type="text"
-              placeholder="e.g. 9zn8xq..."
-              value={formData.clarityId}
-              onChange={(e) => handleChange('clarityId', e.target.value)}
-              style={{ width: '100%', fontFamily: 'monospace' }}
-            />
+            <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748b' }}>
+              Project ID for session recording and heatmap tracking.
+            </p>
           </div>
+          <input
+            id="clarityId"
+            type="text"
+            placeholder="Clarity project ID"
+            value={formData.clarityId}
+            onChange={(e) => handleChange('clarityId', e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              fontFamily: 'monospace',
+              background: '#ffffff'
+            }}
+          />
         </div>
 
         {/* Meta Pixel */}
-        <div className="adminCard" style={{ padding: '22px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-            <span style={{ fontSize: '1.25rem' }}>🎯</span>
-            <div>
-              <h3 style={{ margin: 0, fontSize: '1.1rem' }}>Meta (Facebook) Pixel</h3>
-              <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--muted)' }}>
-                Official Meta Ads tracking tag for custom audiences and retargeting.
-              </p>
-            </div>
-          </div>
-          <div className="field" style={{ marginTop: '12px' }}>
-            <label htmlFor="metaPixelId" style={{ fontSize: '0.86rem', fontWeight: 600 }}>
-              Meta Pixel ID / Dataset ID
+        <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+          <div style={{ marginBottom: '12px' }}>
+            <label htmlFor="metaPixelId" style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: '#0f172a', marginBottom: '4px' }}>
+              Meta Pixel (Facebook)
             </label>
-            <input
-              id="metaPixelId"
-              type="text"
-              placeholder="e.g. 123456789012345"
-              value={formData.metaPixelId}
-              onChange={(e) => handleChange('metaPixelId', e.target.value)}
-              style={{ width: '100%', fontFamily: 'monospace' }}
-            />
+            <p style={{ margin: 0, fontSize: '0.82rem', color: '#64748b' }}>
+              Pixel ID / Dataset ID for paid social conversion tracking.
+            </p>
           </div>
+          <input
+            id="metaPixelId"
+            type="text"
+            placeholder="e.g. 123456789012345"
+            value={formData.metaPixelId}
+            onChange={(e) => handleChange('metaPixelId', e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px 14px',
+              border: '1px solid #cbd5e1',
+              borderRadius: '8px',
+              fontSize: '0.9rem',
+              fontFamily: 'monospace',
+              background: '#ffffff'
+            }}
+          />
         </div>
       </div>
 
-      <div style={{ marginTop: '28px', display: 'flex', gap: '14px', alignItems: 'center' }}>
+      <div style={{ marginTop: '24px', display: 'flex', gap: '14px', alignItems: 'center' }}>
         <button
           type="submit"
           disabled={loading}
           className="btn btnPrimary"
-          style={{ padding: '12px 28px', fontSize: '1rem', fontWeight: 700 }}
+          style={{ padding: '10px 24px', fontSize: '0.92rem', borderRadius: '8px' }}
         >
-          {loading ? 'Saving Changes…' : 'Save Tracking Tags →'}
+          {loading ? 'Saving...' : 'Save Tracking Settings'}
         </button>
-        <span style={{ fontSize: '0.82rem', color: 'var(--muted)' }}>
-          Changes apply immediately to your live website.
-        </span>
       </div>
     </form>
   );

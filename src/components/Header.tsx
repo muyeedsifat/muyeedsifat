@@ -99,7 +99,7 @@ export function Header() {
         </nav>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <a
-            href="https://wa.me/8801700000000?text=Hi%20Muyeed,%20I%20would%20like%20to%20discuss%20a%20digital%20marketing%20project."
+            href="https://wa.me/8801576624428?text=Hi%20Muyeed,%20I%20would%20like%20to%20discuss%20a%20digital%20marketing%20project."
             target="_blank"
             rel="noopener noreferrer"
             className="whatsappHeaderBtn desktopCta"
@@ -145,7 +145,7 @@ export function Header() {
             <Link href="/about">About</Link>
             <Link href="/blog">Blog</Link>
             <a
-              href="https://wa.me/8801700000000?text=Hi%20Muyeed,%20I%20would%20like%20to%20discuss%20a%20digital%20marketing%20project."
+              href="https://wa.me/8801576624428?text=Hi%20Muyeed,%20I%20would%20like%20to%20discuss%20a%20digital%20marketing%20project."
               target="_blank"
               rel="noopener noreferrer"
               style={{

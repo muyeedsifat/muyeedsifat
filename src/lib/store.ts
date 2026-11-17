@@ -3,24 +3,74 @@ import path from 'node:path';
 import type { MediaItem, Post, Project, CustomPage, ChatSession, SiteSettings } from '@/types/content';
 import { isSupabaseConfigured, getSupabaseAdmin } from '@/lib/supabase';
 
-const dataDir = path.join(process.cwd(), 'data');
+const repoDataDir = path.join(process.cwd(), 'data');
+const tmpDataDir = path.join('/tmp', 'muyeed-data');
 
-async function ensureDir() {
-  await fs.mkdir(dataDir, { recursive: true });
+async function ensureDir(dir: string) {
+  try {
+    await fs.mkdir(dir, { recursive: true });
+  } catch {
+    // Ignore if directory already exists or cannot be created
+  }
+}
+
+async function syncToGitHub(file: string, content: string) {
+  const token = process.env.GITHUB_TOKEN || process.env.GITHUB_PAT;
+  const repo = process.env.GITHUB_REPOSITORY || 'muyeedsifat/muyeedsifat';
+  if (!token) return;
+
+  try {
+    const url = `https://api.github.com/repos/${repo}/contents/data/${file}`;
+    const getRes = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'User-Agent': 'Muyeed-Portfolio-Sync',
+        Accept: 'application/vnd.github.v3+json',
+      },
+    });
+    let sha = undefined;
+    if (getRes.ok) {
+      const getJson = (await getRes.json());
+      sha = getJson.sha;
+    }
+
+    await fetch(url, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'User-Agent': 'Muyeed-Portfolio-Sync',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: `Update ${file} via Admin Panel`,
+        content: Buffer.from(content).toString('base64'),
+        sha,
+      }),
+    });
+  } catch (err) {
+    console.warn(`[Store] GitHub sync failed for ${file}:`, err);
+  }
 }
 
 async function readJson<T>(file: string, fallback: T): Promise<T> {
-  await ensureDir();
-  const fullPath = path.join(dataDir, file);
+  const tmpPath = path.join(tmpDataDir, file);
   try {
-    const raw = await fs.readFile(fullPath, 'utf8');
+    const raw = await fs.readFile(tmpPath, 'utf8');
+    const sanitized = raw.replace(/^\uFEFF/, '');
+    return JSON.parse(sanitized) as T;
+  } catch {
+    // Fall back to repo file
+  }
+
+  const repoPath = path.join(repoDataDir, file);
+  try {
+    const raw = await fs.readFile(repoPath, 'utf8');
     const sanitized = raw.replace(/^\uFEFF/, '');
     return JSON.parse(sanitized) as T;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
       console.warn(`[Store] Error reading ${file}:`, error);
     }
-    await writeJson(file, fallback);
     return fallback;
   }
 }
@@ -28,11 +78,27 @@ async function readJson<T>(file: string, fallback: T): Promise<T> {
 let writeQueue = Promise.resolve();
 function writeJson<T>(file: string, value: T) {
   const task = async () => {
-    await ensureDir();
-    const fullPath = path.join(dataDir, file);
-    const tempPath = `${fullPath}.tmp`;
-    await fs.writeFile(tempPath, JSON.stringify(value, null, 2), 'utf8');
-    await fs.rename(tempPath, fullPath);
+    const jsonStr = JSON.stringify(value, null, 2);
+
+    try {
+      await ensureDir(tmpDataDir);
+      const tmpPath = path.join(tmpDataDir, file);
+      await fs.writeFile(tmpPath, jsonStr, 'utf8');
+    } catch (e) {
+      console.warn(`[Store] Failed writing to tmp cache for ${file}:`, e);
+    }
+
+    try {
+      await ensureDir(repoDataDir);
+      const repoPath = path.join(repoDataDir, file);
+      const tempPath = `${repoPath}.tmp`;
+      await fs.writeFile(tempPath, jsonStr, 'utf8');
+      await fs.rename(tempPath, repoPath);
+    } catch {
+      // Expected in read-only environments like Vercel Lambda
+    }
+
+    await syncToGitHub(file, jsonStr);
   };
   writeQueue = writeQueue.then(task, task);
   return writeQueue;

@@ -11,7 +11,7 @@ export async function PUT(request: Request) {
 
   try {
     assertSameOrigin(request);
-    const body = await request.json() as Record<string, unknown>;
+    const body = (await request.json()) as Record<string, unknown>;
     const current = await getSettings();
 
     const updated = {
@@ -28,6 +28,29 @@ export async function PUT(request: Request) {
     if (body.ga4Id !== undefined) updated.ga4Id = String(body.ga4Id).trim().slice(0, 50);
     if (body.clarityId !== undefined) updated.clarityId = String(body.clarityId).trim().slice(0, 50);
     if (body.metaPixelId !== undefined) updated.metaPixelId = String(body.metaPixelId).trim().slice(0, 50);
+
+    // WhatsApp and Contact Fields
+    if (body.whatsappNumber !== undefined) {
+      const cleanNum = String(body.whatsappNumber).trim().slice(0, 30);
+      updated.whatsappNumber = cleanNum;
+      updated.whatsapp = cleanNum;
+    }
+    if (body.whatsapp !== undefined && !updated.whatsappNumber) {
+      updated.whatsappNumber = String(body.whatsapp).trim().slice(0, 30);
+    }
+    if (body.whatsappPrompt !== undefined) {
+      updated.whatsappPrompt = String(body.whatsappPrompt).trim().slice(0, 300);
+    }
+
+    // Profiles and AI
+    if (body.upwork !== undefined) updated.upwork = String(body.upwork).trim().slice(0, 250);
+    if (body.linkedIn !== undefined) updated.linkedIn = String(body.linkedIn).trim().slice(0, 250);
+    if (body.geminiApiKey !== undefined) updated.geminiApiKey = String(body.geminiApiKey).trim().slice(0, 150);
+    if (body.geminiModel !== undefined) updated.geminiModel = String(body.geminiModel).trim().slice(0, 60);
+
+    // Admin Credentials
+    if (body.adminUsername !== undefined) updated.adminUsername = String(body.adminUsername).trim().slice(0, 80);
+    if (body.adminPassword !== undefined) updated.adminPassword = String(body.adminPassword).trim().slice(0, 120);
 
     await saveSettings(updated);
     return NextResponse.json({ settings: updated });

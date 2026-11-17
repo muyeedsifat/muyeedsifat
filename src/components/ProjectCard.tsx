@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export function ProjectCard({
@@ -12,10 +11,7 @@ export function ProjectCard({
   client,
   timeline,
   metrics,
-  featuredImage,
-  featuredAlt,
   tags,
-  index = 0
 }: {
   category: string;
   title: string;
@@ -58,10 +54,6 @@ export function ProjectCard({
       });
     }
   };
-
-  // Clean plain text summary (strips any raw HTML and trims cleanly to avoid text clutter)
-  const plainText = description.replace(/<[^>]+>/g, '').trim();
-  const summary = plainText.length > 130 ? plainText.slice(0, 127) + '...' : plainText;
 
   return (
     <>
@@ -123,16 +115,39 @@ export function ProjectCard({
         </div>
 
         {/* Clean, Prominent Title */}
-        <h3 style={{ margin: '0 0 10px', fontSize: '1.2rem', lineHeight: 1.35, fontWeight: 700, color: 'var(--ink, #111827)' }}>
+        <h3 style={{ margin: '0 0 14px', fontSize: '1.18rem', lineHeight: 1.35, fontWeight: 700, color: 'var(--ink, #111827)' }}>
           {title}
         </h3>
 
-        {/* Minimal Short Excerpt */}
-        <p style={{ margin: '0 0 20px', fontSize: '0.9rem', color: '#6b7280', lineHeight: 1.6, flexGrow: 1 }}>
-          {summary}
-        </p>
+        {/* Concise Bullet Points (Less text, clear scannable highlights) */}
+        <div style={{ margin: '0 0 18px', flexGrow: 1 }}>
+          <ul
+            style={{
+              margin: 0,
+              paddingLeft: '18px',
+              color: '#475569',
+              fontSize: '0.86rem',
+              lineHeight: 1.6,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '6px'
+            }}
+          >
+            {metrics && metrics.length > 0 ? (
+              metrics.slice(0, 3).map((m, i) => (
+                <li key={i}>
+                  <strong style={{ color: '#0f172a' }}>{m.value}</strong> {m.label}
+                </li>
+              ))
+            ) : result ? (
+              <li>{result}</li>
+            ) : (
+              <li>Click to read strategic outcomes and campaign metrics</li>
+            )}
+          </ul>
+        </div>
 
-        {/* Clean Footer Link with SVG arrow (no emoji, no bulky metric pills) */}
+        {/* Clean Footer Link with SVG arrow */}
         <div
           style={{
             display: 'flex',

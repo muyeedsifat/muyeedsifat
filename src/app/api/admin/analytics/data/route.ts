@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { getSession } from '@/lib/auth';
+import { getSettings } from '@/lib/store';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -71,7 +72,8 @@ export async function GET(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const range = searchParams.get('range') || '30d';
-  const psiKey = searchParams.get('psiKey') || process.env.PAGESPEED_API_KEY || process.env.GOOGLE_API_KEY || '';
+  const settings = await getSettings();
+  const psiKey = searchParams.get('psiKey') || settings.pagespeedApiKey || process.env.PAGESPEED_API_KEY || process.env.GOOGLE_API_KEY || '';
   const days = range === '7d' ? 7 : range === '14d' ? 14 : range === '90d' ? 90 : 30;
 
   try {

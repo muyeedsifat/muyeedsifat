@@ -39,6 +39,19 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+      </head>
+      <body>
+        {/* Google Tag Manager (noscript fallback) */}
+        {gtmId && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
 
         {/* Google Tag Manager (GTM) */}
         {gtmId && (
@@ -90,19 +103,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             fbq('track', 'PageView');`}
           </Script>
         )}
-      </head>
-      <body>
-        {/* Google Tag Manager (noscript fallback) */}
-        {gtmId && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            />
-          </noscript>
-        )}
+
         {children}
       </body>
     </html>

@@ -23,28 +23,32 @@ export function ProjectCard({
   result?: string;
   client?: string;
   timeline?: string;
-  metrics?: { label: string; value: string }[];
+  metrics?: readonly { label?: string; value?: string }[] | { label?: string; value?: string }[];
   featuredImage?: string;
   featuredAlt?: string;
-  tags?: string[] | readonly string[];
+  tags?: readonly string[] | string[];
   index?: number;
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
-      const originalStyle = window.getComputedStyle(document.body).overflow;
+      const original = window.getComputedStyle(document.body).overflow;
       document.body.style.overflow = 'hidden';
-      const handleKeyDown = (e: KeyboardEvent) => {
+      const onKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') setIsOpen(false);
       };
-      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('keydown', onKeyDown);
       return () => {
-        document.body.style.overflow = originalStyle;
-        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = original;
+        window.removeEventListener('keydown', onKeyDown);
       };
     }
   }, [isOpen]);
+
+  // Clean plain text summary (strips any raw HTML and trims cleanly to avoid text clutter)
+  const plainText = description.replace(/<[^>]+>/g, '').trim();
+  const summary = plainText.length > 130 ? plainText.slice(0, 127) + '...' : plainText;
 
   return (
     <>
@@ -63,131 +67,96 @@ export function ProjectCard({
           display: 'flex',
           flexDirection: 'column',
           cursor: 'pointer',
-          transition: 'transform 0.22s ease, box-shadow 0.22s ease',
-          outline: 'none'
+          padding: '24px',
+          borderRadius: '16px',
+          border: '1px solid var(--line, #e5e7eb)',
+          background: '#ffffff',
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+          outline: 'none',
+          height: '100%'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-4px)';
-          e.currentTarget.style.boxShadow = '0 12px 28px rgba(0,0,0,0.18)';
+          e.currentTarget.style.transform = 'translateY(-3px)';
+          e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.06)';
+          e.currentTarget.style.borderColor = 'var(--orange, #f97316)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'translateY(0)';
           e.currentTarget.style.boxShadow = '';
+          e.currentTarget.style.borderColor = 'var(--line, #e5e7eb)';
         }}
       >
-        {featuredImage ? (
-          <div
-            className="projectVisual"
+        {/* Top Meta: Category + Client */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', gap: '8px' }}>
+          <span
             style={{
-              position: 'relative',
-              padding: 0,
-              overflow: 'hidden',
-              background: '#141414'
+              fontSize: '0.74rem',
+              fontWeight: 700,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: 'var(--orange-dark, #c2410c)',
+              background: 'var(--orange-soft, #fff7ed)',
+              padding: '4px 9px',
+              borderRadius: '6px'
             }}
           >
-            <Image
-              src={featuredImage}
-              alt={featuredAlt || title}
-              width={600}
-              height={340}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              unoptimized
-            />
-            <span
-              className="tag"
-              style={{
-                position: 'absolute',
-                bottom: 12,
-                left: 12,
-                margin: 0,
-                boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
-              }}
-            >
-              {category}
-            </span>
-          </div>
-        ) : (
-          <div className={`projectVisual visual${index % 3}`} aria-hidden="true">
-            <span>{category}</span>
-          </div>
-        )}
-
-        {!featuredImage && <span className="tag">{category}</span>}
-
-        {client && (
-          <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#888', fontWeight: 700, marginBottom: 4 }}>
-            {client}
+            {category}
           </span>
-        )}
+          {client && (
+            <span style={{ fontSize: '0.78rem', color: '#6b7280', fontWeight: 600 }}>
+              {client}
+            </span>
+          )}
+        </div>
 
-        <h3 style={{ margin: '4px 0 10px', fontSize: '1.25rem' }}>{title}</h3>
+        {/* Clean, Prominent Title */}
+        <h3 style={{ margin: '0 0 10px', fontSize: '1.2rem', lineHeight: 1.35, fontWeight: 700, color: 'var(--ink, #111827)' }}>
+          {title}
+        </h3>
 
-        {/<[a-z][\s\S]*>/i.test(description) ? (
-          <div
-            style={{ fontSize: '0.92rem', color: 'var(--muted)', flexGrow: 1, lineHeight: 1.6 }}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
-        ) : (
-          <p style={{ fontSize: '0.92rem', color: 'var(--muted)', flexGrow: 1 }}>{description}</p>
-        )}
+        {/* Minimal Short Excerpt */}
+        <p style={{ margin: '0 0 20px', fontSize: '0.9rem', color: '#6b7280', lineHeight: 1.6, flexGrow: 1 }}>
+          {summary}
+        </p>
 
-        {metrics && metrics.length > 0 && (
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '14px 0 6px' }}>
-            {metrics.map((m, i) => (
-              <span
-                key={i}
-                style={{
-                  background: 'var(--orange-soft)',
-                  color: 'var(--orange-dark)',
-                  fontSize: '0.78rem',
-                  fontWeight: 750,
-                  padding: '4px 8px',
-                  borderRadius: '6px'
-                }}
-              >
-                {m.label}: <strong>{m.value}</strong>
-              </span>
-            ))}
-          </div>
-        )}
-
-        {result && <p className="projectResult">{result}</p>}
-
+        {/* Clean Footer Link with SVG arrow (no emoji, no bulky metric pills) */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            marginTop: '14px',
-            paddingTop: '10px',
-            borderTop: '1px solid var(--line, rgba(255,255,255,0.08))',
+            gap: '6px',
             fontSize: '0.84rem',
             fontWeight: 650,
-            color: 'var(--orange-dark)'
+            color: 'var(--orange-dark, #c2410c)',
+            paddingTop: '12px',
+            borderTop: '1px solid #f3f4f6'
           }}
         >
-          <span>View Full Case Study</span>
-          <span aria-hidden="true">↗</span>
+          <span>View case study</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
         </div>
       </article>
 
-      {/* Modal Popup */}
+      {/* Clean, Modern Details Modal */}
       {isOpen && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-labelledby="modal-title"
+          aria-labelledby="project-modal-title"
           onClick={() => setIsOpen(false)}
           style={{
             position: 'fixed',
             inset: 0,
             zIndex: 99999,
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
-            backdropFilter: 'blur(8px)',
+            backgroundColor: 'rgba(15, 23, 42, 0.72)',
+            backdropFilter: 'blur(6px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '16px',
+            padding: '20px',
             overflowY: 'auto'
           }}
         >
@@ -196,71 +165,82 @@ export function ProjectCard({
             style={{
               position: 'relative',
               width: '100%',
-              maxWidth: '680px',
+              maxWidth: '640px',
               maxHeight: '90vh',
               overflowY: 'auto',
-              backgroundColor: 'var(--surface, #18181b)',
-              border: '1px solid var(--border, rgba(255,255,255,0.15))',
-              borderRadius: '20px',
+              backgroundColor: '#ffffff',
+              borderRadius: '16px',
               padding: '32px 28px',
-              boxShadow: '0 25px 60px rgba(0,0,0,0.6)',
-              color: 'var(--foreground, #ededed)'
+              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.25)',
+              color: '#0f172a'
             }}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              aria-label="Close modal"
+              aria-label="Close"
               style={{
                 position: 'absolute',
-                top: '16px',
-                right: '16px',
-                width: '36px',
-                height: '36px',
-                borderRadius: '50%',
-                background: 'rgba(255,255,255,0.08)',
+                top: '18px',
+                right: '18px',
+                width: '32px',
+                height: '32px',
+                borderRadius: '8px',
+                background: '#f1f5f9',
                 border: 'none',
-                color: '#fff',
-                fontSize: '1.2rem',
+                color: '#64748b',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'background 0.2s'
+                justifyContent: 'center'
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.18)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
             >
-              ✕
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
             </button>
 
-            {/* Category & Timeline */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '8px' }}>
-              <span className="tag" style={{ margin: 0 }}>{category}</span>
+            {/* Meta row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
+              <span
+                style={{
+                  fontSize: '0.72rem',
+                  fontWeight: 750,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: 'var(--orange-dark, #c2410c)',
+                  background: 'var(--orange-soft, #fff7ed)',
+                  padding: '4px 8px',
+                  borderRadius: '5px'
+                }}
+              >
+                {category}
+              </span>
               {client && (
-                <span style={{ fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#888' }}>
+                <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
                   Client: {client}
                 </span>
               )}
               {timeline && (
-                <span style={{ fontSize: '0.8rem', background: 'rgba(255,255,255,0.06)', padding: '3px 8px', borderRadius: '4px', color: '#aaa' }}>
-                  ⏳ {timeline}
+                <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
+                  • {timeline}
                 </span>
               )}
             </div>
 
             {/* Title */}
-            <h2 id="modal-title" style={{ fontSize: '1.75rem', fontWeight: 800, margin: '8px 0 16px', lineHeight: 1.3 }}>
+            <h2 id="project-modal-title" style={{ fontSize: '1.6rem', fontWeight: 750, margin: '6px 0 16px', lineHeight: 1.3, color: '#0f172a' }}>
               {title}
             </h2>
 
-            {/* Metrics Highlight Grid */}
+            {/* Key Metrics Grid */}
             {metrics && metrics.length > 0 && (
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-                  gap: '12px',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+                  gap: '10px',
                   margin: '20px 0'
                 }}
               >
@@ -268,17 +248,17 @@ export function ProjectCard({
                   <div
                     key={i}
                     style={{
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      borderRadius: '12px',
+                      background: '#f8fafc',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: '10px',
                       padding: '12px 14px',
                       textAlign: 'center'
                     }}
                   >
-                    <div style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--orange-dark)' }}>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--orange-dark, #c2410c)' }}>
                       {m.value}
                     </div>
-                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--muted)', marginTop: '4px' }}>
+                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#64748b', marginTop: '4px', fontWeight: 600 }}>
                       {m.label}
                     </div>
                   </div>
@@ -288,16 +268,16 @@ export function ProjectCard({
 
             {/* Strategy / Overview */}
             <div style={{ margin: '20px 0' }}>
-              <h4 style={{ fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#999', marginBottom: '8px' }}>
-                Strategy &amp; Overview
+              <h4 style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8', margin: '0 0 8px', fontWeight: 700 }}>
+                Project Overview
               </h4>
               {/<[a-z][\s\S]*>/i.test(description) ? (
                 <div
-                  style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--muted)' }}
+                  style={{ fontSize: '0.94rem', lineHeight: 1.7, color: '#334155' }}
                   dangerouslySetInnerHTML={{ __html: description }}
                 />
               ) : (
-                <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--muted)' }}>
+                <p style={{ fontSize: '0.94rem', lineHeight: 1.7, color: '#334155', margin: 0 }}>
                   {description}
                 </p>
               )}
@@ -307,17 +287,17 @@ export function ProjectCard({
             {result && (
               <div
                 style={{
-                  background: 'rgba(34, 197, 94, 0.08)',
-                  border: '1px solid rgba(34, 197, 94, 0.25)',
-                  borderRadius: '12px',
-                  padding: '16px',
-                  margin: '20px 0'
+                  background: '#f0fdf4',
+                  border: '1px solid #bbf7d0',
+                  borderRadius: '10px',
+                  padding: '14px 16px',
+                  margin: '18px 0'
                 }}
               >
-                <div style={{ fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#4ade80', marginBottom: '4px' }}>
-                  ✓ Verified Results
+                <div style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16a34a', marginBottom: '4px' }}>
+                  Key Outcome
                 </div>
-                <div style={{ fontSize: '1rem', fontWeight: 600, color: '#f0fdf4' }}>
+                <div style={{ fontSize: '0.92rem', color: '#14532d', fontWeight: 600 }}>
                   {result}
                 </div>
               </div>
@@ -325,35 +305,33 @@ export function ProjectCard({
 
             {/* Tags */}
             {tags && tags.length > 0 && (
-              <div style={{ margin: '18px 0' }}>
-                <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                  {tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      style={{
-                        fontSize: '0.75rem',
-                        background: 'rgba(255,255,255,0.06)',
-                        padding: '4px 9px',
-                        borderRadius: '6px',
-                        color: '#bbb'
-                      }}
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', margin: '18px 0 24px' }}>
+                {tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      fontSize: '0.72rem',
+                      background: '#f1f5f9',
+                      padding: '3px 8px',
+                      borderRadius: '4px',
+                      color: '#475569',
+                      fontWeight: 500
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             )}
 
-            {/* Modal Actions */}
+            {/* Actions */}
             <div
               style={{
                 display: 'flex',
-                gap: '12px',
+                gap: '10px',
                 flexWrap: 'wrap',
-                marginTop: '28px',
                 paddingTop: '20px',
-                borderTop: '1px solid var(--line, rgba(255,255,255,0.1))'
+                borderTop: '1px solid #e2e8f0'
               }}
             >
               <Link
@@ -362,7 +340,7 @@ export function ProjectCard({
                 onClick={() => setIsOpen(false)}
                 style={{ flex: 1, minWidth: '180px', textAlign: 'center' }}
               >
-                Discuss a Similar Project →
+                Discuss a similar project →
               </Link>
               <button
                 type="button"

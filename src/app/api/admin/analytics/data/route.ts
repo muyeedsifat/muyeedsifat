@@ -71,6 +71,7 @@ export async function GET(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const range = searchParams.get('range') || '30d';
+  const psiKey = searchParams.get('psiKey') || process.env.PAGESPEED_API_KEY || process.env.GOOGLE_API_KEY || '';
   const days = range === '7d' ? 7 : range === '14d' ? 14 : range === '90d' ? 90 : 30;
 
   try {
@@ -107,27 +108,41 @@ export async function GET(request: Request) {
       .then((r) => r.json())
       .catch(() => ({}));
 
-    // 3. GA4 Traffic Acquisition
+    // 3. GA4 Traffic Acquisition (Channel + Source/Medium)
     const ga4TrafficPromise = fetch('https://analyticsdata.googleapis.com/v1beta/properties/564789966:runReport', {
       method: 'POST',
       headers,
       body: JSON.stringify({
         dateRanges: [{ startDate: `${days}daysAgo`, endDate: 'today' }],
-        dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+        dimensions: [{ name: 'sessionDefaultChannelGroup' }, { name: 'sessionSourceMedium' }],
         metrics: [{ name: 'sessions' }, { name: 'activeUsers' }, { name: 'keyEvents' }],
         orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 8
+        limit: 15
       })
     })
       .then((r) => r.json())
       .catch(() => ({}));
 
-    // 4. Google Search Console Performance
+    // 4. GA4 Top Pages
+    const ga4PagesPromise = fetch('https://analyticsdata.googleapis.com/v1beta/properties/564789966:runReport', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        dateRanges: [{ startDate: `${days}daysAgo`, endDate: 'today' }],
+        dimensions: [{ name: 'pagePath' }],
+        metrics: [{ name: 'screenPageViews' }, { name: 'activeUsers' }, { name: 'keyEvents' }],
+        orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
+        limit: 15
+      })
+    })
+      .then((r) => r.json())
+      .catch(() => ({}));
+
+    // 5. Google Search Console Performance
     const now = new Date();
     const endDateStr = now.toISOString().split('T')[0];
     const startDate = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
     const startDateStr = startDate.toISOString().split('T')[0];
-
     const siteUrl = encodeURIComponent('https://muyeedsifat.vercel.app/');
 
     const gscOverviewPromise = fetch(`https://www.googleapis.com/webmasters/v3/sites/${siteUrl}/searchAnalytics/query`, {
@@ -143,7 +158,7 @@ export async function GET(request: Request) {
       .then((r) => r.json())
       .catch(() => ({}));
 
-    // 5. GSC Top Queries
+    // 6. GSC Top Queries (up to 25 queries for rich search filtering)
     const gscQueriesPromise = fetch(`https://www.googleapis.com/webmasters/v3/sites/${siteUrl}/searchAnalytics/query`, {
       method: 'POST',
       headers,
@@ -151,13 +166,13 @@ export async function GET(request: Request) {
         startDate: startDateStr,
         endDate: endDateStr,
         dimensions: ['query'],
-        rowLimit: 10
+        rowLimit: 25
       })
     })
       .then((r) => r.json())
       .catch(() => ({}));
 
-    // 6. GSC Top Pages
+    // 7. GSC Top Pages (up to 25 pages)
     const gscPagesPromise = fetch(`https://www.googleapis.com/webmasters/v3/sites/${siteUrl}/searchAnalytics/query`, {
       method: 'POST',
       headers,
@@ -165,16 +180,33 @@ export async function GET(request: Request) {
         startDate: startDateStr,
         endDate: endDateStr,
         dimensions: ['page'],
-        rowLimit: 10
+        rowLimit: 25
       })
     })
       .then((r) => r.json())
       .catch(() => ({}));
 
-    const [ga4Overview, ga4Realtime, ga4Traffic, gscOverview, gscQueries, gscPages] = await Promise.all([
+    // 8. Optional PageSpeed Insights Query (if API key provided)
+    let psiData = null;
+    if (psiKey) {
+      try {
+        const targetUrl = encodeURIComponent('https://muyeedsifat.vercel.app');
+        const psiRes = await fetch(
+          `https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed?url=${targetUrl}&strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices&key=${encodeURIComponent(psiKey)}`
+        );
+        if (psiRes.ok) {
+          psiData = await psiRes.json();
+        }
+      } catch {
+        psiData = null;
+      }
+    }
+
+    const [ga4Overview, ga4Realtime, ga4Traffic, ga4Pages, gscOverview, gscQueries, gscPages] = await Promise.all([
       ga4OverviewPromise,
       ga4RealtimePromise,
       ga4TrafficPromise,
+      ga4PagesPromise,
       gscOverviewPromise,
       gscQueriesPromise,
       gscPagesPromise
@@ -186,13 +218,15 @@ export async function GET(request: Request) {
       ga4: {
         overview: ga4Overview,
         realtime: ga4Realtime,
-        traffic: ga4Traffic
+        traffic: ga4Traffic,
+        pages: ga4Pages
       },
       gsc: {
         overview: gscOverview,
         queries: gscQueries,
         pages: gscPages
-      }
+      },
+      psi: psiData
     });
   } catch (err) {
     return NextResponse.json(

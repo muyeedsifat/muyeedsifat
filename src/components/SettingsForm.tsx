@@ -288,6 +288,20 @@ export function SettingsForm({ initial }: { initial: Record<string, unknown> }) 
             </div>
 
             <div>
+              <label htmlFor="set-psi-key" style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                Google Cloud API Key (for PageSpeed Insights)
+              </label>
+              <input
+                id="set-psi-key"
+                name="pagespeedApiKey"
+                type="password"
+                defaultValue={String(initial.pagespeedApiKey || '')}
+                placeholder="AIzaSy..."
+                style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+              />
+            </div>
+
+            <div>
               <label htmlFor="set-gemini-model" style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
                 Gemini Model
               </label>

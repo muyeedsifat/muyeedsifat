@@ -24,7 +24,11 @@ export async function PUT(request: Request) {
     if (body.authorName !== undefined) updated.authorName = String(body.authorName).trim().slice(0, 120);
     if (body.email !== undefined) updated.email = String(body.email).trim().slice(0, 180);
     if (body.gtmId !== undefined) updated.gtmId = String(body.gtmId).trim().slice(0, 50);
-    if (body.gscVerification !== undefined) updated.gscVerification = String(body.gscVerification).trim().slice(0, 200);
+    if (body.gscVerification !== undefined) {
+      const rawGsc = String(body.gscVerification).trim().slice(0, 250);
+      const match = rawGsc.match(/content=["']([^"']+)["']/i);
+      updated.gscVerification = match ? match[1].trim() : rawGsc.replace(/^["']|["']$/g, '');
+    }
     if (body.ga4Id !== undefined) updated.ga4Id = String(body.ga4Id).trim().slice(0, 50);
     if (body.clarityId !== undefined) updated.clarityId = String(body.clarityId).trim().slice(0, 50);
     if (body.metaPixelId !== undefined) updated.metaPixelId = String(body.metaPixelId).trim().slice(0, 50);

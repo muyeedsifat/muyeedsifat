@@ -4,6 +4,17 @@ import '@/app/globals.css';
 import { getSiteUrl, siteConfig } from '@/lib/site';
 import { getSettings } from '@/lib/store';
 
+function parseGscVerification(raw?: string | null): string {
+  if (!raw) return '5388e14e0b0d0a6d';
+  const trimmed = raw.trim();
+  if (!trimmed) return '5388e14e0b0d0a6d';
+  const match = trimmed.match(/content=["']([^"']+)["']/i);
+  if (match && match[1]) {
+    return match[1].trim();
+  }
+  return trimmed.replace(/^["']|["']$/g, '');
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings().catch(() => null);
   const metadata: Metadata = {
@@ -16,9 +27,10 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } }
   };
 
-  if (settings?.gscVerification) {
+  const gscCode = parseGscVerification(settings?.gscVerification);
+  if (gscCode) {
     metadata.verification = {
-      google: settings.gscVerification
+      google: gscCode
     };
   }
 
@@ -39,9 +51,37 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+        {/* Google Tag Manager in <head> for immediate discovery and GSC verification */}
+        {gtmId && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','${gtmId}');`
+            }}
+          />
+        )}
+
+        {/* Google Analytics 4 (GA4 in <head>) */}
+        {ga4Id && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${ga4Id}');`
+              }}
+            />
+          </>
+        )}
       </head>
       <body>
-        {/* Google Tag Manager (noscript fallback) */}
+        {/* Google Tag Manager (noscript fallback immediately after opening body tag) */}
         {gtmId && (
           <noscript>
             <iframe
@@ -51,30 +91,6 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
               style={{ display: 'none', visibility: 'hidden' }}
             />
           </noscript>
-        )}
-
-        {/* Google Tag Manager (GTM) */}
-        {gtmId && (
-          <Script id="gtm-script" strategy="afterInteractive">
-            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${gtmId}');`}
-          </Script>
-        )}
-
-        {/* Google Analytics 4 (GA4) */}
-        {ga4Id && (
-          <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} strategy="afterInteractive" />
-            <Script id="ga4-script" strategy="afterInteractive">
-              {`window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${ga4Id}');`}
-            </Script>
-          </>
         )}
 
         {/* Microsoft Clarity */}

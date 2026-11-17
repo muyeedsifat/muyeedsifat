@@ -257,6 +257,106 @@ export function SettingsForm({ initial }: { initial: Record<string, unknown> }) 
           </div>
         </div>
 
+        {/* Analytics, Tracking & Search Console Integrations */}
+        <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '22px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 3v18h18" />
+              <path d="M18 17V9" />
+              <path d="M13 17V5" />
+              <path d="M8 17v-3" />
+            </svg>
+            <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700, color: '#0f172a' }}>
+              Web Analytics &amp; Tracking Integrations
+            </h3>
+          </div>
+          <p style={{ margin: '0 0 16px', fontSize: '0.82rem', color: '#64748b' }}>
+            Manage Google Search Console verification, Google Tag Manager, Google Analytics 4, and Microsoft Clarity.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {/* GSC Verification */}
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                <label htmlFor="set-gsc" style={{ fontSize: '0.8rem', fontWeight: 650, color: '#334155' }}>
+                  Google Search Console Verification Tag / Token
+                </label>
+                <span style={{ fontSize: '0.74rem', color: '#166534', background: '#dcfce7', padding: '2px 8px', borderRadius: '4px', fontWeight: 600 }}>
+                  Active in &lt;head&gt;
+                </span>
+              </div>
+              <input
+                id="set-gsc"
+                name="gscVerification"
+                defaultValue={String(initial.gscVerification || '5388e14e0b0d0a6d')}
+                placeholder="5388e14e0b0d0a6d or <meta name=&quot;google-site-verification&quot; content=&quot;...&quot; />"
+                style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+              />
+              <p style={{ margin: '6px 0 0', fontSize: '0.74rem', color: '#64748b' }}>
+                Enter your GSC verification token or paste the entire meta tag snippet provided by Google Search Console. The verification file <code>/google5388e14e0b0d0a6d.html</code> is also permanently hosted at root.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+              {/* GTM Container ID */}
+              <div>
+                <label htmlFor="set-gtm" style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                  Google Tag Manager (GTM) Container ID
+                </label>
+                <input
+                  id="set-gtm"
+                  name="gtmId"
+                  defaultValue={String(initial.gtmId || 'GTM-KX4NGRXH')}
+                  placeholder="GTM-XXXXXXX"
+                  style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+                />
+              </div>
+
+              {/* GA4 Measurement ID */}
+              <div>
+                <label htmlFor="set-ga4" style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                  Google Analytics 4 (GA4) Measurement ID
+                </label>
+                <input
+                  id="set-ga4"
+                  name="ga4Id"
+                  defaultValue={String(initial.ga4Id || 'G-6DXKYVGLVG')}
+                  placeholder="G-XXXXXXXXXX"
+                  style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+                />
+              </div>
+
+              {/* Microsoft Clarity Project ID */}
+              <div>
+                <label htmlFor="set-clarity" style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                  Microsoft Clarity Project ID
+                </label>
+                <input
+                  id="set-clarity"
+                  name="clarityId"
+                  defaultValue={String(initial.clarityId || '')}
+                  placeholder="e.g. j1k2l3m4n5"
+                  style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+                />
+              </div>
+
+              {/* Meta Pixel ID */}
+              <div>
+                <label htmlFor="set-meta-pixel" style={{ display: 'block', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                  Meta (Facebook) Pixel ID (Optional)
+                </label>
+                <input
+                  id="set-meta-pixel"
+                  name="metaPixelId"
+                  defaultValue={String(initial.metaPixelId || '')}
+                  placeholder="e.g. 123456789012345"
+                  style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Gemini AI Chatbot */}
         <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '22px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>

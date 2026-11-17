@@ -107,6 +107,15 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
               <span>Analytics &amp; SEO</span>
             </Link>
 
+            <Link href="/admin/seo-audit" className="adminNavLink">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <path d="m9 11 2 2 4-4" />
+              </svg>
+              <span>SEO Audit</span>
+            </Link>
+
             <Link href="/admin/tracking" className="adminNavLink">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2" />

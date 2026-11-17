@@ -25,6 +25,7 @@ export type Post = {
   customSchema?: string;
   faqs: { question: string; answer: string }[];
   blocks: ContentBlock[];
+  content?: string;
   createdAt: string;
   updatedAt: string;
   publishedAt?: string;

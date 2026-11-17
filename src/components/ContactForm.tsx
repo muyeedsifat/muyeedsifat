@@ -14,8 +14,21 @@ export function ContactForm() {
     const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
     const result = await response.json().catch(() => ({}));
     setSending(false);
-    if (response.ok) { setStatus('Thanks. Your inquiry has been received.'); form.reset(); }
-    else setStatus(result.error || 'Could not send your inquiry. Please email me directly.');
+    if (response.ok) {
+      setStatus('Thanks. Your inquiry has been received.');
+      form.reset();
+      if (typeof window !== 'undefined') {
+        const w = window as unknown as { dataLayer?: Array<Record<string, unknown>> };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: 'lead_form_submitted',
+          formName: 'contact_page_form',
+          leadMethod: 'form'
+        });
+      }
+    } else {
+      setStatus(result.error || 'Could not send your inquiry. Please email me directly.');
+    }
   }
 
   return (

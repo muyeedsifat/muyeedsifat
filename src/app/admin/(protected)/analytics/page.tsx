@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useMemo } from 'react';
+import Link from 'next/link';
 
 interface Ga4Row {
   dimensionValues?: { value: string }[];
@@ -83,6 +84,12 @@ export default function AnalyticsDashboardPage() {
   }
 
   useEffect(() => {
+    try {
+      const savedKey = localStorage.getItem('psi_api_key');
+      if (savedKey) setPsiKey(savedKey);
+    } catch {
+      // ignore
+    }
     loadData(range);
   }, [range]);
 
@@ -93,6 +100,11 @@ export default function AnalyticsDashboardPage() {
     }
     setPsiLoading(true);
     setPsiError('');
+    try {
+      localStorage.setItem('psi_api_key', psiKey.trim());
+    } catch {
+      // ignore
+    }
     try {
       const url = `/api/admin/analytics/data?range=${range}&psiKey=${encodeURIComponent(psiKey.trim())}`;
       const res = await fetch(url, { cache: 'no-store' });
@@ -244,32 +256,53 @@ export default function AnalyticsDashboardPage() {
       )}
 
       {/* Interactive Tabs Bar */}
-      <div style={{ display: 'flex', gap: '8px', borderBottom: '1px solid #e2e8f0', paddingBottom: '2px', flexWrap: 'wrap' }}>
-        {[
-          { id: 'overview', label: 'Executive Overview' },
-          { id: 'seo', label: 'SEO & Search Queries' },
-          { id: 'pages', label: 'Landing Pages & Content' },
-          { id: 'pagespeed', label: 'PageSpeed & Core Web Vitals' }
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => setActiveTab(tab.id as typeof activeTab)}
-            style={{
-              padding: '8px 16px',
-              fontSize: '0.88rem',
-              fontWeight: activeTab === tab.id ? 700 : 500,
-              color: activeTab === tab.id ? 'var(--orange-dark, #c2410c)' : '#64748b',
-              borderBottom: activeTab === tab.id ? '2px solid var(--orange, #f97316)' : '2px solid transparent',
-              background: 'transparent',
-              border: 'none',
-              cursor: 'pointer',
-              marginBottom: '-2px'
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e2e8f0', paddingBottom: '2px', flexWrap: 'wrap', gap: '8px' }}>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          {[
+            { id: 'overview', label: 'Executive Overview' },
+            { id: 'seo', label: 'SEO & Search Queries' },
+            { id: 'pages', label: 'Landing Pages & Content' },
+            { id: 'pagespeed', label: 'PageSpeed & Core Web Vitals' }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveTab(tab.id as typeof activeTab)}
+              style={{
+                padding: '8px 16px',
+                fontSize: '0.88rem',
+                fontWeight: activeTab === tab.id ? 700 : 500,
+                color: activeTab === tab.id ? 'var(--orange-dark, #c2410c)' : '#64748b',
+                borderBottom: activeTab === tab.id ? '2px solid var(--orange, #f97316)' : '2px solid transparent',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                marginBottom: '-2px'
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <Link
+          href="/admin/seo-audit"
+          style={{
+            padding: '6px 14px',
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            color: 'var(--orange-dark, #c2410c)',
+            background: 'var(--orange-soft, #fff7ed)',
+            borderRadius: '6px',
+            border: '1px solid #ffedd5',
+            textDecoration: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px'
+          }}
+        >
+          <span>SEO Content Audit Dashboard →</span>
+        </Link>
       </div>
 
       {/* KPI Scorecards Grid (Always visible across tabs for quick context) */}
@@ -747,6 +780,17 @@ export default function AnalyticsDashboardPage() {
                   {psiError}
                 </div>
               )}
+
+              {/* Step-by-Step API Key Instructions */}
+              <div style={{ marginTop: '14px', padding: '12px 14px', background: '#f1f5f9', borderRadius: '8px', fontSize: '0.8rem', color: '#475569', lineHeight: 1.6 }}>
+                <strong style={{ color: '#0f172a' }}>Where and how to get your PageSpeed Insights API Key:</strong>
+                <ol style={{ margin: '6px 0 0', paddingLeft: '18px' }}>
+                  <li>Go to <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', fontWeight: 600 }}>Google Cloud Console &gt; Credentials</a>.</li>
+                  <li>Click <strong>+ CREATE CREDENTIALS</strong> &gt; <strong>API key</strong>.</li>
+                  <li>Go to <a href="https://console.cloud.google.com/apis/library/pagespeedonline.googleapis.com" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', fontWeight: 600 }}>PageSpeed Insights API Library</a> and click <strong>ENABLE</strong>.</li>
+                  <li>Paste the generated key above and click <strong>Run Live Audit</strong> (it is automatically saved so you do not have to enter it again).</li>
+                </ol>
+              </div>
             </div>
           </div>
 

@@ -105,5 +105,10 @@ export type SiteSettings = {
   upwork?: string;
   adminUsername?: string;
   adminPassword?: string;
+  gtmId?: string;
+  gscVerification?: string;
+  ga4Id?: string;
+  clarityId?: string;
+  metaPixelId?: string;
   [key: string]: unknown;
 };

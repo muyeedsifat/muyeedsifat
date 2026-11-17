@@ -3,6 +3,8 @@ export const siteConfig = {
   fullName: 'Muyeed Sifat',
   role: 'Digital Marketer',
   email: 'muyeedsifatt@gmail.com',
+  whatsappNumber: '+8801576624428',
+  whatsappPrompt: 'Hi Muyeed, I visited your website and would like to discuss a digital marketing project.',
   description:
     'Digital marketer helping businesses grow with AI SEO, Google Ads and Meta Ads, with WordPress development available as a supporting skill.',
   linkedIn: 'https://www.linkedin.com/in/muyeedsifat/',

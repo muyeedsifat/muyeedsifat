@@ -1,4 +1,5 @@
 export const projects = [
+  { category: 'AI SEO', title: 'Hunt Custom Cargo – SEO & AI Growth', description: 'Comprehensive topical authority and content strategy securing 1,200+ Top 10 Google rankings and trusted citations in Google AI Overviews.', result: '1,200+ keywords in Google Top 10 & featured in AI Overviews.' },
   { category: 'AI SEO', title: 'Organic Growth Strategy', description: 'Search strategy, content optimization, internal linking and authority development focused on sustainable organic growth.', result: '+300% organic traffic growth on a selected SEO project.' },
   { category: 'AI SEO', title: 'AI Visibility Optimization', description: 'Content, entity and authority improvements designed for stronger search and answer-engine discoverability.', result: 'Improved search and AI visibility foundations.' },
   { category: 'Google Ads', title: 'Search Campaign Restructure', description: 'Intent-led campaign architecture, keyword cleanup and conversion-focused landing-page alignment.', result: 'Cleaner account structure and stronger demand focus.' },

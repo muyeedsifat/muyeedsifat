@@ -111,5 +111,6 @@ export type SiteSettings = {
   ga4Id?: string;
   clarityId?: string;
   metaPixelId?: string;
+  pagespeedApiKey?: string;
   [key: string]: unknown;
 };

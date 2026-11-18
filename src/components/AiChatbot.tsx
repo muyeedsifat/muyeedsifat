@@ -24,7 +24,7 @@ export function AiChatbot({
     {
       id: 'welcome-1',
       sender: 'bot',
-      text: "Hi! I'm Muyeed's AI assistant. Ask me about AI SEO, Google Ads, Meta Ads, WordPress, or case studies. I keep answers short and to the point!",
+      text: "Hello. I represent Muyeed Sifat for AI SEO, Google Ads, Meta Ads, and performance marketing strategy. What growth channel are you looking to scale?",
       time: 'Just now'
     }
   ]);
@@ -91,7 +91,7 @@ export function AiChatbot({
         {
           id: `bot-err-${Date.now()}`,
           sender: 'bot',
-          text: "I had a moment of connection delay. You can reach Muyeed directly on WhatsApp right now!",
+          text: "Muyeed is available for strategy discussions. You can connect with him directly on WhatsApp at +8801576624428.",
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ]);
@@ -129,8 +129,8 @@ export function AiChatbot({
                 <span className="chatbotStatusDot" aria-label="Online" />
               </div>
               <div className="chatbotHeaderTitles">
-                <strong>Muyeed Assistant</strong>
-                <span className="chatbotStatusText">Gemini AI • Online</span>
+                <strong>Muyeed Sifat</strong>
+                <span className="chatbotStatusText">Strategic AI • Online</span>
               </div>
             </div>
 
@@ -193,23 +193,23 @@ export function AiChatbot({
             <button
               type="button"
               className="quickChip"
-              onClick={() => handleSend('What services do you offer?')}
+              onClick={() => handleSend('Tell me about your AI SEO and search ranking approach.')}
             >
-              Services
+              AI SEO &amp; GEO
             </button>
             <button
               type="button"
               className="quickChip"
-              onClick={() => handleSend('What results have you achieved?')}
+              onClick={() => handleSend('How do you structure Google and Meta Ads for maximum ROAS?')}
             >
-              Results
+              Paid Ads &amp; ROAS
             </button>
             <button
               type="button"
               className="quickChip"
-              onClick={() => handleSend('Can I hire you on Upwork or LinkedIn?')}
+              onClick={() => handleSend('How can I get an audit or discuss pricing?')}
             >
-              Upwork & LinkedIn
+              Audits &amp; Pricing
             </button>
             <a
               href={whatsappUrl}
@@ -233,7 +233,7 @@ export function AiChatbot({
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask anything or propose a project…"
+              placeholder="Ask about strategy, audits, or channels…"
               aria-label="Your message"
               disabled={loading}
             />

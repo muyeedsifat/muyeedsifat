@@ -8,8 +8,8 @@ import { ServiceCard } from '@/components/ServiceCard';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'About Muyeed Sifat | Digital Marketer',
-  description: 'Learn about Muyeed Sifat, a digital marketer working across AI SEO, Google Ads and Meta Ads, with WordPress development as a supporting skill.',
+  title: 'About Muyeed Sifat | Digital Marketing Strategist',
+  description: 'Learn about Muyeed Sifat, an ROI-focused digital marketer specializing in AI SEO, Google Ads, Meta Ads and growth-oriented WordPress architecture.',
   path: '/about',
   image: '/images/about-muyeed.webp'
 });

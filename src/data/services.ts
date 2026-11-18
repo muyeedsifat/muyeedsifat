@@ -8,7 +8,7 @@ export type ServiceData = {
   cta: string;
   metaTitle: string;
   metaDescription: string;
-  packages: { label: string; name: string; description: string; featured?: boolean }[];
+  packages: { label: string; name: string; description: string; featured?: boolean; features: string[] }[];
   audiences: string[];
   reasons: { title: string; description: string }[];
   projects: { title: string; description: string }[];
@@ -30,9 +30,40 @@ export const services: ServiceData[] = [
     metaDescription:
       'AI SEO services combining SEO, AEO and GEO to improve visibility across Google Search, AI Overviews, ChatGPT, Gemini and other answer engines.',
     packages: [
-      { label: 'One-Time', name: 'AI SEO Audit', description: 'Technical SEO, content, internal linking, authority and AI visibility analysis with prioritized actions.' },
-      { label: 'Ongoing', name: 'Monthly AI SEO', description: 'Ongoing SEO, AEO, GEO, content optimization, technical improvements and authority growth.', featured: true },
-      { label: 'Flexible', name: 'Custom AI SEO', description: 'A tailored engagement built around your site, priorities, growth targets and available resources.' }
+      {
+        label: 'One-Time',
+        name: 'AI SEO Audit',
+        description: 'Technical SEO, content, internal linking, authority and AI visibility analysis with prioritized actions.',
+        features: [
+          'Full technical & indexation audit',
+          'AEO & GEO answer readiness review',
+          'Entity & topical coverage gaps',
+          'Prioritized action roadmap'
+        ]
+      },
+      {
+        label: 'Ongoing',
+        name: 'Monthly AI SEO',
+        description: 'Ongoing SEO, AEO, GEO, content optimization, technical improvements and authority growth.',
+        featured: true,
+        features: [
+          'Continuous SEO, AEO & GEO execution',
+          'Topical authority & content tuning',
+          'Internal linking & schema updates',
+          'Monthly ranking & organic reporting'
+        ]
+      },
+      {
+        label: 'Flexible',
+        name: 'Custom AI SEO',
+        description: 'A tailored engagement built around your site, priorities, growth targets and available resources.',
+        features: [
+          'Tailored cross-channel strategy',
+          'Custom technical sprint deliverables',
+          'Competitive entity positioning',
+          'Dedicated growth milestone tracking'
+        ]
+      }
     ],
     audiences: ['SaaS companies', 'Ecommerce brands', 'Local businesses', 'Professional services', 'Brands losing organic visibility', 'Teams targeting AI search'],
     reasons: [
@@ -66,13 +97,44 @@ export const services: ServiceData[] = [
     description:
       'Capture high-intent search demand with campaigns structured around relevant keywords, reliable measurement, controlled spend and continuous optimization.',
     cta: 'Improve PPC Performance',
-    metaTitle: 'Google Ads Management Services | Muyeed',
+    metaTitle: 'Google Ads Management Services & Paid Search | Muyeed',
     metaDescription:
       'Google Ads management for qualified search traffic, stronger conversion tracking, campaign optimization and better control over paid search performance.',
     packages: [
-      { label: 'One-Time', name: 'Campaign Setup', description: 'Keyword research, account structure, campaign build, conversion setup and launch preparation.' },
-      { label: 'Ongoing', name: 'Monthly Management', description: 'Search-term analysis, bidding review, testing, optimization, budget control and reporting.', featured: true },
-      { label: 'Flexible', name: 'Google Ads Audit', description: 'A focused review of structure, search terms, tracking, ads, bidding and landing-page alignment.' }
+      {
+        label: 'One-Time',
+        name: 'Campaign Setup',
+        description: 'Keyword research, account structure, campaign build, conversion setup and launch preparation.',
+        features: [
+          'Commercial intent keyword research',
+          'Targeted ad group architecture',
+          'Server-side & GA4 conversion tracking',
+          'Compelling responsive search ads'
+        ]
+      },
+      {
+        label: 'Ongoing',
+        name: 'Monthly Management',
+        description: 'Search-term analysis, bidding review, testing, optimization, budget control and reporting.',
+        featured: true,
+        features: [
+          'Daily search query & negative control',
+          'Smart bidding & budget optimization',
+          'Continuous copy & asset A/B testing',
+          'Transparent conversion & ROI reports'
+        ]
+      },
+      {
+        label: 'Flexible',
+        name: 'Google Ads Audit',
+        description: 'A focused review of structure, search terms, tracking, ads, bidding and landing-page alignment.',
+        features: [
+          'Wasted ad spend analysis',
+          'Search term & query intent audit',
+          'Conversion tag troubleshooting',
+          'Clear restructuring roadmap'
+        ]
+      }
     ],
     audiences: ['Service businesses', 'B2B companies', 'Local lead generation', 'High-intent ecommerce', 'Businesses needing immediate demand', 'Teams with underperforming accounts'],
     reasons: [
@@ -110,9 +172,40 @@ export const services: ServiceData[] = [
     metaDescription:
       'Meta Ads management for Facebook and Instagram with audience strategy, creative testing, retargeting and conversion-focused campaign optimization.',
     packages: [
-      { label: 'One-Time', name: 'Campaign Setup', description: 'Audience planning, campaign structure, tracking checks, ad setup and launch preparation.' },
-      { label: 'Ongoing', name: 'Monthly Management', description: 'Creative testing, audience refinement, retargeting, budget optimization and reporting.', featured: true },
-      { label: 'Flexible', name: 'Meta Ads Audit', description: 'A focused review of audiences, creatives, campaign structure, tracking and funnel alignment.' }
+      {
+        label: 'One-Time',
+        name: 'Campaign Setup',
+        description: 'Audience planning, campaign structure, tracking checks, ad setup and launch preparation.',
+        features: [
+          'Audience & custom persona mapping',
+          'Meta Pixel & CAPI tracking check',
+          'Creative testing framework setup',
+          'High-converting campaign launch'
+        ]
+      },
+      {
+        label: 'Ongoing',
+        name: 'Monthly Management',
+        description: 'Creative testing, audience refinement, retargeting, budget optimization and reporting.',
+        featured: true,
+        features: [
+          'Continuous creative hook testing',
+          'Warm audience & retargeting funnels',
+          'Budget scaling & ROAS monitoring',
+          'Detailed weekly performance insights'
+        ]
+      },
+      {
+        label: 'Flexible',
+        name: 'Meta Ads Audit',
+        description: 'A focused review of audiences, creatives, campaign structure, tracking and funnel alignment.',
+        features: [
+          'Audience overlap & fatigue audit',
+          'Ad creative & hook performance check',
+          'Conversion funnel bottleneck diagnosis',
+          'Practical scale recommendations'
+        ]
+      }
     ],
     audiences: ['Ecommerce brands', 'Local businesses', 'Lead generation companies', 'Personal brands', 'Product launches', 'Retargeting campaigns'],
     reasons: [
@@ -150,9 +243,40 @@ export const services: ServiceData[] = [
     metaDescription:
       'WordPress development for service websites and landing pages with responsive layouts, SEO-ready structure, performance awareness and conversion-focused design.',
     packages: [
-      { label: 'One-Time', name: 'Website Build', description: 'Responsive WordPress website with core pages, SEO-ready structure and conversion-focused layouts.' },
-      { label: 'Ongoing', name: 'Monthly Support', description: 'Content updates, landing pages, layout changes, maintenance and performance improvements.', featured: true },
-      { label: 'Flexible', name: 'Landing Page Project', description: 'Focused WordPress landing pages built to support paid campaigns or organic search goals.' }
+      {
+        label: 'One-Time',
+        name: 'Website Build',
+        description: 'Responsive WordPress website with core pages, SEO-ready structure and conversion-focused layouts.',
+        features: [
+          'Responsive desktop & mobile layouts',
+          'Built-in technical SEO foundations',
+          'Core Web Vitals & speed optimized',
+          'Conversion-focused page structure'
+        ]
+      },
+      {
+        label: 'Ongoing',
+        name: 'Monthly Support',
+        description: 'Content updates, landing pages, layout changes, maintenance and performance improvements.',
+        featured: true,
+        features: [
+          'High-converting landing page creation',
+          'Regular security & plugin updates',
+          'Speed & performance monitoring',
+          'Continuous UX & conversion tweaks'
+        ]
+      },
+      {
+        label: 'Flexible',
+        name: 'Landing Page Project',
+        description: 'Focused WordPress landing pages built to support paid campaigns or organic search goals.',
+        features: [
+          'Ad-matched landing page layout',
+          'Fast loading & mobile optimized',
+          'Form & analytics tracking integration',
+          'A/B testing ready architecture'
+        ]
+      }
     ],
     audiences: ['Service businesses', 'Personal brands', 'New businesses', 'Marketing teams', 'Companies redesigning older sites', 'Campaigns needing better landing pages'],
     reasons: [

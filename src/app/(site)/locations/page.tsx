@@ -6,15 +6,14 @@ import { FAQ } from '@/components/FAQ';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Service Locations | Muyeed - AI SEO, Google Ads & Meta Ads Globally',
-  description: 'Digital marketing services tailored for ambitious businesses in the USA, UK, Canada, Australia, and Europe. AI SEO, Google Ads, Meta Ads and conversion-focused web strategy.',
+  title: 'Service Locations | Global Digital Marketing by Muyeed',
+  description: 'Digital marketing services for ambitious businesses in the USA, UK, Canada, Australia, and Europe across AI SEO, Google Ads, and Meta Ads.',
   path: '/locations'
 });
 
 const regions = [
   {
     code: 'USA',
-    flag: '🇺🇸',
     name: 'United States',
     headline: 'High-Intent Search & AI Overviews for Competitive Markets',
     summary: 'Tailored for the world’s most competitive digital landscape. Built around commercial search intent, zero-fluff PPC campaign restructures, and emerging AI Overviews discoverability.',
@@ -29,7 +28,6 @@ const regions = [
   },
   {
     code: 'UK',
-    flag: '🇬🇧',
     name: 'United Kingdom',
     headline: 'High-ROI Paid Acquisition & Authority SEO',
     summary: 'Eliminating wasted ad spend in saturated UK sectors. Designed to maximize Quality Score on Google Search, build sustainable organic authority, and optimize conversion paths.',
@@ -44,7 +42,6 @@ const regions = [
   },
   {
     code: 'CA',
-    flag: '🇨🇦',
     name: 'Canada',
     headline: 'Multi-Province Organic Growth & PPC Expansion',
     summary: 'Strategic digital marketing addressing cross-province buyer behavior and cross-border North American expansion. Scaled for qualified lead generation and sustainable margin growth.',
@@ -59,7 +56,6 @@ const regions = [
   },
   {
     code: 'AU',
-    flag: '🇦🇺',
     name: 'Australia',
     headline: 'High-Converting Search & Social Funnels',
     summary: 'Targeting commercial search terms and social demand during Australian daylight hours. Engineered to convert competitive clicks into measurable inbound pipeline and revenue.',
@@ -74,7 +70,6 @@ const regions = [
   },
   {
     code: 'EU',
-    flag: '🇪🇺',
     name: 'Europe',
     headline: 'Cross-Border Expansion & Multilingual Entity SEO',
     summary: 'Multi-regional search and paid advertising built for brands operating across European nations. Built on technical rigor, entity authority, and privacy-first measurement.',
@@ -160,11 +155,11 @@ export default function LocationsPage() {
       {/* Global Presence Strip */}
       <section className="trust">
         <div className="container trustGrid">
-          <div className="trustItem">🇺🇸 United States</div>
-          <div className="trustItem">🇬🇧 United Kingdom</div>
-          <div className="trustItem">🇨🇦 Canada</div>
-          <div className="trustItem">🇦🇺 Australia</div>
-          <div className="trustItem">🇪🇺 Europe</div>
+          <div className="trustItem">United States</div>
+          <div className="trustItem">United Kingdom</div>
+          <div className="trustItem">Canada</div>
+          <div className="trustItem">Australia</div>
+          <div className="trustItem">Europe</div>
         </div>
       </section>
 
@@ -183,7 +178,23 @@ export default function LocationsPage() {
             {regions.map((region) => (
               <article key={region.code} className="card locationCard">
                 <div className="locationCardHeader">
-                  <span className="locationFlag" aria-hidden="true">{region.flag}</span>
+                  <span
+                    className="locationFlagBadge"
+                    style={{
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: '12px',
+                      background: 'var(--orange-soft)',
+                      color: 'var(--orange-dark)',
+                      display: 'grid',
+                      placeItems: 'center',
+                      fontWeight: 800,
+                      fontSize: '0.85rem'
+                    }}
+                    aria-hidden="true"
+                  >
+                    {region.code}
+                  </span>
                   <div>
                     <span className="tag">{region.code}</span>
                     <h3 className="locationName">{region.name}</h3>

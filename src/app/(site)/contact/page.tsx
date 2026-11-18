@@ -7,7 +7,7 @@ import { siteConfig } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Contact Muyeed | Digital Marketing Projects',
-  description: 'Contact Muyeed Sifat about AI SEO, Google Ads, Meta Ads or WordPress support for a digital marketing project.',
+  description: 'Get in touch with Muyeed Sifat to discuss high-impact AI SEO, performance Google Ads, Meta Ads management, or conversion-focused WordPress development.',
   path: '/contact'
 });
 

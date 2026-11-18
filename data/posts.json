@@ -1,7 +1,7 @@
 [
   {
     "id": "692f4e71-1b3c-473b-aea4-ec469db99c34",
-    "title": "How Generative AI Changes Search Results",
+    "title": "Generative AI Search: How AI Changes Search Results",
     "slug": "how-generative-ai-changes-search-results",
     "excerpt": "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundamentals.",
     "status": "published",
@@ -16,8 +16,8 @@
       "Digital Marketing"
     ],
     "focusKeyword": "generative AI search",
-    "metaTitle": "How Generative AI Changes Search Results | Muyeed",
-    "metaDescription": "AI search is changing how people discover brands. This guide explains the implications for SEO, AEO and GEO without abandoning traditional search fundament",
+    "metaTitle": "Generative AI Search: How AI Changes Search Results | Muyeed",
+    "metaDescription": "Explore how generative AI search is transforming digital marketing, combining technical SEO, AEO, and GEO to protect search visibility.",
     "canonicalUrl": "",
     "schemaType": "BlogPosting",
     "customSchema": "",
@@ -52,7 +52,7 @@
       {
         "id": "b-2",
         "type": "paragraph",
-        "text": "<p>Search engine result pages (SERPs) are undergoing the most consequential transformation since the inception of algorithmic web indexing. For over two decades, search engines functioned primarily as indexing directories. A user entered a query, the search engine parsed keywords and backlink signals, and returned ten organic hyperlinks for the user to navigate and investigate independently.</p>"
+        "text": "<p>The rise of <strong>generative AI search</strong> is driving the most consequential transformation since the inception of algorithmic web indexing. For over two decades, search engines functioned primarily as navigational hubs, directing users to external websites via ranked organic blue links.</p>"
       },
       {
         "id": "b-3",
@@ -214,7 +214,7 @@
   },
   {
     "id": "81848b18-7b85-42ca-99ba-a6a10b6a1163",
-    "title": "AEO vs GEO vs SEO",
+    "title": "AEO vs GEO vs SEO: Complete Optimization Framework",
     "slug": "aeo-vs-geo-vs-seo",
     "excerpt": "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together.",
     "status": "published",
@@ -229,8 +229,8 @@
       "Digital Marketing"
     ],
     "focusKeyword": "AEO vs GEO vs SEO",
-    "metaTitle": "AEO vs GEO vs SEO | Muyeed",
-    "metaDescription": "Understand how SEO, Answer Engine Optimization and Generative Engine Optimization overlap, where they differ and how to plan them together.",
+    "metaTitle": "AEO vs GEO vs SEO: Strategic Visibility Framework | Muyeed",
+    "metaDescription": "Compare AEO vs GEO vs SEO to understand how search engine optimization, answer engines, and generative AI connect into a single growth strategy.",
     "canonicalUrl": "",
     "schemaType": "BlogPosting",
     "customSchema": "",
@@ -265,7 +265,7 @@
       {
         "id": "b-2",
         "type": "paragraph",
-        "text": "<p>Search marketing is no longer defined by a single channel or metric. For decades, Search Engine Optimization (SEO) was the undisputed umbrella term for digital discoverability. However, the emergence of voice assistants, AI answer engines, and conversational search platforms has created two distinct, complementary disciplines: Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO).</p>"
+        "text": "<p>Navigating <strong>AEO vs GEO vs SEO</strong> represents the new frontier of digital marketing and discoverability. For decades, Search Engine Optimization (SEO) was the undisputed umbrella term for digital discoverability.</p>"
       },
       {
         "id": "b-3",
@@ -458,7 +458,7 @@
   },
   {
     "id": "6015cc96-f78b-4673-9d0a-61f504835f8d",
-    "title": "How to Structure Google Ads Campaigns",
+    "title": "Google Ads Campaign Structure for Maximum Conversions",
     "slug": "how-to-structure-google-ads-campaigns",
     "excerpt": "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions.",
     "status": "published",
@@ -473,8 +473,8 @@
       "Digital Marketing"
     ],
     "focusKeyword": "Google Ads campaign structure",
-    "metaTitle": "How to Structure Google Ads Campaigns | Muyeed",
-    "metaDescription": "A practical Google Ads campaign structure built around search intent, measurement, budget control and clean optimization decisions.",
+    "metaTitle": "Google Ads Campaign Structure: High-Intent PPC | Muyeed",
+    "metaDescription": "Build a profitable Google Ads campaign structure centered on high-intent keywords, tight ad groups, reliable conversion tracking, and budget control.",
     "canonicalUrl": "",
     "schemaType": "BlogPosting",
     "customSchema": "",
@@ -509,7 +509,7 @@
       {
         "id": "b-2",
         "type": "paragraph",
-        "text": "<p>Google Ads is one of the most powerful acquisition channels for businesses seeking immediate, high-intent customer demand. However, millions of dollars in ad spend are wasted every year due to fragmented campaign architecture, keyword cannibalization, and reliance on automated settings without strategic oversight.</p>"
+        "text": "<p>Developing a scalable <strong>Google Ads campaign structure</strong> is essential for businesses seeking immediate, high-intent customer demand without wasting budget. Millions of dollars in ad spend are wasted every year on unsegmented campaigns.</p>"
       },
       {
         "id": "b-3",
@@ -704,7 +704,7 @@
   },
   {
     "id": "a168db36-b7c6-4752-9e3b-358d68272533",
-    "title": "High-Intent Keyword Research for PPC",
+    "title": "High Intent PPC Keywords: Commercial Search Research",
     "slug": "high-intent-keyword-research-ppc",
     "excerpt": "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand.",
     "status": "published",
@@ -719,8 +719,8 @@
       "Digital Marketing"
     ],
     "focusKeyword": "high intent PPC keywords",
-    "metaTitle": "High-Intent Keyword Research for PPC | Muyeed",
-    "metaDescription": "Learn how to separate high-intent commercial keywords from research traffic so paid search campaigns stay focused on qualified demand.",
+    "metaTitle": "High Intent PPC Keywords: Commercial Search Guide | Muyeed",
+    "metaDescription": "Master finding high intent PPC keywords to eliminate wasted ad spend, attract ready-to-buy searchers, and increase Google Ads conversion rates.",
     "canonicalUrl": "",
     "schemaType": "BlogPosting",
     "customSchema": "",
@@ -755,7 +755,7 @@
       {
         "id": "b-2",
         "type": "paragraph",
-        "text": "<p>In pay-per-click advertising, traffic volume is a vanity metric; commercial intent is the only metric that directly impacts your bottom line. Bidding on high-volume informational keywords might generate impressive impression numbers and superficial clicks, but without genuine buying intent, your ad spend rapidly drains with negligible return on investment.</p>"
+        "text": "<p>Targeting <strong>high intent PPC keywords</strong> is the foundation of high-ROI paid search advertising. In pay-per-click advertising, traffic volume is a vanity metric; commercial intent is the only metric that directly impacts your bottom line.</p>"
       },
       {
         "id": "b-3",
@@ -933,7 +933,7 @@
   },
   {
     "id": "066e3822-6306-4513-a1ed-70dda7cfb927",
-    "title": "Meta Ads Audience Testing Framework",
+    "title": "Meta Ads Audience Testing Framework for Predictable Scale",
     "slug": "meta-ads-audience-testing-framework",
     "excerpt": "A practical framework for testing Meta Ads audiences without changing too many variables at the same time.",
     "status": "published",
@@ -948,8 +948,8 @@
       "Digital Marketing"
     ],
     "focusKeyword": "Meta Ads audience testing",
-    "metaTitle": "Meta Ads Audience Testing Framework | Muyeed",
-    "metaDescription": "A practical framework for testing Meta Ads audiences without changing too many variables at the same time.",
+    "metaTitle": "Meta Ads Audience Testing Framework & Methodology | Muyeed",
+    "metaDescription": "Learn step-by-step Meta Ads audience testing to identify winning prospecting and retargeting segments without wasting budget across overlapping ad sets.",
     "canonicalUrl": "",
     "schemaType": "BlogPosting",
     "customSchema": "",
@@ -984,7 +984,7 @@
       {
         "id": "b-2",
         "type": "paragraph",
-        "text": "<p>Meta Ads (Facebook and Instagram) remains one of the premier direct-response advertising channels in digital marketing. However, with the deprecation of third-party cookies, Apple's iOS 14.5+ privacy updates, and Meta's continuous evolution toward algorithmic automation, traditional granular micro-targeting has become inefficient.</p>"
+        "text": "<p>A structured <strong>Meta Ads audience testing</strong> framework remains essential for direct-response advertising success across Facebook and Instagram. However, with the deprecation of third-party cookies, Apple App Tracking Transparency (ATT), and evolving algorithmic ad delivery, audience fragmentation creates serious inefficiencies.</p>"
       },
       {
         "id": "b-3",
@@ -1169,7 +1169,7 @@
   },
   {
     "id": "786278e3-a4c6-4358-b486-e1867539be51",
-    "title": "WordPress Speed Optimization Checklist",
+    "title": "WordPress Speed Optimization Checklist for Peak Performance",
     "slug": "wordpress-speed-optimization-checklist",
     "excerpt": "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks.",
     "status": "published",
@@ -1184,8 +1184,8 @@
       "Digital Marketing"
     ],
     "focusKeyword": "WordPress speed optimization",
-    "metaTitle": "WordPress Speed Optimization Checklist | Muyeed",
-    "metaDescription": "A practical WordPress performance checklist covering images, plugins, caching, layout weight and common speed bottlenecks.",
+    "metaTitle": "WordPress Speed Optimization Checklist & Guide | Muyeed",
+    "metaDescription": "Follow this proven WordPress speed optimization checklist to reduce load times, master Core Web Vitals, and build high-converting marketing websites.",
     "canonicalUrl": "",
     "schemaType": "BlogPosting",
     "customSchema": "",
@@ -1220,7 +1220,7 @@
       {
         "id": "b-2",
         "type": "paragraph",
-        "text": "<p>Website performance is no longer merely a technical convenience; it is a critical driver of business revenue, user conversion rates, and search engine visibility. Google has made Core Web Vitals an official ranking factor, penalizing slow, shifting, or unresponsive websites across desktop and mobile indexes alike.</p>"
+        "text": "<p>A comprehensive <strong>WordPress speed optimization</strong> strategy is no longer merely a technical convenience; it is a critical driver of business revenue, user conversion rates, and search engine visibility. Google has made Core Web Vitals an official ranking factor.</p>"
       },
       {
         "id": "b-3",

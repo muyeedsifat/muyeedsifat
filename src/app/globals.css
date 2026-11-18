@@ -50,6 +50,13 @@
 .footerSocialLink svg{display:block!important;margin:0 auto!important;flex-shrink:0!important}
 .whatsappHeaderBtn:hover{background:#1ebc59!important;transform:translateY(-1px)}
 
+/* Package Feature Checkpoints */
+.packageFeatures{list-style:none;padding:0;margin:16px 0 20px;display:flex;flex-direction:column;gap:11px;text-align:left}
+.packageFeatureItem{display:flex;align-items:center;gap:10px;font-size:.88rem;color:#3a3a3a;line-height:1.45;font-weight:550}
+.packageCheckBadge{width:22px;height:22px;border-radius:50%;background:var(--orange-soft);color:var(--orange-dark);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(255,125,0,.12)}
+.packageFeatured .packageCheckBadge{background:var(--orange);color:#fff;box-shadow:0 3px 8px rgba(255,125,0,.3)}
+.packageCheckBadge svg{display:block;stroke:currentColor}
+
 /* AI Chatbot Floating Widget & Window */
 .chatbotWrapper{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:Poppins,Arial,sans-serif}
 .chatbotFloatingTrigger{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--orange) 0%,#ff992b 100%);color:#fff;border:none;border-radius:999px;padding:12px 20px;font-size:.92rem;font-weight:750;cursor:pointer;box-shadow:0 12px 36px rgba(255,125,0,.35);transition:transform .2s,box-shadow .2s;position:relative}

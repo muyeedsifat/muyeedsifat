@@ -38,7 +38,50 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     <>
       <JsonLd data={serviceSchema} /><JsonLd data={faqSchema(service.faqs)} />
       <section className="pageHero"><div className="container"><Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }, { label: service.name }]} /><span className="eyebrow">{service.eyebrow}</span><h1>{service.title}</h1><p className="lead">{service.description}</p><div className="btnRow"><Link className="btn btnPrimary" href="/contact">{service.cta}</Link><Link className="btn btnSecondary" href="/projects">View Projects</Link></div></div></section>
-      <section className="section"><div className="container"><div className="center"><span className="eyebrow">Service Packages</span><h2>Choose the Right Engagement</h2></div><div className="grid3" style={{ marginTop: 34 }}>{service.packages.map((pack) => <article className={`card package ${pack.featured ? 'packageFeatured' : ''}`} key={pack.name}><div className="packageLabel">{pack.label}</div><h3>{pack.name}</h3><p>{pack.description}</p><div className="btnRow"><Link className={`btn ${pack.featured ? 'btnPrimary' : 'btnSecondary'}`} href="/contact">Let&apos;s Talk</Link></div></article>)}</div></div></section>
+      <section className="section">
+        <div className="container">
+          <div className="center">
+            <span className="eyebrow">Service Packages</span>
+            <h2>Choose the Right Engagement</h2>
+          </div>
+          <div className="grid3" style={{ marginTop: 34 }}>
+            {service.packages.map((pack) => (
+              <article
+                className={`card package ${pack.featured ? 'packageFeatured' : ''}`}
+                key={pack.name}
+                style={{ display: 'flex', flexDirection: 'column' }}
+              >
+                <div className="packageLabel">{pack.label}</div>
+                <h3>{pack.name}</h3>
+                <p style={{ color: '#666', fontSize: '0.92rem', marginBottom: '14px' }}>{pack.description}</p>
+                {pack.features && pack.features.length > 0 && (
+                  <ul className="packageFeatures">
+                    {pack.features.map((feat) => (
+                      <li key={feat} className="packageFeatureItem">
+                        <span className="packageCheckBadge" aria-hidden="true">
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                        </span>
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="btnRow" style={{ marginTop: 'auto', paddingTop: '16px' }}>
+                  <Link
+                    className={`btn ${pack.featured ? 'btnPrimary' : 'btnSecondary'}`}
+                    style={{ width: '100%', textAlign: 'center' }}
+                    href="/contact"
+                  >
+                    Let&apos;s Talk
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="section sectionSoft"><div className="container grid2"><div><span className="eyebrow">Who It Helps</span><h2>Who This Service Is For</h2><p className="lead">Best suited to businesses that need a clear growth objective, practical implementation and stronger measurement.</p></div><div className="whoGrid">{service.audiences.map((audience) => <div className="whoItem" key={audience}>{audience}</div>)}</div></div></section>
       <section className="section"><div className="container whyLayout"><div className="whyMedia"><Image src="/images/why-muyeed.webp" alt={`Muyeed working on ${service.name} strategy`} width={900} height={1125} sizes="(max-width: 980px) 100vw, 42vw" /></div><div><span className="eyebrow">Why Work With Me</span><h2>Strategy Backed by Hands-On Execution</h2><div className="reasonList">{service.reasons.map((reason, index) => <div className="reason" key={reason.title}><span className="reasonNum">{String(index + 1).padStart(2, '0')}</span><div><h3>{reason.title}</h3><p>{reason.description}</p></div></div>)}</div></div></div></section>
       <section className="section sectionSoft"><div className="container"><span className="eyebrow">Relevant Projects</span><h2>{service.name} Project Examples</h2><div className="grid3" style={{ marginTop: 28 }}>{service.projects.map((project, index) => <article className="card" key={project.title}><div className={`projectVisual visual${index % 3}`}><span>{service.name}</span></div><span className="tag">{service.name}</span><h3>{project.title}</h3><p>{project.description}</p><Link className="textLink" href="/projects">View Projects →</Link></article>)}</div></div></section>

@@ -10,7 +10,7 @@ import { getPublishedPosts } from '@/lib/store';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Digital Marketing Blog | Muyeed',
+  title: 'Digital Marketing Blog & AI Search Guides | Muyeed',
   description: 'Practical digital marketing articles covering AI SEO, AEO, GEO, Google Ads, Meta Ads, WordPress and conversion-focused website strategy.',
   path: '/blog'
 });

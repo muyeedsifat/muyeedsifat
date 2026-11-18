@@ -7,8 +7,8 @@ import { pageMetadata } from '@/lib/seo';
 import { getProjects } from '@/lib/store';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Digital Marketing Projects | Muyeed',
-  description: 'Explore digital marketing projects across AI SEO, Google Ads, Meta Ads and WordPress, including organic growth, paid search and paid social work.',
+  title: 'Digital Marketing Case Studies & Projects | Muyeed',
+  description: 'Explore digital marketing case studies across AI SEO, Google Ads, and Meta Ads. Verified client outcomes, lead growth and conversion performance.',
   path: '/projects'
 });
 

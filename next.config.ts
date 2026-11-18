@@ -29,6 +29,14 @@ const nextConfig: NextConfig = {
         permanent: true
       }
     ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.html',
+        destination: '/sitemap'
+      }
+    ];
   }
 };
 

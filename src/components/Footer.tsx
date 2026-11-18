@@ -119,6 +119,7 @@ export function Footer() {
             <Link href="/locations">Locations</Link>
             <Link href="/about">About</Link>
             <Link href="/blog">Blog</Link>
+            <Link href="/sitemap.html">Sitemap</Link>
           </div>
 
           <div>
@@ -143,9 +144,20 @@ export function Footer() {
 
         <div className="footerBottom" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
           <span>© 2026 Muyeed Sifat. All rights reserved.</span>
-          <Link href="/login-dashboard" style={{ fontSize: '0.82rem', color: '#777', textDecoration: 'none' }}>
-            Dashboard Login ↗
-          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <Link href="/sitemap.html" style={{ fontSize: '0.82rem', color: '#888888', textDecoration: 'none' }}>
+              HTML Sitemap
+            </Link>
+            <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.82rem', color: '#888888', textDecoration: 'none' }}>
+              sitemap.xml
+            </a>
+            <a href="/llms.txt" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.82rem', color: '#888888', textDecoration: 'none' }}>
+              llms.txt
+            </a>
+            <Link href="/login-dashboard" style={{ fontSize: '0.82rem', color: '#666666', textDecoration: 'none' }}>
+              Dashboard Login ↗
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

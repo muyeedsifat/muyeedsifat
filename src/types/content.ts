@@ -104,6 +104,8 @@ export type SiteSettings = {
   geminiApiKey?: string;
   linkedIn?: string;
   upwork?: string;
+  gbpUrl?: string;
+  googleBusinessProfile?: string;
   adminUsername?: string;
   adminPassword?: string;
   gtmId?: string;

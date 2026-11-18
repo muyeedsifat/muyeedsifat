@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FormEvent, useState, useEffect } from 'react';
-import { WhatsAppIcon, UpworkIcon, LinkedInIcon } from '@/components/Icons';
+import { WhatsAppIcon, UpworkIcon, LinkedInIcon, GoogleIcon } from '@/components/Icons';
 
 export function SettingsForm({ initial }: { initial: Record<string, unknown> }) {
   const [message, setMessage] = useState('');
@@ -449,6 +449,18 @@ export function SettingsForm({ initial }: { initial: Record<string, unknown> }) 
                 id="set-linkedin"
                 name="linkedIn"
                 defaultValue={String(initial.linkedIn || 'https://www.linkedin.com/in/muyeedsifat/')}
+                style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="set-gbp" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                <GoogleIcon size={16} /> Google Business Profile (GBP) URL
+              </label>
+              <input
+                id="set-gbp"
+                name="gbpUrl"
+                defaultValue={String(initial.gbpUrl || 'https://share.google/uEeAi6WLiSSORniNf')}
                 style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
               />
             </div>

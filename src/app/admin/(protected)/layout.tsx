@@ -67,7 +67,7 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
                 <line x1="16" y1="17" x2="8" y2="17" />
                 <polyline points="10 9 9 9 8 9" />
               </svg>
-              <span>Blog Articles</span>
+              <span>Blog Articles (Posts)</span>
             </Link>
 
             <Link href="/admin/posts/new" className="adminNavSubLink">
@@ -92,7 +92,7 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
                 <polyline points="2 17 12 22 22 17" />
                 <polyline points="2 12 12 17 22 12" />
               </svg>
-              <span>Pages &amp; Sections</span>
+              <span>Pages &amp; Sections (Pages)</span>
             </Link>
           </nav>
 

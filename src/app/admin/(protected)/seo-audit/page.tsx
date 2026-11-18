@@ -495,18 +495,18 @@ export default function SeoAuditDashboardPage() {
 
       {/* AUDIT ITEMS TABLE */}
       <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.02)' }}>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.86rem' }}>
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+          <table style={{ width: '100%', minWidth: '1240px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.86rem' }}>
             <thead>
               <tr style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', color: '#64748b', fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                <th style={{ width: '28%', minWidth: '260px', padding: '14px 18px', verticalAlign: 'middle' }}>Page / Article</th>
-                <th style={{ width: '11%', minWidth: '105px', padding: '14px 14px', verticalAlign: 'middle' }}>Health Score</th>
-                <th style={{ width: '17%', minWidth: '160px', padding: '14px 14px', verticalAlign: 'middle' }}>4-Core Placement</th>
-                <th style={{ width: '10%', minWidth: '95px', padding: '14px 14px', verticalAlign: 'middle' }}>Meta Title</th>
-                <th style={{ width: '10%', minWidth: '95px', padding: '14px 14px', verticalAlign: 'middle' }}>Meta Desc</th>
-                <th style={{ width: '11%', minWidth: '110px', padding: '14px 14px', verticalAlign: 'middle' }}>Schema</th>
-                <th style={{ width: '10%', minWidth: '110px', padding: '14px 14px', verticalAlign: 'middle' }}>Depth &amp; Links</th>
-                <th style={{ width: '13%', minWidth: '155px', padding: '14px 18px', verticalAlign: 'middle', textAlign: 'right' }}>Actions</th>
+                <th style={{ width: '25%', minWidth: '250px', padding: '14px 18px', verticalAlign: 'middle' }}>Page / Article</th>
+                <th style={{ width: '10%', minWidth: '105px', padding: '14px 14px', verticalAlign: 'middle' }}>Health Score</th>
+                <th style={{ width: '16%', minWidth: '160px', padding: '14px 14px', verticalAlign: 'middle' }}>4-Core Placement</th>
+                <th style={{ width: '10%', minWidth: '100px', padding: '14px 14px', verticalAlign: 'middle' }}>Meta Title</th>
+                <th style={{ width: '10%', minWidth: '100px', padding: '14px 14px', verticalAlign: 'middle' }}>Meta Desc</th>
+                <th style={{ width: '10%', minWidth: '110px', padding: '14px 14px', verticalAlign: 'middle' }}>Schema</th>
+                <th style={{ width: '9%', minWidth: '105px', padding: '14px 14px', verticalAlign: 'middle' }}>Depth &amp; Links</th>
+                <th style={{ width: '18%', minWidth: '190px', padding: '14px 18px', verticalAlign: 'middle', textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -668,8 +668,8 @@ export default function SeoAuditDashboardPage() {
                   </td>
 
                   {/* Actions */}
-                  <td style={{ padding: '16px 18px', verticalAlign: 'top', textAlign: 'right' }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px' }}>
+                  <td style={{ minWidth: '190px', padding: '16px 18px', verticalAlign: 'top', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px', flexWrap: 'nowrap' }}>
                       <button
                         type="button"
                         onClick={() => setInspectingItem(item)}
@@ -677,7 +677,7 @@ export default function SeoAuditDashboardPage() {
                           display: 'inline-flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          height: '30px',
+                          height: '32px',
                           padding: '0 12px',
                           fontSize: '0.8rem',
                           fontWeight: 650,
@@ -687,7 +687,8 @@ export default function SeoAuditDashboardPage() {
                           border: 'none',
                           cursor: 'pointer',
                           whiteSpace: 'nowrap',
-                          transition: 'background 0.15s ease'
+                          transition: 'background 0.15s ease',
+                          flexShrink: 0
                         }}
                       >
                         Inspect Audit
@@ -698,7 +699,7 @@ export default function SeoAuditDashboardPage() {
                           display: 'inline-flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          height: '30px',
+                          height: '32px',
                           padding: '0 12px',
                           fontSize: '0.8rem',
                           fontWeight: 650,
@@ -708,7 +709,8 @@ export default function SeoAuditDashboardPage() {
                           border: '1px solid #e2e8f0',
                           textDecoration: 'none',
                           whiteSpace: 'nowrap',
-                          transition: 'background 0.15s ease'
+                          transition: 'background 0.15s ease',
+                          flexShrink: 0
                         }}
                       >
                         Edit

@@ -60,6 +60,7 @@ export async function PUT(request: Request) {
     // Profiles and AI
     if (body.upwork !== undefined) updated.upwork = String(body.upwork).trim().slice(0, 250);
     if (body.linkedIn !== undefined) updated.linkedIn = String(body.linkedIn).trim().slice(0, 250);
+    if (body.gbpUrl !== undefined) updated.gbpUrl = String(body.gbpUrl).trim().slice(0, 250);
     if (body.geminiApiKey !== undefined) updated.geminiApiKey = String(body.geminiApiKey).trim().slice(0, 150);
     if (body.pagespeedApiKey !== undefined) updated.pagespeedApiKey = String(body.pagespeedApiKey).trim().slice(0, 150);
     if (body.geminiModel !== undefined) updated.geminiModel = String(body.geminiModel).trim().slice(0, 60);

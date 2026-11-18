@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CTA } from '@/components/CTA';
 import { ContactForm } from '@/components/ContactForm';
+import { GoogleIcon } from '@/components/Icons';
 import { pageMetadata } from '@/lib/seo';
 import { siteConfig } from '@/lib/site';
 
@@ -59,6 +60,16 @@ export default function ContactPage() {
                 <div className="contactLinkInfo">
                   <span className="contactLinkLabel">Upwork Profile</span>
                   <span className="contactLinkVal">Hire on Upwork</span>
+                </div>
+                <span className="contactLinkArrow" aria-hidden="true">→</span>
+              </a>
+              <a className="contactLinkItem" href={siteConfig.gbpUrl} target="_blank" rel="noopener noreferrer">
+                <span className="contactIconBox" aria-hidden="true" style={{ background: 'rgba(66, 133, 244, 0.12)', color: '#4285F4' }}>
+                  <GoogleIcon size={20} />
+                </span>
+                <div className="contactLinkInfo">
+                  <span className="contactLinkLabel">Google Business Profile</span>
+                  <span className="contactLinkVal">Verified Presence</span>
                 </div>
                 <span className="contactLinkArrow" aria-hidden="true">→</span>
               </a>

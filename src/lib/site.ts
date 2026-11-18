@@ -9,6 +9,8 @@ export const siteConfig = {
     'Digital marketer helping businesses grow with AI SEO, Google Ads and Meta Ads, with WordPress development available as a supporting skill.',
   linkedIn: 'https://www.linkedin.com/in/muyeedsifat/',
   upwork: 'https://www.upwork.com/freelancers/~01ceafed69d95ddfae',
+  gbpUrl: 'https://share.google/uEeAi6WLiSSORniNf',
+  gbpName: 'M A Muyeed Sifat',
   services: ['AI SEO', 'Google Ads', 'Meta Ads'],
   supportingSkill: 'WordPress Development'
 } as const;

@@ -324,12 +324,15 @@ export async function deleteProject(id: string) {
 // PAGES (Custom & Editable Pages)
 // -----------------------------------------------------------------------------
 export async function getPages(): Promise<CustomPage[]> {
+  const raw = await readJson<unknown>('pages.json', []);
+  const fallbackPages: CustomPage[] = Array.isArray(raw) ? (raw as CustomPage[]) : [];
+
   if (isSupabaseConfigured()) {
     const supabase = getSupabaseAdmin();
     if (supabase) {
       const { data, error } = await supabase.from('pages').select('*');
       if (!error && Array.isArray(data)) {
-        return data.map((row) => ({
+        const supaPages: CustomPage[] = data.map((row) => ({
           id: row.id,
           slug: row.slug,
           title: row.title,
@@ -341,12 +344,21 @@ export async function getPages(): Promise<CustomPage[]> {
           metaDescription: row.meta_description || '',
           updatedAt: row.updated_at
         }));
+
+        // Seamless union: prioritize Supabase records, backfill any missing seed pages
+        const map = new Map<string, CustomPage>();
+        for (const fp of fallbackPages) {
+          map.set(fp.slug, fp);
+        }
+        for (const sp of supaPages) {
+          map.set(sp.slug, sp);
+        }
+        return Array.from(map.values());
       }
     }
   }
 
-  const raw = await readJson<unknown>('pages.json', []);
-  return Array.isArray(raw) ? (raw as CustomPage[]) : [];
+  return fallbackPages;
 }
 
 export async function getPageBySlug(slug: string): Promise<CustomPage | undefined> {

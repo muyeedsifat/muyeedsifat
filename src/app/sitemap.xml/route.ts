@@ -71,18 +71,24 @@ export async function GET() {
     console.error('Error fetching published posts for sitemap.xml:', err);
   }
 
-  // 5. Dynamic Custom Pages (if any created in Admin)
+  // 5. Dynamic Custom Pages (if any new custom pages are created in Admin beyond default routes)
+  const existingCoreAndServiceUrls = new Set([
+    ...staticItems.map((i) => i.url.toLowerCase()),
+    ...serviceItems.map((i) => i.url.toLowerCase()),
+  ]);
+
   let customPageItems: SitemapItem[] = [];
   try {
     const pages = await getPages();
     customPageItems = pages
-      .filter((p) => p.slug)
+      .filter((p) => p.slug && p.slug !== 'home')
       .map((p) => ({
         url: absoluteUrl(`/${p.slug.replace(/^\//, '')}`),
         lastmod: p.updatedAt ? new Date(p.updatedAt).toISOString() : nowIso,
-        changefreq: 'monthly',
+        changefreq: 'monthly' as const,
         priority: '0.7',
-      }));
+      }))
+      .filter((p) => !existingCoreAndServiceUrls.has(p.url.toLowerCase()));
   } catch (err) {
     console.error('Error fetching custom pages for sitemap.xml:', err);
   }

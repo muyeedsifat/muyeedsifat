@@ -185,24 +185,33 @@ export default async function SitemapPage() {
     console.error('Error fetching posts for sitemap:', err);
   }
 
-  // 5. Custom Pages
+  // 5. Dynamic Custom Pages (if any new custom pages are created in Admin beyond default routes)
+  const existingCoreAndServicePaths = new Set([
+    ...coreItems.map((i) => i.path.toLowerCase()),
+    ...serviceItems.map((i) => i.path.toLowerCase()),
+  ]);
+
   let customPageItems: SitemapLinkItem[] = [];
   try {
     const rawPages = await getPages();
     customPageItems = rawPages
-      .filter((p) => p.slug)
-      .map((p) => ({
-        id: `page-${p.slug}`,
-        title: p.title,
-        url: absoluteUrl(`/${p.slug.replace(/^\//, '')}`),
-        path: `/${p.slug.replace(/^\//, '')}`,
-        category: 'core',
-        categoryLabel: 'Custom Page',
-        description: p.metaDescription || p.lead || 'Custom published page.',
-        priority: '0.7',
-        changefreq: 'monthly',
-        updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : nowIso,
-      }));
+      .filter((p) => p.slug && p.slug !== 'home')
+      .map((p) => {
+        const cleanPath = `/${p.slug.replace(/^\//, '')}`;
+        return {
+          id: `page-${p.slug}`,
+          title: p.title,
+          url: absoluteUrl(cleanPath),
+          path: cleanPath,
+          category: 'core' as const,
+          categoryLabel: 'Custom Page',
+          description: p.metaDescription || p.lead || 'Custom published page.',
+          priority: '0.7',
+          changefreq: 'monthly' as const,
+          updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : nowIso,
+        };
+      })
+      .filter((p) => !existingCoreAndServicePaths.has(p.path.toLowerCase()));
   } catch (err) {
     console.error('Error fetching custom pages for sitemap:', err);
   }
@@ -271,7 +280,7 @@ export default async function SitemapPage() {
     },
   ];
 
-  const allItems: SitemapLinkItem[] = [
+  const rawAllItems: SitemapLinkItem[] = [
     ...coreItems,
     ...serviceItems,
     ...projectItems,
@@ -279,6 +288,16 @@ export default async function SitemapPage() {
     ...customPageItems,
     ...protocolItems,
   ];
+
+  // Strictly deduplicate by canonical URL
+  const seenUrls = new Set<string>();
+  const allItems: SitemapLinkItem[] = [];
+  for (const item of rawAllItems) {
+    if (!seenUrls.has(item.url)) {
+      seenUrls.add(item.url);
+      allItems.push(item);
+    }
+  }
 
   return (
     <>

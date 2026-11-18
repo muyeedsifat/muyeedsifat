@@ -1,5 +1,5 @@
 import JSZip from 'jszip';
-import { getProjects, getPublishedPosts, getPages } from '@/lib/store';
+import { getProjects, getPublishedPosts } from '@/lib/store';
 import { services } from '@/data/services';
 import { getSiteUrl, absoluteUrl, siteConfig } from '@/lib/site';
 
@@ -34,7 +34,6 @@ export async function GET() {
   // Fetch all live dynamic content
   const projects = await getProjects().catch(() => []);
   const posts = await getPublishedPosts().catch(() => []);
-  const pages = await getPages().catch(() => []);
 
   // 1. Core Category Pages
   const categoryPages = [

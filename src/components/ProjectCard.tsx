@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -31,27 +31,77 @@ export function ProjectCard({
   index?: number;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<{ url: string; caption: string } | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  const allScreenshots = React.useMemo(() => {
+    if (screenshots && screenshots.length > 0) return screenshots;
+    if (featuredImage && !featuredImage.endsWith('.svg')) {
+      return [{ url: featuredImage, caption: featuredAlt || `${title} Verified Performance Proof` }];
+    }
+    return [];
+  }, [screenshots, featuredImage, featuredAlt, title]);
+
+  const totalSlides = allScreenshots.length;
+
+  const handlePrevSlide = useCallback(() => {
+    if (totalSlides <= 1) return;
+    setActiveSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  }, [totalSlides]);
+
+  const handleNextSlide = useCallback(() => {
+    if (totalSlides <= 1) return;
+    setActiveSlide((prev) => (prev + 1) % totalSlides);
+  }, [totalSlides]);
+
+  const handlePrevLightbox = useCallback(() => {
+    if (totalSlides <= 1) return;
+    setLightboxIndex((prev) => (prev === null ? 0 : (prev - 1 + totalSlides) % totalSlides));
+  }, [totalSlides]);
+
+  const handleNextLightbox = useCallback(() => {
+    if (totalSlides <= 1) return;
+    setLightboxIndex((prev) => (prev === null ? 0 : (prev + 1) % totalSlides));
+  }, [totalSlides]);
+
+  // Keyboard navigation for carousel & lightbox
   useEffect(() => {
-    if (isOpen || selectedImage) {
+    if (isOpen || lightboxIndex !== null) {
       const original = window.getComputedStyle(document.body).overflow;
       document.body.style.overflow = 'hidden';
+
       const onKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-          if (selectedImage) setSelectedImage(null);
-          else setIsOpen(false);
+          if (lightboxIndex !== null) {
+            setLightboxIndex(null);
+          } else {
+            setIsOpen(false);
+          }
+        } else if (e.key === 'ArrowLeft') {
+          if (lightboxIndex !== null) {
+            handlePrevLightbox();
+          } else {
+            handlePrevSlide();
+          }
+        } else if (e.key === 'ArrowRight') {
+          if (lightboxIndex !== null) {
+            handleNextLightbox();
+          } else {
+            handleNextSlide();
+          }
         }
       };
+
       window.addEventListener('keydown', onKeyDown);
       return () => {
         document.body.style.overflow = original;
         window.removeEventListener('keydown', onKeyDown);
       };
     }
-  }, [isOpen, selectedImage]);
+  }, [isOpen, lightboxIndex, handlePrevSlide, handleNextSlide, handlePrevLightbox, handleNextLightbox]);
 
   const handleOpenCaseStudy = () => {
+    setActiveSlide(0);
     setIsOpen(true);
     if (typeof window !== 'undefined') {
       const w = window as unknown as { dataLayer?: Array<Record<string, unknown>> };
@@ -64,13 +114,8 @@ export function ProjectCard({
     }
   };
 
-  const allScreenshots = React.useMemo(() => {
-    if (screenshots && screenshots.length > 0) return screenshots;
-    if (featuredImage && !featuredImage.endsWith('.svg')) {
-      return [{ url: featuredImage, caption: featuredAlt || `${title} Verified Performance Proof` }];
-    }
-    return [];
-  }, [screenshots, featuredImage, featuredAlt, title]);
+  const currentScreenshot = allScreenshots[activeSlide] || allScreenshots[0];
+  const lightboxScreenshot = lightboxIndex !== null ? allScreenshots[lightboxIndex] : null;
 
   return (
     <>
@@ -109,7 +154,7 @@ export function ProjectCard({
           e.currentTarget.style.borderColor = 'var(--line, #e5e7eb)';
         }}
       >
-        {/* Card Thumbnail / Proof Image */}
+        {/* Card Thumbnail / Featured Proof */}
         {featuredImage && (
           <div
             style={{
@@ -209,17 +254,17 @@ export function ProjectCard({
               ) : result ? (
                 <li>{result}</li>
               ) : (
-                <li>Click to read strategic outcomes and campaign metrics</li>
+                <li>Click to view sequential case study and verified proof gallery</li>
               )}
             </ul>
           </div>
 
-          {/* Clean Footer Link with SVG arrow */}
+          {/* Footer Link with Proof Count */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
+              justifyContent: 'space-between',
               fontSize: '0.84rem',
               fontWeight: 650,
               color: 'var(--orange-dark, #c2410c)',
@@ -227,16 +272,23 @@ export function ProjectCard({
               borderTop: '1px solid #f3f4f6'
             }}
           >
-            <span>View case study &amp; proof</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span>View case study &amp; proof</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+            {totalSlides > 0 && (
+              <span style={{ fontSize: '0.74rem', color: '#64748b', fontWeight: 600 }}>
+                {totalSlides} {totalSlides === 1 ? 'Proof' : 'Proofs'} →
+              </span>
+            )}
           </div>
         </div>
       </article>
 
-      {/* Case Study Details Modal - Modern, Clean & Symmetric */}
+      {/* Case Study Details Modal with Interactive Carousel */}
       {isOpen && (
         <div
           role="dialog"
@@ -252,7 +304,7 @@ export function ProjectCard({
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              aria-label="Close"
+              aria-label="Close modal"
               className="modalCloseBtn"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -299,7 +351,7 @@ export function ProjectCard({
               </div>
             )}
 
-            {/* Verified Proof Screenshots Gallery */}
+            {/* Interactive Proof Screenshots Slider / Carousel */}
             {allScreenshots.length > 0 && (
               <div className="modalProofSection">
                 <div className="modalProofHeader">
@@ -308,53 +360,158 @@ export function ProjectCard({
                       <polyline points="9 11 12 14 22 4" />
                       <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
                     </svg>
-                    Verified Performance &amp; Proof Screenshots
+                    Verified Performance &amp; Proof Gallery
                   </h4>
-                  <span className="modalProofHint">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="11" cy="11" r="8" />
-                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-                    Click image to enlarge
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span className="modalProofHint">
+                      <kbd style={{ background: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: '4px', padding: '2px 5px', fontSize: '0.7rem' }}>←</kbd>
+                      <kbd style={{ background: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: '4px', padding: '2px 5px', fontSize: '0.7rem' }}>→</kbd>
+                      Browse proofs
+                    </span>
+                  </div>
                 </div>
 
-                <div className="modalProofGrid">
-                  {allScreenshots.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="modalProofCard"
-                      onClick={() => setSelectedImage(item)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') setSelectedImage(item);
+                {/* Main Interactive Slide Viewer with Before / After Controls */}
+                <div className="modalCarouselViewer">
+                  {/* Sequence Counter Pill */}
+                  <div className="carouselCounterPill">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                      <circle cx="8.5" cy="8.5" r="1.5" />
+                      <polyline points="21 15 16 10 5 21" />
+                    </svg>
+                    <span>Proof {activeSlide + 1} of {totalSlides}</span>
+                  </div>
+
+                  {/* Previous Button (Before) */}
+                  {totalSlides > 1 && (
+                    <button
+                      type="button"
+                      aria-label="Previous proof image"
+                      className="carouselNavBtn carouselNavPrev"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePrevSlide();
                       }}
                     >
-                      <div className="modalProofThumbBox">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="15 18 9 12 15 6" />
+                      </svg>
+                    </button>
+                  )}
+
+                  {/* Main Slide Image */}
+                  <div
+                    className="carouselSlideBox"
+                    onClick={() => setLightboxIndex(activeSlide)}
+                    title="Click to view full size"
+                  >
+                    <Image
+                      src={currentScreenshot.url}
+                      alt={currentScreenshot.caption}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 860px"
+                      priority={activeSlide === 0}
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
+
+                  {/* Next Button (After) */}
+                  {totalSlides > 1 && (
+                    <button
+                      type="button"
+                      aria-label="Next proof image"
+                      className="carouselNavBtn carouselNavNext"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleNextSlide();
+                      }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                      </svg>
+                    </button>
+                  )}
+
+                  {/* Expand Lightbox Button */}
+                  <button
+                    type="button"
+                    className="carouselExpandBtn"
+                    onClick={() => setLightboxIndex(activeSlide)}
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polyline points="15 3 21 3 21 9" />
+                      <polyline points="9 21 3 21 3 15" />
+                      <line x1="21" y1="3" x2="14" y2="10" />
+                      <line x1="3" y1="21" x2="10" y2="14" />
+                    </svg>
+                    <span>Full Screen</span>
+                  </button>
+                </div>
+
+                {/* Formatted Caption Bar */}
+                <div className="carouselCaptionBar">
+                  <span>{currentScreenshot.caption}</span>
+                  {totalSlides > 1 && (
+                    <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+                      <button
+                        type="button"
+                        onClick={handlePrevSlide}
+                        style={{
+                          background: '#ffffff',
+                          border: '1px solid #cbd5e1',
+                          borderRadius: '6px',
+                          padding: '4px 10px',
+                          fontSize: '0.74rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          color: '#475569'
+                        }}
+                      >
+                        ← Prev
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleNextSlide}
+                        style={{
+                          background: 'var(--orange-soft, #fff7ed)',
+                          border: '1px solid var(--orange, #f97316)',
+                          borderRadius: '6px',
+                          padding: '4px 10px',
+                          fontSize: '0.74rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          color: 'var(--orange-dark, #c2410c)'
+                        }}
+                      >
+                        Next →
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Interactive Thumbnail Filmstrip for direct jumping */}
+                {totalSlides > 1 && (
+                  <div className="carouselFilmstrip">
+                    {allScreenshots.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className={`carouselThumbItem ${activeSlide === idx ? 'active' : ''}`}
+                        onClick={() => setActiveSlide(idx)}
+                        title={`Jump to Proof ${idx + 1}`}
+                      >
+                        <span className="carouselThumbNumber">{idx + 1}</span>
                         <Image
                           src={item.url}
                           alt={item.caption}
                           fill
-                          sizes="(max-width: 768px) 100vw, 420px"
-                          style={{ objectFit: 'contain' }}
+                          sizes="96px"
+                          style={{ objectFit: 'cover', objectPosition: 'top' }}
                         />
-                        <div className="modalProofZoomBadge">
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <circle cx="11" cy="11" r="8" />
-                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                            <line x1="11" y1="8" x2="11" y2="14" />
-                            <line x1="8" y1="11" x2="14" y2="11" />
-                          </svg>
-                          Expand
-                        </div>
                       </div>
-                      <div className="modalProofCaption">
-                        {item.caption}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
@@ -430,77 +587,104 @@ export function ProjectCard({
         </div>
       )}
 
-      {/* Lightbox / Zoom View for Proof Screenshots */}
-      {selectedImage && (
+      {/* Fullscreen Lightbox with Before/After (Previous/Next) Navigation */}
+      {lightboxScreenshot && lightboxIndex !== null && (
         <div
           role="dialog"
           aria-modal="true"
-          onClick={() => setSelectedImage(null)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 100000,
-            backgroundColor: 'rgba(0, 0, 0, 0.94)',
-            backdropFilter: 'blur(10px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '24px'
-          }}
+          className="lightboxOverlay"
+          onClick={() => setLightboxIndex(null)}
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              position: 'relative',
-              maxWidth: '94vw',
-              maxHeight: '88vh',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center'
-            }}
-          >
+          {/* Top Bar: Counter + Close */}
+          <div className="lightboxTopBar" onClick={(e) => e.stopPropagation()}>
+            <div className="lightboxCounter">
+              Proof {lightboxIndex + 1} of {totalSlides}
+            </div>
+            <div style={{ fontSize: '0.92rem', fontWeight: 650, color: '#e2e8f0', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span>{title}</span>
+            </div>
             <button
-              onClick={() => setSelectedImage(null)}
-              aria-label="Close zoom preview"
-              style={{
-                position: 'absolute',
-                top: '-46px',
-                right: '0',
-                background: 'rgba(255, 255, 255, 0.18)',
-                border: '1px solid rgba(255, 255, 255, 0.25)',
-                color: '#ffffff',
-                borderRadius: '8px',
-                padding: '6px 14px',
-                cursor: 'pointer',
-                fontSize: '0.84rem',
-                fontWeight: 650,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                transition: 'background 0.15s ease'
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)'; }}
+              onClick={() => setLightboxIndex(null)}
+              aria-label="Close preview"
+              className="lightboxCloseBtn"
             >
-              <span>✕ Close Preview</span>
+              <span>✕ Close Preview (Esc)</span>
             </button>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={selectedImage.url}
-              alt={selectedImage.caption}
-              style={{
-                maxWidth: '100%',
-                maxHeight: '80vh',
-                objectFit: 'contain',
-                borderRadius: '8px',
-                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.6)',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
-              }}
-            />
-            <p style={{ color: '#e2e8f0', marginTop: '16px', fontSize: '0.92rem', textAlign: 'center', fontWeight: 550, maxWidth: '820px', lineHeight: 1.5 }}>
-              {selectedImage.caption}
+          </div>
+
+          {/* Main Display Area with Before & After Arrows */}
+          <div className="lightboxMainArea" onClick={(e) => e.stopPropagation()}>
+            {/* Previous Arrow */}
+            {totalSlides > 1 && (
+              <button
+                type="button"
+                aria-label="Previous image (ArrowLeft)"
+                className="lightboxNavBtn lightboxNavPrev"
+                onClick={handlePrevLightbox}
+              >
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+            )}
+
+            {/* Central High-Res Image */}
+            <div className="lightboxImgBox">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={lightboxScreenshot.url}
+                alt={lightboxScreenshot.caption}
+                style={{
+                  maxWidth: '88vw',
+                  maxHeight: '70vh',
+                  objectFit: 'contain',
+                  borderRadius: '10px',
+                  boxShadow: '0 25px 60px rgba(0, 0, 0, 0.7)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)'
+                }}
+              />
+            </div>
+
+            {/* Next Arrow */}
+            {totalSlides > 1 && (
+              <button
+                type="button"
+                aria-label="Next image (ArrowRight)"
+                className="lightboxNavBtn lightboxNavNext"
+                onClick={handleNextLightbox}
+              >
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            )}
+          </div>
+
+          {/* Bottom Bar: Caption + Filmstrip */}
+          <div className="lightboxBottomBar" onClick={(e) => e.stopPropagation()}>
+            <p className="lightboxCaptionText">
+              {lightboxScreenshot.caption}
             </p>
+
+            {totalSlides > 1 && (
+              <div className="lightboxFilmstrip">
+                {allScreenshots.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className={`lightboxThumb ${lightboxIndex === idx ? 'active' : ''}`}
+                    onClick={() => setLightboxIndex(idx)}
+                    title={`Go to proof ${idx + 1}`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.url}
+                      alt={item.caption}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       )}

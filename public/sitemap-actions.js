@@ -25,7 +25,7 @@ function switchView(mode) {
 
 function filterByCategory(cat) {
   currentCategory = cat;
-  var tabs = ['all', 'core', 'service', 'project', 'post'];
+  var tabs = ['all', 'primary', 'pillar', 'project', 'location', 'post'];
   for (var i = 0; i < tabs.length; i++) {
     var el = document.getElementById('tab-' + tabs[i]);
     if (el) {

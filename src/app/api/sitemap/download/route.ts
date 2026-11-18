@@ -35,8 +35,8 @@ export async function GET() {
   const projects = await getProjects().catch(() => []);
   const posts = await getPublishedPosts().catch(() => []);
 
-  // 1. Core Category Pages
-  const categoryPages = [
+  // 1. Primary Pages
+  const primaryPages = [
     {
       title: 'Home – Portfolio & Growth Architecture Overview',
       slug: '',
@@ -83,15 +83,6 @@ export async function GET() {
       desc: 'Career background, technical methodology, core competencies, and digital marketing credentials.',
     },
     {
-      title: 'Target Locations & International Service Corridors',
-      slug: 'locations',
-      path: '/locations',
-      url: absoluteUrl('/locations'),
-      priority: '0.8',
-      changefreq: 'monthly',
-      desc: 'Geographic service coverage spanning the United States, United Kingdom, Australia, and Singapore.',
-    },
-    {
       title: 'Contact & Project Consultation',
       slug: 'contact',
       path: '/contact',
@@ -102,8 +93,8 @@ export async function GET() {
     },
   ];
 
-  // 2. Sub-Category Pages (Service Pillars)
-  const subCategoryPages = services.map((s) => ({
+  // 2. Piller Category Pages (Core Service Pillars)
+  const pillarCategoryPages = services.map((s) => ({
     title: `${s.name} – ${s.title}`,
     slug: s.slug,
     path: `/services/${s.slug}`,
@@ -114,7 +105,20 @@ export async function GET() {
     data: s,
   }));
 
-  // 3. Projects & Case Studies
+  // 3. Location Pages
+  const locationPages = [
+    {
+      title: 'Target Locations & International Service Corridors',
+      slug: 'locations',
+      path: '/locations',
+      url: absoluteUrl('/locations'),
+      priority: '0.8',
+      changefreq: 'monthly',
+      desc: 'Geographic service coverage spanning the United States, United Kingdom, Australia, and Singapore.',
+    },
+  ];
+
+  // 4. Projects (Client Case Studies)
   const projectList = projects.map((p) => ({
     title: p.title,
     slug: p.slug,
@@ -126,7 +130,7 @@ export async function GET() {
     data: p,
   }));
 
-  // 4. Blog Posts & Articles
+  // 5. Blog Posts & Articles
   const postList = posts.map((post) => ({
     title: post.title,
     slug: post.slug,
@@ -138,7 +142,7 @@ export async function GET() {
     data: post,
   }));
 
-  // 5. Machine Protocols
+  // 6. Machine Protocols
   const protocolList = [
     {
       title: 'XML Sitemap (Sitemaps.org 0.9 with XSL)',
@@ -179,9 +183,10 @@ export async function GET() {
 
   // Consolidate all links for root exports
   const allLinks = [
-    ...categoryPages.map((c) => ({ ...c, section: 'Category Page' })),
-    ...subCategoryPages.map((s) => ({ ...s, section: 'Sub-Category / Service' })),
-    ...projectList.map((p) => ({ ...p, section: 'Case Study / Project' })),
+    ...primaryPages.map((c) => ({ ...c, section: 'Primary Page' })),
+    ...pillarCategoryPages.map((s) => ({ ...s, section: 'Piller Category Page' })),
+    ...projectList.map((p) => ({ ...p, section: 'Project' })),
+    ...locationPages.map((l) => ({ ...l, section: 'Location Page' })),
     ...postList.map((b) => ({ ...b, section: 'Blog Post' })),
     ...protocolList.map((pr) => ({ ...pr, desc: 'Machine Feed', section: 'Machine Protocol' })),
   ];
@@ -202,19 +207,21 @@ export async function GET() {
 
 This archive organizes all website URLs and content assets into segregated, structured folders:
 
-- **01_category_pages/**: Core landing pages and primary category hubs (${categoryPages.length} URLs).
-- **02_sub_category_pages/**: Specialized service pillar sub-categories (${subCategoryPages.length} URLs).
-- **03_projects_case_studies/**: 21 verified client case studies with full ~600-word reports (${projectList.length} URLs).
-- **04_blog_posts/**: Published strategic articles and technical guides (${postList.length} URLs).
-- **05_machine_protocols/**: Standard XML sitemap, HTML sitemap, and LLM manifests (${protocolList.length} URLs).
+- **01_primary_pages/**: Primary landing pages and core navigation hubs (${primaryPages.length} URLs).
+- **02_piller_category_pages/**: Core pillar category pages for services (${pillarCategoryPages.length} URLs).
+- **03_projects/**: 21 verified client case studies with full reports (${projectList.length} URLs).
+- **04_location_pages/**: Geographic service hubs and regional corridors (${locationPages.length} URLs).
+- **05_blog_posts/**: Published strategic articles and technical guides (${postList.length} URLs).
+- **06_machine_protocols/**: Standard XML sitemap, HTML sitemap, and LLM manifests (${protocolList.length} URLs).
 
 ## Master Links Summary
 
 | Section | Link Count | Target Path Corridor |
 |---|---|---|
-| Category Pages | ${categoryPages.length} | / |
-| Sub-Category Pages | ${subCategoryPages.length} | /services/* |
-| Projects & Case Studies | ${projectList.length} | /projects#* |
+| Primary Pages | ${primaryPages.length} | / |
+| Piller Category Pages | ${pillarCategoryPages.length} | /services/* |
+| Projects | ${projectList.length} | /projects#* |
+| Location Pages | ${locationPages.length} | /locations |
 | Blog Posts | ${postList.length} | /blog/* |
 | Machine Feeds | ${protocolList.length} | /sitemap.xml, /llms.txt |
 | **Total** | **${allLinks.length}** | |
@@ -241,9 +248,10 @@ This archive organizes all website URLs and content assets into segregated, stru
     website: baseUrl,
     totalLinks: allLinks.length,
     sections: {
-      categoryPages,
-      subCategoryPages,
+      primaryPages,
+      pillarCategoryPages,
       projects: projectList,
+      locationPages,
       blogPosts: postList,
       protocols: protocolList,
     },
@@ -252,19 +260,20 @@ This archive organizes all website URLs and content assets into segregated, stru
   zip.file('sitemap.json', JSON.stringify(jsonExport, null, 2));
 
   // -------------------------------------------------------------
-  // FOLDER 1: 01_category_pages/
+  // FOLDER 1: 01_primary_pages/
   // -------------------------------------------------------------
-  const catFolder = zip.folder('01_category_pages');
-  if (catFolder) {
-    catFolder.file('urls.txt', categoryPages.map((c) => c.url).join('\n') + '\n');
-    let catIndex = `# Category & Core Landing Pages\n\nTotal URLs: ${categoryPages.length}\n\n`;
-    for (const c of categoryPages) {
-      catIndex += `- [${c.title}](${c.url})\n  Path: \`${c.path}\` | Priority: ${c.priority} | ChangeFreq: ${c.changefreq}\n  ${c.desc}\n\n`;
+  const primFolder = zip.folder('01_primary_pages');
+  if (primFolder) {
+    primFolder.file('urls.txt', primaryPages.map((c) => c.url).join('\n') + '\n');
+    let primIndex = `# Primary Pages\n\nTotal URLs: ${primaryPages.length}\n\n`;
+    for (const c of primaryPages) {
+      primIndex += `- [${c.title}](${c.url})\n  Path: \`${c.path}\` | Priority: ${c.priority} | ChangeFreq: ${c.changefreq}\n  ${c.desc}\n\n`;
       const fileName = `${c.slug ? c.slug : 'home'}.md`;
       const fileBody = `# ${c.title}
 
 - **URL:** ${c.url}
 - **Path:** \`${c.path}\`
+- **Category:** Primary Page
 - **Priority:** ${c.priority}
 - **Change Frequency:** ${c.changefreq}
 - **Last Modified:** ${dateStr}
@@ -272,27 +281,27 @@ This archive organizes all website URLs and content assets into segregated, stru
 ## Overview
 ${c.desc}
 `;
-      catFolder.file(fileName, fileBody);
+      primFolder.file(fileName, fileBody);
     }
-    catFolder.file('index.md', catIndex);
+    primFolder.file('index.md', primIndex);
   }
 
   // -------------------------------------------------------------
-  // FOLDER 2: 02_sub_category_pages/
+  // FOLDER 2: 02_piller_category_pages/
   // -------------------------------------------------------------
-  const subFolder = zip.folder('02_sub_category_pages');
-  if (subFolder) {
-    subFolder.file('urls.txt', subCategoryPages.map((s) => s.url).join('\n') + '\n');
-    let subIndex = `# Sub-Category & Service Pillar Pages\n\nTotal Services: ${subCategoryPages.length}\n\n`;
-    for (const s of subCategoryPages) {
+  const pillarFolder = zip.folder('02_piller_category_pages');
+  if (pillarFolder) {
+    pillarFolder.file('urls.txt', pillarCategoryPages.map((s) => s.url).join('\n') + '\n');
+    let pillarIndex = `# Piller Category Pages\n\nTotal Pillars: ${pillarCategoryPages.length}\n\n`;
+    for (const s of pillarCategoryPages) {
       const data = s.data;
-      subIndex += `- [${s.title}](${s.url})\n  ${s.desc}\n\n`;
+      pillarIndex += `- [${s.title}](${s.url})\n  ${s.desc}\n\n`;
       const fileName = `${s.slug}.md`;
       const fileBody = `# ${s.title}
 
 - **URL:** ${s.url}
 - **Path:** \`${s.path}\`
-- **Category:** Service Pillar
+- **Category:** Piller Category Page
 - **Priority:** ${s.priority}
 - **Change Frequency:** ${s.changefreq}
 - **Last Modified:** ${dateStr}
@@ -317,18 +326,18 @@ ${data.packages
 ## Frequently Asked Questions
 ${data.faqs.map((faq) => `**Q: ${faq.question}**\nA: ${faq.answer}`).join('\n\n')}
 `;
-      subFolder.file(fileName, fileBody);
+      pillarFolder.file(fileName, fileBody);
     }
-    subFolder.file('index.md', subIndex);
+    pillarFolder.file('index.md', pillarIndex);
   }
 
   // -------------------------------------------------------------
-  // FOLDER 3: 03_projects_case_studies/
+  // FOLDER 3: 03_projects/
   // -------------------------------------------------------------
-  const projFolder = zip.folder('03_projects_case_studies');
+  const projFolder = zip.folder('03_projects');
   if (projFolder) {
     projFolder.file('urls.txt', projectList.map((p) => p.url).join('\n') + '\n');
-    let projIndex = `# Verified Client Case Studies & Commercial Track Record\n\nTotal Case Studies: ${projectList.length}\n\n`;
+    let projIndex = `# Verified Client Projects\n\nTotal Projects: ${projectList.length}\n\n`;
     projectList.forEach((p, idx) => {
       const d = p.data;
       projIndex += `### ${idx + 1}. [${p.title}](${p.url})\n- Category: ${d.category} | Client: ${d.client || 'Confidential'}\n- Verified Outcome: ${d.result || p.desc}\n\n`;
@@ -341,7 +350,7 @@ ${data.faqs.map((faq) => `**Q: ${faq.question}**\nA: ${faq.answer}`).join('\n\n'
 
 - **URL:** ${p.url}
 - **Anchor Slug:** \`${p.slug}\`
-- **Category:** ${d.category}
+- **Category:** Project
 - **Client:** ${d.client || 'Confidential'}
 - **Timeline:** ${d.timeline || 'Multi-Month Campaign'}
 - **Verified Result:** ${d.result || 'Significant organic and commercial growth'}
@@ -358,12 +367,39 @@ ${markdownDescription}
   }
 
   // -------------------------------------------------------------
-  // FOLDER 4: 04_blog_posts/
+  // FOLDER 4: 04_location_pages/
   // -------------------------------------------------------------
-  const blogFolder = zip.folder('04_blog_posts');
+  const locFolder = zip.folder('04_location_pages');
+  if (locFolder) {
+    locFolder.file('urls.txt', locationPages.map((l) => l.url).join('\n') + '\n');
+    let locIndex = `# Location Pages\n\nTotal Location Pages: ${locationPages.length}\n\n`;
+    for (const l of locationPages) {
+      locIndex += `- [${l.title}](${l.url})\n  Path: \`${l.path}\` | Priority: ${l.priority}\n  ${l.desc}\n\n`;
+      const fileName = `${l.slug}.md`;
+      const fileBody = `# ${l.title}
+
+- **URL:** ${l.url}
+- **Path:** \`${l.path}\`
+- **Category:** Location Page
+- **Priority:** ${l.priority}
+- **Change Frequency:** ${l.changefreq}
+- **Last Modified:** ${dateStr}
+
+## Overview
+${l.desc}
+`;
+      locFolder.file(fileName, fileBody);
+    }
+    locFolder.file('index.md', locIndex);
+  }
+
+  // -------------------------------------------------------------
+  // FOLDER 5: 05_blog_posts/
+  // -------------------------------------------------------------
+  const blogFolder = zip.folder('05_blog_posts');
   if (blogFolder) {
     blogFolder.file('urls.txt', postList.map((b) => b.url).join('\n') + '\n');
-    let blogIndex = `# Strategic Articles & Technical Knowledge Base\n\nTotal Articles: ${postList.length}\n\n`;
+    let blogIndex = `# Strategic Blog Posts\n\nTotal Articles: ${postList.length}\n\n`;
     postList.forEach((b, idx) => {
       const post = b.data;
       blogIndex += `- [${b.title}](${b.url})\n  ${b.desc}\n\n`;
@@ -373,6 +409,7 @@ ${markdownDescription}
 
 - **URL:** ${b.url}
 - **Path:** \`${b.path}\`
+- **Category:** Blog Post
 - **Published:** ${post.createdAt || dateStr}
 - **Last Updated:** ${post.updatedAt || dateStr}
 - **Author:** ${siteConfig.fullName}
@@ -389,9 +426,9 @@ ${post.content ? htmlToMarkdown(post.content) : 'Full article available online.'
   }
 
   // -------------------------------------------------------------
-  // FOLDER 5: 05_machine_protocols/
+  // FOLDER 6: 06_machine_protocols/
   // -------------------------------------------------------------
-  const protoFolder = zip.folder('05_machine_protocols');
+  const protoFolder = zip.folder('06_machine_protocols');
   if (protoFolder) {
     protoFolder.file('urls.txt', protocolList.map((pr) => pr.url).join('\n') + '\n');
     let protoIndex = `# Machine Protocols & Search Crawler Directives\n\n`;

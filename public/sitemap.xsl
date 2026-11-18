@@ -246,7 +246,7 @@
           /* Bento Stat Bar matching HTML sitemap */
           .bento-bar {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 14px;
             margin-bottom: 28px;
           }
@@ -483,8 +483,9 @@
             border-radius: 6px;
           }
 
-          .badge-core { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
-          .badge-service { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+          .badge-primary, .badge-core { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+          .badge-pillar, .badge-service { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+          .badge-location { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; }
           .badge-project { background: var(--orange-soft); color: var(--orange-dark); border: 1px solid #fed7aa; }
           .badge-post { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
           .badge-protocol { background: var(--slate-50); color: var(--slate-600); border: 1px solid var(--slate-200); }
@@ -742,21 +743,25 @@
               <div class="bento-value"><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></div>
               <div class="bento-label">Total Published URLs</div>
             </div>
-            <div class="bento-cell" onclick="filterByCategory('core')">
-              <div class="bento-value">18</div>
-              <div class="bento-label">Category Pages</div>
+            <div class="bento-cell" onclick="filterByCategory('primary')">
+              <div class="bento-value">7</div>
+              <div class="bento-label">Primary Page</div>
             </div>
-            <div class="bento-cell" onclick="filterByCategory('service')">
+            <div class="bento-cell" onclick="filterByCategory('pillar')">
               <div class="bento-value">4</div>
-              <div class="bento-label">Sub-Category Pillars</div>
+              <div class="bento-label">Piller Category Page</div>
             </div>
             <div class="bento-cell" onclick="filterByCategory('project')">
               <div class="bento-value">21</div>
-              <div class="bento-label">Case Studies (21)</div>
+              <div class="bento-label">Project (21)</div>
+            </div>
+            <div class="bento-cell" onclick="filterByCategory('location')">
+              <div class="bento-value">1</div>
+              <div class="bento-label">Location Page</div>
             </div>
             <div class="bento-cell" onclick="filterByCategory('post')">
               <div class="bento-value">6</div>
-              <div class="bento-label">Blog Articles</div>
+              <div class="bento-label">Blog Post</div>
             </div>
           </div>
 
@@ -770,10 +775,11 @@
             <div class="tabs-and-toggle">
               <div class="category-tabs">
                 <button type="button" class="tab-btn active" id="tab-all" onclick="filterByCategory('all')">All Links</button>
-                <button type="button" class="tab-btn" id="tab-core" onclick="filterByCategory('core')">Category Pages</button>
-                <button type="button" class="tab-btn" id="tab-service" onclick="filterByCategory('service')">Sub-Categories</button>
-                <button type="button" class="tab-btn" id="tab-project" onclick="filterByCategory('project')">Case Studies</button>
-                <button type="button" class="tab-btn" id="tab-post" onclick="filterByCategory('post')">Blog Posts</button>
+                <button type="button" class="tab-btn" id="tab-primary" onclick="filterByCategory('primary')">Primary Page</button>
+                <button type="button" class="tab-btn" id="tab-pillar" onclick="filterByCategory('pillar')">Piller Category Page</button>
+                <button type="button" class="tab-btn" id="tab-project" onclick="filterByCategory('project')">Project</button>
+                <button type="button" class="tab-btn" id="tab-location" onclick="filterByCategory('location')">Location Page</button>
+                <button type="button" class="tab-btn" id="tab-post" onclick="filterByCategory('post')">Blog Post</button>
               </div>
 
               <div class="view-toggle">
@@ -812,21 +818,23 @@
               <!-- Compute Category Type -->
               <xsl:variable name="catType">
                 <xsl:choose>
-                  <xsl:when test="contains($itemLoc, '/services/')">service</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/services/')">pillar</xsl:when>
                   <xsl:when test="contains($itemLoc, '/projects#')">project</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/locations')">location</xsl:when>
                   <xsl:when test="contains($itemLoc, '/blog/')">post</xsl:when>
-                  <xsl:when test="contains($itemLoc, '.xml') or contains($itemLoc, '.txt') or contains($itemLoc, '.html')">protocol</xsl:when>
-                  <xsl:otherwise>core</xsl:otherwise>
+                  <xsl:when test="contains($itemLoc, '.xml') or contains($itemLoc, '.txt')">protocol</xsl:when>
+                  <xsl:otherwise>primary</xsl:otherwise>
                 </xsl:choose>
               </xsl:variable>
 
               <xsl:variable name="catLabel">
                 <xsl:choose>
-                  <xsl:when test="contains($itemLoc, '/services/')">Sub-Category</xsl:when>
-                  <xsl:when test="contains($itemLoc, '/projects#')">Case Study</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/services/')">Piller Category Page</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/projects#')">Project</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/locations')">Location Page</xsl:when>
                   <xsl:when test="contains($itemLoc, '/blog/')">Blog Post</xsl:when>
-                  <xsl:when test="contains($itemLoc, '.xml') or contains($itemLoc, '.txt') or contains($itemLoc, '.html')">Protocol</xsl:when>
-                  <xsl:otherwise>Category Page</xsl:otherwise>
+                  <xsl:when test="contains($itemLoc, '.xml') or contains($itemLoc, '.txt')">Machine Protocol</xsl:when>
+                  <xsl:otherwise>Primary Page</xsl:otherwise>
                 </xsl:choose>
               </xsl:variable>
 
@@ -892,21 +900,23 @@
 
                   <xsl:variable name="tCat">
                     <xsl:choose>
-                      <xsl:when test="contains($tLoc, '/services/')">service</xsl:when>
+                      <xsl:when test="contains($tLoc, '/services/')">pillar</xsl:when>
                       <xsl:when test="contains($tLoc, '/projects#')">project</xsl:when>
+                      <xsl:when test="contains($tLoc, '/locations')">location</xsl:when>
                       <xsl:when test="contains($tLoc, '/blog/')">post</xsl:when>
-                      <xsl:when test="contains($tLoc, '.xml') or contains($tLoc, '.txt') or contains($tLoc, '.html')">protocol</xsl:when>
-                      <xsl:otherwise>core</xsl:otherwise>
+                      <xsl:when test="contains($tLoc, '.xml') or contains($tLoc, '.txt')">protocol</xsl:when>
+                      <xsl:otherwise>primary</xsl:otherwise>
                     </xsl:choose>
                   </xsl:variable>
 
                   <xsl:variable name="tCatLabel">
                     <xsl:choose>
-                      <xsl:when test="contains($tLoc, '/services/')">Sub-Category</xsl:when>
-                      <xsl:when test="contains($tLoc, '/projects#')">Case Study</xsl:when>
+                      <xsl:when test="contains($tLoc, '/services/')">Piller Category Page</xsl:when>
+                      <xsl:when test="contains($tLoc, '/projects#')">Project</xsl:when>
+                      <xsl:when test="contains($tLoc, '/locations')">Location Page</xsl:when>
                       <xsl:when test="contains($tLoc, '/blog/')">Blog Post</xsl:when>
-                      <xsl:when test="contains($tLoc, '.xml') or contains($tLoc, '.txt') or contains($tLoc, '.html')">Protocol</xsl:when>
-                      <xsl:otherwise>Category Page</xsl:otherwise>
+                      <xsl:when test="contains($tLoc, '.xml') or contains($tLoc, '.txt')">Machine Protocol</xsl:when>
+                      <xsl:otherwise>Primary Page</xsl:otherwise>
                     </xsl:choose>
                   </xsl:variable>
 

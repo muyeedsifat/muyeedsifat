@@ -45,7 +45,7 @@ With deep experience bridging technical computer science foundations with commer
 
 ---
 
-## 2. Specialized Services & Capabilities
+## 2. Piller Category Pages (Core Service Pillars)
 
 ${services
   .map(
@@ -63,7 +63,7 @@ ${s.packages.map((pkg) => `  * **${pkg.name} (${pkg.label}):** ${pkg.description
 
 ---
 
-## 3. Verified Client Case Studies & Commercial Track Record
+## 3. Verified Client Projects & Case Studies
 
 ${projects
   .map(

@@ -9,7 +9,7 @@ export interface SitemapLinkItem {
   title: string;
   url: string;
   path: string;
-  category: 'core' | 'service' | 'project' | 'post' | 'protocol';
+  category: 'primary' | 'pillar' | 'project' | 'location' | 'post' | 'protocol' | 'core' | 'service';
   categoryLabel: string;
   description: string;
   priority: string;
@@ -37,9 +37,10 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
   const counts = useMemo(() => {
     return {
       all: items.length,
-      core: items.filter((i) => i.category === 'core').length,
-      service: items.filter((i) => i.category === 'service').length,
+      primary: items.filter((i) => i.category === 'primary' || i.category === 'core').length,
+      pillar: items.filter((i) => i.category === 'pillar' || i.category === 'service').length,
       project: items.filter((i) => i.category === 'project').length,
+      location: items.filter((i) => i.category === 'location').length,
       post: items.filter((i) => i.category === 'post').length,
       protocol: items.filter((i) => i.category === 'protocol').length,
     };
@@ -47,7 +48,11 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
 
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
-      const matchesTab = activeTab === 'all' || item.category === activeTab;
+      const matchesTab =
+        activeTab === 'all' ||
+        item.category === activeTab ||
+        (activeTab === 'primary' && item.category === 'core') ||
+        (activeTab === 'pillar' && item.category === 'service');
       if (!matchesTab) return false;
 
       if (!searchQuery.trim()) return true;
@@ -260,21 +265,25 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
           <div className="sitemapBentoValue">{counts.all}</div>
           <div className="sitemapBentoLabel">Total Published URLs</div>
         </div>
-        <div className="sitemapBentoCell" onClick={() => setActiveTab('core')} style={{ cursor: 'pointer' }}>
-          <div className="sitemapBentoValue">{counts.core}</div>
-          <div className="sitemapBentoLabel">Category Pages</div>
+        <div className="sitemapBentoCell" onClick={() => setActiveTab('primary')} style={{ cursor: 'pointer' }}>
+          <div className="sitemapBentoValue">{counts.primary}</div>
+          <div className="sitemapBentoLabel">Primary Page</div>
         </div>
-        <div className="sitemapBentoCell" onClick={() => setActiveTab('service')} style={{ cursor: 'pointer' }}>
-          <div className="sitemapBentoValue">{counts.service}</div>
-          <div className="sitemapBentoLabel">Sub-Category Pillars</div>
+        <div className="sitemapBentoCell" onClick={() => setActiveTab('pillar')} style={{ cursor: 'pointer' }}>
+          <div className="sitemapBentoValue">{counts.pillar}</div>
+          <div className="sitemapBentoLabel">Piller Category Page</div>
         </div>
         <div className="sitemapBentoCell" onClick={() => setActiveTab('project')} style={{ cursor: 'pointer' }}>
           <div className="sitemapBentoValue">{counts.project}</div>
-          <div className="sitemapBentoLabel">Case Studies (21)</div>
+          <div className="sitemapBentoLabel">Project ({counts.project})</div>
+        </div>
+        <div className="sitemapBentoCell" onClick={() => setActiveTab('location')} style={{ cursor: 'pointer' }}>
+          <div className="sitemapBentoValue">{counts.location}</div>
+          <div className="sitemapBentoLabel">Location Page</div>
         </div>
         <div className="sitemapBentoCell" onClick={() => setActiveTab('post')} style={{ cursor: 'pointer' }}>
           <div className="sitemapBentoValue">{counts.post}</div>
-          <div className="sitemapBentoLabel">Blog Articles</div>
+          <div className="sitemapBentoLabel">Blog Post</div>
         </div>
       </div>
 
@@ -325,31 +334,38 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
             </button>
             <button
               type="button"
-              className={`sitemapTabBtn ${activeTab === 'core' ? 'active' : ''}`}
-              onClick={() => setActiveTab('core')}
+              className={`sitemapTabBtn ${activeTab === 'primary' ? 'active' : ''}`}
+              onClick={() => setActiveTab('primary')}
             >
-              Category Pages <span className="sitemapTabCount">{counts.core}</span>
+              Primary Page <span className="sitemapTabCount">{counts.primary}</span>
             </button>
             <button
               type="button"
-              className={`sitemapTabBtn ${activeTab === 'service' ? 'active' : ''}`}
-              onClick={() => setActiveTab('service')}
+              className={`sitemapTabBtn ${activeTab === 'pillar' ? 'active' : ''}`}
+              onClick={() => setActiveTab('pillar')}
             >
-              Sub-Categories <span className="sitemapTabCount">{counts.service}</span>
+              Piller Category Page <span className="sitemapTabCount">{counts.pillar}</span>
             </button>
             <button
               type="button"
               className={`sitemapTabBtn ${activeTab === 'project' ? 'active' : ''}`}
               onClick={() => setActiveTab('project')}
             >
-              Case Studies <span className="sitemapTabCount">{counts.project}</span>
+              Project <span className="sitemapTabCount">{counts.project}</span>
+            </button>
+            <button
+              type="button"
+              className={`sitemapTabBtn ${activeTab === 'location' ? 'active' : ''}`}
+              onClick={() => setActiveTab('location')}
+            >
+              Location Page <span className="sitemapTabCount">{counts.location}</span>
             </button>
             <button
               type="button"
               className={`sitemapTabBtn ${activeTab === 'post' ? 'active' : ''}`}
               onClick={() => setActiveTab('post')}
             >
-              Blog Posts <span className="sitemapTabCount">{counts.post}</span>
+              Blog Post <span className="sitemapTabCount">{counts.post}</span>
             </button>
             <button
               type="button"

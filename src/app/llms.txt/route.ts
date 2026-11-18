@@ -40,20 +40,16 @@ export async function GET() {
 
 ${siteConfig.fullName} is an ROI-focused growth marketing strategist with extensive experience across local service businesses, B2B engineering manufacturers, legal and healthcare practices, and global e-commerce brands. Known for bridging technical computer science foundations with commercial customer acquisition.
 
-## Core Pages & Portals
+## Primary Pages
 
 - [Home](${baseUrl}/): Main portfolio overview, primary service pillars, verified client metrics, and direct consultation booking.
-- [About](${baseUrl}/about): Professional background, technical methodology, core competencies, and career milestones.
 - [Services Hub](${baseUrl}/services): Complete breakdown of client engagement offerings, audit deliverables, and monthly growth programs.
-- [Projects & Case Studies](${baseUrl}/projects): 21 verified client case studies with before-and-after proof screenshots, search console evidence, and commercial outcomes.
-- [Blog & Strategic Insights](${baseUrl}/blog): In-depth technical guides covering AI Overviews, AEO vs GEO vs SEO, Google Ads STAG architectures, and Core Web Vitals optimization.
-- [Target Locations](${baseUrl}/locations): Regional and international client service corridors across the United States, United Kingdom, Australia, and Singapore.
+- [Projects Hub](${baseUrl}/projects): 21 verified client case studies with before-and-after proof screenshots, search console evidence, and commercial outcomes.
+- [About](${baseUrl}/about): Professional background, technical methodology, core competencies, and career milestones.
+- [Blog Hub](${baseUrl}/blog): In-depth technical guides covering AI Overviews, AEO vs GEO vs SEO, Google Ads STAG architectures, and Core Web Vitals optimization.
 - [Contact & Consultation](${baseUrl}/contact): Direct intake form, WhatsApp chat line (${siteConfig.whatsappNumber}), and official email contact (${siteConfig.email}).
-- [HTML Sitemap](${baseUrl}/sitemap.html): Complete human-navigable directory of all published pages, services, case studies, and articles.
-- [XML Sitemap](${baseUrl}/sitemap.xml): Machine-readable Sitemaps.org feed with XSL dashboard stylesheet.
-- [Full LLM Context](${baseUrl}/llms-full.txt): Comprehensive extended knowledge base with deep case studies for large-context AI agents.
 
-## Specialized Services & Capabilities
+## Piller Category Pages
 
 ${services
   .map(
@@ -62,7 +58,11 @@ ${services
   )
   .join('\n')}
 
-## Verified Client Case Studies & Commercial Track Record
+## Location Pages
+
+- [Target Locations & International Corridors](${baseUrl}/locations): Regional and international client service corridors across the United States, United Kingdom, Australia, and Singapore.
+
+## Projects & Verified Case Studies
 
 ${projects
   .map(
@@ -71,7 +71,7 @@ ${projects
   )
   .join('\n')}
 
-## Strategic Articles & Technical Knowledge Base
+## Strategic Blog Posts
 
 ${posts
   .map(
@@ -79,6 +79,13 @@ ${posts
       `- [${p.title}](${baseUrl}/blog/${p.slug})${p.excerpt ? `: ${p.excerpt}` : ''}`
   )
   .join('\n')}
+
+## Protocols & Machine Feeds
+
+- [HTML Sitemap Directory](${baseUrl}/sitemap.html): Complete human-navigable directory of all published pages, services, case studies, and articles.
+- [XML Sitemap Feed](${baseUrl}/sitemap.xml): Machine-readable Sitemaps.org feed with XSL dashboard stylesheet.
+- [Full LLM Knowledge Base](${baseUrl}/llms-full.txt): Comprehensive extended knowledge base with deep case studies for large-context AI agents.
+- [Robots.txt Directives](${baseUrl}/robots.txt): Search engine crawler instructions and indexation rules.
 
 ## Technical Frameworks & Methodology
 

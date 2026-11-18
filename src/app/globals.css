@@ -2183,7 +2183,7 @@
 /* Bento Stat Bar */
 .sitemapBentoBar {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 14px;
   margin-bottom: 28px;
 }
@@ -2389,12 +2389,14 @@
   border-radius: 6px;
 }
 
+.badge-primary,
 .badge-core {
   background: #eff6ff;
   color: #1d4ed8;
   border: 1px solid #bfdbfe;
 }
 
+.badge-pillar,
 .badge-service {
   background: #fdf2f8;
   color: #be185d;
@@ -2405,6 +2407,12 @@
   background: #fff7ed;
   color: #c2410c;
   border: 1px solid #fed7aa;
+}
+
+.badge-location {
+  background: #ecfeff;
+  color: #0e7490;
+  border: 1px solid #a5f3fc;
 }
 
 .badge-post {

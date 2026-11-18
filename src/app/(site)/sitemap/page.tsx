@@ -43,87 +43,75 @@ const faqs = [
 export default async function SitemapPage() {
   const nowIso = new Date().toISOString();
 
-  // 1. Core Landing Pages
-  const coreItems: SitemapLinkItem[] = [
+  // 1. Primary Pages
+  const primaryItems: SitemapLinkItem[] = [
     {
-      id: 'core-home',
+      id: 'primary-home',
       title: 'Home – Portfolio & Growth Architecture Overview',
       url: absoluteUrl('/'),
       path: '/',
-      category: 'core',
-      categoryLabel: 'Core Page',
+      category: 'primary',
+      categoryLabel: 'Primary Page',
       description: 'Main portfolio overview, primary service pillars, client outcomes, and consultation intake.',
       priority: '1.0',
       changefreq: 'weekly',
       updatedAt: nowIso,
     },
     {
-      id: 'core-services',
+      id: 'primary-services',
       title: 'Services Hub – Growth & Acquisition Capabilities',
       url: absoluteUrl('/services'),
       path: '/services',
-      category: 'core',
-      categoryLabel: 'Core Page',
+      category: 'primary',
+      categoryLabel: 'Primary Page',
       description: 'Comprehensive directory of digital marketing, AI SEO, paid search, and web performance services.',
       priority: '0.9',
       changefreq: 'weekly',
       updatedAt: nowIso,
     },
     {
-      id: 'core-projects',
+      id: 'primary-projects',
       title: 'Projects & Case Studies – 21 Verified Client Outlines',
       url: absoluteUrl('/projects'),
       path: '/projects',
-      category: 'core',
-      categoryLabel: 'Core Page',
+      category: 'primary',
+      categoryLabel: 'Primary Page',
       description: 'Exhaustive repository of verified client case studies with sequential before/after proof screenshots.',
       priority: '0.9',
       changefreq: 'weekly',
       updatedAt: nowIso,
     },
     {
-      id: 'core-about',
+      id: 'primary-about',
       title: 'About Muyeed Sifat – Professional Background & Credentials',
       url: absoluteUrl('/about'),
       path: '/about',
-      category: 'core',
-      categoryLabel: 'Core Page',
+      category: 'primary',
+      categoryLabel: 'Primary Page',
       description: 'Career background, technical methodology, core competencies, and digital marketing credentials.',
       priority: '0.8',
       changefreq: 'monthly',
       updatedAt: nowIso,
     },
     {
-      id: 'core-blog',
+      id: 'primary-blog',
       title: 'Strategic Insights & Blog Hub',
       url: absoluteUrl('/blog'),
       path: '/blog',
-      category: 'core',
-      categoryLabel: 'Core Page',
+      category: 'primary',
+      categoryLabel: 'Primary Page',
       description: 'In-depth technical guides covering AI Overviews, AEO vs GEO vs SEO, and conversion optimization.',
       priority: '0.8',
       changefreq: 'weekly',
       updatedAt: nowIso,
     },
     {
-      id: 'core-locations',
-      title: 'Target Locations & International Service Corridors',
-      url: absoluteUrl('/locations'),
-      path: '/locations',
-      category: 'core',
-      categoryLabel: 'Core Page',
-      description: 'Geographic service coverage spanning the United States, United Kingdom, Australia, and Singapore.',
-      priority: '0.8',
-      changefreq: 'monthly',
-      updatedAt: nowIso,
-    },
-    {
-      id: 'core-contact',
+      id: 'primary-contact',
       title: 'Contact & Project Consultation',
       url: absoluteUrl('/contact'),
       path: '/contact',
-      category: 'core',
-      categoryLabel: 'Core Page',
+      category: 'primary',
+      categoryLabel: 'Primary Page',
       description: 'Direct inquiry channel, consultation booking, WhatsApp messaging, and retainer discussions.',
       priority: '0.8',
       changefreq: 'monthly',
@@ -131,21 +119,37 @@ export default async function SitemapPage() {
     },
   ];
 
-  // 2. Service Offerings
-  const serviceItems: SitemapLinkItem[] = services.map((s) => ({
-    id: `service-${s.slug}`,
+  // 2. Piller Category Pages (Core Service Pillars)
+  const pillarItems: SitemapLinkItem[] = services.map((s) => ({
+    id: `pillar-${s.slug}`,
     title: `${s.name} – ${s.title}`,
     url: absoluteUrl(`/services/${s.slug}`),
     path: `/services/${s.slug}`,
-    category: 'service',
-    categoryLabel: 'Service Pillar',
+    category: 'pillar',
+    categoryLabel: 'Piller Category Page',
     description: s.description,
     priority: s.primary ? '0.9' : '0.8',
     changefreq: 'weekly',
     updatedAt: nowIso,
   }));
 
-  // 3. Client Case Studies
+  // 3. Location Pages
+  const locationItems: SitemapLinkItem[] = [
+    {
+      id: 'location-main',
+      title: 'Target Locations & International Service Corridors',
+      url: absoluteUrl('/locations'),
+      path: '/locations',
+      category: 'location',
+      categoryLabel: 'Location Page',
+      description: 'Geographic service coverage spanning the United States, United Kingdom, Australia, and Singapore.',
+      priority: '0.8',
+      changefreq: 'monthly',
+      updatedAt: nowIso,
+    },
+  ];
+
+  // 4. Projects (Client Case Studies)
   let projectItems: SitemapLinkItem[] = [];
   try {
     const rawProjects = await getProjects();
@@ -155,7 +159,7 @@ export default async function SitemapPage() {
       url: absoluteUrl(`/projects#${p.slug}`),
       path: `/projects#${p.slug}`,
       category: 'project',
-      categoryLabel: 'Case Study',
+      categoryLabel: 'Project',
       description: p.result || `Verified ${p.category} performance case study with interactive proof gallery.`,
       priority: '0.85',
       changefreq: 'weekly',
@@ -165,7 +169,7 @@ export default async function SitemapPage() {
     console.error('Error fetching projects for sitemap:', err);
   }
 
-  // 4. Published Blog Posts
+  // 5. Blog Posts
   let postItems: SitemapLinkItem[] = [];
   try {
     const rawPosts = await getPublishedPosts();
@@ -175,7 +179,7 @@ export default async function SitemapPage() {
       url: absoluteUrl(`/blog/${p.slug}`),
       path: `/blog/${p.slug}`,
       category: 'post',
-      categoryLabel: 'Strategic Article',
+      categoryLabel: 'Blog Post',
       description: p.excerpt || p.metaDescription || 'Technical analysis and practical implementation guide.',
       priority: '0.75',
       changefreq: 'monthly',
@@ -185,10 +189,11 @@ export default async function SitemapPage() {
     console.error('Error fetching posts for sitemap:', err);
   }
 
-  // 5. Dynamic Custom Pages (if any new custom pages are created in Admin beyond default routes)
-  const existingCoreAndServicePaths = new Set([
-    ...coreItems.map((i) => i.path.toLowerCase()),
-    ...serviceItems.map((i) => i.path.toLowerCase()),
+  // 6. Dynamic Custom Pages (if any new custom pages are created in Admin beyond default routes)
+  const existingKnownPaths = new Set([
+    ...primaryItems.map((i) => i.path.toLowerCase()),
+    ...pillarItems.map((i) => i.path.toLowerCase()),
+    ...locationItems.map((i) => i.path.toLowerCase()),
   ]);
 
   let customPageItems: SitemapLinkItem[] = [];
@@ -203,20 +208,20 @@ export default async function SitemapPage() {
           title: p.title,
           url: absoluteUrl(cleanPath),
           path: cleanPath,
-          category: 'core' as const,
-          categoryLabel: 'Custom Page',
+          category: 'primary' as const,
+          categoryLabel: 'Primary Page',
           description: p.metaDescription || p.lead || 'Custom published page.',
           priority: '0.7',
           changefreq: 'monthly' as const,
           updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : nowIso,
         };
       })
-      .filter((p) => !existingCoreAndServicePaths.has(p.path.toLowerCase()));
+      .filter((p) => !existingKnownPaths.has(p.path.toLowerCase()));
   } catch (err) {
     console.error('Error fetching custom pages for sitemap:', err);
   }
 
-  // 6. Protocols & Machine Feeds
+  // 7. Protocols & Machine Feeds
   const protocolItems: SitemapLinkItem[] = [
     {
       id: 'proto-xml-sitemap',
@@ -281,8 +286,9 @@ export default async function SitemapPage() {
   ];
 
   const rawAllItems: SitemapLinkItem[] = [
-    ...coreItems,
-    ...serviceItems,
+    ...primaryItems,
+    ...pillarItems,
+    ...locationItems,
     ...projectItems,
     ...postItems,
     ...customPageItems,

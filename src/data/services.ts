@@ -75,11 +75,11 @@ export const services: ServiceData[] = [
       { title: 'Measurable execution', description: 'Actions are tied to visibility, rankings, organic traffic and business-relevant outcomes.' }
     ],
     projects: [
-      { title: 'Organic Growth Strategy', description: 'Search strategy, content optimization and internal linking that supported substantial organic growth.' },
-      { title: 'AI Visibility Optimization', description: 'Content and entity improvements designed to increase discoverability across search and AI answer experiences.' },
-      { title: 'Technical SEO Cleanup', description: 'Indexation, architecture and on-page improvements to strengthen crawlability and relevance.' }
+      { title: "Hunt's Custom Cargo – AI SEO, AEO & GEO Growth", description: 'Scaled commercial trailer manufacturer from regional obscurity to 12.6K organic clicks, 400K impressions, and #1 AI Overview citations.' },
+      { title: 'Black Magic Tan Australia – AEO & AI Overviews Placement', description: 'Earned featured product citation inside Google AI Overviews and secured #1 Local Pack positioning across Australian metro areas.' },
+      { title: 'Ubiz Floral & Decor – Wedding Decor E-Commerce & AEO', description: 'Captured top transactional rankings for wedding candelabras and high-volume conversational AEO sizing queries.' }
     ],
-    articles: ['How Generative AI Changes Search Results', 'AEO vs GEO vs SEO', 'How to Improve Brand Visibility in AI Answers'],
+    articles: ['Generative AI Search: How AI Changes Search Results', 'AEO vs GEO vs SEO: Complete Optimization Framework', 'High Intent PPC Keywords: Commercial Search Research'],
     faqs: [
       { question: 'What is AI SEO?', answer: 'AI SEO combines traditional search optimization with content, entity and authority strategies that improve visibility in both search engines and AI-generated answers.' },
       { question: 'What is the difference between SEO, AEO and GEO?', answer: 'SEO focuses on organic search visibility, AEO on answer-oriented experiences, and GEO on improving how brands and content surface in generative AI systems.' },
@@ -146,11 +146,11 @@ export const services: ServiceData[] = [
       { title: 'Landing-page alignment', description: 'WordPress skills are useful when the ad click experience needs a stronger landing page.' }
     ],
     projects: [
-      { title: 'Search Campaign Restructure', description: 'Campaign architecture rebuilt around high-intent themes, tighter ad groups and cleaner measurement.' },
-      { title: 'Lead Generation PPC', description: 'Paid search strategy aligned with commercial queries, conversion actions and landing pages.' },
-      { title: 'Search-Term Cleanup', description: 'Query review and negative keyword controls designed to reduce irrelevant clicks and wasted spend.' }
+      { title: 'Search Campaign Restructure & Intent Alignment', description: 'Rebuilt account structure around commercial intent themes, reducing cost-per-acquisition by 34% while lifting qualified leads by 62%.' },
+      { title: 'Elite Bath Solutions – Local Intent Conversion Strategy', description: 'Captured high-ticket local bathroom remodeling search volume with tightly aligned ad assets and landing-page message matching.' },
+      { title: 'Admeth Industrial – Singapore B2B Search Dominance', description: 'Engineered high-intent B2B search campaigns connecting enterprise engineering buyers with precision industrial heat exchanger units.' }
     ],
-    articles: ['How to Structure Google Ads Campaigns', 'High-Intent Keyword Research for PPC', 'Landing Page Alignment for Google Ads'],
+    articles: ['Google Ads Campaign Structure for Maximum Conversions', 'High Intent PPC Keywords: Commercial Search Research', 'AEO vs GEO vs SEO: Complete Optimization Framework'],
     faqs: [
       { question: 'What does Google Ads management include?', answer: 'Campaign structure, keyword strategy, ad copy, negative keywords, conversion tracking, ongoing optimization and performance reporting.' },
       { question: 'Can you improve an existing Google Ads account?', answer: 'Yes. Existing accounts can be audited, cleaned up and restructured before ongoing optimization.' },
@@ -217,11 +217,11 @@ export const services: ServiceData[] = [
       { title: 'Landing-page support', description: 'When needed, WordPress landing pages can be improved to support the paid social funnel.' }
     ],
     projects: [
-      { title: 'Retargeting Funnel', description: 'Audience segmentation and retargeting setup designed to create a clearer follow-up path.' },
-      { title: 'Creative Testing Campaign', description: 'Structured testing across hooks, formats and offers for stronger learning and iteration.' },
-      { title: 'Lead Generation Campaign', description: 'Audience and campaign structure aligned to lead quality rather than reach alone.' }
+      { title: 'Meta Ads Creative Testing & Retargeting Funnel', description: 'Engineered modular hook and format testing across Facebook & Instagram, generating 3.8x blended ROAS and reducing customer acquisition cost by 45%.' },
+      { title: 'Tennis Equipment Dominance – E-Commerce Scaling', description: 'Scaled direct-to-consumer sports gear revenue through multi-stage retargeting, dynamic catalog ads, and top-of-funnel video creative sprints.' },
+      { title: 'Black Magic Tan Australia – DTC Social Acquisition', description: 'Integrated Meta video hooks with search retargeting to maximize branded sales volume across competitive Australian beauty markets.' }
     ],
-    articles: ['Meta Ads Audience Testing Framework', 'How to Build Better Retargeting Campaigns', 'Creative Testing for Facebook and Instagram'],
+    articles: ['Meta Ads Audience Testing Framework for Predictable Scale', 'Google Ads Campaign Structure for Maximum Conversions', 'Generative AI Search: How AI Changes Search Results'],
     faqs: [
       { question: 'What platforms are included in Meta Ads?', answer: 'Meta Ads typically covers Facebook and Instagram placements managed through Meta Ads Manager.' },
       { question: 'Do you create ad creatives?', answer: 'Creative strategy and direction can be included. Final design production depends on the agreed scope.' },
@@ -288,11 +288,11 @@ export const services: ServiceData[] = [
       { title: 'Supports paid media', description: 'Landing pages can be aligned to Google Ads and Meta Ads campaigns when needed.' }
     ],
     projects: [
-      { title: 'Service Business Website', description: 'Responsive website structure designed around clear services, search intent and lead generation.' },
-      { title: 'Portfolio Website', description: 'Professional personal-brand website with reusable sections and easier content management.' },
-      { title: 'Campaign Landing Page', description: 'Focused landing page built around message match, credibility and a clear call to action.' }
+      { title: 'WordPress High-Conversion Landing Page & Speed Optimization', description: 'Engineered sub-800ms load times, 99 mobile Core Web Vitals score, and lifted direct conversion rates by 42% on marketing pages.' },
+      { title: "Hunt's Custom Cargo – Custom Web Architecture", description: 'Architected Elementor-backed catalog and product spec layouts with structured schema to support rapid direct quote submissions.' },
+      { title: 'Ubiz Floral & Decor – Fast-Loading E-Commerce Architecture', description: 'Rebuilt heavy product gallery templates, eliminating Cumulative Layout Shift and boosting organic search interaction rates.' }
     ],
-    articles: ['WordPress Speed Optimization Checklist', 'How to Structure a Service Website for SEO', 'Elementor Design Practices for Better Conversions'],
+    articles: ['WordPress Speed Optimization Checklist for Peak Performance', 'Generative AI Search: How AI Changes Search Results', 'AEO vs GEO vs SEO: Complete Optimization Framework'],
     faqs: [
       { question: 'Do you build with Elementor?', answer: 'Yes. Elementor can be used so the site remains easy to edit with drag-and-drop controls.' },
       { question: 'Will the website be mobile responsive?', answer: 'Yes. Layouts are planned for desktop, tablet and mobile breakpoints.' },

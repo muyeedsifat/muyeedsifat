@@ -13,15 +13,72 @@ export function Footer() {
             <p className="footerIntro">
               Digital marketing focused on AI SEO, Google Ads and Meta Ads, with WordPress development available when the website needs to support growth.
             </p>
-            <div className="footerSocialIcons" style={{ display: 'flex', gap: '12px', marginTop: '18px' }}>
-              <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="footerSocialLink" aria-label="LinkedIn Profile">
-                <LinkedInIcon size={20} />
+            <div className="footerSocialIcons" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '18px' }}>
+              <a
+                href={siteConfig.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footerSocialLink"
+                aria-label="LinkedIn Profile"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: '#222222',
+                  color: '#cccccc',
+                  margin: 0,
+                  padding: 0,
+                  textDecoration: 'none'
+                }}
+              >
+                <LinkedInIcon size={18} />
               </a>
-              <a href={siteConfig.upwork} target="_blank" rel="noopener noreferrer" className="footerSocialLink" aria-label="Upwork Profile">
-                <UpworkIcon size={20} />
+              <a
+                href={siteConfig.upwork}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footerSocialLink"
+                aria-label="Upwork Profile"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: '#222222',
+                  color: '#cccccc',
+                  margin: 0,
+                  padding: 0,
+                  textDecoration: 'none'
+                }}
+              >
+                <UpworkIcon size={18} />
               </a>
-              <a href="https://wa.me/8801576624428" target="_blank" rel="noopener noreferrer" className="footerSocialLink" aria-label="Direct WhatsApp Message">
-                <WhatsAppIcon size={20} />
+              <a
+                href="https://wa.me/8801576624428"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footerSocialLink"
+                aria-label="Direct WhatsApp Message"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: '#222222',
+                  color: '#cccccc',
+                  margin: 0,
+                  padding: 0,
+                  textDecoration: 'none'
+                }}
+              >
+                <WhatsAppIcon size={18} />
               </a>
             </div>
           </div>

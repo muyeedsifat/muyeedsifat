@@ -285,7 +285,7 @@
             color: var(--slate-500);
           }
 
-          /* Controls Bar: Search & Category Tabs */
+          /* Controls Bar: Search and Category Tabs */
           .controls-bar {
             background: var(--white);
             border: 1px solid var(--slate-200);
@@ -693,7 +693,7 @@
             </p>
           </div>
 
-          <!-- Export & Ingestion Toolbar -->
+          <!-- Export and Ingestion Toolbar -->
           <div class="action-toolbar">
             <div class="action-left">
               <div class="header-status-row">
@@ -717,7 +717,7 @@
                 Copy All URLs
               </button>
 
-              <!-- Update & Re-Sync Button -->
+              <!-- Update and Re-Sync Button -->
               <button type="button" class="btn btn-outline" id="updateXmlBtn" onclick="triggerUpdateSitemap()">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
                 Update &amp; Re-Sync

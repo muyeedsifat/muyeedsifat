@@ -26,6 +26,8 @@ export function pageMetadata(input: {
     },
     twitter: {
       card: 'summary_large_image',
+      creator: '@muyeed_sifat',
+      site: '@muyeed_sifat',
       title: input.title,
       description: input.description,
       images: [image]
@@ -53,7 +55,7 @@ export function postMetadata(post: Post): Metadata {
       authors: [post.author || siteConfig.fullName],
       images: [{ url: image, alt: post.featuredAlt || post.title }]
     },
-    twitter: { card: 'summary_large_image', title, description, images: [image] }
+    twitter: { card: 'summary_large_image', creator: '@muyeed_sifat', site: '@muyeed_sifat', title, description, images: [image] }
   };
 }
 

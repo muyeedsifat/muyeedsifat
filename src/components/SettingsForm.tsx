@@ -1,7 +1,7 @@
 'use client';
 
 import React, { FormEvent, useState, useEffect } from 'react';
-import { WhatsAppIcon, UpworkIcon, LinkedInIcon, GoogleIcon } from '@/components/Icons';
+import { WhatsAppIcon, UpworkIcon, LinkedInIcon, GoogleIcon, TwitterIcon, DiscordIcon } from '@/components/Icons';
 
 export function SettingsForm({ initial }: { initial: Record<string, unknown> }) {
   const [message, setMessage] = useState('');
@@ -461,6 +461,30 @@ export function SettingsForm({ initial }: { initial: Record<string, unknown> }) 
                 id="set-gbp"
                 name="gbpUrl"
                 defaultValue={String(initial.gbpUrl || 'https://share.google/uEeAi6WLiSSORniNf')}
+                style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="set-twitter" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                <TwitterIcon size={16} /> Twitter / X Profile URL
+              </label>
+              <input
+                id="set-twitter"
+                name="twitter"
+                defaultValue={String(initial.twitter || 'https://x.com/muyeed_sifat')}
+                style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="set-discord" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', fontWeight: 650, color: '#334155', marginBottom: '6px' }}>
+                <DiscordIcon size={16} /> Discord User Profile URL
+              </label>
+              <input
+                id="set-discord"
+                name="discord"
+                defaultValue={String(initial.discord || 'https://discord.com/users/1467129420715130883')}
                 style={{ width: '100%', padding: '9px 12px', fontSize: '0.88rem', border: '1px solid #cbd5e1', borderRadius: '8px', outline: 'none' }}
               />
             </div>

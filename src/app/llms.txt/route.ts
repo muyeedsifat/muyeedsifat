@@ -101,6 +101,8 @@ ${posts
 - **Direct Email:** ${siteConfig.email}
 - **WhatsApp Support:** ${siteConfig.whatsappNumber}
 - **LinkedIn Profile:** ${siteConfig.linkedIn}
+- **X (Twitter):** ${siteConfig.twitter}
+- **Discord:** ${siteConfig.discord}
 - **Upwork Top-Rated Profile:** ${siteConfig.upwork}
 - **Google Business Profile:** ${siteConfig.gbpUrl}
 `;

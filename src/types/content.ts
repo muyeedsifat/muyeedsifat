@@ -106,6 +106,8 @@ export type SiteSettings = {
   linkedIn?: string;
   upwork?: string;
   gbpUrl?: string;
+  twitter?: string;
+  discord?: string;
   googleBusinessProfile?: string;
   adminUsername?: string;
   adminPassword?: string;

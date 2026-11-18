@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CTA } from '@/components/CTA';
 import { ContactForm } from '@/components/ContactForm';
-import { GoogleIcon } from '@/components/Icons';
+import { GoogleIcon, TwitterIcon, DiscordIcon } from '@/components/Icons';
 import { pageMetadata } from '@/lib/seo';
 import { siteConfig } from '@/lib/site';
 
@@ -70,6 +70,26 @@ export default function ContactPage() {
                 <div className="contactLinkInfo">
                   <span className="contactLinkLabel">Google Business Profile</span>
                   <span className="contactLinkVal">Verified Presence</span>
+                </div>
+                <span className="contactLinkArrow" aria-hidden="true">→</span>
+              </a>
+              <a className="contactLinkItem" href={siteConfig.twitter} target="_blank" rel="noopener noreferrer">
+                <span className="contactIconBox" aria-hidden="true" style={{ background: 'rgba(15, 23, 42, 0.08)', color: '#0f172a' }}>
+                  <TwitterIcon size={18} />
+                </span>
+                <div className="contactLinkInfo">
+                  <span className="contactLinkLabel">X / Twitter</span>
+                  <span className="contactLinkVal">@muyeed_sifat</span>
+                </div>
+                <span className="contactLinkArrow" aria-hidden="true">→</span>
+              </a>
+              <a className="contactLinkItem" href={siteConfig.discord} target="_blank" rel="noopener noreferrer">
+                <span className="contactIconBox" aria-hidden="true" style={{ background: 'rgba(88, 101, 242, 0.12)', color: '#5865F2' }}>
+                  <DiscordIcon size={20} />
+                </span>
+                <div className="contactLinkInfo">
+                  <span className="contactLinkLabel">Discord</span>
+                  <span className="contactLinkVal">Chat on Discord</span>
                 </div>
                 <span className="contactLinkArrow" aria-hidden="true">→</span>
               </a>

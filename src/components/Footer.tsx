@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
 import { siteConfig } from '@/lib/site';
-import { LinkedInIcon, UpworkIcon, WhatsAppIcon, GoogleIcon } from '@/components/Icons';
+import { LinkedInIcon, UpworkIcon, WhatsAppIcon, GoogleIcon, TwitterIcon, DiscordIcon } from '@/components/Icons';
 
 export function Footer() {
   return (
@@ -102,6 +102,50 @@ export function Footer() {
               >
                 <GoogleIcon size={18} />
               </a>
+              <a
+                href={siteConfig.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footerSocialLink"
+                aria-label="Twitter / X Profile"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: '#222222',
+                  color: '#cccccc',
+                  margin: 0,
+                  padding: 0,
+                  textDecoration: 'none'
+                }}
+              >
+                <TwitterIcon size={16} />
+              </a>
+              <a
+                href={siteConfig.discord}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footerSocialLink"
+                aria-label="Discord Profile"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: '#222222',
+                  color: '#cccccc',
+                  margin: 0,
+                  padding: 0,
+                  textDecoration: 'none'
+                }}
+              >
+                <DiscordIcon size={18} />
+              </a>
             </div>
           </div>
 
@@ -135,6 +179,12 @@ export function Footer() {
             </a>
             <a href={siteConfig.gbpUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <GoogleIcon size={16} /> Google Profile
+            </a>
+            <a href={siteConfig.twitter} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <TwitterIcon size={16} /> X (Twitter)
+            </a>
+            <a href={siteConfig.discord} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <DiscordIcon size={16} /> Discord
             </a>
             <a href={`mailto:${siteConfig.email}`} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> Email

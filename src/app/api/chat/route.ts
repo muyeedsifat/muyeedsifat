@@ -66,7 +66,17 @@ function getFallbackReply(query: string, authorName: string): string {
     return `${authorName} is active on LinkedIn at https://www.linkedin.com/in/muyeedsifat/. Feel free to connect there or message directly on WhatsApp for commercial inquiries.`;
   }
 
-  // 13. Default
+  // 13. Twitter / X
+  if (q.includes('twitter') || q.includes('x.com') || q.includes('tweet')) {
+    return `${authorName} shares search insights, PPC frameworks, and growth threads on X (Twitter) at https://x.com/muyeed_sifat.`;
+  }
+
+  // 14. Discord
+  if (q.includes('discord')) {
+    return `You can connect with ${authorName} directly on Discord at https://discord.com/users/1467129420715130883.`;
+  }
+
+  // 15. Default
   return `${authorName} drives revenue acquisition across AI SEO, Google Ads, and Meta Ads. What growth channel or target metric are you focused on?`;
 }
 

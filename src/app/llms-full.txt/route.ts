@@ -106,6 +106,8 @@ ${p.content ? p.content.slice(0, 1200) + '...' : ''}
 - **Email:** ${siteConfig.email}
 - **WhatsApp Direct:** ${siteConfig.whatsappNumber}
 - **LinkedIn:** ${siteConfig.linkedIn}
+- **X (Twitter):** ${siteConfig.twitter}
+- **Discord:** ${siteConfig.discord}
 - **Upwork:** ${siteConfig.upwork}
 - **Google Business Profile:** ${siteConfig.gbpUrl}
 `;

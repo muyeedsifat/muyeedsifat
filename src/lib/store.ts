@@ -551,6 +551,8 @@ export async function getSettings(): Promise<SiteSettings> {
     defaultSchema: 'BlogPosting',
     linkedIn: 'https://www.linkedin.com/in/muyeedsifat/',
     upwork: 'https://www.upwork.com/freelancers/~01ceafed69d95ddfae',
+    twitter: 'https://x.com/muyeed_sifat',
+    discord: 'https://discord.com/users/1467129420715130883',
     whatsappNumber: '+8801576624428',
     whatsappPrompt: 'Hi Muyeed, I visited your website and would like to discuss a digital marketing project.'
   });

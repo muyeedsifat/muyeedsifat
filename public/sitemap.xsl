@@ -115,6 +115,7 @@
             flex-wrap: wrap;
             padding-top: 16px;
             border-top: 1px solid var(--slate-200);
+            align-items: center;
           }
 
           .nav-link {
@@ -125,25 +126,40 @@
             font-weight: 600;
             color: var(--slate-700);
             text-decoration: none;
-            padding: 6px 12px;
+            padding: 7px 12px;
             border-radius: 6px;
             background: var(--slate-100);
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
             transition: all 0.15s ease;
           }
 
           .nav-link:hover {
-            background: var(--primary);
-            color: var(--white);
+            background: var(--slate-200);
+            color: var(--slate-900);
           }
 
           .nav-link-primary {
             background: var(--primary-soft);
             color: var(--primary-dark);
+            border-color: #fed7aa;
           }
 
           .nav-link-primary:hover {
-            background: var(--primary-dark);
+            background: var(--primary);
             color: var(--white);
+            border-color: var(--primary);
+          }
+
+          .nav-link-accent {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+          }
+
+          .nav-link-accent:hover {
+            background: var(--primary);
+            border-color: var(--primary);
           }
 
           /* Controls Bar */
@@ -349,21 +365,20 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                 View HTML Sitemap
               </a>
+              <button type="button" onclick="copyAllXmlUrls()" class="nav-link" id="copyAllXmlBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy All URLs
+              </button>
+              <a href="/api/sitemap/download" class="nav-link nav-link-accent" download="muyeedsifat-sitemap-export.zip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Sitemap ZIP (Folder Structure)
+              </a>
               <a href="/llms.txt" class="nav-link">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                 View LLM Manifest (llms.txt)
               </a>
               <a href="/" class="nav-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 Home
-              </a>
-              <a href="/projects" class="nav-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                Case Studies
-              </a>
-              <a href="/contact" class="nav-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                Contact
               </a>
             </div>
           </div>
@@ -452,6 +467,28 @@
                   tr[i].style.display = "none";
                 }
               }
+            }
+          }
+
+          function copyAllXmlUrls() {
+            var table = document.getElementById("sitemapTable");
+            var links = table.getElementsByTagName("a");
+            var urls = [];
+            for (var i = 0; i &lt; links.length; i++) {
+              urls.push(links[i].href);
+            }
+            if (urls.length &gt; 0 &amp;&amp; navigator.clipboard) {
+              navigator.clipboard.writeText(urls.join("\n")).then(function() {
+                var btn = document.getElementById("copyAllXmlBtn");
+                btn.innerText = "✓ Copied " + urls.length + " URLs!";
+                btn.style.color = "#059669";
+                btn.style.borderColor = "#a7f3d0";
+                setTimeout(function() {
+                  btn.innerHTML = '&lt;svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/&gt;&lt;/svg&gt; Copy All URLs';
+                  btn.style.color = "";
+                  btn.style.borderColor = "";
+                }, 2500);
+              });
             }
           }
         </script>

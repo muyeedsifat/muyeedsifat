@@ -24,6 +24,10 @@ interface SitemapViewerProps {
 export function SitemapViewer({ items }: SitemapViewerProps) {
   const [activeTab, setActiveTab] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [copyStatus, setCopyStatus] = useState<string | null>(null);
+  const [copiedCardId, setCopiedCardId] = useState<string | null>(null);
+  const [copyFormat, setCopyFormat] = useState<'plain' | 'markdown' | 'csv'>('plain');
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const counts = useMemo(() => {
     return {
@@ -53,51 +57,149 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
     });
   }, [items, activeTab, searchQuery]);
 
+  const handleCopyLinks = async () => {
+    const targetItems = filteredItems.length > 0 ? filteredItems : items;
+    let textToCopy = '';
+
+    if (copyFormat === 'plain') {
+      textToCopy = targetItems.map((i) => i.url).join('\n');
+    } else if (copyFormat === 'markdown') {
+      textToCopy = targetItems.map((i) => `- [${i.title}](${i.url}) (${i.categoryLabel})`).join('\n');
+    } else if (copyFormat === 'csv') {
+      const header = 'Title,URL,Path,Category,Priority,ChangeFreq\n';
+      const rows = targetItems
+        .map(
+          (i) =>
+            `"${i.title.replace(/"/g, '""')}","${i.url}","${i.path}","${i.categoryLabel}","${i.priority}","${i.changefreq}"`
+        )
+        .join('\n');
+      textToCopy = header + rows;
+    }
+
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        await navigator.clipboard.writeText(textToCopy);
+        setCopyStatus(`Copied ${targetItems.length} Links!`);
+        setTimeout(() => setCopyStatus(null), 2500);
+      }
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err);
+    }
+  };
+
+  const handleCopySingle = async (item: SitemapLinkItem) => {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        await navigator.clipboard.writeText(item.url);
+        setCopiedCardId(item.id);
+        setTimeout(() => setCopiedCardId(null), 2000);
+      }
+    } catch (err) {
+      console.error('Failed to copy single link:', err);
+    }
+  };
+
+  const handleDownloadZip = () => {
+    setIsDownloading(true);
+    // Programmatic trigger of /api/sitemap/download
+    const a = document.createElement('a');
+    a.href = '/api/sitemap/download';
+    a.download = 'muyeedsifat-sitemap-export.zip';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => setIsDownloading(false), 2000);
+  };
+
   return (
     <div className="sitemapViewerWrapper">
-      {/* Top Protocol Action Banner */}
-      <div className="sitemapProtocolBanner">
-        <div className="sitemapProtocolText">
-          <strong>Machine &amp; AI Directives:</strong> Looking for machine-readable feeds?
+      {/* Top Action & Protocol Banner */}
+      <div className="sitemapActionToolbar">
+        <div className="sitemapActionLeft">
+          <div className="sitemapActionEyebrow">EXPORT &amp; INGESTION TOOLS</div>
+          <h2 className="sitemapActionTitle">Copy &amp; Download Sitemap Assets</h2>
+          <p className="sitemapActionDesc">
+            Download the complete website structure packaged into organized folders (Category Pages, Sub-Categories, 21 Case Studies, Blog Posts, and Protocols), or copy all URLs for SEO auditing.
+          </p>
         </div>
-        <div className="sitemapProtocolButtons">
-          <a
-            href="/sitemap.xml"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sitemapProtocolBtn sitemapProtocolBtnPrimary"
+
+        <div className="sitemapActionButtons">
+          {/* Format selector */}
+          <div className="sitemapFormatSelector">
+            <label htmlFor="copyFormatSelect" className="sitemapFormatLabel">
+              Format:
+            </label>
+            <select
+              id="copyFormatSelect"
+              className="sitemapSelectInput"
+              value={copyFormat}
+              onChange={(e) => setCopyFormat(e.target.value as 'plain' | 'markdown' | 'csv')}
+            >
+              <option value="plain">Plain URLs (TXT)</option>
+              <option value="markdown">Markdown List</option>
+              <option value="csv">Structured CSV</option>
+            </select>
+          </div>
+
+          {/* Copy Button */}
+          <button
+            type="button"
+            className={`sitemapMainBtn sitemapCopyBtn ${copyStatus ? 'success' : ''}`}
+            onClick={handleCopyLinks}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="16" y1="13" x2="8" y2="13" />
-              <line x1="16" y1="17" x2="8" y2="17" />
-              <polyline points="10 9 9 9 8 9" />
-            </svg>
-            XML Sitemap (sitemap.xml)
-          </a>
-          <a
-            href="/llms.txt"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sitemapProtocolBtn"
+            {copyStatus ? (
+              <>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                {copyStatus}
+              </>
+            ) : (
+              <>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                </svg>
+                {searchQuery || activeTab !== 'all'
+                  ? `Copy Filtered Links (${filteredItems.length})`
+                  : `Copy All Links (${items.length})`}
+              </>
+            )}
+          </button>
+
+          {/* Download ZIP Button */}
+          <button
+            type="button"
+            className="sitemapMainBtn sitemapDownloadBtn"
+            onClick={handleDownloadZip}
+            disabled={isDownloading}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-              <line x1="9" y1="9" x2="15" y2="9" />
-              <line x1="9" y1="13" x2="15" y2="13" />
-              <line x1="9" y1="17" x2="13" y2="17" />
-            </svg>
-            LLM Manifest (llms.txt)
-          </a>
-          <a
-            href="/llms-full.txt"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sitemapProtocolBtn"
-          >
-            Extended LLM (llms-full.txt)
-          </a>
+            {isDownloading ? (
+              <>
+                <svg
+                  className="sitemapSpinner"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <circle cx="12" cy="12" r="10" strokeDasharray="32" strokeDashoffset="12" />
+                </svg>
+                Packaging Folders...
+              </>
+            ) : (
+              <>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download Sitemap ZIP (Folder Structure)
+              </>
+            )}
+          </button>
         </div>
       </div>
 
@@ -109,19 +211,19 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
         </div>
         <div className="sitemapBentoCell" onClick={() => setActiveTab('core')} style={{ cursor: 'pointer' }}>
           <div className="sitemapBentoValue">{counts.core}</div>
-          <div className="sitemapBentoLabel">Core Landing Pages</div>
+          <div className="sitemapBentoLabel">Category Pages</div>
         </div>
         <div className="sitemapBentoCell" onClick={() => setActiveTab('service')} style={{ cursor: 'pointer' }}>
           <div className="sitemapBentoValue">{counts.service}</div>
-          <div className="sitemapBentoLabel">Service Pillars</div>
+          <div className="sitemapBentoLabel">Sub-Category Pillars</div>
         </div>
         <div className="sitemapBentoCell" onClick={() => setActiveTab('project')} style={{ cursor: 'pointer' }}>
           <div className="sitemapBentoValue">{counts.project}</div>
-          <div className="sitemapBentoLabel">Client Case Studies</div>
+          <div className="sitemapBentoLabel">Case Studies (21)</div>
         </div>
         <div className="sitemapBentoCell" onClick={() => setActiveTab('post')} style={{ cursor: 'pointer' }}>
           <div className="sitemapBentoValue">{counts.post}</div>
-          <div className="sitemapBentoLabel">Strategic Articles</div>
+          <div className="sitemapBentoLabel">Blog Articles</div>
         </div>
       </div>
 
@@ -174,14 +276,14 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
             className={`sitemapTabBtn ${activeTab === 'core' ? 'active' : ''}`}
             onClick={() => setActiveTab('core')}
           >
-            Core Pages <span className="sitemapTabCount">{counts.core}</span>
+            Category Pages <span className="sitemapTabCount">{counts.core}</span>
           </button>
           <button
             type="button"
             className={`sitemapTabBtn ${activeTab === 'service' ? 'active' : ''}`}
             onClick={() => setActiveTab('service')}
           >
-            Services <span className="sitemapTabCount">{counts.service}</span>
+            Sub-Categories <span className="sitemapTabCount">{counts.service}</span>
           </button>
           <button
             type="button"
@@ -195,7 +297,7 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
             className={`sitemapTabBtn ${activeTab === 'post' ? 'active' : ''}`}
             onClick={() => setActiveTab('post')}
           >
-            Articles <span className="sitemapTabCount">{counts.post}</span>
+            Blog Posts <span className="sitemapTabCount">{counts.post}</span>
           </button>
           <button
             type="button"
@@ -207,14 +309,28 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
         </div>
       </div>
 
-      {/* Results Count Summary */}
+      {/* Results Count & Quick Actions Summary */}
       <div className="sitemapResultsSummary">
-        Showing <strong>{filteredItems.length}</strong> of <strong>{items.length}</strong> indexed resources
-        {searchQuery && (
-          <span>
-            {' '}matching &quot;<strong>{searchQuery}</strong>&quot;
-          </span>
-        )}
+        <div>
+          Showing <strong>{filteredItems.length}</strong> of <strong>{items.length}</strong> indexed resources
+          {searchQuery && (
+            <span>
+              {' '}matching &quot;<strong>{searchQuery}</strong>&quot;
+            </span>
+          )}
+        </div>
+
+        <div className="sitemapFeedQuickLinks">
+          <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="sitemapSmallFeedLink">
+            View sitemap.xml ↗
+          </a>
+          <a href="/llms.txt" target="_blank" rel="noopener noreferrer" className="sitemapSmallFeedLink">
+            View llms.txt ↗
+          </a>
+          <a href="/api/sitemap/download" className="sitemapSmallFeedLink sitemapSmallFeedLinkDownload">
+            Direct ZIP Download ↓
+          </a>
+        </div>
       </div>
 
       {/* Directory Grid */}
@@ -233,6 +349,25 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
                   <span className="sitemapFreqPill" title={`Change frequency: ${item.changefreq}`}>
                     {item.changefreq}
                   </span>
+                  <button
+                    type="button"
+                    className={`sitemapCopyCardBtn ${copiedCardId === item.id ? 'copied' : ''}`}
+                    onClick={() => handleCopySingle(item)}
+                    title="Copy URL to clipboard"
+                    aria-label={`Copy URL for ${item.title}`}
+                  >
+                    {copiedCardId === item.id ? (
+                      <span style={{ color: '#16a34a', fontWeight: 700 }}>✓ Copied</span>
+                    ) : (
+                      <>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
 
@@ -265,6 +400,14 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
                   <span className="sitemapCardDate">
                     Updated: {new Date(item.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                   </span>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="sitemapOpenLink"
+                  >
+                    Visit Page ↗
+                  </a>
                 </div>
               )}
             </div>

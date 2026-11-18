@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'Where can I find the machine-readable XML sitemap for search crawlers?',
     answer:
-      'The XML sitemap is available at /sitemap.xml. It complies with the Sitemaps.org 0.9 protocol and includes an integrated XSL stylesheet for in-browser visual inspection.',
+      'The XML sitemap is available at /sitemap.xml. It complies with the Sitemaps.org 0.9 protocol for search crawlers while providing a responsive visual directory for browser inspection without legacy XSLT dependencies.',
   },
   {
     question: 'Is there an LLM or AI-readable version of this site?',
@@ -225,12 +225,12 @@ export default async function SitemapPage() {
   const protocolItems: SitemapLinkItem[] = [
     {
       id: 'proto-xml-sitemap',
-      title: 'XML Sitemap (Sitemaps.org Feed with XSL)',
+      title: 'XML Sitemap (Sitemaps.org Feed)',
       url: absoluteUrl('/sitemap.xml'),
       path: '/sitemap.xml',
       category: 'protocol',
       categoryLabel: 'Machine Protocol',
-      description: 'Official XML sitemap for search crawlers featuring integrated XSL styling for in-browser visual inspection.',
+      description: 'Official XML sitemap for search crawlers compliant with Sitemaps.org 0.9 protocols.',
       priority: '0.7',
       changefreq: 'daily',
       updatedAt: nowIso,

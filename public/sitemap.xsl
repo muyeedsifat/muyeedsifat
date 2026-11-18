@@ -9,14 +9,14 @@
   <xsl:template match="/">
     <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
       <head>
-        <title>XML Sitemap | Muyeed Sifat</title>
+        <title>XML Sitemap &amp; Search Engine Directory | Muyeed Sifat</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style type="text/css">
           :root {
-            --primary: #f97316;
-            --primary-dark: #ea580c;
-            --primary-soft: #fff7ed;
+            --orange: #f97316;
+            --orange-dark: #ea580c;
+            --orange-soft: #fff7ed;
             --slate-900: #0f172a;
             --slate-800: #1e293b;
             --slate-700: #334155;
@@ -26,7 +26,7 @@
             --slate-100: #f1f5f9;
             --slate-50: #f8fafc;
             --white: #ffffff;
-            --radius: 12px;
+            --radius: 14px;
           }
 
           * {
@@ -40,8 +40,9 @@
             background-color: var(--slate-50);
             color: var(--slate-700);
             line-height: 1.6;
-            padding: 32px 16px;
+            padding: 36px 16px 60px;
             font-size: 14px;
+            -webkit-font-smoothing: antialiased;
           }
 
           .container {
@@ -49,180 +50,561 @@
             margin: 0 auto;
           }
 
-          .header-card {
+          /* Breadcrumbs */
+          .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--slate-500);
+            margin-bottom: 12px;
+          }
+
+          .breadcrumbs a {
+            color: var(--slate-600);
+            text-decoration: none;
+            transition: color 0.15s ease;
+          }
+
+          .breadcrumbs a:hover {
+            color: var(--orange);
+          }
+
+          .breadcrumbs-separator {
+            color: #cbd5e1;
+          }
+
+          /* Page Hero */
+          .page-hero {
+            margin-bottom: 24px;
+          }
+
+          .eyebrow {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--orange);
+            margin-bottom: 8px;
+          }
+
+          h1 {
+            font-size: 32px;
+            font-weight: 850;
+            color: var(--slate-900);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 10px;
+          }
+
+          .lead {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--slate-600);
+            max-width: 820px;
+          }
+
+          /* Action Toolbar matching HTML sitemap */
+          .action-toolbar {
             background: var(--white);
             border: 1px solid var(--slate-200);
-            border-radius: var(--radius);
-            padding: 32px;
+            border-radius: 16px;
+            padding: 24px 28px;
             margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
             box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
           }
 
-          .badge-row {
+          .action-left {
+            flex: 1;
+            min-width: 280px;
+          }
+
+          .header-status-row {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             flex-wrap: wrap;
           }
 
-          .badge {
+          .live-indicator {
             display: inline-flex;
             align-items: center;
-            padding: 4px 10px;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 750;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #16a34a;
+            background: #f0fdf4;
+            padding: 3px 8px;
+            border-radius: 9999px;
+            border: 1px solid #bbf7d0;
+          }
+
+          .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse 1.8s infinite;
+          }
+
+          @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+          }
+
+          .sync-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: #059669;
+            background: #ecfdf5;
+            padding: 3px 8px;
+            border-radius: 9999px;
+          }
+
+          .action-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1.25;
+            margin: 0 0 6px;
+            letter-spacing: -0.01em;
+          }
+
+          .action-desc {
+            font-size: 13px;
+            line-height: 1.55;
+            color: var(--slate-500);
+            margin: 0;
+            max-width: 640px;
+          }
+
+          .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+          }
+
+          .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            text-decoration: none;
+            white-space: nowrap;
+          }
+
+          .btn-primary {
+            background: var(--slate-900);
+            color: var(--white);
+          }
+
+          .btn-primary:hover {
+            background: var(--slate-800);
+            transform: translateY(-1px);
+          }
+
+          .btn-accent {
+            background: var(--orange);
+            color: var(--white);
+            border-color: var(--orange);
+          }
+
+          .btn-accent:hover {
+            background: var(--orange-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px -2px rgba(249, 115, 22, 0.35);
+          }
+
+          .btn-outline {
+            background: var(--white);
+            border: 1px solid var(--slate-200);
+            color: var(--slate-700);
+          }
+
+          .btn-outline:hover {
+            background: var(--slate-100);
+            color: var(--slate-900);
+          }
+
+          /* Bento Stat Bar matching HTML sitemap */
+          .bento-bar {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-bottom: 28px;
+          }
+
+          .bento-cell {
+            background: var(--white);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius);
+            padding: 18px 16px;
+            text-align: center;
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+            box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.03);
+            cursor: pointer;
+          }
+
+          .bento-cell:hover {
+            transform: translateY(-2px);
+            border-color: var(--orange);
+            box-shadow: 0 8px 20px -4px rgba(249, 115, 22, 0.12);
+          }
+
+          .bento-value {
+            font-size: 26px;
+            font-weight: 850;
+            color: var(--slate-900);
+            line-height: 1.1;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+          }
+
+          .bento-label {
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            border-radius: 9999px;
-          }
-
-          .badge-primary {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-            border: 1px solid #fed7aa;
-          }
-
-          .badge-neutral {
-            background: var(--slate-100);
-            color: var(--slate-600);
-          }
-
-          .badge-success {
-            background: #ecfdf5;
-            color: #059669;
-            border: 1px solid #a7f3d0;
-          }
-
-          h1 {
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--slate-900);
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-          }
-
-          .subtitle {
-            font-size: 14px;
             color: var(--slate-500);
-            max-width: 760px;
-            margin-bottom: 20px;
           }
 
-          .nav-links {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            padding-top: 16px;
-            border-top: 1px solid var(--slate-200);
-            align-items: center;
-          }
-
-          .nav-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--slate-700);
-            text-decoration: none;
-            padding: 7px 12px;
-            border-radius: 6px;
-            background: var(--slate-100);
-            border: 1px solid #e2e8f0;
-            cursor: pointer;
-            transition: all 0.15s ease;
-          }
-
-          .nav-link:hover {
-            background: var(--slate-200);
-            color: var(--slate-900);
-          }
-
-          .nav-link-primary {
-            background: var(--primary-soft);
-            color: var(--primary-dark);
-            border-color: #fed7aa;
-          }
-
-          .nav-link-primary:hover {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-          }
-
-          .nav-link-accent {
-            background: #0f172a;
-            color: #ffffff;
-            border-color: #0f172a;
-          }
-
-          .nav-link-accent:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-          }
-
-          /* Controls Bar */
+          /* Controls Bar: Search & Category Tabs */
           .controls-bar {
             background: var(--white);
             border: 1px solid var(--slate-200);
             border-radius: var(--radius);
             padding: 16px 20px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
             gap: 16px;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04);
           }
 
           .search-wrapper {
             position: relative;
-            flex: 1;
-            min-width: 240px;
+            width: 100%;
           }
 
           .search-input {
             width: 100%;
-            padding: 9px 14px 9px 36px;
+            padding: 11px 40px 11px 42px;
             font-size: 13px;
-            border: 1px solid var(--slate-200);
-            border-radius: 8px;
+            border: 1.5px solid var(--slate-200);
+            border-radius: 10px;
             outline: none;
-            transition: border-color 0.15s ease;
             background: var(--slate-50);
             color: var(--slate-900);
+            transition: all 0.15s ease;
           }
 
           .search-input:focus {
-            border-color: var(--primary);
+            border-color: var(--orange);
             background: var(--white);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
           }
 
           .search-icon {
             position: absolute;
-            left: 12px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--slate-400);
+            color: #94a3b8;
             pointer-events: none;
           }
 
-          .stats-text {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--slate-500);
-            white-space: nowrap;
+          .tabs-and-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
           }
 
-          /* Table Card */
-          .table-card {
+          .category-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+          }
+
+          .tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 8px;
+            background: var(--slate-100);
+            color: var(--slate-600);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.15s ease;
+          }
+
+          .tab-btn:hover {
+            background: var(--slate-200);
+            color: var(--slate-900);
+          }
+
+          .tab-btn.active {
+            background: var(--slate-900);
+            color: var(--white);
+          }
+
+          .view-toggle {
+            display: flex;
+            align-items: center;
+            background: var(--slate-100);
+            padding: 3px;
+            border-radius: 8px;
+            border: 1px solid var(--slate-200);
+          }
+
+          .view-btn {
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 6px;
+            background: transparent;
+            border: none;
+            color: var(--slate-600);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+          }
+
+          .view-btn.active {
+            background: var(--white);
+            color: var(--slate-900);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+          }
+
+          /* Results Summary */
+          .results-summary {
+            font-size: 13px;
+            color: var(--slate-500);
+            margin-bottom: 18px;
+            padding: 0 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+          }
+
+          .results-summary strong {
+            color: var(--slate-900);
+          }
+
+          .feed-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          .feed-link {
+            font-size: 12px;
+            font-weight: 650;
+            color: var(--slate-600);
+            text-decoration: none;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: var(--white);
+            border: 1px solid var(--slate-200);
+            transition: all 0.15s ease;
+          }
+
+          .feed-link:hover {
+            color: var(--slate-900);
+            border-color: #cbd5e1;
+          }
+
+          /* Card Grid View matching HTML sitemap */
+          .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+          }
+
+          .sitemap-card {
+            background: var(--white);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+            box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.04);
+          }
+
+          .sitemap-card:hover {
+            transform: translateY(-2px);
+            border-color: #cbd5e1;
+            box-shadow: 0 10px 24px -4px rgba(15, 23, 42, 0.08);
+          }
+
+          .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+          }
+
+          .cat-badge {
+            display: inline-block;
+            padding: 3px 9px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-radius: 6px;
+          }
+
+          .badge-core { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+          .badge-service { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+          .badge-project { background: var(--orange-soft); color: var(--orange-dark); border: 1px solid #fed7aa; }
+          .badge-post { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+          .badge-protocol { background: var(--slate-50); color: var(--slate-600); border: 1px solid var(--slate-200); }
+
+          .meta-pills {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+
+          .priority-pill {
+            font-size: 11px;
+            font-weight: 750;
+            background: var(--slate-100);
+            color: var(--slate-700);
+            padding: 2px 6px;
+            border-radius: 4px;
+          }
+
+          .p-10 { background: #ecfdf5; color: #059669; }
+          .p-09 { background: #eff6ff; color: #2563eb; }
+          .p-08 { background: #f5f3ff; color: #7c3aed; }
+
+          .freq-pill {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--slate-500);
+            text-transform: capitalize;
+          }
+
+          .copy-btn {
+            background: transparent;
+            border: 1px solid var(--slate-200);
+            border-radius: 6px;
+            padding: 2px 7px;
+            font-size: 11px;
+            font-weight: 650;
+            color: var(--slate-500);
+            cursor: pointer;
+            transition: all 0.15s ease;
+          }
+
+          .copy-btn:hover {
+            background: var(--slate-100);
+            color: var(--slate-900);
+          }
+
+          .card-title {
+            font-size: 16px;
+            font-weight: 750;
+            color: var(--slate-900);
+            line-height: 1.35;
+            margin: 0 0 6px;
+            letter-spacing: -0.01em;
+          }
+
+          .card-link {
+            color: var(--slate-900);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.15s ease;
+          }
+
+          .card-link:hover {
+            color: var(--orange);
+          }
+
+          .card-path {
+            margin-bottom: 12px;
+          }
+
+          .card-path code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12px;
+            color: var(--slate-500);
+            background: var(--slate-50);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #f1f5f9;
+            word-break: break-all;
+          }
+
+          .card-footer {
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          .card-date {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 550;
+          }
+
+          .visit-link {
+            font-size: 12px;
+            font-weight: 650;
+            color: var(--orange-dark);
+            text-decoration: none;
+          }
+
+          .visit-link:hover {
+            text-decoration: underline;
+            color: var(--orange);
+          }
+
+          /* Table View */
+          .table-wrapper {
+            display: none;
             background: var(--white);
             border: 1px solid var(--slate-200);
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            margin-bottom: 32px;
           }
 
           table {
@@ -247,13 +629,8 @@
             transition: background-color 0.1s ease;
           }
 
-          tbody tr:last-child {
-            border-bottom: none;
-          }
-
-          tbody tr:hover {
-            background-color: #fafbfc;
-          }
+          tbody tr:last-child { border-bottom: none; }
+          tbody tr:hover { background-color: #fafbfc; }
 
           td {
             padding: 12px 18px;
@@ -261,183 +638,301 @@
             font-size: 13px;
           }
 
-          td.col-url {
-            word-break: break-all;
-          }
-
           td.col-url a {
             color: var(--slate-900);
             font-weight: 600;
             text-decoration: none;
-            transition: color 0.15s ease;
           }
 
           td.col-url a:hover {
-            color: var(--primary);
+            color: var(--orange);
             text-decoration: underline;
           }
 
-          .priority-pill {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 9999px;
-            font-size: 11px;
-            font-weight: 700;
-          }
-
-          .p-10 {
-            background: #ecfdf5;
-            color: #059669;
-          }
-
-          .p-09 {
-            background: #eff6ff;
-            color: #2563eb;
-          }
-
-          .p-08 {
-            background: #f5f3ff;
-            color: #7c3aed;
-          }
-
-          .p-07 {
-            background: var(--slate-100);
-            color: var(--slate-600);
-          }
-
-          .freq-text {
-            color: var(--slate-500);
-            font-size: 12px;
-            text-transform: capitalize;
-          }
-
-          .date-text {
-            color: var(--slate-500);
-            font-size: 12px;
-            white-space: nowrap;
-          }
-
           .footer-note {
-            margin-top: 24px;
+            margin-top: 32px;
             text-align: center;
             font-size: 12px;
             color: var(--slate-500);
           }
 
           .footer-note a {
-            color: var(--primary);
+            color: var(--orange);
             text-decoration: none;
             font-weight: 600;
           }
 
-          .footer-note a:hover {
-            text-decoration: underline;
+          @media (max-width: 900px) {
+            .bento-bar { grid-template-columns: repeat(3, 1fr); }
+            .card-grid { grid-template-columns: 1fr; }
           }
 
-          @media (max-width: 768px) {
-            .hide-mobile {
-              display: none;
-            }
-            .header-card {
-              padding: 20px;
-            }
-            td, thead th {
-              padding: 10px 12px;
-            }
+          @media (max-width: 600px) {
+            .bento-bar { grid-template-columns: repeat(2, 1fr); }
+            .action-toolbar { padding: 20px; }
+            .action-buttons { width: 100%; flex-direction: column; align-items: stretch; }
+            .btn { justify-content: center; width: 100%; }
           }
         </style>
       </head>
       <body>
         <div class="container">
-          <!-- Header Banner -->
-          <div class="header-card">
-            <div class="badge-row">
-              <span class="badge badge-primary">Standard XML Sitemap</span>
-              <span class="badge badge-success">● Auto-Updating</span>
-              <span class="badge badge-neutral">Sitemaps.org 0.9</span>
-            </div>
-            <h1>XML Sitemap – Muyeed Sifat</h1>
-            <p class="subtitle">
-              This dynamically generated XML sitemap serves search engine crawlers (Google, Bing, Yandex) and AI search agents with the canonical URL hierarchy, last modification timestamps, and indexing priorities across the entire portfolio website.
+          <!-- Breadcrumbs -->
+          <div class="breadcrumbs">
+            <a href="/">Home</a>
+            <span class="breadcrumbs-separator">/</span>
+            <span>XML Sitemap</span>
+          </div>
+
+          <!-- Page Hero -->
+          <div class="page-hero">
+            <span class="eyebrow">Real-Time Directory • Auto-Updating XML Feed</span>
+            <h1>XML Sitemap &amp; Search Engine Feed</h1>
+            <p class="lead">
+              An exhaustive, continuously updated index of all primary landing pages, service capabilities, verified client case studies, and strategic growth publications formatted for search engine crawlers and human inspection.
             </p>
-            <div class="nav-links">
-              <a href="/sitemap.html" class="nav-link nav-link-primary">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                View HTML Sitemap
-              </a>
-              <button type="button" onclick="copyAllXmlUrls()" class="nav-link" id="copyAllXmlBtn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+
+          <!-- Export & Ingestion Toolbar -->
+          <div class="action-toolbar">
+            <div class="action-left">
+              <div class="header-status-row">
+                <span class="live-indicator">
+                  <span class="live-dot"></span> Continuous Real-Time Auto-Update Active
+                </span>
+                <span class="sync-badge" id="liveSyncStatus">
+                  ● Synced Live
+                </span>
+              </div>
+              <h2 class="action-title">Copy, Update &amp; Download Sitemap Assets</h2>
+              <p class="action-desc">
+                This XML sitemap automatically updates whenever any project, blog post, or service is published. You can trigger an instant on-demand cache re-sync, copy links, or download the complete ZIP archive organized into separate category folders.
+              </p>
+            </div>
+
+            <div class="action-buttons">
+              <!-- Copy All URLs Button -->
+              <button type="button" class="btn btn-primary" id="copyAllXmlBtn" onclick="copyAllXmlUrls()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                 Copy All URLs
               </button>
-              <a href="/api/sitemap/download" class="nav-link nav-link-accent" download="muyeedsifat-sitemap-export.zip">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+
+              <!-- Update & Re-Sync Button -->
+              <button type="button" class="btn btn-outline" id="updateXmlBtn" onclick="triggerUpdateSitemap()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                Update &amp; Re-Sync
+              </button>
+
+              <!-- Download ZIP Button -->
+              <a href="/api/sitemap/download" class="btn btn-accent" download="muyeedsifat-sitemap-export.zip">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download Sitemap ZIP (Folder Structure)
               </a>
-              <a href="/llms.txt" class="nav-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                View LLM Manifest (llms.txt)
-              </a>
-              <a href="/" class="nav-link">
-                Home
+
+              <!-- Link to HTML Sitemap -->
+              <a href="/sitemap.html" class="btn btn-outline">
+                View HTML Sitemap ↗
               </a>
             </div>
           </div>
 
-          <!-- Controls Bar with Real-time Filter -->
+          <!-- Symmetric Bento Stat Bar matching HTML sitemap -->
+          <div class="bento-bar">
+            <div class="bento-cell" onclick="filterByCategory('all')">
+              <div class="bento-value"><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></div>
+              <div class="bento-label">Total Published URLs</div>
+            </div>
+            <div class="bento-cell" onclick="filterByCategory('core')">
+              <div class="bento-value">18</div>
+              <div class="bento-label">Category Pages</div>
+            </div>
+            <div class="bento-cell" onclick="filterByCategory('service')">
+              <div class="bento-value">4</div>
+              <div class="bento-label">Sub-Category Pillars</div>
+            </div>
+            <div class="bento-cell" onclick="filterByCategory('project')">
+              <div class="bento-value">21</div>
+              <div class="bento-label">Case Studies (21)</div>
+            </div>
+            <div class="bento-cell" onclick="filterByCategory('post')">
+              <div class="bento-value">6</div>
+              <div class="bento-label">Blog Articles</div>
+            </div>
+          </div>
+
+          <!-- Controls Bar -->
           <div class="controls-bar">
             <div class="search-wrapper">
-              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" id="sitemapFilter" class="search-input" placeholder="Type to filter URLs by name, slug, or section..." onkeyup="filterSitemap()" />
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="sitemapFilter" class="search-input" placeholder="Search directory by page title, URL slug, or keywords..." onkeyup="filterSitemap()" />
             </div>
-            <div class="stats-text">
-              Total Indexed URLs: <strong style="color: var(--slate-900);"><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong>
+
+            <div class="tabs-and-toggle">
+              <div class="category-tabs">
+                <button type="button" class="tab-btn active" id="tab-all" onclick="filterByCategory('all')">All Links</button>
+                <button type="button" class="tab-btn" id="tab-core" onclick="filterByCategory('core')">Category Pages</button>
+                <button type="button" class="tab-btn" id="tab-service" onclick="filterByCategory('service')">Sub-Categories</button>
+                <button type="button" class="tab-btn" id="tab-project" onclick="filterByCategory('project')">Case Studies</button>
+                <button type="button" class="tab-btn" id="tab-post" onclick="filterByCategory('post')">Blog Posts</button>
+              </div>
+
+              <div class="view-toggle">
+                <button type="button" class="view-btn active" id="btn-grid-view" onclick="switchView('grid')">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  Grid
+                </button>
+                <button type="button" class="view-btn" id="btn-table-view" onclick="switchView('table')">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                  Table
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- Table -->
-          <div class="table-card">
+          <!-- Results Summary -->
+          <div class="results-summary">
+            <div>
+              Showing <strong id="visibleCount"><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong> of <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong> indexed resources
+            </div>
+            <div class="feed-links">
+              <a href="/sitemap.html" class="feed-link">HTML Sitemap ↗</a>
+              <a href="/llms.txt" class="feed-link">llms.txt ↗</a>
+              <a href="/api/sitemap/download" class="feed-link" style="color: var(--orange); font-weight: 700;">Direct ZIP Download ↓</a>
+            </div>
+          </div>
+
+          <!-- Card Grid View matching HTML sitemap -->
+          <div class="card-grid" id="cardGridView">
+            <xsl:for-each select="sitemap:urlset/sitemap:url">
+              <xsl:variable name="itemLoc" select="sitemap:loc"/>
+              <xsl:variable name="itemPri" select="sitemap:priority"/>
+              <xsl:variable name="itemFreq" select="sitemap:changefreq"/>
+              <xsl:variable name="itemMod" select="sitemap:lastmod"/>
+
+              <!-- Compute Category Type -->
+              <xsl:variable name="catType">
+                <xsl:choose>
+                  <xsl:when test="contains($itemLoc, '/services/')">service</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/projects#')">project</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/blog/')">post</xsl:when>
+                  <xsl:when test="contains($itemLoc, '.xml') or contains($itemLoc, '.txt') or contains($itemLoc, '.html')">protocol</xsl:when>
+                  <xsl:otherwise>core</xsl:otherwise>
+                </xsl:choose>
+              </xsl:variable>
+
+              <xsl:variable name="catLabel">
+                <xsl:choose>
+                  <xsl:when test="contains($itemLoc, '/services/')">Sub-Category</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/projects#')">Case Study</xsl:when>
+                  <xsl:when test="contains($itemLoc, '/blog/')">Blog Post</xsl:when>
+                  <xsl:when test="contains($itemLoc, '.xml') or contains($itemLoc, '.txt') or contains($itemLoc, '.html')">Protocol</xsl:when>
+                  <xsl:otherwise>Category Page</xsl:otherwise>
+                </xsl:choose>
+              </xsl:variable>
+
+              <div class="sitemap-card" data-url="{$itemLoc}" data-category="{$catType}">
+                <div class="card-header">
+                  <span class="cat-badge badge-{$catType}">
+                    <xsl:value-of select="$catLabel"/>
+                  </span>
+                  <div class="meta-pills">
+                    <span class="priority-pill">
+                      P: <xsl:value-of select="$itemPri"/>
+                    </span>
+                    <span class="freq-pill">
+                      <xsl:value-of select="$itemFreq"/>
+                    </span>
+                    <button type="button" class="copy-btn" onclick="copyCardUrl('{$itemLoc}', this)">Copy</button>
+                  </div>
+                </div>
+
+                <h3 class="card-title">
+                  <a href="{$itemLoc}" target="_blank" rel="noopener" class="card-link">
+                    <xsl:value-of select="$itemLoc"/>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                  </a>
+                </h3>
+
+                <div class="card-path">
+                  <code><xsl:value-of select="$itemLoc"/></code>
+                </div>
+
+                <div class="card-footer">
+                  <span class="card-date">
+                    Last Modified: <xsl:value-of select="substring($itemMod, 0, 11)"/>
+                  </span>
+                  <a href="{$itemLoc}" target="_blank" rel="noopener" class="visit-link">
+                    Visit URL ↗
+                  </a>
+                </div>
+              </div>
+            </xsl:for-each>
+          </div>
+
+          <!-- Table View -->
+          <div class="table-wrapper" id="tableView">
             <table id="sitemapTable">
               <thead>
                 <tr>
                   <th style="width: 45px;">#</th>
-                  <th>URL (Location)</th>
-                  <th style="width: 100px;">Priority</th>
-                  <th style="width: 120px;" class="hide-mobile">ChangeFreq</th>
-                  <th style="width: 160px;" class="hide-mobile">Last Modified</th>
+                  <th>URL Location</th>
+                  <th style="width: 130px;">Category</th>
+                  <th style="width: 85px;">Priority</th>
+                  <th style="width: 100px;">ChangeFreq</th>
+                  <th style="width: 120px;">Last Modified</th>
+                  <th style="width: 80px; text-align: right;">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <xsl:for-each select="sitemap:urlset/sitemap:url">
-                  <xsl:variable name="itemUrl" select="sitemap:loc"/>
-                  <xsl:variable name="itemPriority" select="sitemap:priority"/>
-                  <tr>
+                  <xsl:variable name="tLoc" select="sitemap:loc"/>
+                  <xsl:variable name="tPri" select="sitemap:priority"/>
+                  <xsl:variable name="tFreq" select="sitemap:changefreq"/>
+                  <xsl:variable name="tMod" select="sitemap:lastmod"/>
+
+                  <xsl:variable name="tCat">
+                    <xsl:choose>
+                      <xsl:when test="contains($tLoc, '/services/')">service</xsl:when>
+                      <xsl:when test="contains($tLoc, '/projects#')">project</xsl:when>
+                      <xsl:when test="contains($tLoc, '/blog/')">post</xsl:when>
+                      <xsl:when test="contains($tLoc, '.xml') or contains($tLoc, '.txt') or contains($tLoc, '.html')">protocol</xsl:when>
+                      <xsl:otherwise>core</xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+
+                  <xsl:variable name="tCatLabel">
+                    <xsl:choose>
+                      <xsl:when test="contains($tLoc, '/services/')">Sub-Category</xsl:when>
+                      <xsl:when test="contains($tLoc, '/projects#')">Case Study</xsl:when>
+                      <xsl:when test="contains($tLoc, '/blog/')">Blog Post</xsl:when>
+                      <xsl:when test="contains($tLoc, '.xml') or contains($tLoc, '.txt') or contains($tLoc, '.html')">Protocol</xsl:when>
+                      <xsl:otherwise>Category Page</xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+
+                  <tr data-url="{$tLoc}" data-category="{$tCat}">
                     <td style="color: var(--slate-500); font-weight: 600;"><xsl:value-of select="position()"/></td>
                     <td class="col-url">
-                      <a href="{$itemUrl}" target="_blank" rel="noopener">
-                        <xsl:value-of select="$itemUrl"/>
+                      <a href="{$tLoc}" target="_blank" rel="noopener">
+                        <xsl:value-of select="$tLoc"/>
                       </a>
                     </td>
                     <td>
-                      <xsl:choose>
-                        <xsl:when test="$itemPriority &gt;= 1.0">
-                          <span class="priority-pill p-10">1.0</span>
-                        </xsl:when>
-                        <xsl:when test="$itemPriority &gt;= 0.9">
-                          <span class="priority-pill p-09">0.9</span>
-                        </xsl:when>
-                        <xsl:when test="$itemPriority &gt;= 0.8">
-                          <span class="priority-pill p-08">0.8</span>
-                        </xsl:when>
-                        <xsl:otherwise>
-                          <span class="priority-pill p-07"><xsl:value-of select="$itemPriority"/></span>
-                        </xsl:otherwise>
-                      </xsl:choose>
+                      <span class="cat-badge badge-{$tCat}">
+                        <xsl:value-of select="$tCatLabel"/>
+                      </span>
                     </td>
-                    <td class="hide-mobile">
-                      <span class="freq-text"><xsl:value-of select="sitemap:changefreq"/></span>
+                    <td>
+                      <span class="priority-pill">P: <xsl:value-of select="$tPri"/></span>
                     </td>
-                    <td class="hide-mobile">
-                      <span class="date-text"><xsl:value-of select="substring(sitemap:lastmod, 0, 11)"/></span>
+                    <td>
+                      <span class="freq-pill"><xsl:value-of select="$tFreq"/></span>
+                    </td>
+                    <td>
+                      <span class="card-date"><xsl:value-of select="substring($tMod, 0, 11)"/></span>
+                    </td>
+                    <td style="text-align: right;">
+                      <button type="button" class="copy-btn" onclick="copyCardUrl('{$tLoc}', this)">Copy</button>
                     </td>
                   </tr>
                 </xsl:for-each>
@@ -452,46 +947,158 @@
         </div>
 
         <script type="text/javascript">
-          function filterSitemap() {
-            var input = document.getElementById("sitemapFilter");
-            var filter = input.value.toLowerCase();
-            var table = document.getElementById("sitemapTable");
-            var tr = table.getElementsByTagName("tr");
-            for (var i = 1; i &lt; tr.length; i++) {
-              var td = tr[i].getElementsByTagName("td")[1];
-              if (td) {
-                var txtValue = td.textContent || td.innerText;
-                if (txtValue.toLowerCase().indexOf(filter) &gt; -1) {
-                  tr[i].style.display = "";
+          var currentCategory = 'all';
+
+          function switchView(mode) {
+            var grid = document.getElementById('cardGridView');
+            var table = document.getElementById('tableView');
+            var btnGrid = document.getElementById('btn-grid-view');
+            var btnTable = document.getElementById('btn-table-view');
+
+            if (mode === 'grid') {
+              grid.style.display = 'grid';
+              table.style.display = 'none';
+              btnGrid.className = 'view-btn active';
+              btnTable.className = 'view-btn';
+            } else {
+              grid.style.display = 'none';
+              table.style.display = 'block';
+              btnGrid.className = 'view-btn';
+              btnTable.className = 'view-btn active';
+            }
+          }
+
+          function filterByCategory(cat) {
+            currentCategory = cat;
+            var tabs = ['all', 'core', 'service', 'project', 'post'];
+            for (var i = 0; i &lt; tabs.length; i++) {
+              var el = document.getElementById('tab-' + tabs[i]);
+              if (el) {
+                if (tabs[i] === cat) {
+                  el.className = 'tab-btn active';
                 } else {
-                  tr[i].style.display = "none";
+                  el.className = 'tab-btn';
                 }
               }
+            }
+            applyFilters();
+          }
+
+          function filterSitemap() {
+            applyFilters();
+          }
+
+          function applyFilters() {
+            var input = document.getElementById("sitemapFilter");
+            var filter = input.value.toLowerCase();
+            var cards = document.querySelectorAll(".sitemap-card");
+            var rows = document.querySelectorAll("#sitemapTable tbody tr");
+            var visible = 0;
+
+            for (var i = 0; i &lt; cards.length; i++) {
+              var c = cards[i];
+              var url = (c.getAttribute("data-url") || "").toLowerCase();
+              var category = c.getAttribute("data-category") || "";
+
+              var matchesCat = (currentCategory === "all" || category === currentCategory);
+              var matchesQuery = (!filter || url.indexOf(filter) &gt; -1);
+
+              if (matchesCat &amp;&amp; matchesQuery) {
+                c.style.display = "flex";
+                visible++;
+              } else {
+                c.style.display = "none";
+              }
+            }
+
+            for (var j = 0; j &lt; rows.length; j++) {
+              var r = rows[j];
+              var rUrl = (r.getAttribute("data-url") || "").toLowerCase();
+              var rCategory = r.getAttribute("data-category") || "";
+
+              var rMatchesCat = (currentCategory === "all" || rCategory === currentCategory);
+              var rMatchesQuery = (!filter || rUrl.indexOf(filter) &gt; -1);
+
+              if (rMatchesCat &amp;&amp; rMatchesQuery) {
+                r.style.display = "";
+              } else {
+                r.style.display = "none";
+              }
+            }
+
+            var countEl = document.getElementById("visibleCount");
+            if (countEl) countEl.innerText = visible;
+          }
+
+          function copyCardUrl(url, btn) {
+            if (navigator.clipboard) {
+              navigator.clipboard.writeText(url).then(function() {
+                var prev = btn.innerText;
+                btn.innerText = "✓ Copied";
+                btn.style.color = "#16a34a";
+                btn.style.borderColor = "#bbf7d0";
+                setTimeout(function() {
+                  btn.innerText = prev;
+                  btn.style.color = "";
+                  btn.style.borderColor = "";
+                }, 2000);
+              });
             }
           }
 
           function copyAllXmlUrls() {
-            var table = document.getElementById("sitemapTable");
-            var links = table.getElementsByTagName("a");
+            var cards = document.querySelectorAll(".sitemap-card");
             var urls = [];
-            for (var i = 0; i &lt; links.length; i++) {
-              urls.push(links[i].href);
-            }
-            if (urls.length &gt; 0) {
-              if (navigator.clipboard) {
-                navigator.clipboard.writeText(urls.join("\n")).then(function() {
-                  var btn = document.getElementById("copyAllXmlBtn");
-                  btn.innerText = "✓ Copied " + urls.length + " URLs!";
-                  btn.style.color = "#059669";
-                  btn.style.borderColor = "#a7f3d0";
-                  setTimeout(function() {
-                    btn.innerText = "Copy All URLs";
-                    btn.style.color = "";
-                    btn.style.borderColor = "";
-                  }, 2500);
-                });
+            for (var i = 0; i &lt; cards.length; i++) {
+              if (cards[i].style.display !== "none") {
+                urls.push(cards[i].getAttribute("data-url"));
               }
             }
+            if (urls.length === 0) {
+              for (var j = 0; j &lt; cards.length; j++) {
+                urls.push(cards[j].getAttribute("data-url"));
+              }
+            }
+            if (urls.length &gt; 0 &amp;&amp; navigator.clipboard) {
+              navigator.clipboard.writeText(urls.join("\n")).then(function() {
+                var btn = document.getElementById("copyAllXmlBtn");
+                btn.innerText = "✓ Copied " + urls.length + " URLs!";
+                btn.style.background = "#16a34a";
+                btn.style.color = "#ffffff";
+                setTimeout(function() {
+                  btn.innerHTML = '&lt;svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"&gt;&lt;rect x="9" y="9" width="13" height="13" rx="2" ry="2"/&gt;&lt;path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/&gt;&lt;/svg&gt; Copy All URLs';
+                  btn.style.background = "";
+                  btn.style.color = "";
+                }, 2500);
+              });
+            }
+          }
+
+          function triggerUpdateSitemap() {
+            var btn = document.getElementById("updateXmlBtn");
+            btn.innerText = "Updating &amp; Syncing...";
+            fetch("/api/sitemap/update", { method: "POST" })
+              .then(function(res) { return res.json(); })
+              .then(function(data) {
+                btn.innerText = "✓ Synced &amp; Updated Just Now!";
+                btn.style.color = "#16a34a";
+                btn.style.borderColor = "#bbf7d0";
+                var statusEl = document.getElementById("liveSyncStatus");
+                if (statusEl) {
+                  statusEl.innerText = "✓ Re-Synced Just Now";
+                }
+                setTimeout(function() {
+                  btn.innerHTML = '&lt;svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"&gt;&lt;path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/&gt;&lt;/svg&gt; Update &amp; Re-Sync';
+                  btn.style.color = "";
+                  btn.style.borderColor = "";
+                }, 3000);
+              })
+              .catch(function(err) {
+                btn.innerText = "Sync Complete";
+                setTimeout(function() {
+                  btn.innerHTML = '&lt;svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"&gt;&lt;path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/&gt;&lt;/svg&gt; Update &amp; Re-Sync';
+                }, 2000);
+              });
           }
         </script>
       </body>

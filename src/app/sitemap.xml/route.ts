@@ -1,5 +1,5 @@
 import { services } from '@/data/services';
-import { getPublishedPosts, getPages } from '@/lib/store';
+import { getPublishedPosts, getProjects, getPages } from '@/lib/store';
 import { absoluteUrl } from '@/lib/site';
 
 export const dynamic = 'force-dynamic';
@@ -15,7 +15,7 @@ interface SitemapItem {
 export async function GET() {
   const nowIso = new Date().toISOString();
 
-  // Core Static URLs
+  // 1. Core Category & Landing URLs
   const staticItems: SitemapItem[] = [
     { url: absoluteUrl('/'), lastmod: nowIso, changefreq: 'weekly', priority: '1.0' },
     { url: absoluteUrl('/services'), lastmod: nowIso, changefreq: 'weekly', priority: '0.9' },
@@ -27,7 +27,7 @@ export async function GET() {
     { url: absoluteUrl('/sitemap.html'), lastmod: nowIso, changefreq: 'weekly', priority: '0.7' },
   ];
 
-  // Dynamic Service Pillar URLs
+  // 2. Dynamic Service Sub-Categories
   const serviceItems: SitemapItem[] = services.map((s) => ({
     url: absoluteUrl(`/services/${s.slug}`),
     lastmod: nowIso,
@@ -35,7 +35,21 @@ export async function GET() {
     priority: s.primary ? '0.9' : '0.8',
   }));
 
-  // Dynamic Blog Posts (auto-updates when a new post is published)
+  // 3. Dynamic Client Case Studies & Projects (21 projects)
+  let projectItems: SitemapItem[] = [];
+  try {
+    const rawProjects = await getProjects();
+    projectItems = rawProjects.map((p) => ({
+      url: absoluteUrl(`/projects#${p.slug}`),
+      lastmod: nowIso,
+      changefreq: 'weekly',
+      priority: '0.85',
+    }));
+  } catch (err) {
+    console.error('Error fetching projects for sitemap.xml:', err);
+  }
+
+  // 4. Dynamic Blog Posts (auto-updates when a new post is published)
   let postItems: SitemapItem[] = [];
   try {
     const posts = await getPublishedPosts();
@@ -54,10 +68,10 @@ export async function GET() {
       };
     });
   } catch (err) {
-    console.error('Error fetching published posts for sitemap:', err);
+    console.error('Error fetching published posts for sitemap.xml:', err);
   }
 
-  // Dynamic Custom Pages (if any created in Admin)
+  // 5. Dynamic Custom Pages (if any created in Admin)
   let customPageItems: SitemapItem[] = [];
   try {
     const pages = await getPages();
@@ -70,18 +84,25 @@ export async function GET() {
         priority: '0.7',
       }));
   } catch (err) {
-    console.error('Error fetching custom pages for sitemap:', err);
+    console.error('Error fetching custom pages for sitemap.xml:', err);
   }
 
   // Combine and deduplicate
-  const allItems = [...staticItems, ...serviceItems, ...postItems, ...customPageItems];
+  const allItems = [
+    ...staticItems,
+    ...serviceItems,
+    ...projectItems,
+    ...postItems,
+    ...customPageItems,
+  ];
+
   const uniqueItemsMap = new Map<string, SitemapItem>();
   for (const item of allItems) {
     uniqueItemsMap.set(item.url, item);
   }
   const uniqueItems = Array.from(uniqueItemsMap.values());
 
-  // Generate XML with XSL stylesheet link for modern in-browser presentation
+  // Generate standard Sitemaps.org XML with XSL stylesheet link
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -102,7 +123,9 @@ ${uniqueItems
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
       'X-Robots-Tag': 'noindex, follow',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400',
+      'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0',
+      Pragma: 'no-cache',
+      Expires: '0',
     },
   });
 }

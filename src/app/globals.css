@@ -2821,3 +2821,184 @@
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   Sitemap Live Sync Indicator & View Mode Styles
+   ========================================================================== */
+
+.sitemapActionHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.sitemapLiveIndicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #16a34a;
+  background: #f0fdf4;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  border: 1px solid #bbf7d0;
+}
+
+.sitemapLiveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: sitemapPulse 1.8s infinite;
+}
+
+@keyframes sitemapPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.sitemapSyncBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #059669;
+  background: #ecfdf5;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  border: 1px solid #a7f3d0;
+}
+
+/* Update Button */
+.sitemapUpdateBtn {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #1e293b;
+}
+
+.sitemapUpdateBtn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+.sitemapUpdateBtn.updating {
+  background: #f1f5f9;
+  color: #64748b;
+  cursor: wait;
+}
+
+.sitemapTabsAndToggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sitemapViewToggle {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.sitemapViewBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sitemapViewBtn.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Tabular Directory View */
+.sitemapTableCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow-x: auto;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  margin-bottom: 32px;
+}
+
+.sitemapDataTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.sitemapDataTable thead th {
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 12px 18px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.sitemapDataTable tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.12s ease;
+}
+
+.sitemapDataTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.sitemapDataTable tbody tr:hover {
+  background-color: #fafbfc;
+}
+
+.sitemapDataTable td {
+  padding: 12px 18px;
+  vertical-align: middle;
+  font-size: 0.86rem;
+}
+
+.sitemapTableTitleLink {
+  color: #0f172a;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.sitemapTableTitleLink:hover {
+  color: var(--orange, #f97316);
+  text-decoration: underline;
+}
+
+.sitemapTableSubUrl {
+  margin-top: 3px;
+}
+
+.sitemapTableSubUrl code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.74rem;
+  color: #64748b;
+  background: #f8fafc;
+  padding: 1px 5px;
+  border-radius: 4px;
+}

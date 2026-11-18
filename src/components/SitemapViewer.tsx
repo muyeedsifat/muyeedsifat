@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export interface SitemapLinkItem {
   id: string;
@@ -22,12 +23,16 @@ interface SitemapViewerProps {
 }
 
 export function SitemapViewer({ items }: SitemapViewerProps) {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [viewMode, setViewMode] = useState<'grid' | 'table'>('grid');
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
   const [copiedCardId, setCopiedCardId] = useState<string | null>(null);
   const [copyFormat, setCopyFormat] = useState<'plain' | 'markdown' | 'csv'>('plain');
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [lastSyncedTime, setLastSyncedTime] = useState<string | null>(null);
 
   const counts = useMemo(() => {
     return {
@@ -101,7 +106,6 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
 
   const handleDownloadZip = () => {
     setIsDownloading(true);
-    // Programmatic trigger of /api/sitemap/download
     const a = document.createElement('a');
     a.href = '/api/sitemap/download';
     a.download = 'muyeedsifat-sitemap-export.zip';
@@ -111,15 +115,40 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
     setTimeout(() => setIsDownloading(false), 2000);
   };
 
+  const handleUpdateSitemap = async () => {
+    setIsUpdating(true);
+    try {
+      const res = await fetch('/api/sitemap/update', { method: 'POST' });
+      if (res.ok) {
+        const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        setLastSyncedTime(timeStr);
+        router.refresh();
+      }
+    } catch (err) {
+      console.error('Failed to update sitemap files:', err);
+    } finally {
+      setTimeout(() => setIsUpdating(false), 900);
+    }
+  };
+
   return (
     <div className="sitemapViewerWrapper">
       {/* Top Action & Protocol Banner */}
       <div className="sitemapActionToolbar">
         <div className="sitemapActionLeft">
-          <div className="sitemapActionEyebrow">EXPORT &amp; INGESTION TOOLS</div>
-          <h2 className="sitemapActionTitle">Copy &amp; Download Sitemap Assets</h2>
+          <div className="sitemapActionHeaderRow">
+            <span className="sitemapLiveIndicator">
+              <span className="sitemapLiveDot"></span> Continuous Real-Time Auto-Update Active
+            </span>
+            {lastSyncedTime && (
+              <span className="sitemapSyncBadge">
+                ✓ Synced at {lastSyncedTime}
+              </span>
+            )}
+          </div>
+          <h2 className="sitemapActionTitle">Copy, Update &amp; Download Sitemap Assets</h2>
           <p className="sitemapActionDesc">
-            Download the complete website structure packaged into organized folders (Category Pages, Sub-Categories, 21 Case Studies, Blog Posts, and Protocols), or copy all URLs for SEO auditing.
+            These sitemaps automatically update whenever any project, blog post, or service is published. You can also trigger an instant on-demand cache re-sync, copy links, or download the structured ZIP file organized by category folders.
           </p>
         </div>
 
@@ -165,6 +194,28 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
                   : `Copy All Links (${items.length})`}
               </>
             )}
+          </button>
+
+          {/* Update / Refresh Button */}
+          <button
+            type="button"
+            className={`sitemapMainBtn sitemapUpdateBtn ${isUpdating ? 'updating' : ''}`}
+            onClick={handleUpdateSitemap}
+            disabled={isUpdating}
+            title="Force immediate cache revalidation across all sitemaps, feeds and JSON exports"
+          >
+            <svg
+              className={`sitemapUpdateIcon ${isUpdating ? 'sitemapSpinner' : ''}`}
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.4"
+            >
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+            </svg>
+            {isUpdating ? 'Updating & Syncing...' : 'Update & Re-Sync'}
           </button>
 
           {/* Download ZIP Button */}
@@ -262,50 +313,82 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
           )}
         </div>
 
-        {/* Category Tabs */}
-        <div className="sitemapCategoryTabs">
-          <button
-            type="button"
-            className={`sitemapTabBtn ${activeTab === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveTab('all')}
-          >
-            All Links <span className="sitemapTabCount">{counts.all}</span>
-          </button>
-          <button
-            type="button"
-            className={`sitemapTabBtn ${activeTab === 'core' ? 'active' : ''}`}
-            onClick={() => setActiveTab('core')}
-          >
-            Category Pages <span className="sitemapTabCount">{counts.core}</span>
-          </button>
-          <button
-            type="button"
-            className={`sitemapTabBtn ${activeTab === 'service' ? 'active' : ''}`}
-            onClick={() => setActiveTab('service')}
-          >
-            Sub-Categories <span className="sitemapTabCount">{counts.service}</span>
-          </button>
-          <button
-            type="button"
-            className={`sitemapTabBtn ${activeTab === 'project' ? 'active' : ''}`}
-            onClick={() => setActiveTab('project')}
-          >
-            Case Studies <span className="sitemapTabCount">{counts.project}</span>
-          </button>
-          <button
-            type="button"
-            className={`sitemapTabBtn ${activeTab === 'post' ? 'active' : ''}`}
-            onClick={() => setActiveTab('post')}
-          >
-            Blog Posts <span className="sitemapTabCount">{counts.post}</span>
-          </button>
-          <button
-            type="button"
-            className={`sitemapTabBtn ${activeTab === 'protocol' ? 'active' : ''}`}
-            onClick={() => setActiveTab('protocol')}
-          >
-            Protocols <span className="sitemapTabCount">{counts.protocol}</span>
-          </button>
+        {/* Category Tabs & View Mode Toggle */}
+        <div className="sitemapTabsAndToggleRow">
+          <div className="sitemapCategoryTabs">
+            <button
+              type="button"
+              className={`sitemapTabBtn ${activeTab === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveTab('all')}
+            >
+              All Links <span className="sitemapTabCount">{counts.all}</span>
+            </button>
+            <button
+              type="button"
+              className={`sitemapTabBtn ${activeTab === 'core' ? 'active' : ''}`}
+              onClick={() => setActiveTab('core')}
+            >
+              Category Pages <span className="sitemapTabCount">{counts.core}</span>
+            </button>
+            <button
+              type="button"
+              className={`sitemapTabBtn ${activeTab === 'service' ? 'active' : ''}`}
+              onClick={() => setActiveTab('service')}
+            >
+              Sub-Categories <span className="sitemapTabCount">{counts.service}</span>
+            </button>
+            <button
+              type="button"
+              className={`sitemapTabBtn ${activeTab === 'project' ? 'active' : ''}`}
+              onClick={() => setActiveTab('project')}
+            >
+              Case Studies <span className="sitemapTabCount">{counts.project}</span>
+            </button>
+            <button
+              type="button"
+              className={`sitemapTabBtn ${activeTab === 'post' ? 'active' : ''}`}
+              onClick={() => setActiveTab('post')}
+            >
+              Blog Posts <span className="sitemapTabCount">{counts.post}</span>
+            </button>
+            <button
+              type="button"
+              className={`sitemapTabBtn ${activeTab === 'protocol' ? 'active' : ''}`}
+              onClick={() => setActiveTab('protocol')}
+            >
+              Protocols <span className="sitemapTabCount">{counts.protocol}</span>
+            </button>
+          </div>
+
+          <div className="sitemapViewToggle">
+            <button
+              type="button"
+              className={`sitemapViewBtn ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => setViewMode('grid')}
+              title="Card Grid View"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              Grid
+            </button>
+            <button
+              type="button"
+              className={`sitemapViewBtn ${viewMode === 'table' ? 'active' : ''}`}
+              onClick={() => setViewMode('table')}
+              title="Tabular View"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+              Table
+            </button>
+          </div>
         </div>
       </div>
 
@@ -333,106 +416,171 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
         </div>
       </div>
 
-      {/* Directory Grid */}
-      {filteredItems.length > 0 ? (
-        <div className="sitemapCardGrid">
-          {filteredItems.map((item) => (
-            <div key={item.id} className="sitemapCard">
-              <div className="sitemapCardHeader">
-                <span className={`sitemapCategoryBadge badge-${item.category}`}>
-                  {item.categoryLabel}
-                </span>
-                <div className="sitemapMetaPills">
-                  <span className="sitemapPriorityPill" title={`Priority: ${item.priority}`}>
-                    P: {item.priority}
-                  </span>
-                  <span className="sitemapFreqPill" title={`Change frequency: ${item.changefreq}`}>
-                    {item.changefreq}
-                  </span>
-                  <button
-                    type="button"
-                    className={`sitemapCopyCardBtn ${copiedCardId === item.id ? 'copied' : ''}`}
-                    onClick={() => handleCopySingle(item)}
-                    title="Copy URL to clipboard"
-                    aria-label={`Copy URL for ${item.title}`}
-                  >
-                    {copiedCardId === item.id ? (
-                      <span style={{ color: '#16a34a', fontWeight: 700 }}>✓ Copied</span>
-                    ) : (
-                      <>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                        </svg>
-                        <span>Copy</span>
-                      </>
-                    )}
-                  </button>
+      {/* Directory Grid View */}
+      {viewMode === 'grid' && (
+        <>
+          {filteredItems.length > 0 ? (
+            <div className="sitemapCardGrid">
+              {filteredItems.map((item) => (
+                <div key={item.id} className="sitemapCard">
+                  <div className="sitemapCardHeader">
+                    <span className={`sitemapCategoryBadge badge-${item.category}`}>
+                      {item.categoryLabel}
+                    </span>
+                    <div className="sitemapMetaPills">
+                      <span className="sitemapPriorityPill" title={`Priority: ${item.priority}`}>
+                        P: {item.priority}
+                      </span>
+                      <span className="sitemapFreqPill" title={`Change frequency: ${item.changefreq}`}>
+                        {item.changefreq}
+                      </span>
+                      <button
+                        type="button"
+                        className={`sitemapCopyCardBtn ${copiedCardId === item.id ? 'copied' : ''}`}
+                        onClick={() => handleCopySingle(item)}
+                        title="Copy URL to clipboard"
+                        aria-label={`Copy URL for ${item.title}`}
+                      >
+                        {copiedCardId === item.id ? (
+                          <span style={{ color: '#16a34a', fontWeight: 700 }}>✓ Copied</span>
+                        ) : (
+                          <>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                            </svg>
+                            <span>Copy</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  <h3 className="sitemapCardTitle">
+                    <Link href={item.path} className="sitemapCardLink">
+                      {item.title}
+                      <svg
+                        className="sitemapArrowIcon"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                      </svg>
+                    </Link>
+                  </h3>
+
+                  <div className="sitemapCardPath">
+                    <code>{item.path}</code>
+                  </div>
+
+                  <p className="sitemapCardDesc">{item.description}</p>
+
+                  {item.updatedAt && (
+                    <div className="sitemapCardFooter">
+                      <span className="sitemapCardDate">
+                        Updated: {new Date(item.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                      </span>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sitemapOpenLink"
+                      >
+                        Visit Page ↗
+                      </a>
+                    </div>
+                  )}
                 </div>
-              </div>
-
-              <h3 className="sitemapCardTitle">
-                <Link href={item.path} className="sitemapCardLink">
-                  {item.title}
-                  <svg
-                    className="sitemapArrowIcon"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
-                </Link>
-              </h3>
-
-              <div className="sitemapCardPath">
-                <code>{item.path}</code>
-              </div>
-
-              <p className="sitemapCardDesc">{item.description}</p>
-
-              {item.updatedAt && (
-                <div className="sitemapCardFooter">
-                  <span className="sitemapCardDate">
-                    Updated: {new Date(item.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                  </span>
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sitemapOpenLink"
-                  >
-                    Visit Page ↗
-                  </a>
-                </div>
-              )}
+              ))}
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className="sitemapEmptyState">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.8">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <div className="sitemapEmptyTitle">No matching pages found</div>
-          <p className="sitemapEmptyText">
-            No indexed link matched &quot;{searchQuery}&quot;. Try adjusting your search query or reset the filter.
-          </p>
-          <button
-            type="button"
-            className="sitemapResetBtn"
-            onClick={() => {
-              setSearchQuery('');
-              setActiveTab('all');
-            }}
-          >
-            Reset Filters
-          </button>
+          ) : (
+            <div className="sitemapEmptyState">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.8">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <div className="sitemapEmptyTitle">No matching pages found</div>
+              <p className="sitemapEmptyText">
+                No indexed link matched &quot;{searchQuery}&quot;. Try adjusting your search query or reset the filter.
+              </p>
+              <button
+                type="button"
+                className="sitemapResetBtn"
+                onClick={() => {
+                  setSearchQuery('');
+                  setActiveTab('all');
+                }}
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* Directory Table View */}
+      {viewMode === 'table' && (
+        <div className="sitemapTableCard">
+          <table className="sitemapDataTable">
+            <thead>
+              <tr>
+                <th style={{ width: '45px' }}>#</th>
+                <th>Resource Title &amp; URL</th>
+                <th style={{ width: '130px' }}>Category</th>
+                <th style={{ width: '85px' }}>Priority</th>
+                <th style={{ width: '100px' }}>ChangeFreq</th>
+                <th style={{ width: '120px' }}>Last Modified</th>
+                <th style={{ width: '90px', textAlign: 'right' }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredItems.map((item, index) => (
+                <tr key={item.id}>
+                  <td style={{ color: '#94a3b8', fontWeight: 600 }}>{index + 1}</td>
+                  <td>
+                    <Link href={item.path} className="sitemapTableTitleLink">
+                      {item.title}
+                    </Link>
+                    <div className="sitemapTableSubUrl">
+                      <code>{item.url}</code>
+                    </div>
+                  </td>
+                  <td>
+                    <span className={`sitemapCategoryBadge badge-${item.category}`}>
+                      {item.categoryLabel}
+                    </span>
+                  </td>
+                  <td>
+                    <span className="sitemapPriorityPill">P: {item.priority}</span>
+                  </td>
+                  <td>
+                    <span className="sitemapFreqPill">{item.changefreq}</span>
+                  </td>
+                  <td>
+                    <span className="sitemapCardDate">
+                      {item.updatedAt
+                        ? new Date(item.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+                        : 'Current'}
+                    </span>
+                  </td>
+                  <td style={{ textAlign: 'right' }}>
+                    <button
+                      type="button"
+                      className={`sitemapCopyCardBtn ${copiedCardId === item.id ? 'copied' : ''}`}
+                      onClick={() => handleCopySingle(item)}
+                    >
+                      {copiedCardId === item.id ? '✓' : 'Copy'}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

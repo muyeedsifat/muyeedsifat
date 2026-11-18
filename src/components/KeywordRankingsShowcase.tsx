@@ -30,8 +30,8 @@ export const rankingData: KeywordRankingItem[] = [
     highlight: 'Dominating high-ticket local bathroom remodeling search queries in competitive Georgia markets.',
     keywords: [
       { term: 'Best Bathroom Remodeler', position: 'Top 3', intent: 'Commercial' },
-      { term: 'best bathroom remodeler in woodstock', position: '#1 Rank', intent: 'Local Intent' },
-      { term: 'Best Bathroom Remodeler in cartersville', position: '#1 Rank', intent: 'Local Intent' }
+      { term: 'Best Bathroom Remodeler in Woodstock', position: '#1 Rank', intent: 'Local Intent' },
+      { term: 'Best Bathroom Remodeler in Cartersville', position: '#1 Rank', intent: 'Local Intent' }
     ]
   },
   {
@@ -43,8 +43,9 @@ export const rankingData: KeywordRankingItem[] = [
     flag: '🇬🇧',
     highlight: 'Capturing qualified client retainers for immigration and asylum cases in Hertfordshire.',
     keywords: [
-      { term: 'best immigration solicitors in St Albans', position: '#1 Rank', intent: 'Local Intent' },
-      { term: 'best asylum solicitors in St Albans', position: '#1 Rank', intent: 'Local Intent' }
+      { term: 'Best Immigration Solicitors in St Albans', position: '#1 Rank', intent: 'Local Intent' },
+      { term: 'Best Asylum Solicitors in St Albans', position: '#1 Rank', intent: 'Local Intent' },
+      { term: 'UK Immigration & Asylum Solicitor', position: 'Top 3', intent: 'Commercial' }
     ]
   },
   {
@@ -56,9 +57,9 @@ export const rankingData: KeywordRankingItem[] = [
     flag: '🇺🇸',
     highlight: '1,200+ Top 10 rankings on Google, ranking #1 above competitor discussions with AI Overview citations.',
     keywords: [
-      { term: 'Best Enclosed Trailer Manufacturers in Douglas, Georgia', position: '#1 Rank', intent: 'Local Intent' },
+      { term: 'Best Enclosed Trailer Manufacturers in Douglas GA', position: '#1 Rank', intent: 'Local Intent' },
       { term: 'Custom Enclosed Cargo Trailers', position: 'Top 3', intent: 'Commercial' },
-      { term: 'Trailer Manufacturing Douglas GA', position: '#1 Rank', intent: 'Local Intent' }
+      { term: 'How Much Do Food Trailers Cost', position: 'AEO #1', intent: 'AEO / Informational' }
     ]
   },
   {
@@ -71,7 +72,8 @@ export const rankingData: KeywordRankingItem[] = [
     highlight: 'High-value enterprise B2B engineering keywords connecting industrial buyers with precision equipment.',
     keywords: [
       { term: 'Heat Exchanger Singapore', position: 'Top 3', intent: 'Commercial' },
-      { term: 'Shell and Tube Heat Exchangers', position: 'Top 5', intent: 'Commercial' }
+      { term: 'Shell and Tube Heat Exchangers', position: 'Top 5', intent: 'Commercial' },
+      { term: 'Industrial Heat Exchanger Supplier', position: 'Top 3', intent: 'Commercial' }
     ]
   },
   {
@@ -83,8 +85,9 @@ export const rankingData: KeywordRankingItem[] = [
     flag: '🇸🇬',
     highlight: 'Wholesale B2B and retail medical supply search dominance capturing direct corporate orders.',
     keywords: [
-      { term: 'Wholesale first aid supplies', position: 'Top 3', intent: 'Commercial' },
-      { term: 'Buy first aid box', position: 'Top 3', intent: 'Transactional' }
+      { term: 'Wholesale First Aid Supplies', position: 'Top 3', intent: 'Commercial' },
+      { term: 'Buy First Aid Box', position: 'Top 3', intent: 'Transactional' },
+      { term: 'Emergency Medical Supplies Singapore', position: 'Top 3', intent: 'Commercial' }
     ]
   },
   {
@@ -110,8 +113,9 @@ export const rankingData: KeywordRankingItem[] = [
     flag: '🇦🇺',
     highlight: 'Earned featured product citation inside Google AI Overviews and #1 Local Pack positioning.',
     keywords: [
-      { term: 'best spray tan gun in australia', position: 'AI Overview', intent: 'Commercial' },
-      { term: 'Best Bridal Tans in Australia', position: '#1 Pack', intent: 'Local Intent' }
+      { term: 'Best Spray Tan Gun in Australia', position: 'AI Overview', intent: 'Commercial' },
+      { term: 'Best Bridal Tans in Australia', position: '#1 Pack', intent: 'Local Intent' },
+      { term: 'Professional Spray Tan Solution', position: 'Top 3', intent: 'Commercial' }
     ]
   },
   {
@@ -123,7 +127,23 @@ export const rankingData: KeywordRankingItem[] = [
     flag: '🏥',
     highlight: 'High-trust healthcare queries delivering patient inquiries and family caregiver contacts.',
     keywords: [
-      { term: 'Best Home health care service', position: 'Top 3', intent: 'Commercial' }
+      { term: 'Best Home Health Care Service', position: 'Top 3', intent: 'Commercial' },
+      { term: 'In-Home Nursing Care Provider', position: 'Top 3', intent: 'Commercial' },
+      { term: 'Private Senior Home Care', position: 'Top 3', intent: 'Commercial' }
+    ]
+  },
+  {
+    domain: 'visionrentacar.gr',
+    name: 'Vision Rent a Car Mykonos',
+    industry: 'Tourist Vehicle Rental & Fleet',
+    category: 'Local SEO',
+    market: 'Ornos, Mykonos, Greece',
+    flag: '🇬🇷',
+    highlight: 'Captured 878 high-ticket tourist vehicle bookings through Google 3-Pack and Maps search dominance.',
+    keywords: [
+      { term: 'Car Rental Agency in Ornos', position: '#1 Pack', intent: 'Local Intent' },
+      { term: 'Rent a Car Mykonos Greece', position: 'Top 3', intent: 'Commercial' },
+      { term: 'Car Rental Ornos Beach', position: '#1 Rank', intent: 'Local Intent' }
     ]
   }
 ];
@@ -149,17 +169,38 @@ export function KeywordRankingsShowcase() {
     });
   }, [activeTab, searchQuery]);
 
+  const getCategoryClass = (cat: KeywordRankingItem['category']) => {
+    switch (cat) {
+      case 'Local SEO':
+        return 'rankingCatLocal';
+      case 'E-Commerce':
+        return 'rankingCatEcom';
+      case 'B2B SEO':
+        return 'rankingCatB2b';
+      case 'Legal & Healthcare':
+        return 'rankingCatLegal';
+      default:
+        return 'rankingCatLocal';
+    }
+  };
+
+  const getPositionClass = (pos: string) => {
+    if (pos.includes('#1')) return 'rankingPosGreen';
+    if (pos.includes('AI') || pos.includes('AEO')) return 'rankingPosPurple';
+    return 'rankingPosOrange';
+  };
+
   return (
     <section className="section" style={{ background: '#fdfefe', borderTop: '1px solid #f0f2f5', borderBottom: '1px solid #f0f2f5' }}>
       <div className="container">
-        {/* Header */}
+        {/* Section Header */}
         <div className="center" style={{ maxWidth: '820px', margin: '0 auto 36px' }}>
           <span className="eyebrow">Proven Search Results</span>
           <h2 style={{ fontSize: 'clamp(2rem, 3.8vw, 3rem)', margin: '8px 0 16px' }}>
             Top Google Rankings &amp; Keyword Dominance
           </h2>
           <p className="lead" style={{ margin: '0 auto' }}>
-            Real client keywords currently ranking on Page 1, Local Map Packs, and Google AI Overviews across local services, B2B engineering, and global e-commerce.
+            Real client keywords currently ranking on Page 1, Local 3-Packs, and Google AI Overviews across local services, B2B engineering, and global e-commerce.
           </p>
         </div>
 
@@ -182,7 +223,7 @@ export function KeywordRankingsShowcase() {
                 type="button"
                 onClick={() => setActiveTab(tab)}
                 style={{
-                  padding: '8px 16px',
+                  padding: '8px 18px',
                   borderRadius: '10px',
                   fontSize: '0.86rem',
                   fontWeight: 650,
@@ -199,7 +240,7 @@ export function KeywordRankingsShowcase() {
           </div>
 
           {/* Search box */}
-          <div style={{ position: 'relative', width: '260px' }}>
+          <div style={{ position: 'relative', width: '280px' }}>
             <input
               type="text"
               placeholder="Search keyword or domain..."
@@ -207,14 +248,16 @@ export function KeywordRankingsShowcase() {
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
                 width: '100%',
-                padding: '9px 14px 9px 34px',
+                padding: '10px 14px 10px 36px',
                 borderRadius: '10px',
-                border: '1px solid #d1d5db',
+                border: '1.5px solid #d1d5db',
                 fontSize: '0.86rem',
                 outline: 'none',
-                background: '#ffffff'
+                background: '#ffffff',
+                boxSizing: 'border-box'
               }}
-            />
+            >
+            </input>
             <svg
               width="15"
               height="15"
@@ -222,7 +265,7 @@ export function KeywordRankingsShowcase() {
               fill="none"
               stroke="#9ca3af"
               strokeWidth="2.2"
-              style={{ position: 'absolute', left: '11px', top: '50%', transform: 'translateY(-50%)' }}
+              style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -230,106 +273,55 @@ export function KeywordRankingsShowcase() {
           </div>
         </div>
 
-        {/* Grid of Keyword Ranking Cards */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-            gap: '22px'
-          }}
-        >
+        {/* Symmetric 3x3 Card Grid */}
+        <div className="rankingCardGrid">
           {filtered.map((item) => (
-            <div
-              key={item.domain}
-              style={{
-                background: '#ffffff',
-                border: '1px solid #e2e8f0',
-                borderRadius: '16px',
-                padding: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
-                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.03)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 28px rgba(0, 0, 0, 0.08)';
-                e.currentTarget.style.borderColor = 'var(--orange, #f97316)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(0, 0, 0, 0.03)';
-                e.currentTarget.style.borderColor = '#e2e8f0';
-              }}
-            >
-              {/* Card Header */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px', gap: '8px' }}>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '1.1rem' }}>{item.flag}</span>
-                    <span style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>{item.market}</span>
-                  </div>
-                  <h3 style={{ fontSize: '1.22rem', fontWeight: 750, margin: '4px 0 2px', color: '#0f172a' }}>
-                    {item.name}
-                  </h3>
-                  <code style={{ fontSize: '0.8rem', color: 'var(--orange-dark, #c2410c)', background: '#fff7ed', padding: '2px 7px', borderRadius: '4px', fontWeight: 600 }}>
-                    {item.domain}
-                  </code>
+            <div key={item.domain} className="rankingCard">
+              {/* Card Header: Market + Category */}
+              <div className="rankingCardTopMeta">
+                <div className="rankingCardMarket" title={item.market}>
+                  <span style={{ fontSize: '1.1rem' }}>{item.flag}</span>
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {item.market}
+                  </span>
                 </div>
-                <span
-                  style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.04em',
-                    padding: '4px 8px',
-                    borderRadius: '6px',
-                    background: '#f1f5f9',
-                    color: '#475569'
-                  }}
-                >
+                <span className={`rankingCardCategoryPill ${getCategoryClass(item.category)}`}>
                   {item.category}
                 </span>
               </div>
 
-              {/* Highlight summary */}
-              <p style={{ fontSize: '0.86rem', color: '#64748b', lineHeight: 1.5, margin: '0 0 16px', flexGrow: 1 }}>
+              {/* Title & Domain (Uniform Height) */}
+              <div className="rankingCardTitleBox">
+                <h3 className="rankingCardTitle">
+                  {item.name}
+                </h3>
+              </div>
+
+              <code className="rankingCardDomainPill">
+                <span>{item.domain}</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </code>
+
+              {/* Description (Exact 2-Line Clamp) */}
+              <p className="rankingCardHighlight" title={item.highlight}>
                 {item.highlight}
               </p>
 
-              {/* Keyword Pills List */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', borderTop: '1px solid #f1f5f9', paddingTop: '14px' }}>
-                <div style={{ fontSize: '0.72rem', fontWeight: 750, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#94a3b8' }}>
+              {/* Target Ranking Keywords (Uniform 3 Rows) */}
+              <div className="rankingKeywordsBox">
+                <div className="rankingKeywordsHeader">
                   Target Ranking Keywords
                 </div>
                 {item.keywords.map((kw, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      background: '#f8fafc',
-                      border: '1px solid #edf2f7',
-                      padding: '8px 12px',
-                      borderRadius: '8px',
-                      gap: '10px'
-                    }}
-                  >
-                    <span style={{ fontSize: '0.86rem', fontWeight: 600, color: '#1e293b' }}>
+                  <div key={idx} className="rankingKeywordRow">
+                    <span className="rankingKeywordTerm">
                       &ldquo;{kw.term}&rdquo;
                     </span>
-                    <span
-                      style={{
-                        fontSize: '0.72rem',
-                        fontWeight: 800,
-                        padding: '3px 8px',
-                        borderRadius: '6px',
-                        whiteSpace: 'nowrap',
-                        background: kw.position.includes('#1') ? '#dcfce7' : kw.position.includes('AI') ? '#ede9fe' : '#ffedd5',
-                        color: kw.position.includes('#1') ? '#15803d' : kw.position.includes('AI') ? '#6b21a8' : '#c2410c'
-                      }}
-                    >
+                    <span className={`rankingPositionPill ${getPositionClass(kw.position)}`}>
                       {kw.position}
                     </span>
                   </div>
@@ -339,32 +331,40 @@ export function KeywordRankingsShowcase() {
           ))}
         </div>
 
-        {/* CTA Bar */}
+        {/* Bottom CTA Bar */}
         <div
           style={{
             marginTop: '44px',
-            textAlign: 'center',
             background: '#ffffff',
-            border: '1px solid #e2e8f0',
+            border: '1.5px solid #e2e8f0',
             borderRadius: '16px',
-            padding: '24px 20px',
+            padding: '24px 28px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            gap: '16px'
+            gap: '18px',
+            boxShadow: '0 4px 16px rgba(15, 23, 42, 0.03)'
           }}
         >
-          <div style={{ textAlign: 'left' }}>
-            <strong style={{ fontSize: '1.05rem', color: '#0f172a', display: 'block' }}>
+          <div style={{ textAlign: 'left', maxWidth: '650px' }}>
+            <strong style={{ fontSize: '1.08rem', color: '#0f172a', display: 'block', marginBottom: '4px' }}>
               Want your target commercial keywords dominating Page 1?
             </strong>
-            <span style={{ fontSize: '0.88rem', color: '#64748b' }}>
-              I optimize for standard search, local map packs, and conversational AI Overviews.
+            <span style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.5 }}>
+              I optimize for standard search rankings, local 3-packs, and conversational Google AI Overviews.
             </span>
           </div>
-          <Link href="/contact" className="btn btnPrimary" style={{ padding: '0 24px' }}>
-            Request Keyword Audit →
+          <Link
+            href="/contact"
+            className="btn btnPrimary"
+            style={{ padding: '0 26px', minHeight: '48px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+          >
+            <span>Request Keyword Audit</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
           </Link>
         </div>
       </div>

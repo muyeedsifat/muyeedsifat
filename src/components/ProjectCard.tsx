@@ -182,7 +182,7 @@ export function ProjectCard({
           </div>
 
           {/* Clean, Prominent Title */}
-          <h3 style={{ margin: '0 0 14px', fontSize: '1.18rem', lineHeight: 1.35, fontWeight: 700, color: 'var(--ink, #111827)' }}>
+          <h3 style={{ margin: '0 0 14px', fontSize: '1.18rem', lineHeight: 1.35, fontWeight: 750, color: 'var(--ink, #111827)' }}>
             {title}
           </h3>
 
@@ -236,61 +236,24 @@ export function ProjectCard({
         </div>
       </article>
 
-      {/* Case Study Details Modal */}
+      {/* Case Study Details Modal - Modern, Clean & Symmetric */}
       {isOpen && (
         <div
           role="dialog"
           aria-modal="true"
           aria-labelledby="project-modal-title"
+          className="projectModalOverlay"
           onClick={() => setIsOpen(false)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 99999,
-            backgroundColor: 'rgba(15, 23, 42, 0.75)',
-            backdropFilter: 'blur(6px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '16px',
-            overflowY: 'auto'
-          }}
         >
           <div
+            className="projectModalContainer"
             onClick={(e) => e.stopPropagation()}
-            style={{
-              position: 'relative',
-              width: '100%',
-              maxWidth: '760px',
-              maxHeight: '92vh',
-              overflowY: 'auto',
-              backgroundColor: '#ffffff',
-              borderRadius: '20px',
-              padding: '32px 28px',
-              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.3)',
-              color: '#0f172a'
-            }}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
               aria-label="Close"
-              style={{
-                position: 'absolute',
-                top: '18px',
-                right: '18px',
-                width: '36px',
-                height: '36px',
-                borderRadius: '10px',
-                background: '#f1f5f9',
-                border: 'none',
-                color: '#64748b',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'background 0.2s'
-              }}
+              className="modalCloseBtn"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -298,64 +261,37 @@ export function ProjectCard({
               </svg>
             </button>
 
-            {/* Meta row */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
-              <span
-                style={{
-                  fontSize: '0.74rem',
-                  fontWeight: 750,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: 'var(--orange-dark, #c2410c)',
-                  background: 'var(--orange-soft, #fff7ed)',
-                  padding: '4px 9px',
-                  borderRadius: '6px'
-                }}
-              >
+            {/* Meta row: Category + Client + Timeline */}
+            <div className="modalMetaRow">
+              <span className="modalCategoryPill">
                 {category}
               </span>
               {client && (
-                <span style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600 }}>
+                <span className="modalClientText">
                   Client: {client}
                 </span>
               )}
               {timeline && (
-                <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+                <span className="modalTimelineText">
                   • {timeline}
                 </span>
               )}
             </div>
 
             {/* Title */}
-            <h2 id="project-modal-title" style={{ fontSize: '1.65rem', fontWeight: 800, margin: '8px 0 16px', lineHeight: 1.3, color: '#0f172a' }}>
+            <h2 id="project-modal-title" className="modalTitleText">
               {title}
             </h2>
 
-            {/* Key Metrics Grid */}
+            {/* Key Metrics: Symmetric Bento Stat Bar */}
             {metrics && metrics.length > 0 && (
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-                  gap: '12px',
-                  margin: '20px 0'
-                }}
-              >
+              <div className="modalBentoBar">
                 {metrics.map((m, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      background: '#f8fafc',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '12px',
-                      padding: '14px',
-                      textAlign: 'center'
-                    }}
-                  >
-                    <div style={{ fontSize: '1.35rem', fontWeight: 850, color: 'var(--orange-dark, #c2410c)' }}>
+                  <div key={i} className="modalBentoCell">
+                    <div className="modalMetricValue">
                       {m.value}
                     </div>
-                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: '#64748b', marginTop: '4px', fontWeight: 650 }}>
+                    <div className="modalMetricLabel">
                       {m.label}
                     </div>
                   </div>
@@ -365,57 +301,55 @@ export function ProjectCard({
 
             {/* Verified Proof Screenshots Gallery */}
             {allScreenshots.length > 0 && (
-              <div style={{ margin: '28px 0' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-                  <h4 style={{ fontSize: '0.84rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#64748b', margin: 0, fontWeight: 750, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <div className="modalProofSection">
+                <div className="modalProofHeader">
+                  <h4 className="modalProofHeading">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange, #f97316)" strokeWidth="2.5">
                       <polyline points="9 11 12 14 22 4" />
                       <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
                     </svg>
                     Verified Performance &amp; Proof Screenshots
                   </h4>
-                  <span style={{ fontSize: '0.74rem', color: '#94a3b8' }}>Click image to enlarge</span>
+                  <span className="modalProofHint">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    Click image to enlarge
+                  </span>
                 </div>
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: allScreenshots.length === 1 ? '1fr' : 'repeat(auto-fit, minmax(260px, 1fr))',
-                    gap: '14px'
-                  }}
-                >
+
+                <div className="modalProofGrid">
                   {allScreenshots.map((item, idx) => (
                     <div
                       key={idx}
+                      className="modalProofCard"
                       onClick={() => setSelectedImage(item)}
                       role="button"
                       tabIndex={0}
-                      style={{
-                        cursor: 'zoom-in',
-                        border: '1px solid #e2e8f0',
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        background: '#f8fafc',
-                        transition: 'transform 0.15s ease, box-shadow 0.15s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'scale(1.015)';
-                        e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.boxShadow = '';
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') setSelectedImage(item);
                       }}
                     >
-                      <div style={{ position: 'relative', width: '100%', height: '170px', background: '#0f172a' }}>
+                      <div className="modalProofThumbBox">
                         <Image
                           src={item.url}
                           alt={item.caption}
                           fill
-                          sizes="(max-width: 768px) 100vw, 350px"
+                          sizes="(max-width: 768px) 100vw, 420px"
                           style={{ objectFit: 'contain' }}
                         />
+                        <div className="modalProofZoomBadge">
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            <line x1="11" y1="8" x2="11" y2="14" />
+                            <line x1="8" y1="11" x2="14" y2="11" />
+                          </svg>
+                          Expand
+                        </div>
                       </div>
-                      <div style={{ padding: '10px 12px', fontSize: '0.78rem', color: '#475569', lineHeight: 1.4, fontWeight: 550, background: '#ffffff' }}>
+                      <div className="modalProofCaption">
                         {item.caption}
                       </div>
                     </div>
@@ -424,87 +358,70 @@ export function ProjectCard({
               </div>
             )}
 
-            {/* Strategy / Overview */}
-            <div style={{ margin: '20px 0' }}>
-              <h4 style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8', margin: '0 0 8px', fontWeight: 700 }}>
+            {/* Project Overview & Strategy */}
+            <div className="modalStrategySection">
+              <h4 className="modalStrategyHeading">
                 Project Overview &amp; Strategy
               </h4>
               {/<[a-z][\s\S]*>/i.test(description) ? (
                 <div
-                  style={{ fontSize: '0.94rem', lineHeight: 1.7, color: '#334155' }}
+                  className="modalStrategyText"
                   dangerouslySetInnerHTML={{ __html: description }}
                 />
               ) : (
-                <p style={{ fontSize: '0.94rem', lineHeight: 1.7, color: '#334155', margin: 0 }}>
+                <p className="modalStrategyText">
                   {description}
                 </p>
               )}
             </div>
 
-            {/* Verified Outcome */}
+            {/* Verified Key Result */}
             {result && (
-              <div
-                style={{
-                  background: '#f0fdf4',
-                  border: '1px solid #bbf7d0',
-                  borderRadius: '12px',
-                  padding: '16px 18px',
-                  margin: '18px 0'
-                }}
-              >
-                <div style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#16a34a', marginBottom: '4px' }}>
-                  Key Measurable Result
+              <div className="modalResultBox">
+                <div className="modalResultIcon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                 </div>
-                <div style={{ fontSize: '0.94rem', color: '#14532d', fontWeight: 650, lineHeight: 1.5 }}>
-                  {result}
+                <div>
+                  <div className="modalResultLabel">
+                    Key Measurable Result
+                  </div>
+                  <div className="modalResultValue">
+                    {result}
+                  </div>
                 </div>
               </div>
             )}
 
-            {/* Tags */}
+            {/* Category & Topic Tags */}
             {tags && tags.length > 0 && (
-              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', margin: '18px 0 24px' }}>
+              <div className="modalTagPillList">
                 {tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      fontSize: '0.72rem',
-                      background: '#f1f5f9',
-                      padding: '4px 9px',
-                      borderRadius: '5px',
-                      color: '#475569',
-                      fontWeight: 550
-                    }}
-                  >
+                  <span key={i} className="modalTagPill">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
 
-            {/* Actions */}
-            <div
-              style={{
-                display: 'flex',
-                gap: '12px',
-                flexWrap: 'wrap',
-                paddingTop: '20px',
-                borderTop: '1px solid #e2e8f0'
-              }}
-            >
+            {/* Symmetric Footer Actions */}
+            <div className="modalFooterActions">
               <Link
                 href="/contact"
-                className="btn btnPrimary"
+                className="modalPrimaryBtn"
                 onClick={() => setIsOpen(false)}
-                style={{ flex: 1, minWidth: '200px', textAlign: 'center', padding: '12px 20px' }}
               >
-                Discuss a similar project →
+                <span>Discuss a similar project</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
               </Link>
               <button
                 type="button"
-                className="btn btnSecondary"
+                className="modalSecondaryBtn"
                 onClick={() => setIsOpen(false)}
-                style={{ padding: '0 24px' }}
               >
                 Close
               </button>
@@ -523,8 +440,8 @@ export function ProjectCard({
             position: 'fixed',
             inset: 0,
             zIndex: 100000,
-            backgroundColor: 'rgba(0, 0, 0, 0.92)',
-            backdropFilter: 'blur(8px)',
+            backgroundColor: 'rgba(0, 0, 0, 0.94)',
+            backdropFilter: 'blur(10px)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -536,8 +453,8 @@ export function ProjectCard({
             onClick={(e) => e.stopPropagation()}
             style={{
               position: 'relative',
-              maxWidth: '92vw',
-              maxHeight: '85vh',
+              maxWidth: '94vw',
+              maxHeight: '88vh',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center'
@@ -545,23 +462,26 @@ export function ProjectCard({
           >
             <button
               onClick={() => setSelectedImage(null)}
-              aria-label="Close zoom"
+              aria-label="Close zoom preview"
               style={{
                 position: 'absolute',
                 top: '-46px',
                 right: '0',
-                background: 'rgba(255, 255, 255, 0.2)',
-                border: 'none',
+                background: 'rgba(255, 255, 255, 0.18)',
+                border: '1px solid rgba(255, 255, 255, 0.25)',
                 color: '#ffffff',
                 borderRadius: '8px',
-                padding: '6px 12px',
+                padding: '6px 14px',
                 cursor: 'pointer',
-                fontSize: '0.85rem',
-                fontWeight: 600,
+                fontSize: '0.84rem',
+                fontWeight: 650,
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px'
+                gap: '6px',
+                transition: 'background 0.15s ease'
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.18)'; }}
             >
               <span>✕ Close Preview</span>
             </button>
@@ -571,13 +491,14 @@ export function ProjectCard({
               alt={selectedImage.caption}
               style={{
                 maxWidth: '100%',
-                maxHeight: '78vh',
+                maxHeight: '80vh',
                 objectFit: 'contain',
                 borderRadius: '8px',
-                boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.6)',
+                border: '1px solid rgba(255, 255, 255, 0.1)'
               }}
             />
-            <p style={{ color: '#e2e8f0', marginTop: '14px', fontSize: '0.92rem', textAlign: 'center', fontWeight: 500, maxWidth: '800px' }}>
+            <p style={{ color: '#e2e8f0', marginTop: '16px', fontSize: '0.92rem', textAlign: 'center', fontWeight: 550, maxWidth: '820px', lineHeight: 1.5 }}>
               {selectedImage.caption}
             </p>
           </div>

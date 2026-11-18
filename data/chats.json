@@ -1,6 +1,14 @@
 [
   {
     "sessionId": "sess-1794958919744-epgth",
+    "userMessage": "Can I hire you on Upwork or LinkedIn?",
+    "botReply": "You can hire Muyeed Sifat directly on Upwork, connect on LinkedIn, or message him directly on WhatsApp via the button above for the fastest reply!",
+    "timestamp": "2026-11-18T00:03:24.066Z",
+    "source": "website_chatbot",
+    "id": "chat-1794960204066-8ioq9"
+  },
+  {
+    "sessionId": "sess-1794958919744-epgth",
     "userMessage": "How uch to built  awebiste",
     "botReply": "Hi! Muyeed Sifat helps companies scale with AI SEO, Google Ads, and Meta Ads. Feel free to ask about services, or message directly on WhatsApp to get started!",
     "timestamp": "2026-11-18T00:02:03.951Z",

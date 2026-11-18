@@ -43,6 +43,7 @@ export type Project = {
   metrics?: { label: string; value: string }[];
   featuredImage?: string;
   featuredAlt?: string;
+  screenshots?: { url: string; caption: string }[];
   blocks?: ContentBlock[];
   tags?: string[];
   metaTitle?: string;

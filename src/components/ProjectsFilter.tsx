@@ -5,7 +5,7 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { projects as staticProjects } from '@/data/projects';
 import type { Project } from '@/types/content';
 
-const filters = ['All', 'AI SEO', 'Google Ads', 'Meta Ads', 'WordPress'] as const;
+const filters = ['All', 'AI SEO', 'Local SEO', 'Google Ads', 'Meta Ads', 'WordPress'] as const;
 
 export function ProjectsFilter({ initialProjects }: { initialProjects?: Project[] }) {
   const [active, setActive] = useState<(typeof filters)[number]>('All');

@@ -518,7 +518,9 @@ export function ProjectCard({
             {/* Project Overview & Strategy */}
             <div className="modalStrategySection">
               <h4 className="modalStrategyHeading">
-                Project Overview &amp; Strategy
+                {/<[a-z][\s\S]*>/i.test(description)
+                  ? 'Comprehensive Case Study & Technical Methodology'
+                  : 'Project Overview & Strategy'}
               </h4>
               {/<[a-z][\s\S]*>/i.test(description) ? (
                 <div

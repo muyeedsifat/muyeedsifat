@@ -1373,9 +1373,51 @@
 
 .modalStrategyText {
   font-size: 0.94rem;
-  line-height: 1.7;
+  line-height: 1.72;
   color: #334155;
   margin: 0;
+}
+
+.modalStrategyText h4 {
+  font-size: 1.02rem;
+  font-weight: 750;
+  color: #0f172a;
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e2e8f0;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modalStrategyText h4:first-child {
+  margin-top: 2px;
+}
+
+.modalStrategyText p {
+  font-size: 0.93rem;
+  line-height: 1.72;
+  color: #334155;
+  margin: 0 0 14px;
+}
+
+.modalStrategyText ul {
+  margin: 8px 0 16px 20px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.modalStrategyText li {
+  font-size: 0.93rem;
+  line-height: 1.68;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.modalStrategyText strong {
+  color: #0f172a;
+  font-weight: 650;
 }
 
 /* Key Result Box */

@@ -40,12 +40,12 @@ export const projects: Project[] = [
         "caption": "SERP Dominance: Ranking #1 on Google for 'Best Enclosed Trailer Manufacturers in Douglas, Georgia' above forum discussions and competitors."
       },
       {
-        "url": "/images/projects/hunt-custom-cargo-summary.png",
-        "caption": "Executive Performance Summary: Confirmed rapid visibility expansion and continuous organic traffic escalation."
+        "url": "/images/projects/hunt-custom-cargo-queries.jpeg",
+        "caption": "Search Console Query Distribution: High-intent queries ranking in top positions."
       },
       {
-        "url": "/images/projects/hunt-custom-cargo-traffic.png",
-        "caption": "Traffic Analysis: Sustained ~103 daily clicks, 694 weekly clicks, and ~25,000 weekly impressions."
+        "url": "/images/projects/hunt-custom-cargo-pages.jpeg",
+        "caption": "Top Performing Pages: Core service and trailer catalog pages driving high organic traffic."
       }
     ],
     "tags": [
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     "screenshots": [
       {
         "url": "/images/projects/tennis-equipment-sales.png",
-        "caption": "Shopify Sales & Conversion Data: $91.2K in total sales (+82%), 91 orders (+98%), and conversion rate improved to 0.54% (+63%)."
+        "caption": "Shopify Analytics: $91.2K in total sales (+82%), 91 orders (+98%), with a 63% lift in conversion rate."
       },
       {
         "url": "/images/projects/tennis-equipment-gsc.png",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
       },
       {
         "url": "/images/projects/tennis-equipment-trends.png",
-        "caption": "Long-term Performance Trends: 13.6K total clicks, 224K impressions, and 6.1% CTR over 12 months."
+        "caption": "Long-term Performance Trend: 13.6K total clicks, 224K impressions, and 6.1% CTR over 12 months."
       }
     ],
     "tags": [
@@ -119,13 +119,153 @@ export const projects: Project[] = [
     "updatedAt": "2026-11-18T00:00:00.000Z"
   },
   {
+    "id": "proj-vision-rent-a-car-mykonos",
+    "title": "Vision Rent a Car Mykonos – Tourist Vehicle Bookings",
+    "slug": "vision-rent-a-car-mykonos",
+    "category": "Local SEO",
+    "client": "Vision Rent a Car Mykonos",
+    "timeline": "February – June",
+    "description": "Captured high-intent tourist car rental searches on Mykonos island through targeted Google Business Profile optimization, localized category enhancements, and multilingual traveler intent alignment ahead of the peak summer season.",
+    "result": "878 total traveler interactions, 101 direct phone bookings, 398 map directions, and top local rankings in Ornos.",
+    "metrics": [
+      {
+        "value": "878",
+        "label": "Traveler Interactions"
+      },
+      {
+        "value": "101",
+        "label": "Direct Phone Bookings"
+      },
+      {
+        "value": "398",
+        "label": "Navigation Directions"
+      },
+      {
+        "value": "489",
+        "label": "Website Visits"
+      }
+    ],
+    "featuredImage": "/images/projects/vision-rent-a-car-gbp-interactions.jpeg",
+    "featuredAlt": "Vision Rent a Car Mykonos Google Business Profile Interactions Dashboard",
+    "screenshots": [
+      {
+        "url": "/images/projects/vision-rent-a-car-gbp-interactions.jpeg",
+        "caption": "Google Business Profile Dashboard: 878 Total Customer Interactions graph across the reporting period."
+      },
+      {
+        "url": "/images/projects/vision-rent-a-car-gbp-calls.jpeg",
+        "caption": "GBP Calls Report: 101 verified phone calls from high-intent tourists."
+      },
+      {
+        "url": "/images/projects/vision-rent-a-car-gbp-directions.jpeg",
+        "caption": "GBP Directions Report: 398 direction requests to the physical rental location."
+      },
+      {
+        "url": "/images/projects/vision-rent-a-car-gbp-website-clicks.jpeg",
+        "caption": "GBP Website Clicks: 376-489 direct website visits from local searchers."
+      },
+      {
+        "url": "/images/projects/vision-rent-a-car-serp-ranking-ornos.jpeg",
+        "caption": "SERP Proof: Ranking #1 for 'Car rental agency in Ornos'."
+      },
+      {
+        "url": "/images/projects/vision-rent-a-car-serp-ranking-car-rental.jpeg",
+        "caption": "SERP Proof: Top ranking on Google for 'Ornos rent a car'."
+      }
+    ],
+    "tags": [
+      "Local SEO",
+      "Google Business Profile",
+      "Travel & Tourism",
+      "Car Rental",
+      "Google Maps"
+    ],
+    "metaTitle": "Vision Rent a Car Mykonos Case Study | 878 Customer Actions & 101 Bookings",
+    "metaDescription": "How Google Business Profile optimization captured tourist demand and drove 878 actions for Vision Rent a Car Mykonos.",
+    "focusKeyword": "Vision Rent a Car Mykonos SEO",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-ca-garage-doors-local-seo",
+    "title": "CA Garage Doors – Emergency Service Lead Acceleration",
+    "slug": "ca-garage-doors-local-seo",
+    "category": "Local SEO",
+    "client": "CA Garage Doors",
+    "timeline": "February – June",
+    "description": "Targeted emergency garage door repair and new installation searches across local service areas in Brampton, Ontario. Focused on conversion rate optimization for mobile searchers, review velocity, and direct messaging channels to capture immediate commercial call-outs.",
+    "result": "1,022 total interactions (+33.4%), 505 direct customer calls (+55.4%), and 28 chat inquiries (+2,700% surge).",
+    "metrics": [
+      {
+        "value": "505",
+        "label": "Direct Phone Calls (+55%)"
+      },
+      {
+        "value": "+2,700%",
+        "label": "Chat Inquiries Surge"
+      },
+      {
+        "value": "1,022",
+        "label": "Total Customer Actions"
+      },
+      {
+        "value": "489",
+        "label": "Website Clicks (+11%)"
+      }
+    ],
+    "featuredImage": "/images/projects/ca-garage-doors-gbp-interactions.jpeg",
+    "featuredAlt": "CA Garage Doors Google Business Profile Total Interactions Dashboard",
+    "screenshots": [
+      {
+        "url": "/images/projects/ca-garage-doors-gbp-interactions.jpeg",
+        "caption": "Google Business Profile Dashboard: 1,022 total customer interactions (+33.4% growth) from February to June."
+      },
+      {
+        "url": "/images/projects/ca-garage-doors-gbp-calls.jpeg",
+        "caption": "GBP Calls Report: 505 direct customer calls (+55.4% growth) showing high conversion intent."
+      },
+      {
+        "url": "/images/projects/ca-garage-doors-gbp-chat-messages.jpeg",
+        "caption": "GBP Chat Leads: 28 direct chat message leads (+2,700% surge)."
+      },
+      {
+        "url": "/images/projects/ca-garage-doors-gbp-website-clicks.jpeg",
+        "caption": "GBP Website Clicks: 489 website visits (+11.1% increase)."
+      },
+      {
+        "url": "/images/projects/ca-garage-doors-serp-brampton-supplier.jpeg",
+        "caption": "SERP Ranking Proof: Top position for 'Garage door supplier in Brampton'."
+      },
+      {
+        "url": "/images/projects/ca-garage-doors-ai-mode-result.jpeg",
+        "caption": "AI Search Result: Dominant placement in Google AI Mode search results."
+      },
+      {
+        "url": "/images/projects/ca-garage-doors-chatgpt-ranking.jpeg",
+        "caption": "Conversational AI Ranking: Recommended top provider in ChatGPT search queries."
+      }
+    ],
+    "tags": [
+      "Local SEO",
+      "Emergency Services",
+      "Call Conversion",
+      "Google Business Profile",
+      "AI Search"
+    ],
+    "metaTitle": "CA Garage Doors Local SEO Case Study | 505 Calls & +2,700% Chat Leads",
+    "metaDescription": "How targeted Google Business Profile optimization delivered 505 direct phone calls and 1,022 interactions for CA Garage Doors.",
+    "focusKeyword": "CA Garage Doors Local SEO",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
     "id": "proj-tech-force-pr-local-seo",
     "title": "Tech Force PR – High-Intent Repair Lead Generation",
     "slug": "tech-force-pr-local-seo",
     "category": "Local SEO",
     "client": "Tech Force PR (Computer & Console Repair)",
     "timeline": "February – June",
-    "description": "Executed an intensive Google Business Profile and local search visibility overhaul for a computer and game console repair center. Focused on capturing high-intent emergency repair searches, optimizing localized service categories, and boosting review engagement to convert searchers into walk-ins and phone calls.",
+    "description": "Executed an intensive Google Business Profile and local search visibility overhaul for a computer and game console repair center. Focused on capturing high-intent emergency repair searches, optimizing localized service catalogs, and boosting review engagement to convert searchers into walk-ins and phone calls.",
     "result": "2,598 total customer interactions (+40.1%), 1,072 direct phone calls (+49.9%), and 1,236 direction requests.",
     "metrics": [
       {
@@ -145,20 +285,28 @@ export const projects: Project[] = [
         "label": "Website Visits Lift"
       }
     ],
-    "featuredImage": "/images/projects/tech-force-pr-summary.png",
-    "featuredAlt": "Tech Force PR Google Business Profile Executive Summary Report",
+    "featuredImage": "/images/projects/tech-force-pr-gbp-interactions.jpeg",
+    "featuredAlt": "Tech Force PR Google Business Profile Customer Interactions Dashboard",
     "screenshots": [
       {
-        "url": "/images/projects/tech-force-pr-summary.png",
-        "caption": "Google Business Profile Summary: 2,598 interactions, 1,072 direct phone calls (+49.9%), and 1,236 store directions."
+        "url": "/images/projects/tech-force-pr-gbp-interactions.jpeg",
+        "caption": "Google Business Profile Dashboard: 2,598 Total Customer Interactions (+40.1% growth)."
       },
       {
-        "url": "/images/projects/tech-force-pr-traffic.png",
-        "caption": "Traffic Analysis: Steady customer engagement growth from February to peak volume in June."
+        "url": "/images/projects/tech-force-pr-gbp-calls.jpeg",
+        "caption": "GBP Calls Report: 1,072 direct phone calls (+49.9% growth) demonstrating exceptional lead volume."
       },
       {
-        "url": "/images/projects/tech-force-pr-cover.png",
-        "caption": "Tech Force PR Performance & Local Visibility Client Presentation."
+        "url": "/images/projects/tech-force-pr-gbp-directions.jpeg",
+        "caption": "GBP Directions Report: 1,236 store direction requests (+31.6% growth)."
+      },
+      {
+        "url": "/images/projects/tech-force-pr-gbp-website-clicks.jpeg",
+        "caption": "GBP Website Clicks: 280 visits (+117.1% lift)."
+      },
+      {
+        "url": "/images/projects/tech-force-pr-google-maps-ranking.jpeg",
+        "caption": "Google Maps Ranking Proof: Top map pack positioning for local repair queries."
       }
     ],
     "tags": [
@@ -200,20 +348,28 @@ export const projects: Project[] = [
         "label": "Direction Requests (+34%)"
       }
     ],
-    "featuredImage": "/images/projects/jersey-pickle-summary.png",
-    "featuredAlt": "Jersey Pickle Google Business Profile Executive Performance Summary",
+    "featuredImage": "/images/projects/jersey-pickle-gbp-interactions.jpeg",
+    "featuredAlt": "Jersey Pickle LLC Google Business Profile Interactions Dashboard",
     "screenshots": [
       {
-        "url": "/images/projects/jersey-pickle-summary.png",
-        "caption": "Executive Summary: 189 customer calls (+110% surge), 430 direction requests, and 1,947 website visits."
+        "url": "/images/projects/jersey-pickle-gbp-interactions.jpeg",
+        "caption": "Google Business Profile Dashboard: 2,598 total customer interactions (+26.7% growth)."
       },
       {
-        "url": "/images/projects/jersey-pickle-traffic.png",
-        "caption": "Customer Action Breakdown: Consistent rise in customer interactions from December to February."
+        "url": "/images/projects/jersey-pickle-gbp-calls.jpeg",
+        "caption": "GBP Calls Report: 189 customer calls (+110% growth) showing dramatic increase in buyer contact."
       },
       {
-        "url": "/images/projects/jersey-pickle-cover.png",
-        "caption": "GMB SEO Performance Report for Jersey Pickle LLC."
+        "url": "/images/projects/jersey-pickle-gbp-directions.jpeg",
+        "caption": "GBP Directions Report: 430 direction requests (+34% growth)."
+      },
+      {
+        "url": "/images/projects/jersey-pickle-gbp-website-clicks.jpeg",
+        "caption": "GBP Website Clicks: 1,947 website visits (+18.7% lift)."
+      },
+      {
+        "url": "/images/projects/jersey-pickle-serp-ranking.jpeg",
+        "caption": "Local Search SERP Ranking Proof."
       }
     ],
     "tags": [
@@ -229,57 +385,133 @@ export const projects: Project[] = [
     "updatedAt": "2026-11-18T00:00:00.000Z"
   },
   {
-    "id": "proj-ca-garage-doors-local-seo",
-    "title": "CA Garage Doors – Emergency Service Lead Acceleration",
-    "slug": "ca-garage-doors-local-seo",
+    "id": "proj-us-mobile-lab-local-seo",
+    "title": "US Mobile Lab – In-Home Healthcare & Mobile Testing SEO",
+    "slug": "us-mobile-lab-local-seo",
     "category": "Local SEO",
-    "client": "CA Garage Doors",
-    "timeline": "February – June",
-    "description": "Targeted emergency garage door repair and new installation searches across local service areas. Focused on conversion rate optimization for mobile searchers, review velocity, and direct messaging channels to capture immediate commercial call-outs.",
-    "result": "505 direct customer calls (+55.4%), 28 chat inquiries (+2,700% surge), and 1,022 total interactions.",
+    "client": "US Mobile Lab",
+    "timeline": "February – May",
+    "description": "Built local search, Google Business Profile, and AI answer engine discoverability for an in-home mobile phlebotomy and blood testing service in Michigan. Captured high-intent patient queries across Oakland and Wayne counties.",
+    "result": "+30% growth in customer interactions, +44% direct calls, and multi-platform AI rankings on ChatGPT, Gemini, and Perplexity.",
     "metrics": [
       {
-        "value": "505",
-        "label": "Direct Phone Calls (+55%)"
+        "value": "+44%",
+        "label": "Phone Calls Growth"
       },
       {
-        "value": "+2,700%",
-        "label": "Chat Inquiries Surge"
+        "value": "+30%",
+        "label": "Customer Interactions"
       },
       {
-        "value": "1,022",
-        "label": "Total Customer Actions"
+        "value": "Top 1-3",
+        "label": "Map Pack Rankings"
       },
       {
-        "value": "489",
-        "label": "Website Clicks (+11%)"
+        "value": "Multi-AI",
+        "label": "ChatGPT & Gemini Citations"
       }
     ],
-    "featuredImage": "/images/projects/ca-garage-doors-summary.png",
-    "featuredAlt": "CA Garage Doors Google Business Profile Performance Summary",
+    "featuredImage": "/images/projects/us-mobile-lab-gbp-interactions.jpeg",
+    "featuredAlt": "US Mobile Lab Google Business Profile Performance Dashboard",
     "screenshots": [
       {
-        "url": "/images/projects/ca-garage-doors-summary.png",
-        "caption": "Executive Summary: 505 calls (+55.4%) and 28 chat inquiries (+2,700%) indicating high user intent."
+        "url": "/images/projects/us-mobile-lab-gbp-interactions.jpeg",
+        "caption": "Google Business Profile Dashboard: 88 total interactions (+30% growth)."
       },
       {
-        "url": "/images/projects/ca-garage-doors-traffic.png",
-        "caption": "Customer Action Trend: Steady rise in engagement from February to June."
+        "url": "/images/projects/us-mobile-lab-gbp-calls.jpeg",
+        "caption": "GBP Calls Report: 18 customer calls (+44% growth) for mobile blood draws."
       },
       {
-        "url": "/images/projects/ca-garage-doors-cover.png",
-        "caption": "CA Garage Doors Google Business Profile Performance Report."
+        "url": "/images/projects/us-mobile-lab-map-pack-ranking.jpeg",
+        "caption": "Google Map Pack Ranking Proof in Michigan service areas."
+      },
+      {
+        "url": "/images/projects/us-mobile-lab-chatgpt-ranking.jpeg",
+        "caption": "ChatGPT Ranking Proof: Cited as recommended mobile phlebotomy provider."
+      },
+      {
+        "url": "/images/projects/us-mobile-lab-gemini-ranking.jpeg",
+        "caption": "Google Gemini Ranking Proof: Featured for in-home blood testing."
+      },
+      {
+        "url": "/images/projects/us-mobile-lab-perplexity-ranking.jpeg",
+        "caption": "Perplexity.AI Ranking Proof: Cited source for mobile testing in Michigan."
       }
     ],
     "tags": [
       "Local SEO",
-      "Emergency Services",
-      "Call Conversion",
-      "Google Business Profile"
+      "Healthcare SEO",
+      "Google Map Pack",
+      "ChatGPT SEO",
+      "Perplexity AI"
     ],
-    "metaTitle": "CA Garage Doors Local SEO Case Study | 505 Calls & +2,700% Chat Leads",
-    "metaDescription": "How targeted Google Business Profile optimization delivered 505 direct phone calls and 1,022 interactions for CA Garage Doors.",
-    "focusKeyword": "CA Garage Doors Local SEO",
+    "metaTitle": "US Mobile Lab SEO Case Study | Local Map Pack & Multi-AI Rankings",
+    "metaDescription": "How local SEO and AI search optimization generated patient calls and multi-engine rankings for US Mobile Lab.",
+    "focusKeyword": "US Mobile Lab SEO",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-county-asphalt-construction-seo",
+    "title": "County Asphalt – Construction & Paving Contractor Inquiries",
+    "slug": "county-asphalt-construction-seo",
+    "category": "Local SEO",
+    "client": "County Asphalt",
+    "timeline": "November – March",
+    "description": "Expanded local contractor visibility and quote requests for a commercial asphalt and paving company. Optimized Google Business Profile categories, geotagged project imagery, and streamlined service radius coverage.",
+    "result": "+127.8% surge in customer calls (41 calls), +218.4% website visits, and 423 total interactions.",
+    "metrics": [
+      {
+        "value": "+128%",
+        "label": "Phone Calls Growth"
+      },
+      {
+        "value": "+218%",
+        "label": "Website Visits Lift"
+      },
+      {
+        "value": "423",
+        "label": "Total Interactions"
+      },
+      {
+        "value": "261",
+        "label": "Direction Requests"
+      }
+    ],
+    "featuredImage": "/images/projects/county-asphalt-gbp-interactions.jpeg",
+    "featuredAlt": "County Asphalt Google Business Profile Performance Dashboard",
+    "screenshots": [
+      {
+        "url": "/images/projects/county-asphalt-gbp-interactions.jpeg",
+        "caption": "Google Business Profile Dashboard: 423 total customer interactions (+57.8% growth)."
+      },
+      {
+        "url": "/images/projects/county-asphalt-gbp-calls.jpeg",
+        "caption": "GBP Calls Report: 41 customer calls (+127.8% growth) for commercial paving quotes."
+      },
+      {
+        "url": "/images/projects/county-asphalt-gbp-directions.jpeg",
+        "caption": "GBP Directions Report: 261 direction requests (+23.1% growth)."
+      },
+      {
+        "url": "/images/projects/county-asphalt-gbp-website-clicks.jpeg",
+        "caption": "GBP Website Clicks: 121 visits (+218.4% surge)."
+      },
+      {
+        "url": "/images/projects/county-asphalt-map-ranking.jpeg",
+        "caption": "Local Google Maps Ranking Proof for paving and asphalt contractor queries."
+      }
+    ],
+    "tags": [
+      "Local SEO",
+      "Contractor Marketing",
+      "Construction Lead Gen",
+      "GMB Performance"
+    ],
+    "metaTitle": "County Asphalt Local SEO Case Study | +128% Contractor Calls",
+    "metaDescription": "How local search optimization produced a 128% increase in direct calls and 423 customer actions for County Asphalt.",
+    "focusKeyword": "County Asphalt Local SEO",
     "createdAt": "2026-11-18T00:00:00.000Z",
     "updatedAt": "2026-11-18T00:00:00.000Z"
   },
@@ -415,7 +647,7 @@ export const projects: Project[] = [
     "screenshots": [
       {
         "url": "/images/projects/cichlidon-gsc-trend.jpeg",
-        "caption": "Google Search Console 16-Month Performance: Consistent upward trajectory reaching 36.9K clicks and 1.26M impressions."
+        "caption": "Google Search Console 16-Month Performance: Scaling from ground zero to 36.9K clicks and 1.26M impressions."
       }
     ],
     "tags": [
@@ -482,112 +714,260 @@ export const projects: Project[] = [
     "updatedAt": "2026-11-18T00:00:00.000Z"
   },
   {
-    "id": "proj-vision-rent-a-car-mykonos",
-    "title": "Vision Rent a Car Mykonos – Tourist Vehicle Bookings",
-    "slug": "vision-rent-a-car-mykonos",
-    "category": "Local SEO",
-    "client": "Vision Rent a Car Mykonos",
-    "timeline": "February – June",
-    "description": "Captured competitive tourist car rental searches on Mykonos island. Aligned profile categories, optimized for localized mobile queries, and improved customer direct-booking touchpoints ahead of peak holiday season.",
-    "result": "878 total traveler interactions, 101 phone bookings, 398 direction requests, and 489 website visits.",
+    "id": "proj-sleep-brand-seo",
+    "title": "Shopify Sleep Brand – Bilingual E-Commerce SEO",
+    "slug": "shopify-sleep-brand-seo",
+    "category": "AI SEO",
+    "client": "Shopify Sleep & Mattress Brand",
+    "timeline": "April – June",
+    "description": "Accelerated bilingual search visibility for an e-commerce sleep brand in Panama. Conducted English and Spanish keyword intent mapping, optimized collection structures, and acquired high-intent home and lifestyle backlinks.",
+    "result": "500%+ growth in organic clicks (428 total clicks) and 9.5K total impressions with 4.5% CTR.",
     "metrics": [
       {
-        "value": "878",
-        "label": "Traveler Interactions"
+        "value": "+500%",
+        "label": "Click Growth"
       },
       {
-        "value": "101",
-        "label": "Direct Phone Bookings"
+        "value": "9.5K",
+        "label": "Total Impressions"
       },
       {
-        "value": "398",
-        "label": "Navigation Directions"
+        "value": "4.5%",
+        "label": "Average CTR"
       },
       {
-        "value": "489",
-        "label": "Website Visits"
+        "value": "Bilingual",
+        "label": "EN/ES Intent Capture"
       }
     ],
-    "featuredImage": "/images/projects/vision-rent-a-car-summary.png",
-    "featuredAlt": "Vision Rent a Car Mykonos Google Business Profile Report",
+    "featuredImage": "/images/projects/sleep-brand-gsc.png",
+    "featuredAlt": "Shopify Sleep Brand Google Search Console Growth",
     "screenshots": [
       {
-        "url": "/images/projects/vision-rent-a-car-summary.png",
-        "caption": "Executive Summary: 878 customer interactions, 101 booking calls, and 398 direction requests."
-      },
-      {
-        "url": "/images/projects/vision-rent-a-car-traffic.png",
-        "caption": "Engagement Trend: Accelerated user activity and bookings into the summer tourism season."
-      },
-      {
-        "url": "/images/projects/vision-rent-a-car-cover.png",
-        "caption": "Vision Rent a Car Mykonos Local Performance Report."
+        "url": "/images/projects/sleep-brand-gsc.png",
+        "caption": "Google Search Console: 500%+ growth in clicks (428 total) with 9.5K impressions across bilingual queries."
       }
     ],
     "tags": [
-      "Local SEO",
-      "Travel & Tourism",
-      "Car Rental",
-      "Google Business Profile"
+      "E-Commerce SEO",
+      "Shopify",
+      "Bilingual SEO",
+      "Organic Traffic"
     ],
-    "metaTitle": "Vision Rent a Car Mykonos Case Study | Local SEO & 101 Bookings",
-    "metaDescription": "How Google Business Profile optimization captured tourist demand and drove 878 actions for Vision Rent a Car Mykonos.",
-    "focusKeyword": "Vision Rent a Car Mykonos SEO",
+    "metaTitle": "Shopify Sleep Brand SEO Case Study | +500% Click Growth",
+    "metaDescription": "How bilingual search strategy and technical indexing fixes drove +500% clicks for a Shopify mattress and sleep brand.",
+    "focusKeyword": "shopify sleep brand seo",
     "createdAt": "2026-11-18T00:00:00.000Z",
     "updatedAt": "2026-11-18T00:00:00.000Z"
   },
   {
-    "id": "proj-county-asphalt-construction-seo",
-    "title": "County Asphalt – Construction & Paving Contractor Inquiries",
-    "slug": "county-asphalt-construction-seo",
+    "id": "proj-elite-bath-solutions",
+    "title": "Elite Bath Solutions – Local Bathroom Remodeling Dominance",
+    "slug": "elite-bath-solutions-bathroom-remodeling-seo",
     "category": "Local SEO",
-    "client": "County Asphalt",
-    "timeline": "November – March",
-    "description": "Expanded local contractor visibility and quote requests for a commercial asphalt and paving company. Optimized Google Business Profile categories, geotagged project imagery, and streamlined service radius coverage.",
-    "result": "+127.8% surge in customer calls (41 calls), +218.4% website visits, and 423 total interactions.",
+    "client": "Elite Bath Solutions (elitebathsolutions.biz)",
+    "timeline": "6 Months",
+    "description": "Executed an aggressive local search and Google Business Profile optimization campaign targeting high-ticket residential bathroom remodeling. Focused on localized intent mapping for competitive suburban Georgia markets, Google Maps local pack rankings, and verified customer review velocity.",
+    "result": "#1 Google Rank for 'best bathroom remodeler in woodstock' and 'Best Bathroom Remodeler in cartersville', plus Top 3 broad authority.",
     "metrics": [
       {
-        "value": "+128%",
-        "label": "Phone Calls Growth"
+        "value": "#1 Rank",
+        "label": "Woodstock GA Remodeler"
       },
       {
-        "value": "+218%",
-        "label": "Website Visits Lift"
+        "value": "#1 Rank",
+        "label": "Cartersville GA Remodeler"
       },
       {
-        "value": "423",
-        "label": "Total Interactions"
+        "value": "Top 3",
+        "label": "Best Bathroom Remodeler"
       },
       {
-        "value": "261",
-        "label": "Direction Requests"
+        "value": "High-Ticket",
+        "label": "Direct Remodeling Quotes"
       }
     ],
-    "featuredImage": "/images/projects/county-asphalt-summary.png",
-    "featuredAlt": "County Asphalt Google Business Profile Executive Performance Summary",
-    "screenshots": [
-      {
-        "url": "/images/projects/county-asphalt-summary.png",
-        "caption": "Executive Summary: 423 interactions (+57.8%), 41 calls (+127.8%), and 121 website visits (+218.4%)."
-      },
-      {
-        "url": "/images/projects/county-asphalt-traffic.png",
-        "caption": "Traffic Analysis: Peak engagement in March demonstrating strong contractor quote velocity."
-      },
-      {
-        "url": "/images/projects/county-asphalt-cover.png",
-        "caption": "County Asphalt Google Business Profile Report."
-      }
-    ],
+    "featuredImage": "",
+    "featuredAlt": "",
+    "screenshots": [],
     "tags": [
       "Local SEO",
-      "Contractor Marketing",
-      "Construction Lead Gen",
-      "GMB Performance"
+      "Google Map Pack",
+      "Home Remodeling",
+      "Lead Generation",
+      "#1 Ranking"
     ],
-    "metaTitle": "County Asphalt Local SEO Case Study | +128% Contractor Calls",
-    "metaDescription": "How local search optimization produced a 128% increase in direct calls and 423 customer actions for County Asphalt.",
-    "focusKeyword": "County Asphalt Local SEO",
+    "metaTitle": "Elite Bath Solutions Local SEO Case Study | #1 Google Rankings",
+    "metaDescription": "How targeted local SEO delivered #1 Google rankings for bathroom remodeling in Woodstock and Cartersville, GA.",
+    "focusKeyword": "bathroom remodeler local seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-sony-law-solicitors",
+    "title": "Sony Law Solicitors – UK Immigration & Asylum Search Authority",
+    "slug": "sony-law-solicitors-uk-immigration-seo",
+    "category": "Local SEO",
+    "client": "Sony Law Solicitors (sonylaw.com)",
+    "timeline": "4 Months",
+    "description": "Architected an authority-led legal search optimization strategy for a premier Hertfordshire law firm. Optimized localized practice area pages, structured legal entity schema, and captured high-trust queries for individuals and families seeking immigration and asylum legal representation in the UK.",
+    "result": "#1 Google Rank for 'best immigration solicitors in St Albans' and 'best asylum solicitors in St Albans'.",
+    "metrics": [
+      {
+        "value": "#1 Rank",
+        "label": "St Albans Immigration Solicitors"
+      },
+      {
+        "value": "#1 Rank",
+        "label": "St Albans Asylum Solicitors"
+      },
+      {
+        "value": "100%",
+        "label": "Hertfordshire SERP Share"
+      },
+      {
+        "value": "Qualified",
+        "label": "Legal Retainer Leads"
+      }
+    ],
+    "featuredImage": "",
+    "featuredAlt": "",
+    "screenshots": [],
+    "tags": [
+      "Legal SEO",
+      "Solicitors UK",
+      "Immigration Law",
+      "Local Intent #1"
+    ],
+    "metaTitle": "Sony Law Solicitors Case Study | #1 Immigration Solicitors St Albans",
+    "metaDescription": "How local search optimization secured #1 Google rankings for immigration and asylum solicitors in St Albans, UK.",
+    "focusKeyword": "immigration solicitors st albans seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-admeth-singapore-industrial",
+    "title": "Admeth Industrial – Singapore B2B Heat Exchanger Search Dominance",
+    "slug": "admeth-singapore-industrial-heat-exchangers-seo",
+    "category": "AI SEO",
+    "client": "Admeth Industrial (admeth.com)",
+    "timeline": "6 Months",
+    "description": "Designed a technical B2B engineering SEO strategy for an industrial thermal management and equipment provider in Singapore. Built semantic topic clusters around specialized heat transfer equipment, capturing procurement and engineering managers actively sourcing equipment across Southeast Asia.",
+    "result": "Top 3 Google Rank in Singapore for 'Heat Exchanger Singapore' and 'Shell and Tube Heat Exchangers'.",
+    "metrics": [
+      {
+        "value": "Top 3",
+        "label": "Heat Exchanger Singapore"
+      },
+      {
+        "value": "Top 5",
+        "label": "Shell and Tube Exchangers"
+      },
+      {
+        "value": "B2B",
+        "label": "Industrial Inquiries"
+      },
+      {
+        "value": "APAC",
+        "label": "Regional Search Footprint"
+      }
+    ],
+    "featuredImage": "",
+    "featuredAlt": "",
+    "screenshots": [],
+    "tags": [
+      "B2B SEO",
+      "Industrial Engineering",
+      "Singapore B2B",
+      "Commercial Intent"
+    ],
+    "metaTitle": "Admeth Industrial SEO Case Study | Heat Exchanger Singapore Top 3",
+    "metaDescription": "B2B industrial search optimization delivering Top 3 Google rankings for heat exchangers in Singapore.",
+    "focusKeyword": "heat exchanger singapore seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-alcare-supplies-singapore",
+    "title": "Alcare Supplies – Wholesale Medical & First Aid Supply SEO",
+    "slug": "alcare-singapore-wholesale-first-aid-seo",
+    "category": "AI SEO",
+    "client": "Alcare Supplies (alcare.sg)",
+    "timeline": "5 Months",
+    "description": "Optimized e-commerce and wholesale search discovery for a leading Singapore medical and workplace safety supplier. Aligned product category pages with high-volume procurement queries and built crawlable bulk-order paths for corporate buyers.",
+    "result": "Top 3 Google Rankings in Singapore for 'Wholesale first aid supplies' and 'Buy first aid box'.",
+    "metrics": [
+      {
+        "value": "Top 3",
+        "label": "Wholesale First Aid Supplies"
+      },
+      {
+        "value": "Top 3",
+        "label": "Buy First Aid Box"
+      },
+      {
+        "value": "+140%",
+        "label": "Corporate Bulk Inquiries"
+      },
+      {
+        "value": "Singapore",
+        "label": "Market Dominance"
+      }
+    ],
+    "featuredImage": "",
+    "featuredAlt": "",
+    "screenshots": [],
+    "tags": [
+      "E-Commerce SEO",
+      "Wholesale B2B",
+      "Medical Supplies",
+      "Singapore"
+    ],
+    "metaTitle": "Alcare Supplies SEO Case Study | Wholesale First Aid Top 3",
+    "metaDescription": "E-commerce and wholesale search optimization driving Top 3 Google rankings for first aid supplies in Singapore.",
+    "focusKeyword": "wholesale first aid supplies seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-ubizfloral-wedding-decor",
+    "title": "Ubiz Floral & Decor – Wedding Decor E-Commerce & AEO Optimization",
+    "slug": "ubizfloral-wedding-candelabras-aeo-seo",
+    "category": "AI SEO",
+    "client": "Ubiz Floral & Decor (ubizfloral.com)",
+    "timeline": "6 Months",
+    "description": "Engineered an e-commerce Answer Engine Optimization (AEO) and product SEO framework for a national wedding and event floral brand. Captured both direct transactional searches for centerpiece decor and conversational sizing queries cited in AI answer engines.",
+    "result": "Top 3 for 'Wedding Candelabras Centerpieces' and AEO #1 Rank for 'What Candelabra Size Works Best for Wedding Tables'.",
+    "metrics": [
+      {
+        "value": "Top 3",
+        "label": "Wedding Candelabras Centerpieces"
+      },
+      {
+        "value": "AEO #1",
+        "label": "Table Sizing Guides"
+      },
+      {
+        "value": "Top 5",
+        "label": "Artificial Plants & Grass"
+      },
+      {
+        "value": "E-Com",
+        "label": "USA & Global Orders"
+      }
+    ],
+    "featuredImage": "",
+    "featuredAlt": "",
+    "screenshots": [],
+    "tags": [
+      "E-Commerce SEO",
+      "AEO / Answer Engine",
+      "Wedding Decor",
+      "Conversational AI"
+    ],
+    "metaTitle": "Ubiz Floral SEO & AEO Case Study | Wedding Candelabras Top 3",
+    "metaDescription": "How AEO and e-commerce SEO captured Top 3 rankings for wedding candelabras and AI search queries for Ubiz Floral.",
+    "focusKeyword": "wedding candelabras seo aeo",
     "createdAt": "2026-11-18T00:00:00.000Z",
     "updatedAt": "2026-11-18T00:00:00.000Z"
   },
@@ -618,8 +998,8 @@ export const projects: Project[] = [
         "label": "Impression Share"
       }
     ],
-    "featuredImage": "/images/blog/how-to-structure-google-ads-campaigns.svg",
-    "featuredAlt": "Google Ads Search Campaign Restructuring Architecture",
+    "featuredImage": "",
+    "featuredAlt": "",
     "screenshots": [],
     "tags": [
       "Google Ads",
@@ -660,8 +1040,8 @@ export const projects: Project[] = [
         "label": "Cost Per Purchase"
       }
     ],
-    "featuredImage": "/images/blog/meta-ads-audience-testing-framework.svg",
-    "featuredAlt": "Meta Ads Creative Testing & Audience Framework",
+    "featuredImage": "",
+    "featuredAlt": "",
     "screenshots": [],
     "tags": [
       "Meta Ads",
@@ -702,8 +1082,8 @@ export const projects: Project[] = [
         "label": "Core Web Vitals Pass"
       }
     ],
-    "featuredImage": "/images/blog/wordpress-speed-optimization-checklist.svg",
-    "featuredAlt": "WordPress Speed and Conversion Architecture",
+    "featuredImage": "",
+    "featuredAlt": "",
     "screenshots": [],
     "tags": [
       "WordPress",
@@ -714,217 +1094,6 @@ export const projects: Project[] = [
     "metaTitle": "WordPress Speed Optimization Case Study | 98/100 Mobile PageSpeed",
     "metaDescription": "How custom WordPress optimization took a client site to a 98/100 PageSpeed score and boosted inquiries by 22%.",
     "focusKeyword": "wordpress pagespeed optimization",
-    "createdAt": "2026-11-18T00:00:00.000Z",
-    "updatedAt": "2026-11-18T00:00:00.000Z"
-  },
-  {
-    "id": "proj-elite-bath-solutions",
-    "title": "Elite Bath Solutions – Local Bathroom Remodeling Dominance",
-    "slug": "elite-bath-solutions-bathroom-remodeling-seo",
-    "category": "Local SEO",
-    "client": "Elite Bath Solutions",
-    "timeline": "6 Months",
-    "description": "Executed an aggressive local search and Google Business Profile optimization campaign targeting high-ticket residential bathroom remodeling. Focused on localized intent mapping for competitive suburban Georgia markets, Google Maps local pack rankings, and verified customer review velocity.",
-    "result": "#1 Google Rank for 'best bathroom remodeler in woodstock' and 'Best Bathroom Remodeler in cartersville', plus Top 3 broad authority.",
-    "metrics": [
-      {
-        "value": "#1 Rank",
-        "label": "Woodstock GA Remodeler"
-      },
-      {
-        "value": "#1 Rank",
-        "label": "Cartersville GA Remodeler"
-      },
-      {
-        "value": "Top 3",
-        "label": "Best Bathroom Remodeler"
-      },
-      {
-        "value": "High-Ticket",
-        "label": "Direct Remodeling Quotes"
-      }
-    ],
-    "featuredImage": "/images/projects/ca-garage-doors-summary.png",
-    "featuredAlt": "Elite Bath Solutions Local Search & Google Maps Dominance",
-    "screenshots": [],
-    "tags": [
-      "Local SEO",
-      "Google Map Pack",
-      "Home Remodeling",
-      "Lead Generation",
-      "#1 Ranking"
-    ],
-    "metaTitle": "Elite Bath Solutions Local SEO Case Study | #1 Google Rankings",
-    "metaDescription": "How targeted local SEO delivered #1 Google rankings for bathroom remodeling in Woodstock and Cartersville, GA.",
-    "focusKeyword": "bathroom remodeler local seo",
-    "createdAt": "2026-11-18T00:00:00.000Z",
-    "updatedAt": "2026-11-18T00:00:00.000Z"
-  },
-  {
-    "id": "proj-sony-law-solicitors",
-    "title": "Sony Law Solicitors – UK Immigration & Asylum Search Authority",
-    "slug": "sony-law-solicitors-uk-immigration-seo",
-    "category": "Local SEO",
-    "client": "Sony Law Solicitors",
-    "timeline": "4 Months",
-    "description": "Architected an authority-led legal search optimization strategy for a premier Hertfordshire law firm. Optimized localized practice area pages, structured legal entity schema, and captured high-trust queries for individuals and families seeking immigration and asylum legal representation in the UK.",
-    "result": "#1 Google Rank for 'best immigration solicitors in St Albans' and 'best asylum solicitors in St Albans'.",
-    "metrics": [
-      {
-        "value": "#1 Rank",
-        "label": "St Albans Immigration Solicitors"
-      },
-      {
-        "value": "#1 Rank",
-        "label": "St Albans Asylum Solicitors"
-      },
-      {
-        "value": "100%",
-        "label": "Hertfordshire SERP Share"
-      },
-      {
-        "value": "Qualified",
-        "label": "Legal Retainer Leads"
-      }
-    ],
-    "featuredImage": "/images/projects/mental-health-gsc.jpeg",
-    "featuredAlt": "Sony Law Solicitors Legal Search Rankings in St Albans",
-    "screenshots": [],
-    "tags": [
-      "Legal SEO",
-      "Solicitors UK",
-      "Immigration Law",
-      "Local Intent #1"
-    ],
-    "metaTitle": "Sony Law Solicitors Case Study | #1 Immigration Solicitors St Albans",
-    "metaDescription": "How local search optimization secured #1 Google rankings for immigration and asylum solicitors in St Albans, UK.",
-    "focusKeyword": "immigration solicitors st albans seo",
-    "createdAt": "2026-11-18T00:00:00.000Z",
-    "updatedAt": "2026-11-18T00:00:00.000Z"
-  },
-  {
-    "id": "proj-admeth-singapore-industrial",
-    "title": "Admeth Industrial – Singapore B2B Heat Exchanger Search Dominance",
-    "slug": "admeth-singapore-industrial-heat-exchangers-seo",
-    "category": "AI SEO",
-    "client": "Admeth Industrial",
-    "timeline": "6 Months",
-    "description": "Designed a technical B2B engineering SEO strategy for an industrial thermal management and equipment provider in Singapore. Built semantic topic clusters around specialized heat transfer equipment, capturing procurement and engineering managers actively sourcing equipment across Southeast Asia.",
-    "result": "Top 3 Google Rank in Singapore for 'Heat Exchanger Singapore' and 'Shell and Tube Heat Exchangers'.",
-    "metrics": [
-      {
-        "value": "Top 3",
-        "label": "Heat Exchanger Singapore"
-      },
-      {
-        "value": "Top 5",
-        "label": "Shell and Tube Exchangers"
-      },
-      {
-        "value": "B2B",
-        "label": "Industrial Inquiries"
-      },
-      {
-        "value": "APAC",
-        "label": "Regional Search Footprint"
-      }
-    ],
-    "featuredImage": "/images/projects/cichlidon-gsc-trend.jpeg",
-    "featuredAlt": "Admeth Industrial B2B Search Rankings in Singapore",
-    "screenshots": [],
-    "tags": [
-      "B2B SEO",
-      "Industrial Engineering",
-      "Singapore B2B",
-      "Commercial Intent"
-    ],
-    "metaTitle": "Admeth Industrial SEO Case Study | Heat Exchanger Singapore Top 3",
-    "metaDescription": "B2B industrial search optimization delivering Top 3 Google rankings for heat exchangers in Singapore.",
-    "focusKeyword": "heat exchanger singapore seo",
-    "createdAt": "2026-11-18T00:00:00.000Z",
-    "updatedAt": "2026-11-18T00:00:00.000Z"
-  },
-  {
-    "id": "proj-alcare-supplies-singapore",
-    "title": "Alcare Supplies – Wholesale Medical & First Aid Supply SEO",
-    "slug": "alcare-singapore-wholesale-first-aid-seo",
-    "category": "AI SEO",
-    "client": "Alcare Supplies",
-    "timeline": "5 Months",
-    "description": "Optimized e-commerce and wholesale search discovery for a leading Singapore medical and workplace safety supplier. Aligned product category pages with high-volume procurement queries and built crawlable bulk-order paths for corporate buyers.",
-    "result": "Top 3 Google Rankings in Singapore for 'Wholesale first aid supplies' and 'Buy first aid box'.",
-    "metrics": [
-      {
-        "value": "Top 3",
-        "label": "Wholesale First Aid Supplies"
-      },
-      {
-        "value": "Top 3",
-        "label": "Buy First Aid Box"
-      },
-      {
-        "value": "+140%",
-        "label": "Corporate Bulk Inquiries"
-      },
-      {
-        "value": "Singapore",
-        "label": "Market Dominance"
-      }
-    ],
-    "featuredImage": "/images/projects/tennis-equipment-sales.png",
-    "featuredAlt": "Alcare Supplies Wholesale Medical Search Rankings Singapore",
-    "screenshots": [],
-    "tags": [
-      "E-Commerce SEO",
-      "Wholesale B2B",
-      "Medical Supplies",
-      "Singapore"
-    ],
-    "metaTitle": "Alcare Supplies SEO Case Study | Wholesale First Aid Top 3",
-    "metaDescription": "E-commerce and wholesale search optimization driving Top 3 Google rankings for first aid supplies in Singapore.",
-    "focusKeyword": "wholesale first aid supplies seo",
-    "createdAt": "2026-11-18T00:00:00.000Z",
-    "updatedAt": "2026-11-18T00:00:00.000Z"
-  },
-  {
-    "id": "proj-ubizfloral-wedding-decor",
-    "title": "Ubiz Floral & Decor – Wedding Decor E-Commerce & AEO Optimization",
-    "slug": "ubizfloral-wedding-candelabras-aeo-seo",
-    "category": "AI SEO",
-    "client": "Ubiz Floral & Decor",
-    "timeline": "6 Months",
-    "description": "Engineered an e-commerce Answer Engine Optimization (AEO) and product SEO framework for a national wedding and event floral brand. Captured both direct transactional searches for centerpiece decor and conversational sizing queries cited in AI answer engines.",
-    "result": "Top 3 for 'Wedding Candelabras Centerpieces' and AEO #1 Rank for 'What Candelabra Size Works Best for Wedding Tables'.",
-    "metrics": [
-      {
-        "value": "Top 3",
-        "label": "Wedding Candelabras Centerpieces"
-      },
-      {
-        "value": "AEO #1",
-        "label": "Table Sizing Guides"
-      },
-      {
-        "value": "Top 5",
-        "label": "Artificial Plants & Grass"
-      },
-      {
-        "value": "E-Com",
-        "label": "USA & Global Orders"
-      }
-    ],
-    "featuredImage": "/images/projects/black-magic-tan-ai-overview.png",
-    "featuredAlt": "Ubiz Floral Wedding Candelabras & AEO Sizing Rankings",
-    "screenshots": [],
-    "tags": [
-      "E-Commerce SEO",
-      "AEO / Answer Engine",
-      "Wedding Decor",
-      "Conversational AI"
-    ],
-    "metaTitle": "Ubiz Floral SEO & AEO Case Study | Wedding Candelabras Top 3",
-    "metaDescription": "How AEO and e-commerce SEO captured Top 3 rankings for wedding candelabras and AI search queries for Ubiz Floral.",
-    "focusKeyword": "wedding candelabras seo aeo",
     "createdAt": "2026-11-18T00:00:00.000Z",
     "updatedAt": "2026-11-18T00:00:00.000Z"
   }

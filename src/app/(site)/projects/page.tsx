@@ -3,6 +3,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { CTA } from '@/components/CTA';
 import { FAQ } from '@/components/FAQ';
 import { ProjectsFilter } from '@/components/ProjectsFilter';
+import { KeywordRankingsShowcase } from '@/components/KeywordRankingsShowcase';
 import { pageMetadata } from '@/lib/seo';
 import { getProjects } from '@/lib/store';
 
@@ -43,6 +44,8 @@ export default async function ProjectsPage() {
           <ProjectsFilter initialProjects={projects} />
         </div>
       </section>
+
+      <KeywordRankingsShowcase />
 
       <FAQ title="Project Questions" faqs={faqs} />
       <CTA title="Have a Similar Project in Mind?" text="Share your goals and current setup. I’ll help map the most practical next step." />

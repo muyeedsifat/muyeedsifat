@@ -716,5 +716,216 @@ export const projects: Project[] = [
     "focusKeyword": "wordpress pagespeed optimization",
     "createdAt": "2026-11-18T00:00:00.000Z",
     "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-elite-bath-solutions",
+    "title": "Elite Bath Solutions – Local Bathroom Remodeling Dominance",
+    "slug": "elite-bath-solutions-bathroom-remodeling-seo",
+    "category": "Local SEO",
+    "client": "Elite Bath Solutions",
+    "timeline": "6 Months",
+    "description": "Executed an aggressive local search and Google Business Profile optimization campaign targeting high-ticket residential bathroom remodeling. Focused on localized intent mapping for competitive suburban Georgia markets, Google Maps local pack rankings, and verified customer review velocity.",
+    "result": "#1 Google Rank for 'best bathroom remodeler in woodstock' and 'Best Bathroom Remodeler in cartersville', plus Top 3 broad authority.",
+    "metrics": [
+      {
+        "value": "#1 Rank",
+        "label": "Woodstock GA Remodeler"
+      },
+      {
+        "value": "#1 Rank",
+        "label": "Cartersville GA Remodeler"
+      },
+      {
+        "value": "Top 3",
+        "label": "Best Bathroom Remodeler"
+      },
+      {
+        "value": "High-Ticket",
+        "label": "Direct Remodeling Quotes"
+      }
+    ],
+    "featuredImage": "/images/projects/ca-garage-doors-summary.png",
+    "featuredAlt": "Elite Bath Solutions Local Search & Google Maps Dominance",
+    "screenshots": [],
+    "tags": [
+      "Local SEO",
+      "Google Map Pack",
+      "Home Remodeling",
+      "Lead Generation",
+      "#1 Ranking"
+    ],
+    "metaTitle": "Elite Bath Solutions Local SEO Case Study | #1 Google Rankings",
+    "metaDescription": "How targeted local SEO delivered #1 Google rankings for bathroom remodeling in Woodstock and Cartersville, GA.",
+    "focusKeyword": "bathroom remodeler local seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-sony-law-solicitors",
+    "title": "Sony Law Solicitors – UK Immigration & Asylum Search Authority",
+    "slug": "sony-law-solicitors-uk-immigration-seo",
+    "category": "Local SEO",
+    "client": "Sony Law Solicitors",
+    "timeline": "4 Months",
+    "description": "Architected an authority-led legal search optimization strategy for a premier Hertfordshire law firm. Optimized localized practice area pages, structured legal entity schema, and captured high-trust queries for individuals and families seeking immigration and asylum legal representation in the UK.",
+    "result": "#1 Google Rank for 'best immigration solicitors in St Albans' and 'best asylum solicitors in St Albans'.",
+    "metrics": [
+      {
+        "value": "#1 Rank",
+        "label": "St Albans Immigration Solicitors"
+      },
+      {
+        "value": "#1 Rank",
+        "label": "St Albans Asylum Solicitors"
+      },
+      {
+        "value": "100%",
+        "label": "Hertfordshire SERP Share"
+      },
+      {
+        "value": "Qualified",
+        "label": "Legal Retainer Leads"
+      }
+    ],
+    "featuredImage": "/images/projects/mental-health-gsc.jpeg",
+    "featuredAlt": "Sony Law Solicitors Legal Search Rankings in St Albans",
+    "screenshots": [],
+    "tags": [
+      "Legal SEO",
+      "Solicitors UK",
+      "Immigration Law",
+      "Local Intent #1"
+    ],
+    "metaTitle": "Sony Law Solicitors Case Study | #1 Immigration Solicitors St Albans",
+    "metaDescription": "How local search optimization secured #1 Google rankings for immigration and asylum solicitors in St Albans, UK.",
+    "focusKeyword": "immigration solicitors st albans seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-admeth-singapore-industrial",
+    "title": "Admeth Industrial – Singapore B2B Heat Exchanger Search Dominance",
+    "slug": "admeth-singapore-industrial-heat-exchangers-seo",
+    "category": "AI SEO",
+    "client": "Admeth Industrial",
+    "timeline": "6 Months",
+    "description": "Designed a technical B2B engineering SEO strategy for an industrial thermal management and equipment provider in Singapore. Built semantic topic clusters around specialized heat transfer equipment, capturing procurement and engineering managers actively sourcing equipment across Southeast Asia.",
+    "result": "Top 3 Google Rank in Singapore for 'Heat Exchanger Singapore' and 'Shell and Tube Heat Exchangers'.",
+    "metrics": [
+      {
+        "value": "Top 3",
+        "label": "Heat Exchanger Singapore"
+      },
+      {
+        "value": "Top 5",
+        "label": "Shell and Tube Exchangers"
+      },
+      {
+        "value": "B2B",
+        "label": "Industrial Inquiries"
+      },
+      {
+        "value": "APAC",
+        "label": "Regional Search Footprint"
+      }
+    ],
+    "featuredImage": "/images/projects/cichlidon-gsc-trend.jpeg",
+    "featuredAlt": "Admeth Industrial B2B Search Rankings in Singapore",
+    "screenshots": [],
+    "tags": [
+      "B2B SEO",
+      "Industrial Engineering",
+      "Singapore B2B",
+      "Commercial Intent"
+    ],
+    "metaTitle": "Admeth Industrial SEO Case Study | Heat Exchanger Singapore Top 3",
+    "metaDescription": "B2B industrial search optimization delivering Top 3 Google rankings for heat exchangers in Singapore.",
+    "focusKeyword": "heat exchanger singapore seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-alcare-supplies-singapore",
+    "title": "Alcare Supplies – Wholesale Medical & First Aid Supply SEO",
+    "slug": "alcare-singapore-wholesale-first-aid-seo",
+    "category": "AI SEO",
+    "client": "Alcare Supplies",
+    "timeline": "5 Months",
+    "description": "Optimized e-commerce and wholesale search discovery for a leading Singapore medical and workplace safety supplier. Aligned product category pages with high-volume procurement queries and built crawlable bulk-order paths for corporate buyers.",
+    "result": "Top 3 Google Rankings in Singapore for 'Wholesale first aid supplies' and 'Buy first aid box'.",
+    "metrics": [
+      {
+        "value": "Top 3",
+        "label": "Wholesale First Aid Supplies"
+      },
+      {
+        "value": "Top 3",
+        "label": "Buy First Aid Box"
+      },
+      {
+        "value": "+140%",
+        "label": "Corporate Bulk Inquiries"
+      },
+      {
+        "value": "Singapore",
+        "label": "Market Dominance"
+      }
+    ],
+    "featuredImage": "/images/projects/tennis-equipment-sales.png",
+    "featuredAlt": "Alcare Supplies Wholesale Medical Search Rankings Singapore",
+    "screenshots": [],
+    "tags": [
+      "E-Commerce SEO",
+      "Wholesale B2B",
+      "Medical Supplies",
+      "Singapore"
+    ],
+    "metaTitle": "Alcare Supplies SEO Case Study | Wholesale First Aid Top 3",
+    "metaDescription": "E-commerce and wholesale search optimization driving Top 3 Google rankings for first aid supplies in Singapore.",
+    "focusKeyword": "wholesale first aid supplies seo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "proj-ubizfloral-wedding-decor",
+    "title": "Ubiz Floral & Decor – Wedding Decor E-Commerce & AEO Optimization",
+    "slug": "ubizfloral-wedding-candelabras-aeo-seo",
+    "category": "AI SEO",
+    "client": "Ubiz Floral & Decor",
+    "timeline": "6 Months",
+    "description": "Engineered an e-commerce Answer Engine Optimization (AEO) and product SEO framework for a national wedding and event floral brand. Captured both direct transactional searches for centerpiece decor and conversational sizing queries cited in AI answer engines.",
+    "result": "Top 3 for 'Wedding Candelabras Centerpieces' and AEO #1 Rank for 'What Candelabra Size Works Best for Wedding Tables'.",
+    "metrics": [
+      {
+        "value": "Top 3",
+        "label": "Wedding Candelabras Centerpieces"
+      },
+      {
+        "value": "AEO #1",
+        "label": "Table Sizing Guides"
+      },
+      {
+        "value": "Top 5",
+        "label": "Artificial Plants & Grass"
+      },
+      {
+        "value": "E-Com",
+        "label": "USA & Global Orders"
+      }
+    ],
+    "featuredImage": "/images/projects/black-magic-tan-ai-overview.png",
+    "featuredAlt": "Ubiz Floral Wedding Candelabras & AEO Sizing Rankings",
+    "screenshots": [],
+    "tags": [
+      "E-Commerce SEO",
+      "AEO / Answer Engine",
+      "Wedding Decor",
+      "Conversational AI"
+    ],
+    "metaTitle": "Ubiz Floral SEO & AEO Case Study | Wedding Candelabras Top 3",
+    "metaDescription": "How AEO and e-commerce SEO captured Top 3 rankings for wedding candelabras and AI search queries for Ubiz Floral.",
+    "focusKeyword": "wedding candelabras seo aeo",
+    "createdAt": "2026-11-18T00:00:00.000Z",
+    "updatedAt": "2026-11-18T00:00:00.000Z"
   }
 ];

@@ -42,7 +42,6 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
       project: items.filter((i) => i.category === 'project').length,
       location: items.filter((i) => i.category === 'location').length,
       post: items.filter((i) => i.category === 'post').length,
-      protocol: items.filter((i) => i.category === 'protocol').length,
     };
   }, [items]);
 
@@ -366,13 +365,6 @@ export function SitemapViewer({ items }: SitemapViewerProps) {
               onClick={() => setActiveTab('post')}
             >
               Blog Post <span className="sitemapTabCount">{counts.post}</span>
-            </button>
-            <button
-              type="button"
-              className={`sitemapTabBtn ${activeTab === 'protocol' ? 'active' : ''}`}
-              onClick={() => setActiveTab('protocol')}
-            >
-              Protocols <span className="sitemapTabCount">{counts.protocol}</span>
             </button>
           </div>
 

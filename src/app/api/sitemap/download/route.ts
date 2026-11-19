@@ -91,6 +91,15 @@ export async function GET() {
       changefreq: 'monthly',
       desc: 'Direct inquiry channel, consultation booking, WhatsApp messaging, and retainer discussions.',
     },
+    {
+      title: 'HTML Sitemap & Navigation Directory',
+      slug: 'sitemap.html',
+      path: '/sitemap.html',
+      url: absoluteUrl('/sitemap.html'),
+      priority: '0.7',
+      changefreq: 'weekly',
+      desc: 'Human-navigable link directory organizing all published assets, services, case studies, and articles.',
+    },
   ];
 
   // 2. Piller Category Pages (Core Service Pillars)
@@ -181,13 +190,17 @@ export async function GET() {
     },
   ];
 
-  // Consolidate all links for root exports
-  const allLinks = [
+  // Consolidate website published pages (39 canonical pages matching HTML & XML sitemaps)
+  const websitePages = [
     ...primaryPages.map((c) => ({ ...c, section: 'Primary Page' })),
     ...pillarCategoryPages.map((s) => ({ ...s, section: 'Piller Category Page' })),
     ...projectList.map((p) => ({ ...p, section: 'Project' })),
     ...locationPages.map((l) => ({ ...l, section: 'Location Page' })),
     ...postList.map((b) => ({ ...b, section: 'Blog Post' })),
+  ];
+
+  const allLinks = [
+    ...websitePages,
     ...protocolList.map((pr) => ({ ...pr, desc: 'Machine Feed', section: 'Machine Protocol' })),
   ];
 
@@ -200,7 +213,7 @@ export async function GET() {
 
 > Generated: ${nowIso}
 > Canonical Website: ${baseUrl}
-> Total Published URLs: ${allLinks.length}
+> Total Published Website URLs: ${websitePages.length}
 > Contact: ${siteConfig.email} | WhatsApp: ${siteConfig.whatsappNumber}
 
 ## Directory Organization
@@ -223,18 +236,18 @@ This archive organizes all website URLs and content assets into segregated, stru
 | Projects | ${projectList.length} | /projects#* |
 | Location Pages | ${locationPages.length} | /locations |
 | Blog Posts | ${postList.length} | /blog/* |
-| Machine Feeds | ${protocolList.length} | /sitemap.xml, /llms.txt |
-| **Total** | **${allLinks.length}** | |
+| **Total Published Pages** | **${websitePages.length}** | |
+| Machine Feeds (Reference) | ${protocolList.length} | /sitemap.xml, /llms.txt |
 `;
   zip.file('README.md', readmeContent);
 
-  // all-urls.txt (newline delimited raw URLs)
-  const allUrlsContent = allLinks.map((l) => l.url).join('\n') + '\n';
+  // all-urls.txt (newline delimited raw URLs for published pages)
+  const allUrlsContent = websitePages.map((l) => l.url).join('\n') + '\n';
   zip.file('all-urls.txt', allUrlsContent);
 
   // all-urls.csv
   const csvHeaders = 'Title,URL,Path,Category,Priority,ChangeFreq,LastModified\n';
-  const csvRows = allLinks
+  const csvRows = websitePages
     .map(
       (l) =>
         `"${l.title.replace(/"/g, '""')}","${l.url}","${l.path}","${l.section}","${l.priority}","${l.changefreq}","${dateStr}"`
